@@ -28,7 +28,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import com.avrgaming.civcraft.arena.ArenaTeam;
 import com.avrgaming.civcraft.camp.Camp;
 import com.avrgaming.civcraft.config.CivSettings;
 import com.avrgaming.civcraft.config.ConfigMarketItem;
@@ -59,8 +58,6 @@ import com.avrgaming.civcraft.threading.TaskMaster;
 import com.avrgaming.civcraft.util.BiomeCache;
 import com.avrgaming.global.perks.PerkManager;
 import com.avrgaming.global.perks.PerkManagerSimple;
-import com.avrgaming.global.perks.PlatinumManager;
-import com.avrgaming.global.reports.ReportManager;
 import com.avrgaming.global.scores.ScoreManager;
 import com.jolbox.bonecp.Statistics;
 
@@ -132,24 +129,10 @@ public class SQL {
 		CivLog.info("\t Connected to GLOBAL database");
 		
 		CivGlobal.perkManager = new PerkManager();
-		if (PlatinumManager.isLegacyEnabled()) {
-			CivLog.heading("Initializing Perk/Web Database");	
-			PerkManager.hostname = CivSettings.getStringBase("perk_database.hostname");
-			PerkManager.port = CivSettings.getStringBase("perk_database.port");
-			PerkManager.db_name = CivSettings.getStringBase("perk_database.database");
-			PerkManager.username = CivSettings.getStringBase("perk_database.username");
-			PerkManager.password = CivSettings.getStringBase("perk_database.password");
-			PerkManager.dsn = "jdbc:mysql://" + PerkManager.hostname + ":" + PerkManager.port + "/" + PerkManager.db_name;
-			CivLog.info("\t Using "+PerkManager.dsn+" as PERK database.");
-			perkDatabase = new ConnectionPool(PerkManager.dsn, PerkManager.username, PerkManager.password, SQL.global_min_conns, SQL.global_max_conns, SQL.global_parts);
-			CivLog.info("\t Connected to PERK database.");
-		} else if (PlatinumManager.isEnabled()) {
 			CivGlobal.perkManager = new PerkManagerSimple();
 			CivGlobal.perkManager.init();
 			CivLog.info("Enabled SIMPLE PerkManager");
-		}
-
-		
+			
 		CivLog.heading("Initializing SQL Finished");
 	}
 
@@ -177,10 +160,8 @@ public class SQL {
 		Camp.init();
 		ConfigMarketItem.init();
 		RandomEvent.init();
-		ArenaTeam.init();
 					
 		CivLog.heading("Building Global Tables!!");
-		ReportManager.init();
 		ScoreManager.init();
 		
 		CivLog.info("----- Done Building Tables ----");

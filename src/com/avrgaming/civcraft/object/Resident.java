@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.avrgaming.civcraft.object;
 
 import gpl.InventorySerializer;
@@ -32,6 +14,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -51,8 +34,6 @@ import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
-import com.avrgaming.civcraft.arena.Arena;
-import com.avrgaming.civcraft.arena.ArenaTeam;
 import com.avrgaming.civcraft.camp.Camp;
 import com.avrgaming.civcraft.config.CivSettings;
 import com.avrgaming.civcraft.config.ConfigBuildableInfo;
@@ -89,7 +70,6 @@ import com.avrgaming.civcraft.util.PlayerBlockChangeUtil;
 import com.avrgaming.civcraft.util.SimpleBlock;
 import com.avrgaming.global.perks.NotVerifiedException;
 import com.avrgaming.global.perks.Perk;
-import com.avrgaming.global.perks.PlatinumManager;
 import com.avrgaming.global.perks.components.CustomPersonalTemplate;
 import com.avrgaming.global.perks.components.CustomTemplate;
 
@@ -167,8 +147,8 @@ public class Resident extends SQLObject {
 	private boolean insideArena = false;
 	private boolean isProtected = false;
 	
-	public ConcurrentHashMap<BlockCoord, SimpleBlock> previewUndo = null;
-	public HashMap<String, Perk> perks = new HashMap<String, Perk>();
+	public HashMap<BlockCoord, SimpleBlock> previewUndo = null;
+	public LinkedHashMap<String, Perk> perks = new LinkedHashMap<String, Perk>();
 	private Date lastKilledTime = null;
 	private String lastIP = "";
 	private UUID uid;
@@ -1019,7 +999,7 @@ public class Resident extends SQLObject {
 	
 	public void undoPreview() {
 		if (this.previewUndo == null) {
-			this.previewUndo = new ConcurrentHashMap<BlockCoord, SimpleBlock>();
+			this.previewUndo = new HashMap<BlockCoord, SimpleBlock>();
 			return;
 		}
 		
@@ -1046,7 +1026,7 @@ public class Resident extends SQLObject {
 		}
 		
 		this.previewUndo.clear();
-		this.previewUndo = new ConcurrentHashMap<BlockCoord, SimpleBlock>();
+		this.previewUndo = new HashMap<BlockCoord, SimpleBlock>();
 	}
 
 	public boolean isShowInfo() {
@@ -1118,6 +1098,105 @@ public class Resident extends SQLObject {
 		this.onRoad = onRoad;
 	}
 
+	public void giveAllArcticPerks() {
+		int perkCount;
+		try {
+			perkCount = CivSettings.getInteger(CivSettings.perkConfig, "system.free_perk_count");
+		} catch (InvalidConfiguration e) {
+			e.printStackTrace();
+			return;
+		}
+		for (ConfigPerk p : CivSettings.perks.values()) {
+			Perk perk = new Perk(p);
+			
+			if (perk.getIdent().startsWith("tpl_arctic") || perk.getIdent().startsWith("template_arctic"))
+			{
+				perk.count = perkCount;
+				this.perks.put(perk.getIdent(), perk);
+			}
+		}
+	}
+	
+	public void giveAllAztecPerks() {
+		int perkCount;
+		try {
+			perkCount = CivSettings.getInteger(CivSettings.perkConfig, "system.free_perk_count");
+		} catch (InvalidConfiguration e) {
+			e.printStackTrace();
+			return;
+		}
+		
+		for (ConfigPerk p : CivSettings.perks.values()) {
+			Perk perk = new Perk(p);
+			
+			if (perk.getIdent().startsWith("tpl_aztec") || perk.getIdent().startsWith("template_aztec"))
+			{
+				perk.count = perkCount;
+				this.perks.put(perk.getIdent(), perk);
+			}
+		}
+	}
+	
+	public void giveAllEgyptianPerks() {
+		int perkCount;
+		try {
+			perkCount = CivSettings.getInteger(CivSettings.perkConfig, "system.free_perk_count");
+		} catch (InvalidConfiguration e) {
+			e.printStackTrace();
+			return;
+		}
+		
+		for (ConfigPerk p : CivSettings.perks.values()) {
+			Perk perk = new Perk(p);
+			
+			if (perk.getIdent().startsWith("tpl_egyptian") || perk.getIdent().startsWith("template_egyptian"))
+			{
+				perk.count = perkCount;
+				this.perks.put(perk.getIdent(), perk);
+			}
+		}
+	}
+	
+	public void giveAllRomanPerks() {
+		int perkCount;
+		try {
+			perkCount = CivSettings.getInteger(CivSettings.perkConfig, "system.free_perk_count");
+		} catch (InvalidConfiguration e) {
+			e.printStackTrace();
+			return;
+		}
+		
+		for (ConfigPerk p : CivSettings.perks.values()) {
+			Perk perk = new Perk(p);
+			
+			if (perk.getIdent().startsWith("tpl_roman") || perk.getIdent().startsWith("template_roman"))
+			{
+				perk.count = perkCount;
+				this.perks.put(perk.getIdent(), perk);
+			}
+		}
+	}
+	
+	public void giveAllHellPerks() {
+		int perkCount;
+		try {
+			perkCount = CivSettings.getInteger(CivSettings.perkConfig, "system.free_perk_count");
+		} catch (InvalidConfiguration e) {
+			e.printStackTrace();
+			return;
+		}
+		
+		for (ConfigPerk p : CivSettings.perks.values()) {
+			Perk perk = new Perk(p);
+			
+			if (perk.getIdent().startsWith("tpl_hell") || perk.getIdent().startsWith("template_hell"))
+			{
+				perk.count = perkCount;
+				this.perks.put(perk.getIdent(), perk);
+			}
+		}
+	}
+	
 	public void giveAllFreePerks() {
 		int perkCount;
 		try {
@@ -1129,18 +1208,16 @@ public class Resident extends SQLObject {
 		
 		for (ConfigPerk p : CivSettings.perks.values()) {
 			Perk perk = new Perk(p);
-			perk.count = perkCount;
-			this.perks.put(perk.getIdent(), perk);
+			
+			if (perk.getIdent().startsWith("perk_"))
+			{
+				perk.count = perkCount;
+				this.perks.put(perk.getIdent(), perk);
+			}
 		}
-		
-		CivMessage.send(this, CivColor.LightGreen+"You've got free perks! Use /resident perks to see them.");
 	}
 	
 	public void loadPerks() {
-		if (!PlatinumManager.isEnabled()) {
-			return;
-		}
-		
 		class AsyncTask implements Runnable {
 			Resident resident;
 			
@@ -1160,30 +1237,13 @@ public class Resident extends SQLObject {
 						e.printStackTrace();
 						return;
 					} catch (NotVerifiedException e) {
-						String url;
-						try {
-							url = CivSettings.getString(CivSettings.perkConfig, "system.register_url");
-						} catch (InvalidConfiguration e1) {
-							e1.printStackTrace();
-							return;
-						}
-						
-						CivMessage.send(player, CivColor.Yellow+CivColor.BOLD+"Hey! You're in-game account is not registered! Register it at "+url);
-						CivMessage.send(player, CivColor.Yellow+CivColor.BOLD+"You'll be unable to earn Platinum until you register.");	
 						return;
 					}	
 				} catch (CivException e1) {
 					return;
 				}
-				
-				/* User was verified, lets see if it was the first time. */
-				PlatinumManager.givePlatinumOnce(resident,
-				CivSettings.platinumRewards.get("loginFirstVerified").name, 
-				CivSettings.platinumRewards.get("loginFirstVerified").amount, 
-				"Achievement! First time you've logged in while verified! %d");
 			}
 		}
-		
 		TaskMaster.asyncTask(new AsyncTask(this), 0);
 	}
 
@@ -1263,26 +1323,24 @@ public class Resident extends SQLObject {
 	public ArrayList<Perk> getUnboundTemplatePerks(ArrayList<Perk> alreadyBoundPerkList, ConfigBuildableInfo info) {
 		ArrayList<Perk> unboundPerks = new ArrayList<Perk>();
 		for (Perk ourPerk : perks.values()) {
-			CustomTemplate customTemplate = (CustomTemplate) ourPerk.getComponent("CustomTemplate");
-			if (customTemplate == null) {
-				continue;
-			}
-			
-			if (!customTemplate.getString("template").equals(info.template_base_name)) {
-				/* Not the correct template. */
-				continue;
-			}
-			
-			for (Perk perk : alreadyBoundPerkList) {
-				if (perk.getIdent().equals(ourPerk.getIdent())) {
-					/* Perk is already bound in this town, do not display for binding. */
-					break;
+			if (!ourPerk.getIdent().contains("template")) {
+				CustomTemplate customTemplate = (CustomTemplate) ourPerk.getComponent("CustomTemplate");
+					if (customTemplate == null) {
+						continue;
 				}
-			}
+				
+				if (!customTemplate.getString("template").equals(info.template_base_name)) {
+					continue;
+				}
 			
+				for (Perk perk : alreadyBoundPerkList) {
+					if (perk.getIdent().equals(ourPerk.getIdent())) {
+						break;
+					}
+				}
 			unboundPerks.add(ourPerk);
+			}
 		}
-		
 		return unboundPerks;
 	}
 
@@ -1422,10 +1480,6 @@ public class Resident extends SQLObject {
 	}
 	
 	public boolean hasTechForItem(ItemStack stack) {
-		if (this.isInsideArena()) {
-			return true;
-		}
-		
 		LoreCraftableMaterial craftMat = LoreCraftableMaterial.getCraftMaterial(stack);
 		if (craftMat == null) {
 			return true;
@@ -1539,35 +1593,6 @@ public class Resident extends SQLObject {
 		this.usesAntiCheat = usesAntiCheat;
 	}
 	
-	public boolean hasTeam() {
-		ArenaTeam team = ArenaTeam.getTeamForResident(this);
-		if (team == null) {
-			return false;
-		}
-		return true;
-	}
-	
-	public ArenaTeam getTeam() {
-		ArenaTeam team = ArenaTeam.getTeamForResident(this);
-		if (team == null) {
-			return null;
-		}
-		return team;
-	}
-
-	public boolean isTeamLeader() {
-		ArenaTeam team = ArenaTeam.getTeamForResident(this);
-		if (team == null) {
-			return false;
-		}
-		
-		if (team.getLeader() == this) {
-			return true;
-		}
-		
-		return false;		
-	}
-	
 	public void saveInventory() {
 		try {
 			Player player = CivGlobal.getPlayer(this);			
@@ -1613,40 +1638,6 @@ public class Resident extends SQLObject {
 	public void setSavedInventory(String savedInventory) {
 		this.savedInventory = savedInventory;
 	}
-
-	public Arena getCurrentArena() {
-		if (this.getTeam() == null) {
-			return null;
-		}
-		
-		return this.getTeam().getCurrentArena();
-	}
-	
-	public boolean isInsideArena() {
-		
-		if (!hasTeam()) {
-			this.insideArena = false;
-			return false;
-		}
-		
-		try {
-			Player player = CivGlobal.getPlayer(this);
-			
-			if (player.getWorld().getName().equals("world")) {
-				this.insideArena = false;
-				return false;
-			}
-			
-		} catch (CivException e) {
-			return false;
-		}
-		
-		return this.insideArena;
-	}
-	
-	public void setInsideArena(boolean inside) {
-		this.insideArena = inside;
-	}
 	
 	public boolean isProtected() {
 		return isProtected;
@@ -1668,32 +1659,56 @@ public class Resident extends SQLObject {
 		Paginator paginator = new Paginator();
 		paginator.paginate(perks.values(), pageNumber);
 		
-		for (Object obj : paginator.page) {
-			Perk p = (Perk)obj;
-			ItemStack stack = LoreGuiItem.build(p.configPerk.display_name, 
+		for (Object obj : perks.values()) {
+ 			Perk p = (Perk)obj;
+ 			if (p.getIdent().startsWith("temp"))
+ 			{
+ 				ItemStack stack = LoreGuiItem.build(p.configPerk.display_name, 
+					p.configPerk.type_id, 
+					p.configPerk.data, CivColor.LightBlue+"Click To View",
+					CivColor.LightBlue+"These Templates");
+ 				stack = LoreGuiItem.setAction(stack, "ShowTemplateType");
+				stack = LoreGuiItem.setActionData(stack, "perk", p.configPerk.id);
+				inv.addItem(stack);
+			}
+			else if (p.getIdent().startsWith("perk"))
+			{
+				ItemStack stack = LoreGuiItem.build(p.configPerk.display_name, 
 					p.configPerk.type_id, 
 					p.configPerk.data, CivColor.Gold+"<Click To Activate>",
 					CivColor.LightBlue+"Count: "+p.count);
+				stack = LoreGuiItem.setAction(stack, "ActivatePerk");
+				stack = LoreGuiItem.setActionData(stack, "perk", p.configPerk.id);
+				inv.addItem(stack);
+			}
+		}
+		player.openInventory(inv);
+	}
+	
+	public void showTemplatePerks(String name) {
+		Player player;
+		try {
+			player = CivGlobal.getPlayer(this);
+		} catch (CivException e) {
+			return;
+		}
+		
+		Inventory inv = Bukkit.getServer().createInventory(player, CivTutorial.MAX_CHEST_SIZE*9, "Templates for "+name);
+		
+		for (Object obj : perks.values()) {
+			Perk p = (Perk)obj;
+			if (p.getIdent().contains("tpl_" +name))
+			{
+			ItemStack stack = LoreGuiItem.build(p.configPerk.display_name, 
+				p.configPerk.type_id, 
+				p.configPerk.data, CivColor.Gold+"<Click To Activate>",
+				CivColor.LightBlue+"Count: "+p.count);
 			stack = LoreGuiItem.setAction(stack, "ActivatePerk");
 			stack = LoreGuiItem.setActionData(stack, "perk", p.configPerk.id);
 
 			inv.addItem(stack);
+			}
 		}
-		
-		if (paginator.hasPrevPage) {
-			ItemStack stack = LoreGuiItem.build("Prev Page", ItemManager.getId(Material.PAPER), 0, "");
-			stack = LoreGuiItem.setAction(stack, "ShowPerkPage");
-			stack = LoreGuiItem.setActionData(stack, "page", ""+(pageNumber-1));
-			inv.setItem(9*5, stack);
-		}
-		
-		if (paginator.hasNextPage) {
-			ItemStack stack = LoreGuiItem.build("Next Page", ItemManager.getId(Material.PAPER), 0, "");
-			stack = LoreGuiItem.setAction(stack, "ShowPerkPage");
-			stack = LoreGuiItem.setActionData(stack, "page", ""+(pageNumber+1));
-			inv.setItem((CivTutorial.MAX_CHEST_SIZE*9)-1, stack);
-		}
-		
 		player.openInventory(inv);
 	}
 

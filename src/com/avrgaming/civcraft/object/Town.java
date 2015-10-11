@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.avrgaming.civcraft.object;
 
 import java.sql.ResultSet;
@@ -37,6 +19,7 @@ import org.bukkit.inventory.ItemStack;
 import com.avrgaming.civcraft.components.AttributeBase;
 import com.avrgaming.civcraft.components.AttributeRate;
 import com.avrgaming.civcraft.components.AttributeWarUnhappiness;
+import com.avrgaming.civcraft.components.AttributeWarUnsafety;
 import com.avrgaming.civcraft.components.Component;
 import com.avrgaming.civcraft.config.CivSettings;
 import com.avrgaming.civcraft.config.ConfigBuff;
@@ -44,6 +27,7 @@ import com.avrgaming.civcraft.config.ConfigBuildableInfo;
 import com.avrgaming.civcraft.config.ConfigCultureLevel;
 import com.avrgaming.civcraft.config.ConfigGovernment;
 import com.avrgaming.civcraft.config.ConfigHappinessState;
+import com.avrgaming.civcraft.config.ConfigSafetyState;
 import com.avrgaming.civcraft.config.ConfigTownLevel;
 import com.avrgaming.civcraft.config.ConfigTownUpgrade;
 import com.avrgaming.civcraft.config.ConfigUnit;
@@ -148,13 +132,21 @@ public class Town extends SQLObject {
 	public boolean defeated = false;
 	public LinkedList<Buildable> invalidStructures = new LinkedList<Buildable>();
 	
-	/* XXX kind of a hacky way to save the bank's level information between build undo calls */
+	/* kind of a hacky way to save the bank's level information between build undo calls */
 	public int saved_bank_level = 1;
 	public double saved_bank_interest_amount = 0;
+	public int saved_trommel_level = 1;
+	public int saved_recycling_center_level = 1;
+	public int saved_lumber_mill_level = 1;
+	public int saved_fish_hatchery_level = 1;
 	
 	/* Happiness Stuff */
 	private double baseHappy = 0.0;
 	private double baseUnhappy = 0.0;
+	
+	/* Safety Stuff */
+	private double baseSafety = 0.0;
+	private double baseUnsafety = 0.0;
 		
 	private RandomEvent activeEvent;
 	
@@ -182,7 +174,7 @@ public class Town extends SQLObject {
 					"`id` int(11) unsigned NOT NULL auto_increment," +
 					"`name` VARCHAR(64) NOT NULL," +
 					"`civ_id` int(11) NOT NULL DEFAULT 0," +
-					"`master_civ_id` int(11) NOT NULL DEFAULT 0," + //XXX no longer used.
+					"`master_civ_id` int(11) NOT NULL DEFAULT 0," + //No longer used.
 					"`mother_civ_id` int(11) NOT NULL DEFAULT 0," +
 					"`defaultGroupName` mediumtext DEFAULT NULL," +
 					"`mayorGroupName` mediumtext DEFAULT NULL," +
@@ -192,6 +184,7 @@ public class Town extends SQLObject {
 					"`debt` double DEFAULT 0," +
 					"`coins` double DEFAULT 0," +
 					"`daysInDebt` int(11) DEFAULT 0,"+
+					"`religion_id` mediumtext DEFAULT NULL," +
 					"`flat_tax` double NOT NULL DEFAULT '0'," + 
 					"`tax_rate` double DEFAULT 0," + 
 					"`extra_hammers` double DEFAULT 0," +
@@ -222,7 +215,6 @@ public class Town extends SQLObject {
 		this.setName(rs.getString("name"));		
 		this.setLevel(rs.getInt("level"));
 		this.setCiv(CivGlobal.getCivFromId(rs.getInt("civ_id")));
-		
 		Integer motherCivId = rs.getInt("mother_civ_id");
 		if (motherCivId != null && motherCivId != 0) {
 			Civilization mother = CivGlobal.getConqueredCivFromId(motherCivId);
@@ -371,7 +363,7 @@ public class Town extends SQLObject {
 		}
 		this.cultureChunks = null;
 		
-		//TODO remove protected blocks?
+		//TO-DO remove protected blocks?
 		
 		/* Remove any related SessionDB entries */
 		CivGlobal.getSessionDB().deleteAllForTown(this);
@@ -512,13 +504,12 @@ public class Town extends SQLObject {
 	public Structure findStructureByLocation(WorldCord wc) {
 		return structures.get(wc);
 	}
-
+	
 	public int getLevel() {
 		return level;
 	}
-
+	
 	public void setLevel(int level) {
-		
 //		TownHall townhall = this.getTownHall();
 //		if (townhall != null) {
 //			if (townhall.nextGoodieFramePoint.size() > 0 &&
@@ -527,18 +518,21 @@ public class Town extends SQLObject {
 //						townhall.nextGoodieFrameDirection.get(0));
 //			}
 //		}
-		
 		this.level = level;
+	}
+	
+	public void sessionAdd(String key, String value) {
+		CivGlobal.getSessionDB().add(key, value, this.getId(), 0, 0);
 	}
 
 	public double getTaxRate() {
 		return taxRate;
 	}
-
+	
 	public void setTaxRate(double taxRate) {
 		this.taxRate = taxRate;
 	}
-
+	
 	public String getTaxRateString() {
 		long rounded = Math.round(this.taxRate*100);
 		return ""+rounded+"%";	
@@ -547,7 +541,7 @@ public class Town extends SQLObject {
 	public double getFlatTax() {
 		return flatTax;
 	}
-
+	
 	public void setFlatTax(double flatTax) {
 		this.flatTax = flatTax;
 	}
@@ -1617,7 +1611,7 @@ public class Town extends SQLObject {
 		
 		try {
 			/*
-			 * XXX if the template is null we need to just get the template first. 
+			 * XXXX if the template is null we need to just get the template first. 
 			 * This should only happen for capitols and town halls since we need to 
 			 * Make them use the structure preview code and they don't yet
 			 */
@@ -1664,7 +1658,7 @@ public class Town extends SQLObject {
 				}
 			}
 			
-			//TODO fix this dependency nightmare! (the center is moved in build and needs to be resaved)
+			//TO-DO fix this dependency nightmare! (the center is moved in build and needs to be resaved)
 	//	} catch (SQLException e) {
 	//		e.printStackTrace();
 	//		throw new CivException("Internal database error");
@@ -1788,8 +1782,14 @@ public class Town extends SQLObject {
 	public AttrSource getGrowthRate() {
 		double rate = 1.0;
 		HashMap<String, Double> rates = new HashMap<String, Double>();
+		ConfigSafetyState state = CivSettings.getSafetyState(this.getSafetyPercentage());
+
+		/* Safety */
+		double newRate = rate * state.growth_rate;
+		rates.put("Safety", newRate - rate);
+		rate = newRate;
 		
-		double newRate = rate * getGovernment().growth_rate;
+		newRate = rate * getGovernment().growth_rate;
 		rates.put("Government", newRate - rate);
 		rate = newRate;
 		
@@ -1808,7 +1808,6 @@ public class Town extends SQLObject {
 		additional += (additionalGrapes*grapeCount);
 		rates.put("Wonders/Goodies", additional);
 		rate += additional;
-	
 		return new AttrSource(rates, rate, null);
 	}
 	
@@ -1877,8 +1876,9 @@ public class Town extends SQLObject {
 		double additional = rate*this.getBuffManager().getEffectiveDouble(Buff.COTTAGE_RATE);
 		rate += additional;
 		
-		/* Adjust for happiness state. */
+		/* Adjust for happiness & safety state. */
 		rate *= this.getHappinessState().coin_rate;
+		rate *= this.getSafetyState().coin_rate;
 		return rate;
 	}
 
@@ -1897,10 +1897,6 @@ public class Town extends SQLObject {
 		ChunkCoord townHallChunk = new ChunkCoord(townHall.getCorner().getLocation());
 		
 		for (TownChunk tc : this.getTownChunks()) {
-			if (tc.isOutpost()) {
-				continue;
-			}
-			
 			if (tc.getChunkCoord().equals(townHallChunk))
 				continue;
 			
@@ -1908,12 +1904,9 @@ public class Town extends SQLObject {
 			if (distance > grace_distance) {
 				distance -= grace_distance;
 				double upkeep = base * Math.pow(distance, falloff);
-				
 				total += upkeep;
 			} 
-			
 		}
-		
 		return Math.floor(total);
 	}
 
@@ -1936,14 +1929,15 @@ public class Town extends SQLObject {
 				}
 			}
 		}
-		/* XXX TODO convert this into a 'source' rate so it can be displayed properly. */
+		/* XXXX TOD-O convert this into a 'source' rate so it can be displayed properly. */
 		rate += fromStructures;
 		
 		double additional = rate*this.getBuffManager().getEffectiveDouble(Buff.TRADE);
 		rate += additional;
 		
-		/* Adjust for happiness state. */
+		/* Adjust for happiness and safety state. */
 		rate *= this.getHappinessState().coin_rate;
+		rate *= this.getSafetyState().coin_rate;
 		return rate;
 	}
 
@@ -1958,11 +1952,7 @@ public class Town extends SQLObject {
 	}
 
 	public void removeTownChunk(TownChunk tc) {
-		if (tc.isOutpost()) {
-			this.outposts.remove(tc.getChunkCoord());
-		} else {
-			this.townChunks.remove(tc.getChunkCoord());
-		}
+		this.townChunks.remove(tc.getChunkCoord());
 	}
 
 	public Double getHammersFromCulture() {
@@ -2019,7 +2009,6 @@ public class Town extends SQLObject {
 				nearest = struct;
 			}
 		}
-		
 		return nearest;
 	}
 	
@@ -2197,7 +2186,7 @@ public class Town extends SQLObject {
 	}
 
 	public int getUnitTypeCount(String id) {
-		//TODO find unit limits.
+		//TO-DO find unit limits.
 		return 0;
 	}
 	
@@ -2556,10 +2545,8 @@ public class Town extends SQLObject {
 				return CivSettings.governments.get("gov_tribalism");
 			}
 		}
-			
 		return this.getCiv().getGovernment();
 	}
-	
 	
 	public AttrSource getBeakerRate() {
 		double rate = 1.0;
@@ -2645,11 +2632,9 @@ public class Town extends SQLObject {
 		AttrSource as = new AttrSource(sources, beakers, null);
 		cache.sources = as;
 		this.attributeCache.put("BEAKERS", cache);
-		return as;	}
+		return as;
+	}
 	
-	/* 
-	 * Gets the basic amount of happiness for a town.
-	 */
 	public AttrSource getHappiness() {
 		HashMap<String, Double> sources = new HashMap<String, Double>();
 		double total = 0;
@@ -2724,17 +2709,12 @@ public class Town extends SQLObject {
 		total += randomEvent;
 		sources.put("Random Events", randomEvent);
 		
-		//TODO Governments
-
 		AttrSource as = new AttrSource(sources, total, null);
 		cache.sources = as;
 		this.attributeCache.put("HAPPINESS", cache);
 		return as;
 	}
 	
-	/* 
-	 * Gets the basic amount of happiness for a town.
-	 */
 	public AttrSource getUnhappiness() {
 		
 		AttrCache cache = this.attributeCache.get("UNHAPPINESS");
@@ -2829,9 +2809,8 @@ public class Town extends SQLObject {
 			sources.put("Random Events", randomEvent);
 		}
 		
-		
-		//TODO Spy Missions
-		//TODO Governments
+		//TO-DO Spy Missions
+		//TO-DO Governments
 
 		if (total < 0) {
 			total = 0;
@@ -2840,12 +2819,184 @@ public class Town extends SQLObject {
 		AttrSource as = new AttrSource(sources, total, null);
 		cache.sources = as;
 		this.attributeCache.put("UNHAPPINESS", cache);
-		return as;	}
+		return as;
+	}
 	
-	/*
-	 * Gets the rate at which we will modify other stats
-	 * based on the happiness level.
-	 */
+	//XXX Safety (Added 10/9/2015)
+	public AttrSource getSafety() {
+		HashMap<String, Double> sources = new HashMap<String, Double>();
+		double total = 0;
+		
+		AttrCache cache = this.attributeCache.get("SAFETY");
+		if (cache == null) {
+			cache = new AttrCache();
+			cache.lastUpdate = new Date();
+		} else {
+			Date now = new Date();
+			if (now.getTime() > (cache.lastUpdate.getTime() + ATTR_TIMEOUT_SECONDS*1000)) {
+				cache.lastUpdate = now;
+			} else {
+				return cache.sources;
+			}
+		}
+		
+		/* Add safety from town level. */
+		double townlevel = CivSettings.townSafetyLevels.get(this.getLevel()).safety;
+		total += townlevel;
+		sources.put("Base Safety", townlevel);
+		
+		/* Grab any sources from buffs. */
+//		double goodiesWonders = this.buffManager.getEffectiveDouble("buff_hedonism");
+//		sources.put("Goodies/Wonders", goodiesWonders);
+//		total += goodiesWonders;
+		
+		/* Grab happiness from the number of trade goods socketed. */
+		int tradeGoods = this.bonusGoodies.size();
+		if (tradeGoods > 0) {
+			sources.put("Trade Goods", (double)tradeGoods);
+		}
+		total += tradeGoods;
+		
+		/* Add in base safety if it exists. */
+		if (this.baseSafety != 0) {
+			sources.put("Base Safety", this.baseSafety);
+			total += baseSafety;
+		}
+	
+		/* Grab beakers generated from culture. */
+		double fromCulture = 0;
+		for (CultureChunk cc : this.cultureChunks.values()) {
+			fromCulture += cc.getHappiness();
+		}
+		sources.put("Culture Biomes", fromCulture);
+		total += fromCulture;
+		
+		/* Grab safety generated from structures with components. */
+		double structures = 0;
+		for (Structure struct : this.structures.values()) {
+			for (Component comp : struct.attachedComponents) {
+				if (comp instanceof AttributeBase) {
+					AttributeBase as = (AttributeBase)comp;
+					if (as.getString("attribute").equalsIgnoreCase("SAFETY")) {
+						double h = as.getGenerated();
+						if (h > 0) {
+							structures += h;
+						}
+					}
+				}
+			}
+		}
+		total += structures;
+		sources.put("Structures", structures);
+		
+		if (total < 0) {
+			total = 0;
+		}
+		
+		double randomEvent = RandomEvent.getSafety(this);
+		total += randomEvent;
+		sources.put("Random Events", randomEvent);
+		
+		AttrSource as = new AttrSource(sources, total, null);
+		cache.sources = as;
+		this.attributeCache.put("SAFETY", cache);
+		return as;
+	}
+	
+	//XXX Safety (Added 10/9/2015)
+	public AttrSource getUnsafety() {
+		
+		AttrCache cache = this.attributeCache.get("UNSAFETY");
+		if (cache == null) {
+			cache = new AttrCache();
+			cache.lastUpdate = new Date();
+		} else {
+			Date now = new Date();
+			if (now.getTime() > (cache.lastUpdate.getTime() + ATTR_TIMEOUT_SECONDS*1000)) {
+				cache.lastUpdate = now;
+			} else {
+				return cache.sources;
+			}
+		}
+		
+		HashMap<String, Double> sources = new HashMap<String, Double>();
+			
+		/* Get the unsafety from the civ. */
+		double total = this.getCiv().getCivWideUnsafety(sources);
+		
+		/* Try to reduce war unsafety via the component. */
+		if (sources.containsKey("War")) {
+			for (Structure struct : this.structures.values()) {
+				for (Component comp : struct.attachedComponents) {
+					if (!comp.isActive()) {
+						continue;
+					}
+					
+					if (comp instanceof AttributeWarUnsafety) {
+						AttributeWarUnhappiness warunsafeComp = (AttributeWarUnhappiness)comp;
+						double value = sources.get("War"); // Negative if a reduction 
+						value += warunsafeComp.value;
+						
+						if (value < 0) {
+							value = 0;
+						}
+						sources.put("War", value);
+					}
+				}
+			}
+		}
+		
+		/* Get distance unsafety from capitol. */
+		if (this.getMotherCiv() == null && !this.isCapitol()) {
+			double distance_unsafety = this.getCiv().getDistanceSafety(this);
+			total += distance_unsafety;
+			sources.put("Distance To Capitol", distance_unsafety);
+		}
+		
+		/* Add in base unsafety if it exists. */
+		if (this.baseUnsafety != 0) {
+			sources.put("Base Unhappiness", this.baseUnsafety);
+			total += this.baseUnsafety;
+		}
+		
+		/* Grab unsafety generated from structures with components. */
+		double structures = 0;
+		for (Structure struct : this.structures.values()) {
+			for (Component comp : struct.attachedComponents) {
+				if (comp instanceof AttributeBase) {
+					AttributeBase as = (AttributeBase)comp;
+					if (as.getString("attribute").equalsIgnoreCase("SAFETY")) {
+						double h = as.getGenerated();
+						if (h < 0) {
+							structures += (h*-1);
+						}
+					}
+				}
+			}
+		}
+		total += structures;
+		sources.put("Structures", structures);
+		
+		/* Grabe unsafety from Random events. */
+		double randomEvent = RandomEvent.getUnsafety(this);
+		total += randomEvent;
+		if (randomEvent > 0) {
+			sources.put("Random Events", randomEvent);
+		}
+		
+		//TO-DO Spy Missions
+		//TO-DO Governments
+		
+		if (total < 0) {
+			total = 0;
+		}
+		
+		AttrSource as = new AttrSource(sources, total, null);
+		cache.sources = as;
+		this.attributeCache.put("UNSAFETY", cache);
+		return as;
+	}
+	
 	public double getHappinessModifier()  {
 		return 1.0;
 	}
@@ -2868,6 +3019,31 @@ public class Town extends SQLObject {
 	
 	public void setBaseUnhappy(double happy) {
 		this.baseUnhappy = happy;
+	}
+	
+	//XXX Safety (Added 10/9/2015)
+	public double getSafetyModifier()  {
+		return 1.0;
+	}
+
+	public double getSafetyPercentage() {
+		double total_safety = getSafety().total;
+		double total_unsafety = getUnsafety().total;
+		
+		double total = total_safety + total_unsafety;
+		return total_safety/total;
+	}
+
+	public ConfigSafetyState getSafetyState() {
+		return CivSettings.getSafetyState(this.getSafetyPercentage());
+	}
+
+	public void setBaseSafety(double safe) {
+		this.baseSafety = safe;
+	}
+	
+	public void setBaseUnsafety(double safe) {
+		this.baseUnsafety = safe;
 	}
 
 	public double getBaseGrowth() {

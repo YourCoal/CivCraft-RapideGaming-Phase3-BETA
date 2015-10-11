@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.avrgaming.civcraft.object;
 
 import java.util.ArrayList;
@@ -76,9 +58,9 @@ public class CultureChunk {
 				distance = tmp;
 			}
 		}
-		
 		return distance;
 	}
+	
 	public void setDistance(int distance) {
 		this.distance = distance;
 	}
@@ -132,6 +114,10 @@ public class CultureChunk {
 	
 	public double getHappiness() {
 		return getCultureBiomeInfo().happiness+getAdditionalAttributes(Attribute.TypeKeys.HAPPINESS.name());
+	}
+	
+	public double getSafety() {
+		return getCultureBiomeInfo().safety+getAdditionalAttributes(Attribute.TypeKeys.SAFETY.name());
 	}
 	
 	public double getHammers() {
@@ -188,26 +174,25 @@ public class CultureChunk {
 		
 		if (cc == null) {
 			CivMessage.send(player, CivColor.LightPurple+biome.name()+
-					CivColor.Green+" Coins: "+CivColor.LightGreen+info.coins+
-					CivColor.Green+" Happiness:"+CivColor.LightGreen+info.happiness+
-					CivColor.Green+" Hammers:"+CivColor.LightGreen+info.hammers+
-					CivColor.Green+" Growth:"+CivColor.LightGreen+info.growth+				
-					CivColor.Green+" Beakers:"+CivColor.LightGreen+info.beakers);
+					CivColor.Green+"  Coins: "+CivColor.LightGreen+info.coins+
+					CivColor.Green+"  Happiness:"+CivColor.LightGreen+info.happiness+
+					CivColor.Green+"  Safety:"+CivColor.LightGreen+info.safety+
+					CivColor.Green+"  Hammers:"+CivColor.LightGreen+info.hammers+
+					CivColor.Green+"  Growth:"+CivColor.LightGreen+info.growth+				
+					CivColor.Green+"  Beakers:"+CivColor.LightGreen+info.beakers);
 		} else {
 			CivMessage.send(player, CivColor.LightPurple+biome.name()+
-					CivColor.Green+" Coins: "+CivColor.LightGreen+cc.getCoins()+
-					CivColor.Green+" Happiness:"+CivColor.LightGreen+cc.getHappiness()+
-					CivColor.Green+" Hammers:"+CivColor.LightGreen+cc.getHammers()+
-					CivColor.Green+" Growth:"+CivColor.LightGreen+cc.getGrowth()+				
-					CivColor.Green+" Beakers:"+CivColor.LightGreen+cc.getBeakers());
+					CivColor.Green+"  Coins: "+CivColor.LightGreen+cc.getCoins()+
+					CivColor.Green+"  Happiness:"+CivColor.LightGreen+cc.getHappiness()+
+					CivColor.Green+"  Safety:"+CivColor.LightGreen+cc.getSafety()+
+					CivColor.Green+"  Hammers:"+CivColor.LightGreen+cc.getHammers()+
+					CivColor.Green+"  Growth:"+CivColor.LightGreen+cc.getGrowth()+				
+					CivColor.Green+"  Beakers:"+CivColor.LightGreen+cc.getBeakers());
 		}
-
 	}
 	
 	public static Biome getBiomeFromLocation(Location loc) {
 		Block block = loc.getChunk().getBlock(0, 0, 0);
 		return block.getBiome();
 	}
-	
-	
 }

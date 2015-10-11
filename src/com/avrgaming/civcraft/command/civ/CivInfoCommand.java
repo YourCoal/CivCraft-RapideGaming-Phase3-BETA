@@ -258,7 +258,6 @@ public class CivInfoCommand extends CommandBase {
 			}
 			out += ", ";
 		}
-		
 		CivMessage.send(sender, out);
 	}
 	
@@ -277,6 +276,4 @@ public class CivInfoCommand extends CommandBase {
 	public void permissionCheck() throws CivException {
 		
 	}
-
-	
 }

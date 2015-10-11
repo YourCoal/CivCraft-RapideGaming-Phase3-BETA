@@ -13,6 +13,7 @@ public class ConfigCultureBiomeInfo {
 	public double hammers;
 	public double growth;
 	public double happiness;
+	public double safety;
 	public double beakers;
 	
 	public static void loadConfig(FileConfiguration cfg, Map<String, ConfigCultureBiomeInfo> culture_biomes) {
@@ -26,6 +27,7 @@ public class ConfigCultureBiomeInfo {
 			biome.hammers = (Double)cl.get("hammers");
 			biome.growth = (Double)cl.get("growth");
 			biome.happiness = (Double)cl.get("happiness");
+			biome.safety = (Double)cl.get("safety");
 			biome.beakers = (Double)cl.get("beakers");
 
 			culture_biomes.put(biome.name, biome);

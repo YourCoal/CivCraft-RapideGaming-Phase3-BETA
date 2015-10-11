@@ -56,6 +56,10 @@ public class WarListener implements Listener {
 			event.getBlock().getType().equals(Material.TNT) ||
 			event.getBlock().getType().equals(Material.LADDER) ||
 			event.getBlock().getType().equals(Material.VINE) ||
+			event.getBlock().getType().equals(Material.IRON_BLOCK) || 
+			event.getBlock().getType().equals(Material.GOLD_BLOCK) ||
+			event.getBlock().getType().equals(Material.DIAMOND_BLOCK) ||
+			event.getBlock().getType().equals(Material.EMERALD_BLOCK) ||
 			!event.getBlock().getType().isSolid()) {
 			return;
 		}

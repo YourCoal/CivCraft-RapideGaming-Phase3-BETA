@@ -10,7 +10,6 @@ import com.avrgaming.civcraft.main.CivGlobal;
 import com.avrgaming.civcraft.main.CivMessage;
 import com.avrgaming.civcraft.object.Resident;
 import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.global.perks.PlatinumManager;
 
 public class AdminPerkCommand extends CommandBase {
 
@@ -91,13 +90,5 @@ public class AdminPerkCommand extends CommandBase {
 
 	@Override
 	public void permissionCheck() throws CivException {
-		if (!PlatinumManager.isEnabled()) {
-			throw new CivException("Perk system must be enabled first. See perks.yml");
-		}
-		
-		if (PlatinumManager.isLegacyEnabled()) {
-			throw new CivException("Perk command does not work with legacy perks system enabled. See perks.yml");
-		}
 	}
-
 }

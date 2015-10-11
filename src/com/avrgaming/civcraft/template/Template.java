@@ -577,7 +577,10 @@ public class Template {
 			
 			SimpleBlock block = new SimpleBlock(blockId, blockData);
 			
-			if (blockId == CivData.WOOD_DOOR || blockId == CivData.IRON_DOOR) {
+			if (blockId == CivData.WOOD_DOOR || blockId == CivData.IRON_DOOR || 
+					blockId == CivData.SPRUCE_DOOR || blockId == CivData.BIRCH_DOOR || 
+					blockId == CivData.JUNGLE_DOOR || blockId == CivData.ACACIA_DOOR || 
+					blockId == CivData.DARK_OAK_DOOR) {
 				this.doorRelativeLocations.add(new BlockCoord("", blockX, blockY, blockZ));
 			}
 			

@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.avrgaming.civcraft.structure;
 
 import java.sql.ResultSet;
@@ -73,15 +55,15 @@ public class Farm extends Structure {
 	}
 	
 	@Override
+	public String getMarkerIconName() {
+		return "basket";
+	}
+	
+	@Override
 	public boolean canRestoreFromTemplate() {
 		return false;
 	}
 	
-	@Override
-	public String getMarkerIconName() {
-		return "basket";
-	}
-
 	public void build_farm(Location centerLoc) {
 		// A new farm, add it to the farm chunk table ...
 		Chunk chunk = centerLoc.getChunk();
@@ -89,7 +71,7 @@ public class Farm extends Structure {
 		CivGlobal.addFarmChunk(fc.getCoord(), fc);
 		this.fc = fc;
 	}
-
+	
 	public static boolean isBlockControlled(Block b) {
 		
 		switch (ItemManager.getId(b)) {

@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.avrgaming.civcraft.listener;
 
 import gpl.HorseModifier;
@@ -23,7 +5,7 @@ import gpl.HorseModifier;
 import java.util.HashSet;
 import java.util.Random;
 
-import net.minecraft.server.v1_7_R4.NBTTagCompound;
+import net.minecraft.server.v1_8_R3.NBTTagCompound;
 
 import org.bukkit.Chunk;
 import org.bukkit.Color;
@@ -33,7 +15,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.bukkit.craftbukkit.v1_7_R4.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Fireball;
@@ -120,9 +102,6 @@ import com.avrgaming.civcraft.util.ItemFrameStorage;
 import com.avrgaming.civcraft.util.ItemManager;
 import com.avrgaming.civcraft.war.War;
 import com.avrgaming.civcraft.war.WarRegen;
-import com.avrgaming.moblib.MobLib;
-
-
 
 public class BlockListener implements Listener {
 
@@ -173,8 +152,6 @@ public class BlockListener implements Listener {
 				}
 			}
 	    }
-
-
 		coord.setFromLocation(event.getBlock().getLocation());
 		TownChunk tc = CivGlobal.getTownChunk(coord);
 
@@ -1114,6 +1091,11 @@ public class BlockListener implements Listener {
 					switch (event.getClickedBlock().getType()) {
 					case WOODEN_DOOR:
 					case IRON_DOOR:
+					case SPRUCE_DOOR:
+					case BIRCH_DOOR:
+					case JUNGLE_DOOR:
+					case ACACIA_DOOR:
+					case DARK_OAK_DOOR:
 						return;
 					default:
 						break;
@@ -1218,6 +1200,13 @@ public class BlockListener implements Listener {
 					if (inHand.getType().equals(Material.SEEDS) ||
 						inHand.getType().equals(Material.MELON_SEEDS) ||
 						inHand.getType().equals(Material.PUMPKIN_SEEDS)) {
+						denyBreeding = true;
+					}
+					break;
+				case RABBIT:
+					if (inHand.getType().equals(Material.CARROT) ||
+						inHand.getType().equals(Material.GOLDEN_CARROT) ||
+						inHand.getType().equals(Material.YELLOW_FLOWER)) {
 						denyBreeding = true;
 					}
 					break;
@@ -1464,37 +1453,24 @@ public class BlockListener implements Listener {
 				return;			
 			}
 		}
-
+		
 		if (event.getEntity().getType().equals(EntityType.IRON_GOLEM) &&
 			event.getSpawnReason().equals(SpawnReason.BUILD_IRONGOLEM)) {
 				event.setCancelled(true);
 				return;
 		}
-
-		if (MobLib.isMobLibEntity(event.getEntity())) {
-			return;
-		}
-
-		if (event.getEntity().getType().equals(EntityType.ZOMBIE) ||
-			event.getEntity().getType().equals(EntityType.SKELETON) ||
-			event.getEntity().getType().equals(EntityType.BAT) ||
-			event.getEntity().getType().equals(EntityType.CAVE_SPIDER) ||
-			event.getEntity().getType().equals(EntityType.SPIDER) ||
-			event.getEntity().getType().equals(EntityType.CREEPER) ||
-			event.getEntity().getType().equals(EntityType.WOLF) ||
-			event.getEntity().getType().equals(EntityType.SILVERFISH) ||
+		
+		if (event.getEntity().getType().equals(EntityType.BAT) ||
 			event.getEntity().getType().equals(EntityType.OCELOT) ||
-			event.getEntity().getType().equals(EntityType.WITCH) ||
 			event.getEntity().getType().equals(EntityType.ENDERMAN)) {
-
 			event.setCancelled(true);
 			return;
 		}
 
-		if (event.getSpawnReason().equals(SpawnReason.SPAWNER)) {
-			event.setCancelled(true);
-			return;
-		}
+//		if (event.getSpawnReason().equals(SpawnReason.SPAWNER)) {
+//			event.setCancelled(true);
+//			return;
+//		}
 	}
 
 	public boolean allowPistonAction(Location loc) {
@@ -1603,6 +1579,7 @@ public class BlockListener implements Listener {
 
 	}
 
+	@SuppressWarnings("deprecation")
 	@EventHandler(priority = EventPriority.HIGHEST) 
 	public void onBlockPistonRetractEvent(BlockPistonRetractEvent event) {
 		if (!allowPistonAction(event.getRetractLocation())) {
@@ -1685,7 +1662,12 @@ public class BlockListener implements Listener {
 		CampBlock cb = CivGlobal.getCampBlock(bcoord);
 		if (cb != null) {
 			if (ItemManager.getId(event.getBlock()) == CivData.WOOD_DOOR ||
-					ItemManager.getId(event.getBlock()) == CivData.IRON_DOOR) {
+					ItemManager.getId(event.getBlock()) == CivData.IRON_DOOR||
+					ItemManager.getId(event.getBlock()) == CivData.SPRUCE_DOOR||
+					ItemManager.getId(event.getBlock()) == CivData.BIRCH_DOOR||
+					ItemManager.getId(event.getBlock()) == CivData.JUNGLE_DOOR||
+					ItemManager.getId(event.getBlock()) == CivData.ACACIA_DOOR||
+					ItemManager.getId(event.getBlock()) == CivData.DARK_OAK_DOOR) {
 				event.setNewCurrent(0);
 				return;
 			}

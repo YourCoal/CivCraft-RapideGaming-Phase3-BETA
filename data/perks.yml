@@ -1,20 +1,3 @@
-# This controls all of the available perks 
-# 
-# Each perk has an ID which is correlated with the website.
-# 
-# When the user logs in, we async fetch the list of perks from the cake database
-# Then display them in a list to the user. (icon list?)
-# The user then selects a perk to use, and "activates" it, once it is activated
-# the perk is marked "used" in the cake DB and cannot be activated again.
-#
-# Each perk has a component that runs on it's activation. For now the only
-# component will be the CustomTemplate component which will confirm the town
-# they want to bind the perk to. 
-#
-# We will use the SessionDB which will have a key-value entry with the perk id
-# so that the same perk isnt bound twice, and so we can lookup the perks when we build.
-#
-
 system:
     # Enables the perk/platinum/registration system.
     enabled: 'false'
@@ -54,6 +37,46 @@ perks:
       data: 0
       components:
          - name: 'ChangeWeather' 
+
+##############################################################################
+##############################################################################
+    - id: 'template_arctic'
+      display_name: 'Arctic Templates'
+      item_id: 79
+      data: 0
+      components:
+          - name: 'CustomTemplate'
+
+    - id: 'template_aztec'
+      display_name: 'Aztec Templates'
+      item_id: 98
+      data: 2
+      components:
+          - name: 'CustomTemplate'
+
+    - id: 'template_egyptian'
+      display_name: 'Egyptian Templates'
+      item_id: 24
+      data: 2
+      components:
+          - name: 'CustomTemplate'
+
+    - id: 'template_roman'
+      display_name: 'Roman Templates'
+      item_id: 155
+      data: 2
+      components:
+          - name: 'CustomTemplate'
+
+    - id: 'template_hell'
+      display_name: 'Hell Template'
+      item_id: 87
+      data: 0
+      components:
+          - name: 'CustomTemplate'
+##############################################################################
+##############################################################################
+
 
 ############ ARCTIC THEME
     - id: 'tpl_arctic_camp'

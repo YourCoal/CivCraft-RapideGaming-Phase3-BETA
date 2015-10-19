@@ -39,7 +39,7 @@ happiness:
     town_levels:
         - level: 1
           happiness: 12.0
- 
+
         - level: 2
           happiness: 12.0
 
@@ -57,11 +57,14 @@ happiness:
 
         - level: 7
           happiness: 12.0
-        
+
         - level: 8
           happiness: 12.0
 
         - level: 9
+          happiness: 12.0
+
+        - level: 10
           happiness: 12.0
 
     # Happiness States

@@ -1,23 +1,96 @@
-# 
-# This config file contains all of the definitions for all of the
-# structures as well as some specific structure related configuration options.
-#
-
-################ Bank Settings ################
-#TODO add bank config options
-
-################# Trommel Settings #############
-trommel:
-    iron_chance: 0.04
-    gold_chance: 0.02
-    diamond_chance: 0.0050
-    emerald_chance: 0.0020
-    chromium_chance: 0.0008
-    gravel_rate: 1
+############### Fishery Settings ###############
+fishery:
+    max: 100000
+    fish_rate: 1.0
+    goodie_rate: 0.2
+    junk_rate: 0.4
+    clownfish_rate: 1.0
+    salmon_rate: 1.0
+    pufferfish_rate: 1.0
+############### Quarry Settings ###############
+quarry:
+    max: 100000
     despotism_rate: 2.0
-    penalty_rate: 0.8
-
-################ Grocer Settings ###############
+    penalty_rate: 0.85
+    cobblestone_rate: 1.0
+    coal_ore: 0.04
+    iron_ore: 0.02
+    gold_ore: 0.009
+    redstone_ore: 0.0075
+    lapis_ore: 0.006
+    diamond_ore: 0.005
+    emerald_ore: 0.001
+    other_chance: 0.085
+    rare_chance: 0.0005
+############### Lumber Mill Settings ###############
+lumber:
+    monarchy_rate: 2.0
+    penalty_rate: 0.85
+#
+lumber_oak:
+    max: 25000
+    log_rate: 0.5
+    sap_rate: 0.075
+#
+lumber_spruce:
+    max: 25000
+    log_rate: 0.5
+    sap_rate: 0.075
+#
+lumber_birch:
+    max: 25000
+    log_rate: 0.5
+    sap_rate: 0.075
+#
+lumber_jungle:
+    max: 25000
+    log_rate: 0.5
+    sap_rate: 0.075
+############### Trommel Settings ###############
+trommel:
+    despotism_rate: 2.0
+    penalty_rate: 0.9
+#
+trommel_gravel:
+    max: 25000
+    iron: 0.05
+    gold: 0.025
+    redstone: 0.01
+    diamond: 0.005
+    emerald: 0.0025
+#
+trommel_dirt:
+    max: 25000
+    iron: 0.1
+    gold: 0.05
+    redstone: 0.02
+    diamond: 0.01
+    emerald: 0.005
+#
+trommel_granite:
+    max: 25000
+    iron: 0.05
+    gold: 0.025
+    redstone: 0.01
+    diamond: 0.005
+    emerald: 0.0025
+#
+trommel_diorite:
+    max: 25000
+    iron: 0.05
+    gold: 0.025
+    redstone: 0.01
+    diamond: 0.005
+    emerald: 0.0025
+#
+trommel_andesite:
+    max: 25000
+    iron: 0.05
+    gold: 0.025
+    redstone: 0.01
+    diamond: 0.005
+    emerald: 0.0025
+############### Grocer Settings ###############
 grocer_levels:
     - level: 1
       itemName: 'Fish'
@@ -326,6 +399,10 @@ structures:
           type: 'direct'
           attribute: 'CULTURE'
           value: '25.0'
+        - name: 'AttributeStatic'
+          type: 'direct'
+          attribute: 'SAFETY'
+          value: '1.0'
   
   - id: s_capitol
     template: capital #XXX misspelt =( but its easier to leave it that way.
@@ -350,7 +427,54 @@ structures:
           type: 'direct'
           attribute: 'CULTURE'
           value: '50.0'
-
+        - name: 'AttributeStatic'
+          type: 'direct'
+          attribute: 'SAFETY'
+          value: '1.0'
+#
+  - id: ti_fishery
+    template: fish_hatchery
+    template_y_shift: 0
+    displayName: Fishery
+    require_tech: 'tech_automation'
+    update_event: fishery_process
+    limit: 1
+    cost: 15000.0
+    upkeep: 1000.0
+    hammer_cost: 3500.0
+    points: 2500
+    max_hitpoints: 200
+#
+  - id: ti_lumber_mill
+    template: lumber_mill
+    template_y_shift: 0
+    displayName: Lumber Mill
+    require_tech: 'tech_advanced_efficiency'
+    update_event: lumber_mill_process
+    limit: 2
+    cost: 35000.0
+    upkeep: 750.0
+    hammer_cost: 3000.0
+    points: 5000
+    max_hitpoints: 250
+#
+  - id: ti_quarry
+    template: Quarry
+    template_y_shift: 0
+    displayName: quarry
+    require_upgrade:
+    require_tech: 'tech_automation'
+    effect_event:
+    check_event:
+    update_event: quarry_process
+    onBuild_event:
+    limit: 0
+    cost: 10000.0
+    upkeep: 1500.0
+    hammer_cost: 5000.0
+    points: 1500
+    max_hitpoints: 100
+#
   - id: s_bank
     template: bank
     template_y_shift: 0
@@ -367,6 +491,11 @@ structures:
     hammer_cost: 1200.0
     points: 1500
     max_hitpoints: 200
+    components:
+        - name: 'AttributeStatic'
+          type: 'direct'
+          attribute: 'UNSAFETY'
+          value: '1.0'
   
   - id: s_trommel
     template: trommel
@@ -480,6 +609,10 @@ structures:
           attribute: 'HAMMERS'
           value: '100.0'
           goods: 'good_copper,good_oil,good_silver'
+        - name: 'AttributeStatic'
+          type: 'direct'
+          attribute: 'SAFETY'
+          value: '-3.0'
   
   - id: s_granary
     template: granary
@@ -524,11 +657,11 @@ structures:
   
   - id: s_monument
     template: monument
-    template_y_shift: -2
+    template_y_shift: -1
     displayName: Monument
     require_upgrade:
     require_tech: 'tech_religion'
-    effect_event: generate_culture:400
+    effect_event: generate_culture:500
     check_event: 
     update_event: 
     onBuild_event:
@@ -624,6 +757,10 @@ structures:
           biomes: 'EXTREME_HILLS:3,SMALL_MOUNTAINS:3,ICE_MOUNTAINS:3,DESERT_HILLS:1,FOREST_HILLS:1,TAGIA_HILLS:1,JUNGLE_HILLS:1'
           base_value: '7.0'
         - name: 'ConsumeLevelComponent'
+        - name: 'AttributeStatic'
+          type: 'direct'
+          attribute: 'SAFETY'
+          value: '-3.0'
 
   - id: ti_trade_outpost
     template: trade_outpost
@@ -689,6 +826,10 @@ structures:
           attribute: 'GROWTH'
           biomes: 'PLAINS'
           value: '15'
+        - name: 'AttributeStatic'
+          type: 'direct'
+          attribute: 'SAFETY'
+          value: '1.0'
   
   - id: ti_pasture
     template: pasture
@@ -707,6 +848,11 @@ structures:
     tile_improvement: true
     max_hitpoints: 500
     points: 1000
+    components:
+        - name: 'AttributeStatic'
+          type: 'direct'
+          attribute: 'SAFETY'
+          value: '-1.0'
   
   - id: ti_wall
     template: notused
@@ -764,6 +910,11 @@ structures:
     points: 4650
     allow_outside_town: true
     strategic: true
+    components:
+        - name: 'AttributeStatic'
+          type: 'direct'
+          attribute: 'SAFETY'
+          value: '-2.0'
   
   - id: s_cannontower
     template: cannon_tower
@@ -783,6 +934,11 @@ structures:
     points: 10000
     allow_outside_town: true
     strategic: true
+    components:
+        - name: 'AttributeStatic'
+          type: 'direct'
+          attribute: 'SAFETY'
+          value: '-4.0'
   
   - id: s_scouttower
     template: scout_tower
@@ -823,6 +979,10 @@ structures:
     components:
         - name: 'AttributeWarUnhappiness'
           value: '-3.0'
+        - name: 'AttributeStatic'
+          type: 'direct'
+          attribute: 'SAFETY'
+          value: '2.0'
   
   - id: ti_windmill
     template: windmill
@@ -889,4 +1049,3 @@ structures:
           type: 'direct'
           attribute: 'HAMMERS'
           value: '50.0'
-  

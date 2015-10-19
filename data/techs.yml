@@ -1,11 +1,3 @@
-
-# This file contains all of the information about technologies.
-#
-# 1 beaker = 1 min worth of research with no extra perks.
-# For beta phase 2, starting off the first technologies at 3 hours. (180 mins)
-# 
-# ---- Tech restricted items
-# This is a list of items and which techs they are craftable at
 items:
    - id: 417
      name: 'Iron Horse Armor'
@@ -16,28 +8,38 @@ items:
    - id: 419
      name: 'Diamond Horse Armor'
      require_tech: 'tech_global_trade'
-
+#
 potions:
-   - name: 'Fire Resist'
-     data: 8195
-     require_tech: 'tech_alchemy'
-
-   - name: 'Swiftness'
-     data: 8194
-     require_tech: 'tech_malting' 
-
    - name: 'Healing I'
-     data: 8197
+     data: 8261
      require_tech: 'tech_brewing'
-
+   - name: 'Water Breathing 3:00'
+     data: 8237
+     require_tech: 'tech_brewing'
+#
+   - name: 'Speed I 3:00'
+     data: 8203
+     require_tech: 'tech_fermentation' 
+   - name: 'Jump I 3:00'
+     data: 8194
+     require_tech: 'tech_fermentation' 
+#
    - name: 'Healing II'
      data: 8229
-     require_tech: 'tech_fermentation'
-
+     require_tech: 'tech_malting'
+   - name: 'Fire Resist 3:00'
+     data: 8227
+     require_tech: 'tech_malting'
+#
+   - name: 'Regen I 0:45'
+     data: 8193
+     require_tech: 'tech_alchemy'
+   - name: 'Strength I 3:00'
+     data: 8201
+     require_tech: 'tech_alchemy'
 # ------------------------------------------
 # the amount to multiply cottage coins once taxation is researched
-taxation_cottage_buff: 2.0
-
+taxation_cottage_buff: 2.1
 # Definitions for technologies.
 techs:
    - id: 'tech_agriculture'

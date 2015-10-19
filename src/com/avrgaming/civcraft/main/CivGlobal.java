@@ -156,12 +156,15 @@ public class CivGlobal {
 	
 	//TODO convert this to completely static?
 	private static SessionDatabase sdb;
-
+	
+	public static boolean fisheriesEnabled = true;
 	public static boolean trommelsEnabled = true;
 	public static boolean towersEnabled = true;
 	public static boolean growthEnabled = true;
+	
 	public static Boolean banWordsAlways = false;
 	public static boolean banWordsActive = false;
+	
 	public static boolean scoringEnabled = true;
 	public static boolean warningsEnabled = true;
 	public static boolean tradeEnabled = true;

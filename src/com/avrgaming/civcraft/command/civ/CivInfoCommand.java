@@ -266,12 +266,12 @@ public class CivInfoCommand extends CommandBase {
 		Resident resident = getResident();
 		show(sender, resident, civ);
 	}
-
+	
 	@Override
 	public void showHelp() {
 		showBasicHelp();
 	}
-
+	
 	@Override
 	public void permissionCheck() throws CivException {
 		

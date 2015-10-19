@@ -138,7 +138,7 @@ public class Town extends SQLObject {
 	public int saved_trommel_level = 1;
 	public int saved_recycling_center_level = 1;
 	public int saved_lumber_mill_level = 1;
-	public int saved_fish_hatchery_level = 1;
+	public int saved_fishery_level = 1;
 	
 	/* Happiness Stuff */
 	private double baseHappy = 0.0;

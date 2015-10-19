@@ -63,14 +63,4 @@ public class ArrowTower extends Structure {
 	public void setTurretLocation(BlockCoord absCoord) {
 		arrowComponent.setTurretLocation(absCoord);
 	}
-	
-	@Override
-	public String getDynmapDescription() {
-		return null;
-	}
-	
-	@Override
-	public String getMarkerIconName() {
-		return null;
-	}
 }

@@ -18,5 +18,6 @@
 	<classpathentry kind="lib" path="C:/Users/Cole/Desktop/Folder/Coding/zStuff/zunused/civmob/jars/VanishNoPacket.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Cole/Desktop/Folder/Coding/zStuff/zunused/civmob/jars/Vault.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Cole/Desktop/Folder/Coding/zStuff/zunused/civmob/jars/WorldBorder.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Cole/Desktop/Folder/Coding/phase3/jars/CivCraft-MobLib-1.8.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

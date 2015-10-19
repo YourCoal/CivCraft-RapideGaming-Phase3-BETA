@@ -33,6 +33,7 @@ import com.avrgaming.civcraft.object.LibraryEnchantment;
 import com.avrgaming.civcraft.object.StoreMaterial;
 import com.avrgaming.civcraft.object.Town;
 import com.avrgaming.civcraft.structure.Bank;
+import com.avrgaming.civcraft.structure.Fishery;
 import com.avrgaming.civcraft.structure.Grocer;
 import com.avrgaming.civcraft.structure.Library;
 import com.avrgaming.civcraft.structure.Store;
@@ -168,6 +169,27 @@ public class ConfigTownUpgrade {
 				}
 			}
 			break;
+	case "set_fishery_level":
+		boolean didUpgradeFishery = false;
+		int fisheryLevel = 1;
+		for (Structure structure : town.getStructures()) {
+			if (structure.getConfigId().equalsIgnoreCase("ti_fishery")) {
+				if (structure != null && (structure instanceof Fishery)) {
+					Fishery fishery = (Fishery)structure;
+					if (fishery.getLevel() < Integer.valueOf(args[1].trim())) {
+						didUpgradeFishery = true;
+						fishery.setLevel(Integer.valueOf(args[1].trim()));
+						fishery.updateSignText();
+						town.saved_fishery_level = fishery.getLevel();
+						fisheryLevel = fishery.getLevel();
+					}
+				}
+			}
+		}
+		if (didUpgradeFishery) {
+			CivMessage.sendTown(town, "Our Fisheries are now level "+fisheryLevel+"!");
+		}
+		break;
 		}
 	}
 

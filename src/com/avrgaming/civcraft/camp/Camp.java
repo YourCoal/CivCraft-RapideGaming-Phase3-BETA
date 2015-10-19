@@ -32,6 +32,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.avrgaming.civcraft.components.ConsumeLevelComponent;
 import com.avrgaming.civcraft.components.ConsumeLevelComponent.Result;
+import com.avrgaming.civcraft.components.CookingPotComponent;
 import com.avrgaming.civcraft.components.SifterComponent;
 import com.avrgaming.civcraft.config.CivSettings;
 import com.avrgaming.civcraft.config.ConfigCampLonghouseLevel;
@@ -51,6 +52,7 @@ import com.avrgaming.civcraft.main.CivMessage;
 import com.avrgaming.civcraft.object.BuildableDamageBlock;
 import com.avrgaming.civcraft.object.ControlPoint;
 import com.avrgaming.civcraft.object.CultureChunk;
+import com.avrgaming.civcraft.object.EconObject;
 import com.avrgaming.civcraft.object.Resident;
 import com.avrgaming.civcraft.object.StructureBlock;
 import com.avrgaming.civcraft.object.TownChunk;
@@ -75,7 +77,10 @@ public class Camp extends Buildable {
 	private String ownerName;
 	private int hitpoints;
 	private int firepoints;
-	private BlockCoord corner;	
+	private BlockCoord corner;
+	//XXX Added Camp Treasury (10/16/2015)
+	private EconObject treasury;
+	private int daysInDebt;
 	
 	private HashMap<String, Resident> members = new HashMap<String, Resident>();
 	public static final double SHIFT_OUT = 2;
@@ -99,6 +104,12 @@ public class Camp extends Buildable {
 	public SifterComponent sifter = new SifterComponent();
 	public ReentrantLock sifterLock = new ReentrantLock(); 
 	private boolean sifterEnabled = false;
+	
+	//XXX Added Cooking Pot (10/13/2015)
+	/* Cooking Pot Component */
+	public CookingPotComponent cp = new CookingPotComponent();
+	public ReentrantLock cpLock = new ReentrantLock(); 
+	private boolean cpEnabled = false;
 	
 	/* Longhouse Stuff. */
 	public HashSet<BlockCoord> foodDepositPoints = new HashSet<BlockCoord>();
@@ -147,7 +158,6 @@ public class Camp extends Buildable {
 					camp.setUndoable(true);
 					CivGlobal.addCamp(camp);
 					camp.save();
-					
 					CivMessage.sendSuccess(player, "You have set up camp!");
 					CivMessage.global(resident.getName()+" has set up Camp "+name+"!");
 					ItemStack newStack = new ItemStack(Material.AIR);
@@ -172,13 +182,16 @@ public class Camp extends Buildable {
 		}
 		nextRaidDate = new Date();
 		nextRaidDate.setTime(nextRaidDate.getTime() + 24*60*60*1000);
-
 		try {
 			this.firepoints = CivSettings.getInteger(CivSettings.campConfig, "camp.firepoints");
 			this.hitpoints = CivSettings.getInteger(CivSettings.campConfig, "camp.hitpoints");
 		} catch (InvalidConfiguration e) {
 			e.printStackTrace();
 		}
+		
+		this.setTreasury(new EconObject(this));	
+		this.getTreasury().setBalance(0, false);
+		
 		loadSettings();
 	}
 	
@@ -193,16 +206,46 @@ public class Camp extends Buildable {
 			coal_per_firepoint = CivSettings.getInteger(CivSettings.campConfig, "camp.coal_per_firepoint");
 			maxFirePoints = CivSettings.getInteger(CivSettings.campConfig, "camp.firepoints");
 			
-			// Setup sifter
-			double gold_nugget_chance = CivSettings.getDouble(CivSettings.campConfig, "camp.sifter_gold_nugget_chance");
-			double iron_ignot_chance = CivSettings.getDouble(CivSettings.campConfig, "camp.sifter_iron_ingot_chance");
-			
 			raidLength = CivSettings.getInteger(CivSettings.campConfig, "camp.raid_length");
 			
-			sifter.addSiftItem(ItemManager.getId(Material.COBBLESTONE), (short)0, gold_nugget_chance, ItemManager.getId(Material.GOLD_NUGGET), (short)0, 1);
-			sifter.addSiftItem(ItemManager.getId(Material.COBBLESTONE), (short)0, iron_ignot_chance, ItemManager.getId(Material.IRON_INGOT), (short)0, 1);
-			sifter.addSiftItem(ItemManager.getId(Material.COBBLESTONE), (short)0, 1.0, ItemManager.getId(Material.GRAVEL), (short)0, 1);
 			
+			// Setup sifter
+			double gold_chance = CivSettings.getDouble(CivSettings.campConfig, "camp.sifter_gold_nugget_chance");
+			double iron_chance = CivSettings.getDouble(CivSettings.campConfig, "camp.sifter_iron_ingot_chance");
+			sifter.addSiftItem(CivData.COBBLESTONE, (short)0, gold_chance, CivData.GOLD_NUGGET, (short)0, 1);
+			sifter.addSiftItem(CivData.COBBLESTONE, (short)0, iron_chance, CivData.IRON_INGOT, (short)0, 1);
+			sifter.addSiftItem(CivData.COBBLESTONE, (short)0, 1.0, CivData.GRAVEL, (short)0, 1);
+			sifter.addSiftItem(CivData.STONE, (short) 0, 1.0, CivData.STONE, (short)CivData.GRANITE, 1);
+			
+			
+			//XXX Added Cooking Pot (10/13/2015)
+			// Setup cooking pot
+			cp.addRawFood(CivData.WHEAT, (short)0, 0.33, CivData.BREAD, (short)0, 1);
+			cp.addRawFood(CivData.WHEAT, (short)0, 1.0, CivData.DIRT, (short)0, 1);
+			//
+			cp.addRawFood(CivData.PORK, (short)0, 0.45, CivData.COOKED_PORK, (short)0, 1);
+			cp.addRawFood(CivData.PORK, (short)0, 1.0, CivData.DIRT, (short)0, 1);
+			//
+			cp.addRawFood(CivData.BEEF, (short)0, 0.45, CivData.COOKED_BEEF, (short)0, 1);
+			cp.addRawFood(CivData.BEEF, (short)0, 1.0, CivData.DIRT, (short)0, 1);
+			//
+			cp.addRawFood(CivData.CHICKEN, (short)0, 0.45, CivData.COOKED_CHICKEN, (short)0, 1);
+			cp.addRawFood(CivData.CHICKEN, (short)0, 1.0, CivData.DIRT, (short)0, 1);
+			//
+			cp.addRawFood(CivData.CARROT, (short)0, 0.02, CivData.GOLDEN_CARROT, (short)0, 1);
+			cp.addRawFood(CivData.CARROT, (short)0, 1.0, CivData.DIRT, (short)0, 1);
+			//
+			cp.addRawFood(CivData.POTATO, (short)0, 0.45, CivData.COOKED_POTATO, (short)0, 1);
+			cp.addRawFood(CivData.POTATO, (short)0, 1.0, CivData.DIRT, (short)0, 1);
+			//
+			cp.addRawFood(CivData.RABBIT, (short)0, 0.45, CivData.COOKED_RABBIT, (short)0, 1);
+			cp.addRawFood(CivData.RABBIT, (short)0, 1.0, CivData.DIRT, (short)0, 1);
+			//
+			cp.addRawFood(CivData.MUTTON, (short)0, 0.45, CivData.COOKED_MUTTON, (short)0, 1);
+			cp.addRawFood(CivData.MUTTON, (short)0, 1.0, CivData.DIRT, (short)0, 1);
+			
+			
+			// Setup longhouse
 			consumeComponent = new ConsumeLevelComponent();
 			consumeComponent.setBuildable(this);
 			for (ConfigCampLonghouseLevel lvl : CivSettings.longhouseLevels.values()) {
@@ -221,6 +264,10 @@ public class Camp extends Buildable {
 			String table_create = "CREATE TABLE " + SQL.tb_prefix + TABLE_NAME+" (" + 
 				"`id` int(11) unsigned NOT NULL auto_increment," +
 				"`name` VARCHAR(64) NOT NULL," +
+				//XXX Added Camp Treasury (10/16/2015)
+				"`debt` double DEFAULT 0," +
+				"`coins` double DEFAULT 0," +
+				"`daysInDebt` int(11) DEFAULT 0,"+
 				"`owner_name` mediumtext NOT NULL," +
 				"`firepoints` int(11) DEFAULT 0," +
 				"`next_raid_date` long,"+
@@ -233,6 +280,7 @@ public class Camp extends Buildable {
 		} else {
 			CivLog.info(TABLE_NAME+" table OK!");
 			SQL.makeCol("name", "VARCHAR(64) NOT NULL", TABLE_NAME);
+			SQL.makeCol("daysInDebt", "int(11)", TABLE_NAME);
 			SQL.makeCol("upgrades", "mediumtext", TABLE_NAME);
 			SQL.makeCol("template_name", "mediumtext", TABLE_NAME);
 			SQL.makeCol("next_raid_date", "long", TABLE_NAME);
@@ -244,6 +292,8 @@ public class Camp extends Buildable {
 			InvalidObjectException, CivException {
 		this.setId(rs.getInt("id"));
 		this.setName(rs.getString("name"));
+		//XXX Added Camp Treasury (10/16/2015)
+		this.setDaysInDebt(rs.getInt("daysInDebt"));
 		this.ownerName = rs.getString("owner_name");		
 		this.corner = new BlockCoord(rs.getString("corner"));
 		this.nextRaidDate = new Date(rs.getLong("next_raid_date"));
@@ -261,6 +311,11 @@ public class Camp extends Buildable {
 		}
 		this.loadUpgradeString(rs.getString("upgrades"));
 		this.bindCampBlocks();
+		
+		//XXX Added Camp Treasury (10/16/2015)
+		this.setTreasury(new EconObject(this));
+		this.getTreasury().setBalance(rs.getDouble("coins"), false);
+		this.setDebt(rs.getDouble("debt"));
 	}
 	
 	@Override
@@ -272,6 +327,9 @@ public class Camp extends Buildable {
 	public void saveNow() throws SQLException {
 		HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		hashmap.put("name", this.getName());
+		hashmap.put("debt", this.getTreasury().getDebt());
+		hashmap.put("daysInDebt", this.getDaysInDebt());
+		hashmap.put("coins", this.getTreasury().getBalance());
 		hashmap.put("owner_name", this.getOwner().getUUIDString());
 		hashmap.put("firepoints", this.firepoints);
 		hashmap.put("corner", this.corner.toString());
@@ -279,7 +337,95 @@ public class Camp extends Buildable {
 		hashmap.put("upgrades", this.getUpgradeSaveString());
 		hashmap.put("template_name", this.getSavedTemplatePath());
 		SQL.updateNamedObject(this, hashmap, TABLE_NAME);	
-	}	
+	}
+	
+	
+	
+	//XXX Added Camp Treasury (10/16/2015)
+	public EconObject getTreasury() {
+		return treasury;
+	}
+	
+	public void setTreasury(EconObject treasury) {
+		this.treasury = treasury;
+	}
+	
+	public void depositFromResident(Double amount, Resident resident) throws CivException, SQLException {
+		if (resident.getTreasury().hasEnough(amount) == false) {
+			throw new CivException("You do not have enough coins.");
+		}
+		
+		if (this.getTreasury().inDebt()) {
+			if (this.getTreasury().getDebt() >= amount) {
+				this.getTreasury().setDebt(this.getTreasury().getDebt() - amount);
+				resident.getTreasury().withdraw(amount);
+			} else if (this.getTreasury().getDebt() < amount) {
+				double leftAmount = amount - this.getTreasury().getDebt();
+				this.getTreasury().setDebt(0);
+				this.getTreasury().deposit(leftAmount);				
+				resident.getTreasury().withdraw(amount);
+			}
+			
+			if (this.getTreasury().inDebt() == false) {
+				this.daysInDebt = 0;
+				CivMessage.global(this.getName()+" is no longer in debt.");				
+			}
+		} else {
+			this.getTreasury().deposit(amount);
+			resident.getTreasury().withdraw(amount);
+		}
+		this.save();
+	}
+	
+	public boolean inDebt() {
+		return this.treasury.inDebt();
+	}
+	
+	public double getDebt() {
+		return this.treasury.getDebt();
+	}
+	
+	public void setDebt(double amount) {
+		this.treasury.setDebt(amount);
+	}
+	
+	public void incrementDaysInDebt() {
+		daysInDebt++;
+		if (daysInDebt >= CivSettings.CAMP_DEBT_DAYS) {
+			if (daysInDebt >= CivSettings.CAMP_DEBT_DAYS) {
+				this.disband();
+				CivMessage.global("The camp of "+this.getName()+" could not pay debt and has fell into ruins!");
+				return;
+			}
+		}
+		CivMessage.global("Camp of "+this.getName()+" is in debt! "+getDaysLeftWarning());
+	}
+	
+	public String getDaysLeftWarning() {
+		if (daysInDebt < CivSettings.CAMP_DEBT_DAYS) {
+			return ""+(CivSettings.CAMP_DEBT_DAYS-daysInDebt)+" days until camp is disbanded.";
+		}
+		return "";
+	}
+	
+	public int getDaysInDebt() {
+		return daysInDebt;
+	}
+	
+	public void setDaysInDebt(int daysInDebt) {
+		this.daysInDebt = daysInDebt;
+	}
+	
+	public double payUpkeep() throws InvalidConfiguration, CivException {
+		double upkeep = 100;
+		
+		if (this.getTreasury().hasEnough(upkeep)) {
+			this.getTreasury().withdraw(upkeep);
+		}
+		return upkeep;
+	}
+	
+	
 	
 	@Override
 	public void delete() throws SQLException {
@@ -496,9 +642,42 @@ public class Camp extends Buildable {
 					try {
 					ItemManager.setTypeId(absCoord.getBlock(), ItemManager.getId(Material.SIGN_POST));
 					ItemManager.setData(absCoord.getBlock(), sb.getData());
-					
 					Sign sign = (Sign)absCoord.getBlock().getState();
 					sign.setLine(0, "Sifter Disabled");
+					sign.setLine(1, "Upgrade using");
+					sign.setLine(2, "/camp upgrade");
+					sign.setLine(3, "command");
+					sign.update();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				this.addCampBlock(absCoord);
+				break;
+			//XXX Added Cooking Pot (10/13/2015)
+			case "/cp":
+				Integer di = Integer.valueOf(sb.keyvalues.get("di"));
+				switch (di) {
+				case 0:
+					cp.setSourceCoord(absCoord);
+					break;
+				case 1:
+					cp.setDestCoord(absCoord);
+					break;
+				default:
+					CivLog.warning("Unknown ID for cp in camp:"+di);
+					break;
+				}
+				if (this.cpEnabled) {
+					ItemManager.setTypeId(absCoord.getBlock(), ItemManager.getId(Material.CHEST));
+					byte data4 = CivData.convertSignDataToChestData((byte)sb.getData());
+					ItemManager.setData(absCoord.getBlock(), data4);
+				} else {
+					try {
+					ItemManager.setTypeId(absCoord.getBlock(), ItemManager.getId(Material.SIGN_POST));
+					ItemManager.setData(absCoord.getBlock(), sb.getData());
+					Sign sign = (Sign)absCoord.getBlock().getState();
+					sign.setLine(0, "Pot Disabled");
 					sign.setLine(1, "Upgrade using");
 					sign.setLine(2, "/camp upgrade");
 					sign.setLine(3, "command");
@@ -865,11 +1044,9 @@ public class Camp extends Buildable {
 					
 					rb = CivGlobal.getRoadBlock(coord);
 					if (CivGlobal.getRoadBlock(coord) != null) {
-						/*
-						 * XXX Special case. Since road blocks can be built in wilderness
+						/* Special case. Since road blocks can be built in wilderness
 						 * we don't want people griefing with them. Building a structure over
-						 * a road block should always succeed.
-						 */
+						 * a road block should always succeed. */
 						deletedRoadBlocks.add(rb);
 					}
 				}
@@ -1208,6 +1385,15 @@ public class Camp extends Buildable {
 	
 	public void setSifterEnabled(boolean sifterEnabled) {
 		this.sifterEnabled = sifterEnabled;
+	}
+	
+	//XXX Added Cooking Pot (10/13/2015)
+	public boolean isCookingPotEnabled() {
+		return cpEnabled;
+	}
+	
+	public void setCookingPotEnabled(boolean cpEnabled) {
+		this.cpEnabled = cpEnabled;
 	}
 	
 	public Collection<ConfigCampUpgrade> getUpgrades() {

@@ -42,7 +42,6 @@ public class Capitol extends TownHall {
 		super(rs);
 	}
 	
-
 	protected Capitol(Location center, String id, Town town)
 			throws CivException {
 		super(center, id, town);
@@ -52,7 +51,7 @@ public class Capitol extends TownHall {
 		ArrayList<RespawnLocationHolder> respawnables =  this.getTown().getCiv().getAvailableRespawnables();	
 		return respawnables.get(index);
 	}
-
+	
 	private void changeIndex(int newIndex) {
 		ArrayList<RespawnLocationHolder> respawnables =  this.getTown().getCiv().getAvailableRespawnables();
 			

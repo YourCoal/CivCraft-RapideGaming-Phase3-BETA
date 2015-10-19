@@ -90,12 +90,12 @@ public class Civilization extends SQLObject {
 	
 	private ConcurrentHashMap<String, Town> towns = new ConcurrentHashMap<String, Town>();
 	private ConfigGovernment government;
-
+	
 	private double baseBeakers = 1.0;	
-
+	
 	public static final int HEX_COLOR_MAX = 16777215;
 	public static final int HEX_COLOR_TOLERANCE = 40;
-
+	
 	/* Store information to display about last upkeep paid. */
 	public HashMap<String, Double> lastUpkeepPaidMap = new HashMap<String, Double>();
 	

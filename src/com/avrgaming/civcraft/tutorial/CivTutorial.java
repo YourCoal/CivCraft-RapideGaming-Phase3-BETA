@@ -162,24 +162,47 @@ public class CivTutorial {
 	public static void showCraftingHelp(Player player) {
 		if (craftingHelpInventory == null) {
 			craftingHelpInventory = Bukkit.getServer().createInventory(player, MAX_CHEST_SIZE*9, "CivCraft Custom Item Recipes");
-
+			
 			/* Build the Category Inventory. */
 			for (ConfigMaterialCategory cat : ConfigMaterialCategory.getCategories()) {
 				if (cat.craftableCount == 0) {
 					continue;
 				}
 				
-				ItemStack infoRec = LoreGuiItem.build(cat.name, 
-						ItemManager.getId(Material.WRITTEN_BOOK), 
-						0, 
+				int identifier;
+				if (cat.name.contains("Gear Tier 0")) {
+					identifier = ItemManager.getId(Material.STONE_SWORD);
+				} else if (cat.name.contains("Gear Tier 1")) {
+					identifier = ItemManager.getId(Material.IRON_HELMET);
+				} else if (cat.name.contains("Gear Tier 2")) {
+					identifier = ItemManager.getId(Material.GOLD_CHESTPLATE);
+				} else if (cat.name.contains("Gear Tier 3")) {
+					identifier = ItemManager.getId(Material.CHAINMAIL_LEGGINGS);
+				} else if (cat.name.contains("Gear Tier 4")) {
+					identifier = ItemManager.getId(Material.DIAMOND_BOOTS);
+				} else if (cat.name.contains("Special")) {
+					identifier = ItemManager.getId(Material.BEACON);
+				} else if (cat.name.contains("Tier 1 Material")) {
+					identifier = ItemManager.getId(Material.IRON_BLOCK);
+				} else if (cat.name.contains("Tier 2 Material")) {
+					identifier = ItemManager.getId(Material.GOLD_BLOCK);
+				} else if (cat.name.contains("Tier 3 Material")) {
+					identifier = ItemManager.getId(Material.DIAMOND_BLOCK);
+				} else if (cat.name.contains("Tier 4 Material")) {
+					identifier = ItemManager.getId(Material.EMERALD_BLOCK);
+				} else if (cat.name.contains("Upgrader")) {
+					identifier = ItemManager.getId(Material.NETHER_STAR);
+				} else {
+					identifier = ItemManager.getId(Material.WRITTEN_BOOK);
+				}
+				
+				ItemStack infoRec = LoreGuiItem.build(cat.name, identifier, 0,
 						CivColor.LightBlue+cat.materials.size()+" Items",
 						CivColor.Gold+"<Click To Open>");
 						infoRec = LoreGuiItem.setAction(infoRec, "OpenInventory");
 						infoRec = LoreGuiItem.setActionData(infoRec, "invType", "showGuiInv");
 						infoRec = LoreGuiItem.setActionData(infoRec, "invName", cat.name+" Recipes");
-						
 						craftingHelpInventory.addItem(infoRec);
-						
 						
 				Inventory inv = Bukkit.createInventory(player, LoreGuiItem.MAX_INV_SIZE, cat.name+" Recipes");
 				for (ConfigMaterial mat : cat.materials.values()) {
@@ -195,13 +218,10 @@ public class CivTutorial {
 				backButton = LoreGuiItem.setAction(backButton, "OpenInventory");
 				backButton = LoreGuiItem.setActionData(backButton, "invType", "showCraftingHelp");
 				inv.setItem(LoreGuiItem.MAX_INV_SIZE-1, backButton);
-				
 				LoreGuiItemListener.guiInventories.put(inv.getName(), inv);
 			}
-			
 			LoreGuiItemListener.guiInventories.put(craftingHelpInventory.getName(), craftingHelpInventory);
 		}
-		
 		player.openInventory(craftingHelpInventory);
 	}
 	
@@ -209,15 +229,13 @@ public class CivTutorial {
 		if (guiInventory == null) {
 			guiInventory = Bukkit.getServer().createInventory(player, 3*9, "CivCraft Information");
 
-			ItemStack infoRec = LoreGuiItem.build("CivCraft Info", 
-					ItemManager.getId(Material.WRITTEN_BOOK), 
+			ItemStack infoRec = LoreGuiItem.build("CivCraft Info", ItemManager.getId(Material.FEATHER), 
 							0, CivColor.Gold+"<Click To View>");
 			infoRec = LoreGuiItem.setAction(infoRec, "OpenInventory");
 			infoRec = LoreGuiItem.setActionData(infoRec, "invType", "showTutorialInventory");
 			guiInventory.addItem(infoRec);
 			
-			ItemStack craftRec = LoreGuiItem.build("Crafting Recipes", 
-					ItemManager.getId(Material.WRITTEN_BOOK), 
+			ItemStack craftRec = LoreGuiItem.build("Crafting Recipes", ItemManager.getId(Material.WORKBENCH), 
 					0, CivColor.Gold+"<Click To View>");
 			craftRec = LoreGuiItem.setAction(craftRec, "OpenInventory");
 			craftRec = LoreGuiItem.setActionData(craftRec, "invType", "showCraftingHelp");

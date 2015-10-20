@@ -58,7 +58,7 @@ public class CivData {
 	public static final int PORK = 319;
 	public static final int COOKED_PORK = 320;
 	
-	public static final int FISHING_ROD = 349;
+	public static final int FISHING_ROD = 346;
 	
 	public static final int FISH = 349;
 	public static final byte SALMON = 1;

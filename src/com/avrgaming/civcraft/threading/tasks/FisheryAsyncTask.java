@@ -21,7 +21,7 @@ import com.avrgaming.civcraft.util.MultiInventory;
 
 public class FisheryAsyncTask extends CivAsyncTask {
 
-	Fishery fishery;
+	Fishery fisheryStruc;
 	
 	public static HashSet<String> debugTowns = new HashSet<String>();
 
@@ -32,24 +32,24 @@ public class FisheryAsyncTask extends CivAsyncTask {
 	}	
 	
 	public FisheryAsyncTask(Structure fishery) {
-		this.fishery = (Fishery)fishery;
+		this.fisheryStruc = (Fishery)fishery;
 	}
 	
 	public void processFisheryUpdate() {
-		if (!fishery.isActive()) {
-			debug(fishery, "Fishery inactive...");
+		if (!fisheryStruc.isActive()) {
+			debug(fisheryStruc, "Fishery inactive...");
 			return;
 		}
 		
-		debug(fishery, "Processing Fishery...");
-		ArrayList<StructureChest> sources = fishery.getAllChestsById(0);
-		sources.addAll(fishery.getAllChestsById(1));
-		sources.addAll(fishery.getAllChestsById(2));
-		sources.addAll(fishery.getAllChestsById(3));
-		ArrayList<StructureChest> destinations = fishery.getAllChestsById(4);
+		debug(fisheryStruc, "Processing Fishery...");
+		ArrayList<StructureChest> sources = fisheryStruc.getAllChestsById(0);
+		sources.addAll(fisheryStruc.getAllChestsById(1));
+		sources.addAll(fisheryStruc.getAllChestsById(2));
+		sources.addAll(fisheryStruc.getAllChestsById(3));
+		ArrayList<StructureChest> destinations = fisheryStruc.getAllChestsById(4);
 		
 		if (sources.size() != 4 || destinations.size() != 2) {
-			CivLog.error("Bad chests for fishery in town:"+fishery.getTown().getName()+" sources:"+sources.size()+" dests:"+destinations.size());
+			CivLog.error("Bad chests for fishery in town:"+fisheryStruc.getTown().getName()+" sources:"+sources.size()+" dests:"+destinations.size());
 			return;
 		}
 		
@@ -69,7 +69,7 @@ public class FisheryAsyncTask extends CivAsyncTask {
 					return;
 				}
 				if (tmp == null) {
-					fishery.skippedCounter++;
+					fisheryStruc.skippedCounter++;
 					return;
 				}
 				switch(src.getChestId()){
@@ -94,7 +94,7 @@ public class FisheryAsyncTask extends CivAsyncTask {
 					return;
 				}
 				if (tmp == null) {
-					fishery.skippedCounter++;
+					fisheryStruc.skippedCounter++;
 					return;
 				}
 				
@@ -114,12 +114,12 @@ public class FisheryAsyncTask extends CivAsyncTask {
 			return;
 		}
 		
-		debug(fishery, "Processing Fish Hatchery:"+fishery.skippedCounter+1);
+		debug(fisheryStruc, "Processing Fish Hatchery:"+fisheryStruc.skippedCounter+1);
 		ItemStack[] contents0 = source_inv0.getContents();
 		ItemStack[] contents1 = source_inv1.getContents();
 		ItemStack[] contents2 = source_inv2.getContents();
 		ItemStack[] contents3 = source_inv3.getContents();
-		for (int i = 0; i < fishery.skippedCounter+1; i++) {
+		for (int i = 0; i < fisheryStruc.skippedCounter+1; i++) {
 			for(ItemStack stack : contents0) {
 				if (stack == null) {
 					continue;
@@ -142,7 +142,7 @@ public class FisheryAsyncTask extends CivAsyncTask {
 					
 					//Try to add the new item to the dest chest, if we cant, oh well.
 					try {
-						debug(fishery, "Updating inventory:"+newItem);
+						debug(fisheryStruc, "Updating inventory:"+newItem);
 						this.updateInventory(Action.ADD, dest_inv, newItem);
 					} catch (InterruptedException e) {
 						return;
@@ -152,7 +152,7 @@ public class FisheryAsyncTask extends CivAsyncTask {
 			}
 			
 			
-			if (this.fishery.getLevel() >= 2) {
+			if (this.fisheryStruc.getLevel() >= 2) {
 				for(ItemStack stack : contents1) {
 					if (stack == null) {
 						continue;
@@ -175,7 +175,7 @@ public class FisheryAsyncTask extends CivAsyncTask {
 						
 						//Try to add the new item to the dest chest, if we cant, oh well.
 						try {
-							debug(fishery, "Updating inventory:"+newItem);
+							debug(fisheryStruc, "Updating inventory:"+newItem);
 							this.updateInventory(Action.ADD, dest_inv, newItem);
 						} catch (InterruptedException e) {
 							return;
@@ -186,7 +186,7 @@ public class FisheryAsyncTask extends CivAsyncTask {
 			}
 			
 			
-			if (this.fishery.getLevel() >= 3) {
+			if (this.fisheryStruc.getLevel() >= 3) {
 				for(ItemStack stack : contents2) {
 					if (stack == null) {
 						continue;
@@ -209,7 +209,7 @@ public class FisheryAsyncTask extends CivAsyncTask {
 						
 						//Try to add the new item to the dest chest, if we cant, oh well.
 						try {
-							debug(fishery, "Updating inventory:"+newItem);
+							debug(fisheryStruc, "Updating inventory:"+newItem);
 							this.updateInventory(Action.ADD, dest_inv, newItem);
 						} catch (InterruptedException e) {
 							return;
@@ -220,7 +220,7 @@ public class FisheryAsyncTask extends CivAsyncTask {
 			}
 			
 			
-			if (this.fishery.getLevel() >= 4) {
+			if (this.fisheryStruc.getLevel() >= 4) {
 				for(ItemStack stack : contents3) {
 					if (stack == null) {
 						continue;
@@ -243,7 +243,7 @@ public class FisheryAsyncTask extends CivAsyncTask {
 						
 						//Try to add the new item to the dest chest, if we cant, oh well.
 						try {
-							debug(fishery, "Updating inventory:"+newItem);
+							debug(fisheryStruc, "Updating inventory:"+newItem);
 							this.updateInventory(Action.ADD, dest_inv, newItem);
 						} catch (InterruptedException e) {
 							return;
@@ -253,11 +253,11 @@ public class FisheryAsyncTask extends CivAsyncTask {
 				}
 			}
 		}	
-		fishery.skippedCounter = 0;
+		fisheryStruc.skippedCounter = 0;
 	}
 	
 	private ItemStack getFishForBiome() {
-		Biome biome = this.fishery.getCorner().getBlock().getBiome();
+		Biome biome = this.fisheryStruc.getCorner().getBlock().getBiome();
 		
 		if (biome.equals(Biome.SWAMPLAND_MOUNTAINS) ||
 				biome.equals(Biome.SMALL_MOUNTAINS) ||
@@ -318,7 +318,9 @@ public class FisheryAsyncTask extends CivAsyncTask {
 			}
 			
 		} else if (biome.equals(Biome.BEACH) ||
+				biome.equals(Biome.DESERT) ||
 				biome.equals(Biome.DESERT_HILLS) ||
+				biome.equals(Biome.SAVANNA) ||
 				biome.equals(Biome.MUSHROOM_ISLAND) ||
 				biome.equals(Biome.MUSHROOM_SHORE) ||
 				biome.equals(Biome.OCEAN) ||
@@ -329,10 +331,12 @@ public class FisheryAsyncTask extends CivAsyncTask {
 			int randMax = 10;
 			Random rand = new Random();
 			int rand2 = rand.nextInt(randMax);
-			if (rand2 < 8) {
-				return ItemManager.createItemStack(CivData.FISH, 1, (short) CivData.SALMON);
-			} else if (rand2 < 8) {
+			if (rand2 < ((int)((0.2)*randMax))) {
 				return ItemManager.createItemStack(CivData.FISH, 1, (short) CivData.PUFFERFISH);
+			} else if (rand2 < ((int)((0.35)*randMax))) {
+				return ItemManager.createItemStack(CivData.FISH, 1, (short) CivData.CLOWNFISH);
+			} else if (rand2 < ((int)((0.5)*randMax))) {
+				return ItemManager.createItemStack(CivData.FISH, 1, (short) CivData.SALMON);
 			} else {
 				return ItemManager.createItemStack(CivData.FISH, 1);
 			}
@@ -342,7 +346,7 @@ public class FisheryAsyncTask extends CivAsyncTask {
 	
 	@Override
 	public void run() {
-		if (this.fishery.lock.tryLock()) {
+		if (this.fisheryStruc.lock.tryLock()) {
 			try {
 				try {
 					processFisheryUpdate();
@@ -350,10 +354,10 @@ public class FisheryAsyncTask extends CivAsyncTask {
 					e.printStackTrace();
 				}
 			} finally {
-				this.fishery.lock.unlock();
+				this.fisheryStruc.lock.unlock();
 			}
 		} else {
-			debug(this.fishery, "Failed to get lock while trying to start task, aborting.");
+			debug(this.fisheryStruc, "Failed to get lock while trying to start task, aborting.");
 		}
 	}
 }

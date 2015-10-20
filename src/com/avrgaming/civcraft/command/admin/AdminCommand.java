@@ -137,15 +137,39 @@ public class AdminCommand extends CommandBase {
 	public static Inventory spawnInventory = null; 
 	public void items_cmd() throws CivException {
 		Player player = getPlayer();
-		
 		if (spawnInventory == null) {
 			spawnInventory = Bukkit.createInventory(player, LoreGuiItem.MAX_INV_SIZE, "Admin Item Spawn");
 			
 			/* Build the Category Inventory. */
 			for (ConfigMaterialCategory cat : ConfigMaterialCategory.getCategories()) {
-				ItemStack infoRec = LoreGuiItem.build(cat.name, 
-						ItemManager.getId(Material.WRITTEN_BOOK), 
-						0, 
+				int identifier;
+				if (cat.name.contains("Gear Tier 0")) {
+					identifier = ItemManager.getId(Material.STONE_SWORD);
+				} else if (cat.name.contains("Gear Tier 1")) {
+					identifier = ItemManager.getId(Material.IRON_HELMET);
+				} else if (cat.name.contains("Gear Tier 2")) {
+					identifier = ItemManager.getId(Material.GOLD_CHESTPLATE);
+				} else if (cat.name.contains("Gear Tier 3")) {
+					identifier = ItemManager.getId(Material.CHAINMAIL_LEGGINGS);
+				} else if (cat.name.contains("Gear Tier 4")) {
+					identifier = ItemManager.getId(Material.DIAMOND_BOOTS);
+				} else if (cat.name.contains("Special")) {
+					identifier = ItemManager.getId(Material.BEACON);
+				} else if (cat.name.contains("Tier 1 Material")) {
+					identifier = ItemManager.getId(Material.IRON_BLOCK);
+				} else if (cat.name.contains("Tier 2 Material")) {
+					identifier = ItemManager.getId(Material.GOLD_BLOCK);
+				} else if (cat.name.contains("Tier 3 Material")) {
+					identifier = ItemManager.getId(Material.DIAMOND_BLOCK);
+				} else if (cat.name.contains("Tier 4 Material")) {
+					identifier = ItemManager.getId(Material.EMERALD_BLOCK);
+				} else if (cat.name.contains("Upgrader")) {
+					identifier = ItemManager.getId(Material.NETHER_STAR);
+				} else {
+					identifier = ItemManager.getId(Material.WRITTEN_BOOK);
+				}
+				
+				ItemStack infoRec = LoreGuiItem.build(cat.name, identifier, 0, 
 						CivColor.LightBlue+cat.materials.size()+" Items",
 						CivColor.Gold+"<Click To Open>");
 						infoRec = LoreGuiItem.setAction(infoRec, "OpenInventory");
@@ -161,7 +185,13 @@ public class AdminCommand extends CommandBase {
 					stack = LoreGuiItem.asGuiItem(stack);
 					stack = LoreGuiItem.setAction(stack, "SpawnItem");
 					inv.addItem(stack);
-					LoreGuiItemListener.guiInventories.put(inv.getName(), inv);			
+					
+					/* Add back buttons. */
+					ItemStack backButton = LoreGuiItem.build("Back", ItemManager.getId(Material.MAP), 0, "Back to Categories");
+					backButton = LoreGuiItem.setAction(backButton, "OpenInventory");
+					backButton = LoreGuiItem.setActionData(backButton, "invType", "showCraftingHelp");
+					inv.setItem(LoreGuiItem.MAX_INV_SIZE-1, backButton);
+					LoreGuiItemListener.guiInventories.put(inv.getName(), inv);
 				}
 			}
 		}

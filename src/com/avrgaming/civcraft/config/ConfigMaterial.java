@@ -29,6 +29,7 @@ public class ConfigMaterial {
 	public boolean craftable = false;
 	public String required_tech = null;
 	public boolean shaped = false;
+	public boolean fancy = false;
 	public HashMap<String, ConfigIngredient> ingredients;
 	public String[] shape;
 	public List<HashMap<String, String>> components = new LinkedList<HashMap<String, String>>();
@@ -90,6 +91,11 @@ public class ConfigMaterial {
 			Boolean shaped = (Boolean)b.get("shaped");
 			if (shaped != null) {
 				mat.shaped = shaped;
+			}
+			
+			Boolean isFancy = (Boolean)b.get("fancy");
+			if (isFancy != null) {
+				mat.fancy = isFancy;
 			}
 			
 			Boolean vanilla = (Boolean)b.get("vanilla");

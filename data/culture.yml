@@ -1,58 +1,68 @@
+#
+# This file contains any settings relevent to culture.
+# This includes culture levels for towns.
+#
+#
+
 # culture to beaker conversion ratio.
 beakers_per_culture: 0.1
-#When you have this culture, you level up your borders.
+
+# Culture levels for towns
+# level: - this entries' level number
+# amount - amount of culture needed for this level
+# chunks - number of chunks(radius from each edge town block) of culture granted for this level
+
 culture_levels:
     - level: 0
       amount: 0
-      chunks: 5
-#
+      chunks: 6
+ 
     - level: 1
-      amount: 1000
-      chunks: 7
-#
+      amount: 500
+      chunks: 8
+           
     - level: 2
-      amount: 15000
-      chunks: 9
-#
+      amount: 10000
+      chunks: 10
+    
     - level: 3
-      amount: 67500
-      chunks: 11
-#
+      amount: 20000
+      chunks: 13
+    
     - level: 4
-      amount: 250000
-      chunks: 14
-#
+      amount: 100000
+      chunks: 15
+
     - level: 5
-      amount: 625000
+      amount: 250000
       chunks: 17
-#
+
     - level: 6
-      amount: 1000000
-      chunks: 20
-#
+      amount: 500000
+      chunks: 19
+
     - level: 7
-      amount: 1500000
-      chunks: 23
-#
+      amount: 1000000
+      chunks: 22
+
     - level: 8
       amount: 2000000
       chunks: 26
-#
+ 
     - level: 9
-      amount: 3250000
-      chunks: 31
-#
-    - level: 10
       amount: 4000000
-      chunks: 35
-#Stats for culture chunks.
+      chunks: 32
+    
+    - level: 10
+      amount: 5000000
+      chunks: 40
+
 culture_biomes:
     - name: OCEAN
       coins: 0.0
       hammers: 0.5
       growth: 0.25
       happiness: 0.02
-      safety: 0.02
       beakers: 1.0
 
     - name: DEEP_OCEAN
@@ -60,7 +70,6 @@ culture_biomes:
       hammers: 0.5
       growth: 0.25
       happiness: 0.0
-      safety: 0.02
       beakers: 1.5
 
     - name: SMALL_MOUNTAINS
@@ -68,7 +77,6 @@ culture_biomes:
       hammers: 2.5
       growth: 0.5
       happiness: 0.015
-      safety: 0.02
       beakers: 0.5
 
     - name: PLAINS
@@ -76,7 +84,6 @@ culture_biomes:
       hammers: 0.25
       growth: 2.0
       happiness: 0.025
-      safety: 0.02
       beakers: 0.5
 
     - name: SUNFLOWER_PLAINS
@@ -84,7 +91,6 @@ culture_biomes:
       hammers: 1.0
       growth: 1.5
       happiness: 0.04
-      safety: 0.02
       beakers: 1.0
 
     - name: SAVANNA
@@ -92,7 +98,6 @@ culture_biomes:
       hammers: 1.0
       growth: 1.5
       happiness: 0.03
-      safety: 0.02
       beakers: 1.0
 
     - name: SAVANNA_PLATEAU
@@ -100,7 +105,6 @@ culture_biomes:
       hammers: 1.25
       growth: 1.25
       happiness: 0.025
-      safety: 0.02
       beakers: 1.0
 
     - name: MESA
@@ -108,7 +112,6 @@ culture_biomes:
       hammers: 2.0
       growth: 0.0
       happiness: 0.03
-      safety: 0.02
       beakers: 1.5
 
     - name: MESA_BRYCE
@@ -116,7 +119,6 @@ culture_biomes:
       hammers: 2.0
       growth: 0.5
       happiness: 0.01
-      safety: 0.02
       beakers: 0.25
 
     - name: MESA_PLATEAU
@@ -124,7 +126,6 @@ culture_biomes:
       hammers: 2.5
       growth: 0.0
       happiness: 0.01
-      safety: 0.02
       beakers: 0.25
 
     - name: MESA_PLATEAU_MOUNTAINS
@@ -132,7 +133,6 @@ culture_biomes:
       hammers: 3.0
       growth: 0.0
       happiness: 0.0
-      safety: 0.02
       beakers: 0.25
 
     - name: MESA_PLATEAU_FOREST_MOUNTAINS
@@ -140,7 +140,6 @@ culture_biomes:
       hammers: 3.0
       growth: 0.0
       happiness: 0.0
-      safety: 0.02
       beakers: 0.25
 
     - name: MESA_PLATEAU_FOREST
@@ -148,7 +147,6 @@ culture_biomes:
       hammers: 1.5
       growth: 1.0
       happiness: 0.02
-      safety: 0.02
       beakers: 0.5
 
     - name: DESERT
@@ -156,7 +154,6 @@ culture_biomes:
       hammers: 0.25
       growth: 1.0
       happiness: 0.03
-      safety: 0.02
       beakers: 1.0
     
     - name: FOREST
@@ -164,7 +161,6 @@ culture_biomes:
       hammers: 1.0
       growth: 1.25
       happiness: 0.025
-      safety: 0.02
       beakers: 0.5
 
     - name: FLOWER_FOREST
@@ -172,7 +168,6 @@ culture_biomes:
       hammers: 1.0
       growth: 1.0
       happiness: 0.05
-      safety: 0.02
       beakers: 0.75
 
     - name: BIRCH_FOREST
@@ -180,7 +175,6 @@ culture_biomes:
       hammers: 1.5
       growth: 0.75
       happiness: 0.025
-      safety: 0.02
       beakers: 0.5
 
     - name: BIRCH_FOREST_MOUNTAINS
@@ -188,7 +182,6 @@ culture_biomes:
       hammers: 2.5
       growth: 0.5
       happiness: 0.01
-      safety: 0.02
       beakers: 1.0
 
     - name: BIRCH_FOREST_HILLS_MOUNTAINS
@@ -196,7 +189,6 @@ culture_biomes:
       hammers: 1.5
       growth: 1.0
       happiness: 0.02
-      safety: 0.02
       beakers: 1.0
 
     - name: ROOFED_FOREST
@@ -204,7 +196,6 @@ culture_biomes:
       hammers: 1.0
       growth: 0.50
       happiness: 0.025
-      safety: 0.02
       beakers: 0.75
 
     - name: ROOFED_FOREST_MOUNTAINS
@@ -212,7 +203,6 @@ culture_biomes:
       hammers: 2.0
       growth: 2.0
       happiness: 0.0
-      safety: 0.02
       beakers: 0.5
     
     - name: TAIGA
@@ -220,7 +210,6 @@ culture_biomes:
       hammers: 2.0
       growth: 0.5
       happiness: 0.02
-      safety: 0.02
       beakers: 0.5
 
     - name: MEGA_TAIGA
@@ -228,7 +217,6 @@ culture_biomes:
       hammers: 1.5
       growth: 0.25
       happiness: 0.02
-      safety: 0.02
       beakers: 1.5
 
     - name: MEGA_SPRUCE_TAIGA
@@ -236,7 +224,6 @@ culture_biomes:
       hammers: 2.5
       growth: 0.25
       happiness: 0.01
-      safety: 0.02
       beakers: 0.25
 
     - name: MEGA_SPRUCE_TAIGA_HILLS
@@ -244,7 +231,6 @@ culture_biomes:
       hammers: 3.0
       growth: 0.0
       happiness: 0.03
-      safety: 0.02
       beakers: 0.5
 
     - name: COLD_TAIGA
@@ -252,7 +238,6 @@ culture_biomes:
       hammers: 1.0
       growth: 0.25
       happiness: 0.02
-      safety: 0.02
       beakers: 1.5
 
     - name: SWAMPLAND
@@ -260,7 +245,6 @@ culture_biomes:
       hammers: 0.25
       growth: 1.0
       happiness: 0.02
-      safety: 0.02
       beakers: 1.5
 
     - name: RIVER
@@ -268,7 +252,6 @@ culture_biomes:
       hammers: 1.5
       growth: 3.0
       happiness: 0.025
-      safety: 0.02
       beakers: 0.5
 
     - name: FROZEN_OCEAN
@@ -276,7 +259,6 @@ culture_biomes:
       hammers: 0.25
       growth: 0.0
       happiness: 0.0
-      safety: 0.02
       beakers: 3.0
 
     - name: FROZEN_RIVER
@@ -284,7 +266,6 @@ culture_biomes:
       hammers: 2.0
       growth: 2.5
       happiness: 0.015
-      safety: 0.02
       beakers: 1.0
 
     - name: ICE_PLAINS
@@ -292,7 +273,6 @@ culture_biomes:
       hammers: 1.0
       growth: 0.5
       happiness: 0.02
-      safety: 0.02
       beakers: 0.5
 
     - name: ICE_PLAINS_SPIKES
@@ -300,7 +280,6 @@ culture_biomes:
       hammers: 0.5
       growth: 0.0
       happiness: 0.03
-      safety: 0.02
       beakers: 3.0
 
     - name: JUNGLE_MOUNTAINS
@@ -308,7 +287,6 @@ culture_biomes:
       hammers: 3.0
       growth: 0.5
       happiness: 0.0
-      safety: 0.02
       beakers: 0.25
 
     - name: JUNGLE_EDGE_MOUNTAINS
@@ -316,7 +294,6 @@ culture_biomes:
       hammers: 2.0
       growth: 0.25
       happiness: 0.01
-      safety: 0.02
       beakers: 0.5
 
     - name: ICE_MOUNTAINS
@@ -324,7 +301,6 @@ culture_biomes:
       hammers: 2.0
       growth: 0.25
       happiness: 0.02
-      safety: 0.02
       beakers: 1.0
 
     - name: SAVANNA_MOUNTAINS
@@ -332,7 +308,6 @@ culture_biomes:
       hammers: 4.0
       growth: 0.25
       happiness: 0.0
-      safety: 0.02
       beakers: 0.25
 
     - name: SAVANNA_PLATEAU_MOUNTAINS
@@ -340,7 +315,6 @@ culture_biomes:
       hammers: 3.25
       growth: 0.5
       happiness: 0.0
-      safety: 0.02
       beakers: 0.0
 
     - name: TAIGA_MOUNTAINS
@@ -348,7 +322,6 @@ culture_biomes:
       hammers: 1.5
       growth: 0.5
       happiness: 0.03
-      safety: 0.02
       beakers: 1.0
 
     - name: COLD_TAIGA_MOUNTAINS
@@ -356,7 +329,6 @@ culture_biomes:
       hammers: 3.0
       growth: 0.0
       happiness: 0.0
-      safety: 0.02
       beakers: 1.0
 
     - name: SWAMPLAND_MOUNTAINS
@@ -364,7 +336,6 @@ culture_biomes:
       hammers: 2.5
       growth: 0.10
       happiness: 0.02
-      safety: 0.02
       beakers: 0.5
     
     - name: DESERT_MOUNTAINS
@@ -372,7 +343,6 @@ culture_biomes:
       hammers: 3.0
       growth: 0.0
       happiness: 0.01
-      safety: 0.02
       beakers: 1.0
 
     - name: SMALL_MOUNTAINS
@@ -380,7 +350,6 @@ culture_biomes:
       hammers: 2.5
       growth: 0.5
       happiness: 0.015
-      safety: 0.02
       beakers: 0.5
     
     - name: MUSHROOM_ISLAND
@@ -388,7 +357,6 @@ culture_biomes:
       hammers: 1.0
       growth: 0.5
       happiness: 0.03
-      safety: 0.02
       beakers: 0.5
     
     - name: MUSHROOM_SHORE
@@ -396,7 +364,6 @@ culture_biomes:
       hammers: 0.5
       growth: 0.25
       happiness: 0.05
-      safety: 0.02
       beakers: 0.5
 
     - name: BEACH
@@ -404,7 +371,6 @@ culture_biomes:
       hammers: 0.25
       growth: 0.5
       happiness: 0.06
-      safety: 0.02
       beakers: 1.5
 
     - name: STONE_BEACH
@@ -412,7 +378,6 @@ culture_biomes:
       hammers: 3.0
       growth: 0.0
       happiness: 0.015
-      safety: 0.02
       beakers: 0.15
 
     - name: COLD_BEACH
@@ -420,7 +385,6 @@ culture_biomes:
       hammers: 2.0
       growth: 0.0
       happiness: 0.01
-      safety: 0.02
       beakers: 1.0
 
     - name: DESERT_HILLS
@@ -428,7 +392,6 @@ culture_biomes:
       hammers: 2.0
       growth: 0.25
       happiness: 0.03
-      safety: 0.02
       beakers: 1.0
 
     - name: FOREST_HILLS
@@ -436,7 +399,6 @@ culture_biomes:
       hammers: 2.0
       growth: 0.25
       happiness: 0.03
-      safety: 0.02
       beakers: 1.0
 
     - name: BIRCH_FOREST_HILLS
@@ -444,7 +406,6 @@ culture_biomes:
       hammers: 2.0
       growth: 0.15
       happiness: 0.02
-      safety: 0.02
       beakers: 0.5
 
     - name: TAIGA_HILLS
@@ -452,7 +413,6 @@ culture_biomes:
       hammers: 2.5
       growth: 0.25
       happiness: 0.02
-      safety: 0.02
       beakers: 0.15
 
     - name: MEGA_TAIGA_HILLS
@@ -460,7 +420,6 @@ culture_biomes:
       hammers: 3.0
       growth: 0.1
       happiness: 0.0
-      safety: 0.02
       beakers: 0.1
 
     - name: COLD_TAIGA_HILLS
@@ -468,7 +427,6 @@ culture_biomes:
       hammers: 2.5
       growth: 0.15
       happiness: 0.02
-      safety: 0.02
       beakers: 0.25
     
     - name: EXTREME_HILLS
@@ -476,7 +434,6 @@ culture_biomes:
       hammers: 4.0
       growth: 0.0
       happiness: 0.0
-      safety: 0.02
       beakers: 0.15
 
     - name: EXTREME_HILLS_MOUNTAINS
@@ -484,7 +441,6 @@ culture_biomes:
       hammers: 4.0
       growth: 0.0
       happiness: 0.0
-      safety: 0.02
       beakers: 0.5
 
     - name: EXTREME_HILLS_PLUS
@@ -492,7 +448,6 @@ culture_biomes:
       hammers: 4.5
       growth: 0.0
       happiness: 0.0
-      safety: 0.02
       beakers: 0.0
 
     - name: EXTREME_HILLS_PLUS_MOUNTAINS
@@ -500,7 +455,6 @@ culture_biomes:
       hammers: 4.5
       growth: 0.0
       happiness: 0.0
-      safety: 0.02
       beakers: 0.5
 
     - name: JUNGLE
@@ -508,7 +462,6 @@ culture_biomes:
       hammers: 0.5
       growth: 1.0
       happiness: 0.02
-      safety: 0.02
       beakers: 1.0
 
     - name: JUNGLE_HILLS
@@ -516,7 +469,6 @@ culture_biomes:
       hammers: 2.0
       growth: 0.25
       happiness: 0.03
-      safety: 0.02
       beakers: 1.0
 
     - name: JUNGLE_EDGE
@@ -524,7 +476,6 @@ culture_biomes:
       hammers: 1.0
       growth: 0.5
       happiness: 0.03
-      safety: 0.02
       beakers: 1.0
 
     - name: UNKNOWN
@@ -532,5 +483,8 @@ culture_biomes:
       hammers: 0.0
       growth: 0.0
       happiness: 0.0
-      safety: 0.02
       beakers: 0.0
+
+
+
+

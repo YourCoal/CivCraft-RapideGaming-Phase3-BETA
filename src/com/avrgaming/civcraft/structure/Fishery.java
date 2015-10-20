@@ -19,6 +19,7 @@ import com.avrgaming.civcraft.util.CivColor;
 import com.avrgaming.civcraft.util.SimpleBlock;
 
 public class Fishery extends Structure {
+	
 	public static final int MAX_CHANCE = CivSettings.getIntegerStructure("fishery.max");
 	private static final double FISH_RATE = CivSettings.getDoubleStructure("fishery.fish_rate"); //100%
 	
@@ -40,7 +41,7 @@ public class Fishery extends Structure {
 	public Fishery(ResultSet rs) throws SQLException, CivException {
 		super(rs);
 	}
-
+	
 	@Override
 	public String getDynmapDescription() {
 		String out = "<u><b>Fishery</u></b><br/>";
@@ -52,7 +53,7 @@ public class Fishery extends Structure {
 	public String getMarkerIconName() {
 		return "cutlery";
 	}
-
+	
 	public double getChance(Fish fish) {
 		double chance = FISH_RATE;
 		return this.modifyChance(chance);
@@ -80,11 +81,11 @@ public class Fishery extends Structure {
 	public void onPostBuild(BlockCoord absCoord, SimpleBlock commandBlock) {
 		this.level = getTown().saved_fishery_level;
 	}
-
+	
 	public int getLevel() {
 		return level;
 	}
-
+	
 	public void setLevel(int level) {
 		this.level = level;
 	}
@@ -99,12 +100,9 @@ public class Fishery extends Structure {
 		return null;
 	}
 	
-	
 	@Override
 	public void updateSignText() {
 		int count = 0;
-		
-	
 		for (count = 0; count < level; count++) {
 			StructureSign sign = getSignFromSpecialId(count);
 			if (sign == null) {
@@ -124,7 +122,6 @@ public class Fishery extends Structure {
 			sign.setText("Pool Offline");
 			sign.update();
 		}
-		
 	}
 	
 	@Override
@@ -132,7 +129,6 @@ public class Fishery extends Structure {
 		int special_id = Integer.valueOf(sign.getAction());
 		if (special_id < this.level) {
 			CivMessage.send(player, CivColor.LightGreen+"Fishery Pool "+(special_id+1)+" is active.");
-
 		} else {
 			CivMessage.send(player, CivColor.Rose+"Fishery Pool "+(special_id+1)+" is offline. Upgrade Fishery to activate!");
 		}

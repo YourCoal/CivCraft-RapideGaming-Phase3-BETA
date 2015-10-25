@@ -1109,7 +1109,7 @@ public class Civilization extends SQLObject {
 	public void setResearchProgress(double researchProgress) {
 		this.researchProgress = researchProgress;
 	}
-
+	
 	public void changeGovernment(Civilization civ, ConfigGovernment gov, boolean force) throws CivException {
 		changeGovernment(civ, gov, force, 24);
 	}
@@ -1135,7 +1135,6 @@ public class Civilization extends SQLObject {
 		if (!noanarchy) {
 			String key = "changegov_"+this.getId();
 			String value = gov.id;
-			
 			sessionAdd(key, value);
 			
 			// Set the town's government to anarchy in the meantime
@@ -1145,10 +1144,7 @@ public class Civilization extends SQLObject {
 			civ.setGovernment(gov.id);
 			CivMessage.global(civ.getName()+" has emerged from anarchy and has adopted "+CivSettings.governments.get(gov.id).displayName);
 		}
-		
-		
 		civ.save();
-		
 	}
 
 	public String getUpkeepPaid(Town town, String type) {

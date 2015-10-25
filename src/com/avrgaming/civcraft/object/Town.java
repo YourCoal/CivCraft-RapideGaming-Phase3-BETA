@@ -184,7 +184,6 @@ public class Town extends SQLObject {
 					"`debt` double DEFAULT 0," +
 					"`coins` double DEFAULT 0," +
 					"`daysInDebt` int(11) DEFAULT 0,"+
-					"`religion_id` mediumtext DEFAULT NULL," +
 					"`flat_tax` double NOT NULL DEFAULT '0'," + 
 					"`tax_rate` double DEFAULT 0," + 
 					"`extra_hammers` double DEFAULT 0," +
@@ -235,6 +234,7 @@ public class Town extends SQLObject {
 			CivGlobal.orphanTowns.add(this);
 			throw new CivException("Failed to load town, bad data.");
 		}
+		
 		this.setDaysInDebt(rs.getInt("daysInDebt"));
 		this.setFlatTax(rs.getDouble("flat_tax"));
 		this.setTaxRate(rs.getDouble("tax_rate"));
@@ -412,7 +412,7 @@ public class Town extends SQLObject {
 			e.printStackTrace();
 		}
 	}
-
+	
 	private void setUpgradesFromString(String upgradeString) {
 		String[] split = upgradeString.split(",");
 		
@@ -1438,7 +1438,6 @@ public class Town extends SQLObject {
 			}
 			bestLevel++;
 		}
-		
 		return level.level;
 	}
 

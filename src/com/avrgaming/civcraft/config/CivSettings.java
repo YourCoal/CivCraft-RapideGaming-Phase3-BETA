@@ -261,8 +261,25 @@ public class CivSettings {
 		restrictedUndoBlocks.add(Material.REDSTONE_COMPARATOR_ON);
 		restrictedUndoBlocks.add(Material.REDSTONE_COMPARATOR);
 		restrictedUndoBlocks.add(Material.STRING);
+		restrictedUndoBlocks.add(Material.LEVER);
 		restrictedUndoBlocks.add(Material.TRIPWIRE);
+		restrictedUndoBlocks.add(Material.TRIPWIRE_HOOK);
 		restrictedUndoBlocks.add(Material.SUGAR_CANE_BLOCK);
+		restrictedUndoBlocks.add(Material.POWERED_RAIL);
+		restrictedUndoBlocks.add(Material.RAILS);
+		restrictedUndoBlocks.add(Material.DETECTOR_RAIL);
+		restrictedUndoBlocks.add(Material.ACTIVATOR_RAIL);
+		restrictedUndoBlocks.add(Material.LADDER);
+		restrictedUndoBlocks.add(Material.VINE);
+		restrictedUndoBlocks.add(Material.WEB);
+		restrictedUndoBlocks.add(Material.SAPLING);
+		restrictedUndoBlocks.add(Material.STONE_PLATE);
+		restrictedUndoBlocks.add(Material.WOOD_PLATE);
+		restrictedUndoBlocks.add(Material.GOLD_PLATE);
+		restrictedUndoBlocks.add(Material.IRON_PLATE);
+		restrictedUndoBlocks.add(Material.TRIPWIRE_HOOK);
+		restrictedUndoBlocks.add(Material.MELON_STEM);
+		restrictedUndoBlocks.add(Material.PUMPKIN_STEM);
 	}
 	
 	private static void initPlayerEntityWeapons() {
@@ -408,62 +425,92 @@ public class CivSettings {
 		restrictedItems.put(Material.BUCKET, 0);
 		restrictedItems.put(Material.WATER_BUCKET, 0);
 		restrictedItems.put(Material.LAVA_BUCKET, 0);
+		restrictedItems.put(Material.WATER, 0);
+		restrictedItems.put(Material.LAVA, 0);
+		restrictedItems.put(Material.STATIONARY_WATER, 0);
+		restrictedItems.put(Material.STATIONARY_LAVA, 0);
+		restrictedItems.put(Material.DIODE, 0);
+		restrictedItems.put(Material.REDSTONE_COMPARATOR, 0);
 		restrictedItems.put(Material.CAKE_BLOCK, 0);
 		restrictedItems.put(Material.CAULDRON, 0);
-		restrictedItems.put(Material.DIODE, 0);
-		restrictedItems.put(Material.INK_SACK, 0);
 		restrictedItems.put(Material.ITEM_FRAME, 0);
 		restrictedItems.put(Material.PAINTING, 0);
+		restrictedItems.put(Material.INK_SACK, 0);
 		restrictedItems.put(Material.SHEARS, 0);
-		restrictedItems.put(Material.STATIONARY_LAVA, 0);
-		restrictedItems.put(Material.STATIONARY_WATER, 0);
 		restrictedItems.put(Material.TNT, 0);
+		restrictedItems.put(Material.LEASH, 0);
+		restrictedItems.put(Material.NAME_TAG, 0);
+		restrictedItems.put(Material.ARMOR_STAND, 0);
+		restrictedItems.put(Material.BOAT, 0);
+		restrictedItems.put(Material.MINECART, 0);
+		restrictedItems.put(Material.STORAGE_MINECART, 0);
+		restrictedItems.put(Material.POWERED_MINECART, 0);
+		restrictedItems.put(Material.EXPLOSIVE_MINECART, 0);
+		restrictedItems.put(Material.HOPPER_MINECART, 0);
+		restrictedItems.put(Material.COMMAND_MINECART, 0);
 	}
 
 	private static void initSwitchItems() {
 		//TO-DO make this configurable?
-		switchItems.add(Material.ANVIL);
-		switchItems.add(Material.BEACON);
-		switchItems.add(Material.BREWING_STAND);
-		switchItems.add(Material.BURNING_FURNACE);
-		switchItems.add(Material.CAKE_BLOCK);
-		switchItems.add(Material.CAULDRON);
+		//XXX Added 1.8 Items
+		switchItems.add(Material.DISPENSER);
+		switchItems.add(Material.NOTE_BLOCK);
+		switchItems.add(Material.TNT);
 		switchItems.add(Material.CHEST);
 		switchItems.add(Material.TRAPPED_CHEST);
-		switchItems.add(Material.COMMAND);
-		switchItems.add(Material.DIODE);
-		switchItems.add(Material.DIODE_BLOCK_OFF);
-		switchItems.add(Material.DIODE_BLOCK_ON);
-		switchItems.add(Material.DISPENSER);
-		switchItems.add(Material.FENCE_GATE);
+		switchItems.add(Material.ENDER_CHEST);
 		switchItems.add(Material.FURNACE);
-		switchItems.add(Material.JUKEBOX);
-		switchItems.add(Material.LEVER);
-		switchItems.add(Material.STONE_BUTTON);
-		switchItems.add(Material.STONE_PLATE);
-		switchItems.add(Material.IRON_DOOR);
-		switchItems.add(Material.TNT);
-		switchItems.add(Material.TRAP_DOOR);
+		switchItems.add(Material.BURNING_FURNACE);
 		switchItems.add(Material.WOOD_DOOR);
 		switchItems.add(Material.WOODEN_DOOR);
-		switchItems.add(Material.WOOD_PLATE);
-		
-		switchItems.add(Material.HOPPER);
-		switchItems.add(Material.HOPPER_MINECART);
-		switchItems.add(Material.DROPPER);
-		switchItems.add(Material.REDSTONE_COMPARATOR);
-		switchItems.add(Material.REDSTONE_COMPARATOR_ON);
-		switchItems.add(Material.REDSTONE_COMPARATOR_OFF);
-		switchItems.add(Material.TRAPPED_CHEST);
-		switchItems.add(Material.GOLD_PLATE);
-		switchItems.add(Material.IRON_PLATE);
-		switchItems.add(Material.IRON_TRAPDOOR);
-		
 		switchItems.add(Material.SPRUCE_DOOR);
 		switchItems.add(Material.BIRCH_DOOR);
 		switchItems.add(Material.JUNGLE_DOOR);
 		switchItems.add(Material.ACACIA_DOOR);
 		switchItems.add(Material.DARK_OAK_DOOR);
+		switchItems.add(Material.IRON_DOOR);
+		switchItems.add(Material.LEVER);
+		switchItems.add(Material.WOOD_PLATE);
+		switchItems.add(Material.STONE_PLATE);
+		switchItems.add(Material.WOOD_BUTTON);
+		switchItems.add(Material.STONE_BUTTON);
+		switchItems.add(Material.GOLD_PLATE);
+		switchItems.add(Material.IRON_PLATE);
+		switchItems.add(Material.JUKEBOX);
+		switchItems.add(Material.CAKE_BLOCK);
+		switchItems.add(Material.DIODE);
+		switchItems.add(Material.DIODE_BLOCK_OFF);
+		switchItems.add(Material.DIODE_BLOCK_ON);
+		switchItems.add(Material.REDSTONE_COMPARATOR);
+		switchItems.add(Material.REDSTONE_COMPARATOR_ON);
+		switchItems.add(Material.REDSTONE_COMPARATOR_OFF);
+		switchItems.add(Material.TRAP_DOOR);
+		switchItems.add(Material.IRON_TRAPDOOR);
+		switchItems.add(Material.FENCE_GATE);
+		switchItems.add(Material.SPRUCE_FENCE_GATE);
+		switchItems.add(Material.BIRCH_FENCE_GATE);
+		switchItems.add(Material.JUNGLE_FENCE_GATE);
+		switchItems.add(Material.ACACIA_FENCE_GATE);
+		switchItems.add(Material.DARK_OAK_FENCE_GATE);
+		switchItems.add(Material.ENCHANTMENT_TABLE);
+		switchItems.add(Material.BREWING_STAND);
+		switchItems.add(Material.CAULDRON);
+		switchItems.add(Material.DRAGON_EGG);
+		switchItems.add(Material.COMMAND);
+		switchItems.add(Material.BEACON);
+		switchItems.add(Material.ANVIL);
+		switchItems.add(Material.DAYLIGHT_DETECTOR);
+		switchItems.add(Material.HOPPER);
+		switchItems.add(Material.DROPPER);
+		switchItems.add(Material.ARMOR_STAND);
+		
+		switchItems.add(Material.BOAT);
+		switchItems.add(Material.MINECART);
+		switchItems.add(Material.STORAGE_MINECART);
+		switchItems.add(Material.POWERED_MINECART);
+		switchItems.add(Material.EXPLOSIVE_MINECART);
+		switchItems.add(Material.HOPPER_MINECART);
+		switchItems.add(Material.COMMAND_MINECART);
 	}
 	
 	private static void initBlockPlaceExceptions() {

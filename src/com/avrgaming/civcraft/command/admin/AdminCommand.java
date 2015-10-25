@@ -89,7 +89,13 @@ public class AdminCommand extends CommandBase {
 		commands.put("endworld", "Starts the Apocalypse.");
 		commands.put("perk", "Admin perk management.");
 		commands.put("mob", "Admin mob management.");
+		commands.put("sql", "SQL Settings. NEW. DO NOT TOUCH unless your name begins with Your and ends with Coal.");
 	}
+	
+	public void sql_cmd() {
+		AdminSQLCommand cmd = new AdminSQLCommand();
+		cmd.onCommand(sender, null, "sql", this.stripArgs(args, 1));
+ 	}
 	
 	public void mob_cmd() {
 		AdminMobCommand cmd = new AdminMobCommand();	
@@ -143,7 +149,9 @@ public class AdminCommand extends CommandBase {
 			/* Build the Category Inventory. */
 			for (ConfigMaterialCategory cat : ConfigMaterialCategory.getCategories()) {
 				int identifier;
-				if (cat.name.contains("Gear Tier 0")) {
+				if (cat.name.contains("Element")) {
+					identifier = ItemManager.getId(Material.EXP_BOTTLE);
+				} else if (cat.name.contains("Gear Tier 0")) {
 					identifier = ItemManager.getId(Material.STONE_SWORD);
 				} else if (cat.name.contains("Gear Tier 1")) {
 					identifier = ItemManager.getId(Material.IRON_HELMET);

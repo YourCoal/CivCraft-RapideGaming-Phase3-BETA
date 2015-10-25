@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.avrgaming.civcraft.listener;
 
 import gpl.AttributeUtil;
@@ -104,12 +86,9 @@ public class CustomItemManager implements Listener {
 			}
 			
 			event.setCancelled(true);
-			
 			ItemManager.setTypeIdAndData(event.getBlock(), CivData.AIR, (byte)0, true);
-			
 			try {
 				Random rand = new Random();
-
 				int min = CivSettings.getInteger(CivSettings.materialsConfig, "tungsten_min_drop");
 				int max;
 				if (event.getPlayer().getItemInHand().containsEnchantment(Enchantment.LOOT_BONUS_BLOCKS)) {
@@ -128,7 +107,49 @@ public class CustomItemManager implements Listener {
 					ItemStack stack = LoreMaterial.spawn(LoreMaterial.materialMap.get("mat_tungsten_ore"));
 					event.getPlayer().getWorld().dropItemNaturally(event.getBlock().getLocation(), stack);
 				}
+			} catch (InvalidConfiguration e) {
+				e.printStackTrace();
+				return;
+			}
+		}
+		
+		
+		//XXX Coal Ore
+		if (event.getBlock().getType().equals(Material.COAL_ORE)) {
+			if (event.getPlayer().getItemInHand().containsEnchantment(Enchantment.SILK_TOUCH)) {
+				return;
+			}
+			
+			event.setCancelled(true);
+			ItemManager.setTypeIdAndData(event.getBlock(), CivData.AIR, (byte)0, true);
+			try {
+				Random rand = new Random();
+				int min = CivSettings.getInteger(CivSettings.materialsConfig, "carbon_min");
+				int max;
 				
+				if (event.getPlayer().getItemInHand().getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS) < 2 &&
+					event.getPlayer().getItemInHand().getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS) > 0) {
+					max = CivSettings.getInteger(CivSettings.materialsConfig, "carbon_max_fortune1");
+				} else if (event.getPlayer().getItemInHand().getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS) < 3 &&
+					event.getPlayer().getItemInHand().getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS) > 1) {
+					max = CivSettings.getInteger(CivSettings.materialsConfig, "carbon_max_fortune2");
+				} else if (event.getPlayer().getItemInHand().getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS) < 4 &&
+					event.getPlayer().getItemInHand().getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS) > 2) {
+					max = CivSettings.getInteger(CivSettings.materialsConfig, "carbon_max_fortune3");
+				} else {
+					max = CivSettings.getInteger(CivSettings.materialsConfig, "carbon_max");
+				}
+				
+				int randAmount = rand.nextInt(min + max);
+				randAmount -= min;
+				if (randAmount <= 0) {
+					randAmount = 1;
+				}
+				
+				for (int i = 0; i < randAmount; i++) {
+					ItemStack stack = LoreMaterial.spawn(LoreMaterial.materialMap.get("civ:element_carbon"));
+					event.getPlayer().getWorld().dropItemNaturally(event.getBlock().getLocation(), stack);
+				}
 			} catch (InvalidConfiguration e) {
 				e.printStackTrace();
 				return;
@@ -147,13 +168,11 @@ public class CustomItemManager implements Listener {
 		if (craftMat == null) {
 			return;
 		}
-		
 		craftMat.onBlockPlaced(event);
 	}
 	
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerInteract(PlayerInteractEvent event) {
-	
 		ItemStack stack = event.getPlayer().getItemInHand();
 		if (stack == null) {
 			return;
@@ -175,12 +194,11 @@ public class CustomItemManager implements Listener {
 		if (stack == null) {
 			return;
 		}
-
+		
 		LoreMaterial material = LoreMaterial.getMaterial(stack);
 		if (material != null) {
 			material.onInteractEntity(event);
 		}
-		
 	}
 	
 	@EventHandler(priority = EventPriority.HIGHEST)

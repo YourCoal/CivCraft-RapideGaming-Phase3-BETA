@@ -3,7 +3,7 @@ package com.avrgaming.civcraft.mobs.timers;
 import java.util.LinkedList;
 
 import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.main.CivLog;
 import com.avrgaming.civcraft.mobs.CommonCustomMob;
 
 public class MobDespawnTimer {
@@ -24,7 +24,7 @@ public class MobDespawnTimer {
 			mob.entity.getBukkitEntity().remove();
 			count++;
 		}
-		CivMessage.sendAll("Removed "+count+ " "+name+" mobs");
+		CivLog.warning("Removed "+count+ " "+name+" mobs");
 	}
 	
 	public static void despawn_angryyobo() throws CivException {
@@ -43,7 +43,7 @@ public class MobDespawnTimer {
 			mob.entity.getBukkitEntity().remove();
 			count++;
 		}
-		CivMessage.sendAll("Removed "+count+ " "+name+" mobs");
+		CivLog.warning("Removed "+count+ " "+name+" mobs");
 	}
 	
 	public static void despawn_behemoth() throws CivException {
@@ -62,7 +62,7 @@ public class MobDespawnTimer {
 			mob.entity.getBukkitEntity().remove();
 			count++;
 		}
-		CivMessage.sendAll("Removed "+count+ " "+name+" mobs");
+		CivLog.warning("Removed "+count+ " "+name+" mobs");
 	}
 	
 	public static void despawn_ruffian() throws CivException {
@@ -81,7 +81,7 @@ public class MobDespawnTimer {
 			mob.entity.getBukkitEntity().remove();
 			count++;
 		}
-		CivMessage.sendAll("Removed "+count+ " "+name+" mobs");
+		CivLog.warning("Removed "+count+ " "+name+" mobs");
 	}
 	
 	public static void despawn_savage() throws CivException {
@@ -100,6 +100,6 @@ public class MobDespawnTimer {
 			mob.entity.getBukkitEntity().remove();
 			count++;
 		}
-		CivMessage.sendAll("Removed "+count+ " "+name+" mobs");
+		CivLog.warning("Removed "+count+ " "+name+" mobs");
 	}
 }

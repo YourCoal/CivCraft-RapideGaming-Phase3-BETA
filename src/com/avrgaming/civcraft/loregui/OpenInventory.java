@@ -14,7 +14,7 @@ import com.avrgaming.civcraft.threading.TaskMaster;
 import com.avrgaming.civcraft.tutorial.CivTutorial;
 
 public class OpenInventory implements GuiAction {
-
+	
 	@Override
 	public void performAction(InventoryClickEvent event, ItemStack stack) {
 		Player player = (Player)event.getWhoClicked();
@@ -40,6 +40,9 @@ public class OpenInventory implements GuiAction {
 				}
 				
 				switch (LoreGuiItem.getActionData(stack, "invType")) {
+				case "showServerInfoInventory":
+					CivTutorial.showServerInfoInventory(player);
+					break;
 				case "showTutorialInventory":
 					CivTutorial.showTutorialInventory(player);
 					break;
@@ -52,7 +55,7 @@ public class OpenInventory implements GuiAction {
 					if (inv != null) {
 						player.openInventory(inv);
 					} else {
-						CivLog.error("Couldn't find GUI inventory:"+invName);
+						CivLog.error("Couldn't find GUI inventory: "+invName);
 					}
 					break;
 				default:
@@ -60,8 +63,6 @@ public class OpenInventory implements GuiAction {
 				}
 			}
 		}
-		
 		TaskMaster.syncTask(new SyncTaskDelayed(player.getName(), stack));		
 	}
-
 }

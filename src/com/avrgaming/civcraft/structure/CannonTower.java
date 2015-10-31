@@ -1,3 +1,21 @@
+/*************************************************************************
+ * 
+ * AVRGAMING LLC
+ * __________________
+ * 
+ *  [2013] AVRGAMING LLC
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of AVRGAMING LLC and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to AVRGAMING LLC
+ * and its suppliers and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from AVRGAMING LLC.
+ */
 package com.avrgaming.civcraft.structure;
 
 import java.sql.ResultSet;
@@ -14,7 +32,7 @@ import com.avrgaming.civcraft.object.Town;
 import com.avrgaming.civcraft.util.BlockCoord;
 
 public class CannonTower extends Structure {
-	
+
 	ProjectileCannonComponent cannonComponent;
 	
 	protected CannonTower(Location center, String id, Town town)
@@ -26,7 +44,7 @@ public class CannonTower extends Structure {
 	protected CannonTower(ResultSet rs) throws SQLException, CivException {
 		super(rs);
 	}
-	
+
 	@Override
 	public void loadSettings() {
 		super.loadSettings();
@@ -53,10 +71,12 @@ public class CannonTower extends Structure {
 	public void setDamage(int damage) {
 		cannonComponent.setDamage(damage);
 	}
-	
+
+
 	public void setTurretLocation(BlockCoord absCoord) {
 		cannonComponent.setTurretLocation(absCoord);
 	}
+	
 	
 //	@Override
 //	public void fire(Location turretLoc, Location playerLoc) {
@@ -74,6 +94,7 @@ public class CannonTower extends Structure {
 	public void onCheck() throws CivException {
 		try {
 			double build_distance = CivSettings.getDouble(CivSettings.warConfig, "cannon_tower.build_distance");
+			
 			for (Town town : this.getTown().getCiv().getTowns()) {
 				for (Structure struct : town.getStructures()) {
 					if (struct instanceof CannonTower) {
@@ -89,15 +110,7 @@ public class CannonTower extends Structure {
 			e.printStackTrace();
 			throw new CivException(e.getMessage());
 		}
+		
 	}
 	
-	@Override
-	public String getDynmapDescription() {
-		return null;
-	}
-	
-	@Override
-	public String getMarkerIconName() {
-		return null;
-	}
 }

@@ -15,11 +15,10 @@ import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.entity.EntityTargetEvent.TargetReason;
 
 import com.avrgaming.civcraft.mobs.components.MobComponentDefense;
+import com.moblib.mob.ICustomMob;
+import com.moblib.mob.MobBaseZombie;
 
-import com.avrgaming.mob.ICustomMob;
-import com.avrgaming.mob.MobBaseZombie;
-
-public class AngryYobo extends CommonCustomMob implements ICustomMob {
+public class AngryYobo  extends CommonCustomMob implements ICustomMob {
 	
 	public void onCreate() {
 	    initLevelAndType();
@@ -33,6 +32,11 @@ public class AngryYobo extends CommonCustomMob implements ICustomMob {
 	}
 	
 	@Override
+	public void onTick() {
+		super.onTick();		
+	}
+	
+	@Override
 	public String getBaseEntity() {
 		return MobBaseZombie.class.getName();
 	}
@@ -43,7 +47,6 @@ public class AngryYobo extends CommonCustomMob implements ICustomMob {
 	public void onCreateAttributes() {
 		MobComponentDefense defense;
 	    this.setKnockbackResistance(0.99);
-
 		switch (this.getLevel()) {
 		case LESSER:
 		    defense = new MobComponentDefense(3.5);
@@ -115,10 +118,5 @@ public class AngryYobo extends CommonCustomMob implements ICustomMob {
 		    event.getReason().equals(TargetReason.TARGET_DIED)) {
 			event.getEntity().remove();
 		}
-	}
-	
-	@Override
-	public void onTick() {
-		super.onTick();		
 	}
 }

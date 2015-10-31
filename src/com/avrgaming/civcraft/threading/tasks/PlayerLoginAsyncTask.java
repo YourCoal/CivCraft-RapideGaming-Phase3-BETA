@@ -1,3 +1,21 @@
+/*************************************************************************
+ * 
+ * AVRGAMING LLC
+ * __________________
+ * 
+ *  [2013] AVRGAMING LLC
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of AVRGAMING LLC and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to AVRGAMING LLC
+ * and its suppliers and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from AVRGAMING LLC.
+ */
 package com.avrgaming.civcraft.threading.tasks;
 
 import java.util.ArrayList;
@@ -15,7 +33,6 @@ import com.avrgaming.civcraft.exception.InvalidNameException;
 import com.avrgaming.civcraft.main.CivGlobal;
 import com.avrgaming.civcraft.main.CivLog;
 import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Civilization;
 import com.avrgaming.civcraft.object.CultureChunk;
 import com.avrgaming.civcraft.object.Relation;
 import com.avrgaming.civcraft.object.Resident;
@@ -26,6 +43,7 @@ import com.avrgaming.civcraft.util.BlockCoord;
 import com.avrgaming.civcraft.util.ChunkCoord;
 import com.avrgaming.civcraft.util.CivColor;
 import com.avrgaming.civcraft.war.War;
+import com.avrgaming.global.perks.PlatinumManager;
 
 public class PlayerLoginAsyncTask implements Runnable {
 	
@@ -35,7 +53,12 @@ public class PlayerLoginAsyncTask implements Runnable {
 	}
 	
 	public Player getPlayer() throws CivException {
-		return Bukkit.getPlayer(playerUUID);
+		Player player = Bukkit.getPlayer(playerUUID);
+		if (player == null) {
+			throw new CivException("Player offline now. May have been kicked.");
+		}
+		
+		return player;
 	}
 	
 	@Override
@@ -43,13 +66,13 @@ public class PlayerLoginAsyncTask implements Runnable {
 		try {
 			CivLog.info("Running PlayerLoginAsyncTask for "+getPlayer().getName()+" UUID("+playerUUID+")");
 			Resident resident = CivGlobal.getResidentViaUUID(playerUUID);
-			if (resident != null && !resident.getName().equals(getPlayer().getName()))
-			{
-				CivGlobal.removeResident(resident);
-				resident.setName(getPlayer().getName());
-				resident.save();
-				CivGlobal.addResident(resident);
-			}
+				if (resident != null && !resident.getName().toLowerCase().equals(getPlayer().getName().toLowerCase()))
+				{
+					CivGlobal.removeResident(resident);
+					resident.setName(getPlayer().getName().toLowerCase());
+					resident.save();
+					CivGlobal.addResident(resident);
+				}
 			
 			/* 
 			 * Test to see if player has changed their name. If they have, these residents
@@ -67,7 +90,7 @@ public class PlayerLoginAsyncTask implements Runnable {
 				try {
 					resident = new Resident(getPlayer().getUniqueId(), getPlayer().getName());
 				} catch (InvalidNameException e) {
-					TaskMaster.syncTask(new PlayerKickBan(getPlayer().getName(), true, false, "You have an invalid name. Contact an admin."));
+					TaskMaster.syncTask(new PlayerKickBan(getPlayer().getName(), true, false, "You have an invalid name. Sorry."));
 					return;
 				}
 				
@@ -99,24 +122,17 @@ public class PlayerLoginAsyncTask implements Runnable {
 				CivLog.info("Resident named:"+resident.getName()+" was acquired by UUID:"+resident.getUUIDString());
 			} else if (!resident.getUUID().equals(getPlayer().getUniqueId())) {
 				TaskMaster.syncTask(new PlayerKickBan(getPlayer().getName(), true, false, 
-						"You're attempting to log in with a name already in use. Please contact an admin."));
+						"You're attempting to log in with a name already in use. Please change your name."));
 				return;
 			}
 			
 			if (!resident.isGivenKit()) {
 				TaskMaster.syncTask(new GivePlayerStartingKit(resident.getName()));
 			}
-			
-			if (getPlayer().isOp() || getPlayer().hasPermission(CivSettings.MINI_ADMIN)) {
-				} else if (!resident.isUsesAntiCheat() && getPlayer().hasPermission(CivSettings.HACKER)) {
-					TaskMaster.syncTask(new PlayerKickBan(getPlayer().getName(), true, false, "You must use AntiCheat to join this server."+
-							"Visit http://rapidegaming.enjin.com/ to get it."));
-					return;
-			}
-			
+					
 			if (War.isWarTime() && War.isOnlyWarriors()) {
 				if (getPlayer().isOp() || getPlayer().hasPermission(CivSettings.MINI_ADMIN)) {
-					//Allowed to connect ^
+					//Allowed to connect since player is OP or mini admin.
 				} else if (!resident.hasTown() || !resident.getTown().getCiv().getDiplomacyManager().isAtWar()) {
 					TaskMaster.syncTask(new PlayerKickBan(getPlayer().getName(), true, false, "Only players in civilizations at war can connect right now. Sorry."));
 					return;
@@ -152,56 +168,33 @@ public class PlayerLoginAsyncTask implements Runnable {
 							CivMessage.send(resident, CivColor.LightGray+"You've been teleported back to your home since you've logged into enemy during WarTime.");
 						}
 					}
+					
 					CivMessage.sendCiv(cc.getCiv(), color+getPlayer().getDisplayName()+"("+relationName+") has logged-in to our borders.");
 				}
 			}
-			
+					
 			resident.setLastOnline(System.currentTimeMillis());
 			resident.setLastIP(getPlayer().getAddress().getAddress().getHostAddress());
 			resident.setSpyExposure(resident.getSpyExposure());
 			resident.save();
 			
-			//TO-DO send town board messages?
-			//TO-DO set default modes?
+			//TODO send town board messages?
+			//TODO set default modes?
 			resident.showWarnings(getPlayer());
 			resident.loadPerks();
+	
 			try {
-				String perkMessage = "";
 				if (CivSettings.getString(CivSettings.perkConfig, "system.free_perks").equalsIgnoreCase("true")) {
 					resident.giveAllFreePerks();
-					perkMessage = "You may use the following perks: ";
 				} else if (CivSettings.getString(CivSettings.perkConfig, "system.free_admin_perks").equalsIgnoreCase("true")) {
 					if (getPlayer().hasPermission(CivSettings.MINI_ADMIN) || getPlayer().hasPermission(CivSettings.FREE_PERKS)) {
 						resident.giveAllFreePerks();
-						perkMessage = "You have access to the Following Perks: ";
-						perkMessage += "Weather, Name Change, ";
 					}
 				}
-				if (getPlayer().hasPermission(CivSettings.ARCTIC_PERKS)) {
-					resident.giveAllArcticPerks();
-					perkMessage += "Arctic, ";
-				}
-				if (getPlayer().hasPermission(CivSettings.AZTEC_PERKS)) {
-					resident.giveAllAztecPerks();
-					perkMessage += "Aztec, ";
-				}
-				if (getPlayer().hasPermission(CivSettings.EGYPTIAN_PERKS)) {
-					resident.giveAllEgyptianPerks();
-					perkMessage += "Egyptian, ";
-				}
-				if (getPlayer().hasPermission(CivSettings.HELL_PERKS)) {
-					resident.giveAllHellPerks();
-					perkMessage += "Hell, ";
-				}
-				if (getPlayer().hasPermission(CivSettings.ROMAN_PERKS)) {
-					resident.giveAllRomanPerks();
-					perkMessage += "Roman, ";
-				}
-				perkMessage += "Apply them with /res perks";
-				CivMessage.send(resident, CivColor.LightGreen+perkMessage);
 			} catch (InvalidConfiguration e) {
 				e.printStackTrace();
 			}
+			
 			
 			/* Send Anti-Cheat challenge to player. */
 			if (!getPlayer().hasPermission("civ.ac_valid")) {
@@ -229,6 +222,12 @@ public class PlayerLoginAsyncTask implements Runnable {
 			
 			try {
 				Player p = CivGlobal.getPlayer(resident);
+				PlatinumManager.givePlatinumDaily(resident,
+						CivSettings.platinumRewards.get("loginDaily").name, 
+						CivSettings.platinumRewards.get("loginDaily").amount, 
+						"Welcome back to CivCraft! Here is %d for logging in today!" );			
+		
+				
 				ArrayList<SessionEntry> deathEvents = CivGlobal.getSessionDB().lookup("pvplogger:death:"+resident.getName());
 				if (deathEvents.size() != 0) {
 					CivMessage.send(resident, CivColor.Rose+CivColor.BOLD+"You were killed while offline because you logged out while in PvP!");
@@ -261,19 +260,11 @@ public class PlayerLoginAsyncTask implements Runnable {
 			if (EndConditionDiplomacy.canPeopleVote()) {
 				CivMessage.send(resident, CivColor.LightGreen+"The Council of Eight is built! Use /vote to vote for your favorite Civilization!");
 			}
-			
-			//XXX Added MOTD (10/9/2015)
-			Civilization civ = resident.getCiv();
-			if (civ != null) {
-				if (civ.MOTD() != null) {
-					CivMessage.send(resident, CivColor.LightPurple+"[Civ MOTD] "+CivColor.White+resident.getCiv().MOTD());
-				} else {
-					CivMessage.send(resident, CivColor.LightPurple+"[Civ MOTD] "+CivColor.White+"None set.");
-				}
-			}
 		} catch (CivException playerNotFound) {
 			// Player logged out while async task was running.
+			CivLog.warning("Couldn't complete PlayerLoginAsyncTask. Player may have been kicked while async task was running.");
 		} catch (InvalidNameException e1) {
+			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}

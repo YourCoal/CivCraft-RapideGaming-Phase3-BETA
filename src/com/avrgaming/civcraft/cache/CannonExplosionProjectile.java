@@ -1,3 +1,21 @@
+/*************************************************************************
+ * 
+ * AVRGAMING LLC
+ * __________________
+ * 
+ *  [2013] AVRGAMING LLC
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of AVRGAMING LLC and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to AVRGAMING LLC
+ * and its suppliers and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from AVRGAMING LLC.
+ */
 package com.avrgaming.civcraft.cache;
 
 import java.util.LinkedList;
@@ -38,15 +56,17 @@ public class CannonExplosionProjectile {
 	
 	public Vector getVectorBetween(Location to, Location from) {
 		Vector dir = new Vector();
+		
 		dir.setX(to.getX() - from.getX());
 		dir.setY(to.getY() - from.getY());
 		dir.setZ(to.getZ() - from.getZ());
+	
 		return dir;
 	}
 	
 	public boolean advance() {
 		Vector dir = getVectorBetween(target, loc).normalize();
-		double distance = loc.distanceSquared(target);
+		double distance = loc.distanceSquared(target);		
 		dir.multiply(speed);
 		
 		loc.add(dir);
@@ -62,10 +82,12 @@ public class CannonExplosionProjectile {
 			this.onHit();
 			return true;
 		}
+		
 		return false;
 	}
-	
+
 	public void onHit() {
+		
 		int spread = 3;
 		int[][] offset = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
 		for (int i = 0; i < 4; i++) {
@@ -75,14 +97,16 @@ public class CannonExplosionProjectile {
 			
 			Location location = new Location(loc.getWorld(), loc.getX(),loc.getY(), loc.getZ());
 			location = location.add(x, y, z);
+			
 			launchExplodeFirework(location);
 			//loc.getWorld().createExplosion(location, 1.0f, true);
 			setFireAt(location, spread);
 		}
+		
 		launchExplodeFirework(loc);
 		//loc.getWorld().createExplosion(loc, 1.0f, true);
 		damagePlayers(loc, splash);
-		setFireAt(loc, spread);
+		setFireAt(loc, spread);		
 	}
 	
 	private void damagePlayers(Location loc, int radius) {
@@ -102,6 +126,7 @@ public class CannonExplosionProjectile {
 				
 				while (player != null && damage != null) {
 					player.damage(damage);
+					
 					player = playerQueue.poll();
 					damage = damageQueue.poll();
 				}
@@ -109,6 +134,7 @@ public class CannonExplosionProjectile {
 		}
 		
 		class AsyncTask implements Runnable {
+
 			int radius;
 			
 			public AsyncTask(int radius) {
@@ -119,6 +145,8 @@ public class CannonExplosionProjectile {
 			public void run() {
 				Queue<Player> playerList = new LinkedList<Player>();
 				Queue<Double> damageList = new LinkedList<Double>();
+				
+				//PlayerLocationCache.lock.lock();
 				try {
 					for(PlayerLocationCache pc : PlayerLocationCache.getCache()) {
 						if (pc.getCoord().distanceSquared(new BlockCoord(target)) < radius) {
@@ -127,14 +155,20 @@ public class CannonExplosionProjectile {
 								playerList.add(player);
 								damageList.add(Double.valueOf(damage));
 							} catch (CivException e) {
+								//player offline
 							}
+							
 						}
 					}
+					
 					TaskMaster.syncTask(new SyncTask(playerList, damageList));
+					
 				} finally {
+				//	PlayerLocationCache.lock.unlock();
 				}
 			}
 		}
+		
 		TaskMaster.asyncTask(new AsyncTask(radius), 0);
 	}
 	
@@ -152,20 +186,21 @@ public class CannonExplosionProjectile {
 			}
 		}
 	}
-	
+
 	private void launchExplodeFirework(Location loc) {
-		FireworkEffect fe = FireworkEffect.builder().withColor(Color.ORANGE).withColor(Color.YELLOW).flicker(true).with(Type.BURST).build();
+		FireworkEffect fe = FireworkEffect.builder().withColor(Color.ORANGE).withColor(Color.YELLOW).flicker(true).with(Type.BURST).build();		
 		TaskMaster.syncTask(new FireWorkTask(fe, loc.getWorld(), loc, 3), 0);
 	}
+	
 	
 	public void setLocation(Location turretLoc) {
 		this.loc = turretLoc;
 	}
-	
+
 	public void setTargetLocation(Location location) {
 		this.target = location;
 	}
-	
+		
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
@@ -177,4 +212,5 @@ public class CannonExplosionProjectile {
 	public void setSplash(int splash) {
 		this.splash = splash;
 	}
+	
 }

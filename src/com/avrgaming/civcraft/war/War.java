@@ -37,10 +37,12 @@ import com.avrgaming.civcraft.main.CivMessage;
 import com.avrgaming.civcraft.object.Civilization;
 import com.avrgaming.civcraft.object.Relation;
 import com.avrgaming.civcraft.object.Relation.Status;
+import com.avrgaming.civcraft.object.Resident;
 import com.avrgaming.civcraft.object.Town;
 import com.avrgaming.civcraft.sessiondb.SessionEntry;
 import com.avrgaming.civcraft.siege.Cannon;
 import com.avrgaming.civcraft.util.CivColor;
+import com.avrgaming.global.perks.PlatinumManager;
 
 public class War {
 
@@ -69,6 +71,14 @@ public class War {
 		/* Save in the SessionDB just in case the server goes down. */
 		String key = "capturedCiv";
 		String value = defeated.getName()+":"+master.getId();
+		
+		for (Town town : master.getTowns()) {
+			for (Resident resident : town.getResidents()) {
+				PlatinumManager.givePlatinum(resident, 
+						CivSettings.platinumRewards.get("winningWar").amount, 
+						"Spoils to the victor! You've earned %d");	
+			}
+		}
 		
 		EndGameCondition.onCivilizationWarDefeat(defeated);
 		CivGlobal.getSessionDB().add(key, value, master.getId(), 0, 0);
@@ -143,9 +153,9 @@ public class War {
 			War.restoreAllTowns();
 			War.repositionPlayers("You've been teleported back to your town hall. WarTime ended and you were in enemy territory.");
 			War.processDefeated();
-			
-			CivGlobal.trommelsEnabled = true;
+		
 			CivGlobal.growthEnabled = true;
+			CivGlobal.trommelsEnabled = true;
 			CivGlobal.tradeEnabled = true;
 			
 			/* Delete any wartime file used to prevent reboots. */
@@ -184,8 +194,8 @@ public class War {
 				e1.printStackTrace();
 			}
 			
-			CivGlobal.trommelsEnabled = false;
 			CivGlobal.growthEnabled = false;
+			CivGlobal.trommelsEnabled = false;
 			CivGlobal.tradeEnabled = false;
 			
 			try {

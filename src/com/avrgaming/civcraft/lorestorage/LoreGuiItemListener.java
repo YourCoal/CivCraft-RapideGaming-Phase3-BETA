@@ -103,5 +103,7 @@ public class LoreGuiItemListener implements Listener {
 				}
 			}
 		}
+		
 	}
+	
 }

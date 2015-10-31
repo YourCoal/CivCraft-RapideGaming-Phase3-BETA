@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.avrgaming.civcraft.event;
 
 import java.text.SimpleDateFormat;
@@ -23,8 +5,12 @@ import java.util.Calendar;
 
 import com.avrgaming.civcraft.camp.CampHourlyTick;
 import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.exception.CivException;
 import com.avrgaming.civcraft.exception.InvalidConfiguration;
 import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.mobs.MobSpawner;
+import com.avrgaming.civcraft.mobs.timers.MobDespawnTimer;
 import com.avrgaming.civcraft.threading.TaskMaster;
 import com.avrgaming.civcraft.threading.tasks.CultureProcessAsyncTask;
 import com.avrgaming.civcraft.threading.timers.EffectEventTimer;
@@ -40,6 +26,18 @@ public class HourlyTickEvent implements EventInterface {
 		TaskMaster.syncTask(new SyncTradeTimer(), 0);
 		TaskMaster.syncTask(new CampHourlyTick(), 0);
 		CivLog.info("TimerEvent: Hourly Finished -----------------------------");
+		try {
+			CivMessage.mob("Despawning all mobs...");
+			MobSpawner.despawnAll();
+			MobDespawnTimer.despawn_yobo();
+			MobDespawnTimer.despawn_angryyobo();
+			MobDespawnTimer.despawn_behemoth();
+			MobDespawnTimer.despawn_ruffian();
+			MobDespawnTimer.despawn_savage();
+			CivMessage.mob("All mobs have been despawned!");
+		} catch (CivException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -54,5 +52,4 @@ public class HourlyTickEvent implements EventInterface {
 		sdf.setTimeZone(cal.getTimeZone());
 		return cal;
 	}
-
 }

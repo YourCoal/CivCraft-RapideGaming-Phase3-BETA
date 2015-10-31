@@ -1,3 +1,21 @@
+/*************************************************************************
+ * 
+ * AVRGAMING LLC
+ * __________________
+ * 
+ *  [2013] AVRGAMING LLC
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of AVRGAMING LLC and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to AVRGAMING LLC
+ * and its suppliers and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from AVRGAMING LLC.
+ */
 package com.avrgaming.civcraft.main;
 
 import org.bukkit.Material;
@@ -23,72 +41,11 @@ public class CivData {
 	public static final byte DATA_JUNGLE = 3;
 	
 	
-	public static final int WOOD_DOOR = 64;
-	public static final int IRON_DOOR = 71;
-	public static final int SPRUCE_DOOR = 193;
-	public static final int BIRCH_DOOR = 194;
-	public static final int JUNGLE_DOOR = 195;
-	public static final int ACACIA_DOOR = 196;
-	public static final int DARK_OAK_DOOR = 197;
-	
-	
-	
-	public static final int STONE = 1;
-	public static final byte GRANITE = 1;
-	public static final byte POLISHED_GRANITE = 2;
-	public static final byte DIORITE = 3;
-	public static final byte POLISHED_DIORITE = 4;
-	public static final byte ANDESITE = 5;
-	public static final byte POLISHED_ANDESITE = 6;
-	public static final int GRASS = 2;
 	public static final int DIRT = 3;
-	public static final int COBBLESTONE = 4;
-	
 	public static final int GOLD_ORE = 14;
 	public static final int IRON_ORE = 15;
-	public static final int DIAMOND_ORE = 56;
-	public static final int EMERALD_ORE = 129;
-	
 	public static final int IRON_INGOT = 265;
 	public static final int GOLD_INGOT = 266;
-	
-	public static final int WHEAT = 296;
-	public static final int BREAD = 297;
-	
-	public static final int PORK = 319;
-	public static final int COOKED_PORK = 320;
-	
-	public static final int FISHING_ROD = 346;
-	
-	public static final int FISH = 349;
-	public static final byte SALMON = 1;
-	public static final byte CLOWNFISH = 2;
-	public static final byte PUFFERFISH = 2;
-	
-	public static final int BEEF = 363;
-	public static final int COOKED_BEEF = 364;
-	public static final int CHICKEN = 365;
-	public static final int COOKED_CHICKEN = 366;
-	
-	public static final int GOLD_NUGGET = 371;
-	
-	public static final int CARROT = 391;
-	public static final int POTATO = 392;
-	public static final int COOKED_POTATO = 393;
-	
-	public static final int GOLDEN_CARROT = 396;
-	
-	public static final int RABBIT = 411;
-	public static final int COOKED_RABBIT = 412;
-	
-	public static final int MUTTON = 423;
-	public static final int COOKED_MUTTON = 424;
-	
-	
-	
-	
-	
-	
 	public static final int WATER = 9;
 	public static final int WATER_RUNNING = 8;
 	public static final int FENCE = 85;
@@ -96,13 +53,14 @@ public class CivData {
 	public static final int RAILROAD = 66;
 	public static final int LAVA = 11;
 	public static final int LAVA_RUNNING = 10;
+	public static final int COBBLESTONE = 4;
 	public static final int EMERALD = 388;
 	public static final int DIAMOND = 264;
 	public static final int GRAVEL = 13;
 	public static final int AIR = 0;
 	public static final int DISPENSER = 23;
 	public static final int REDSTONE_DUST = 331;
-	public static final int WHEAT_CROP = 59;
+	public static final int WHEAT = 59;
 	public static final int SUGARCANE = 83;
 	public static final int PUMPKIN_STEM = 104;
 	public static final int MELON_STEM = 105;
@@ -138,6 +96,8 @@ public class CivData {
 	public static final int COOKED_FISH = 350;
 	public static final int OBSIDIAN = 49;
 	public static final int FIRE = 51;
+	public static final int FISH_RAW = 349;
+	public static final int BREAD = 297;
 	public static final int GLOWSTONE = 89;
 	public static final int DYE = 351;
 	public static final int REDSTONE_TORCH_OFF = 75;
@@ -195,36 +155,34 @@ public class CivData {
 	public static final byte DATA_WOOL_GREEN = 0x5;
 	public static final Integer LADDER = 65;
 	public static final int COAL = ItemManager.getId(Material.COAL);
+	public static final int WOOD_DOOR = 64;
+	public static final int IRON_DOOR = 71;
 	public static final int NETHERRACK = 87;
 	public static final int BOW = 261;
 	public static final int ANVIL = 145;
 	public static final int IRON_BLOCK = 42;
 	public static final int COBWEB = 30;
+	public static final int STONE = 1;
 	public static final short MUNDANE_POTION_DATA = 8192;
 	public static final short MUNDANE_POTION_EXT_DATA = 64;
 	public static final short THICK_POTION_DATA = 32;
 	public static final short DATA_WOOL_RED = 14;
 	public static final int DATA_WOOL_WHITE = 0;
+	public static final int CLOWNFISH = 2;
+	public static final int PUFFERFISH = 3;
 	public static final int GOLDEN_APPLE = 322;
 	public static final int TNT = 46;
 	
 	public static String getDisplayName(int id) {
+		
+		if (id == GOLD_ORE)
+			return "Gold Ore";
 		if (id == IRON_ORE)
 			return "Iron Ore";
 		if (id == IRON_INGOT)
 			return "Iron";
-		if (id == GOLD_ORE)
-			return "Gold Ore";
 		if (id == GOLD_INGOT)
 			return "Gold";
-		if (id == DIAMOND_ORE)
-			return "Diamond Ore";
-		if (id == DIAMOND)
-			return "Diamond";
-		if (id == EMERALD_ORE)
-			return "Emerald Ore";
-		if (id == EMERALD)
-			return "Emerald";
 		
 		return "Unknown_Id";
 	}
@@ -326,7 +284,7 @@ public class CivData {
 	
 	public static boolean canGrow(BlockSnapshot bs) {
 		switch (bs.getTypeId()) {
-		case WHEAT_CROP:
+		case WHEAT:
 		case CARROTS:		
 		case POTATOES:		
 			if (bs.getData() == 0x7) {

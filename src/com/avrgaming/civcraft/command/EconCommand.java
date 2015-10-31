@@ -1,3 +1,21 @@
+/*************************************************************************
+ * 
+ * AVRGAMING LLC
+ * __________________
+ * 
+ *  [2013] AVRGAMING LLC
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of AVRGAMING LLC and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to AVRGAMING LLC
+ * and its suppliers and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from AVRGAMING LLC.
+ */
 package com.avrgaming.civcraft.command;
 
 import java.sql.SQLException;
@@ -20,16 +38,12 @@ public class EconCommand extends CommandBase {
 		displayName = "Econ";
 		
 		commands.put("add", "[player] [amount] - add money to this player");
-		commands.put("sub", "[player] [amount] - subtract money for this player");
 		commands.put("set", "[player] [amount] - set money for this player");
-		
-		commands.put("addall", "[player] [amount] - add money to all players");
-		commands.put("suball", "[player] [amount] - subtract money from all players");
-		commands.put("setall", "[player] [amount] - set money for all players");
+		commands.put("sub", "[player] [amount] - subtract money for this player");
 		
 		commands.put("addtown", "[town] [amount] - add money to this town");
-		commands.put("subtown", "[town] [amount] - subtract money for this town");
 		commands.put("settown", "[town] [amount] - set money for this town");
+		commands.put("subtown", "[town] [amount] - subtract money for this town");
 		
 		commands.put("addciv", "[civ] [amount] - add money to this civ");
 		commands.put("setciv", "[civ] [amount] - set money for this civ");
@@ -40,105 +54,7 @@ public class EconCommand extends CommandBase {
 		commands.put("setdebtciv", "[civ] [amount]");
 		
 		commands.put("clearalldebt", "Clears all debt for everyone in the server. Residents, Towns, Civs");
-	}
-	
-	public void add_cmd() throws CivException {
-		validEcon();
-		if (args.length < 3) {
-			throw new CivException("Provide a name and a amount");
-		}
 		
-		Resident resident = getNamedResident(1);
-		try {
-			Double amount = Double.valueOf(args[2]);
-			resident.getTreasury().deposit(amount);
-			CivMessage.sendSuccess(sender, "Added "+args[2]+" to "+args[1]);
-		} catch (NumberFormatException e) {
-			throw new CivException(args[2]+" is not a number.");
-		}
-	}
-	
-	public void sub_cmd() throws CivException {
-		validEcon();
-		if (args.length < 3) {
-			throw new CivException("Provide a name and a amount");
-		}
-		
-		Resident resident = getNamedResident(1);
-		try {
-			Double amount = Double.valueOf(args[2]);
-			resident.getTreasury().withdraw(amount);
-			CivMessage.sendSuccess(sender, "Subtracted "+args[2]+" to "+args[1]);
-		} catch (NumberFormatException e) {
-			throw new CivException(args[2]+" is not a number.");
-		}
-	}
-	
-	public void set_cmd() throws CivException {
-		validEcon();
-		if (args.length < 3) {
-			throw new CivException("Provide a name and a amount");
-		}
-		
-		Resident resident = getNamedResident(1);
-		try {
-			Double amount = Double.valueOf(args[2]);
-			resident.getTreasury().setBalance(amount);
-			CivMessage.sendSuccess(sender, "Set "+args[2]+" to "+args[1]);
-		} catch (NumberFormatException e) {
-			throw new CivException(args[2]+" is not a number.");
-		}
-	}
-	
-	public void addall_cmd() throws CivException {
-		validEcon();
-		if (args.length < 2) {
-			throw new CivException("Provide an amount.");
-		}
-		for (Resident res : CivGlobal.getResidents()) {
-			Double amount = Double.valueOf(args[1]);
-			res.getTreasury().deposit(amount);
-			CivMessage.sendSuccess(sender, "Added "+args[1]+" coins to every resident.");
-			try {
-				res.saveNow();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	public void suball_cmd() throws CivException {
-		validEcon();
-		if (args.length < 2) {
-			throw new CivException("Provide an amount.");
-		}
-		for (Resident res : CivGlobal.getResidents()) {
-			Double amount = Double.valueOf(args[1]);
-			res.getTreasury().withdraw(amount);
-			CivMessage.sendSuccess(sender, "Set "+args[1]+" coins to every resident.");
-			try {
-				res.saveNow();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	public void setall_cmd() throws CivException {
-		validEcon();
-		if (args.length < 2) {
-			throw new CivException("Provide an amount.");
-		}
-		for (Resident res : CivGlobal.getResidents()) {
-			Double amount = Double.valueOf(args[1]);
-			res.getTreasury().setBalance(amount);
-			CivMessage.sendSuccess(sender, "Set "+args[1]+" coins to every resident.");
-			try {
-				res.saveNow();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
 	}
 	
 	public void clearalldebt_cmd() throws CivException {
@@ -209,9 +125,79 @@ public class EconCommand extends CommandBase {
 	}
 	
 	private void validEcon() throws CivException {
-		if (!getPlayer().isOp() || !getPlayer().hasPermission(CivSettings.ECON)) {
-			throw new CivException("You must be OP to use this command.");
-		}		
+//		if (!getPlayer().isOp() || !getPlayer().hasPermission(CivSettings.ECON)) {
+//			throw new CivException("You must be OP to use this command.");
+//		}
+		if (sender instanceof Player) {
+			if (((Player)sender).hasPermission(CivSettings.ECON)) {
+				return;
+			}
+		}
+		
+		if (sender.isOp() == false) {
+			throw new CivException("Only admins can use this command.");			
+		}
+	}
+	
+	public void add_cmd() throws CivException {
+		validEcon();
+		
+		if (args.length < 3) {
+			throw new CivException("Provide a name and a amount");
+		}
+		
+		Resident resident = getNamedResident(1);
+
+		try {
+			
+			Double amount = Double.valueOf(args[2]);
+			resident.getTreasury().deposit(amount);
+			CivMessage.sendSuccess(sender, "Added "+args[2]+" to "+args[1]);
+			CivMessage.sendSuccess(resident, "An admin gave you "+args[2]+" coins!");
+			
+		} catch (NumberFormatException e) {
+			throw new CivException(args[2]+" is not a number.");
+		}
+	}
+	
+	public void set_cmd() throws CivException {
+		validEcon();
+		
+		if (args.length < 3) {
+			throw new CivException("Provide a name and a amount");
+		}
+		
+		Resident resident = getNamedResident(1);
+
+		try {
+			
+			Double amount = Double.valueOf(args[2]);
+			resident.getTreasury().setBalance(amount);
+			CivMessage.sendSuccess(sender, "Set "+args[2]+" to "+args[1]);
+			
+		} catch (NumberFormatException e) {
+			throw new CivException(args[2]+" is not a number.");
+		}
+	}
+	
+	public void sub_cmd() throws CivException {
+		validEcon();
+		
+		if (args.length < 3) {
+			throw new CivException("Provide a name and a amount");
+		}
+		
+		Resident resident = getNamedResident(1);
+
+		try {
+			
+			Double amount = Double.valueOf(args[2]);
+			resident.getTreasury().withdraw(amount);
+			CivMessage.sendSuccess(sender, "Subtracted "+args[2]+" to "+args[1]);
+			
+		} catch (NumberFormatException e) {
+			throw new CivException(args[2]+" is not a number.");
+		}
 	}
 	
 	public void addtown_cmd() throws CivException {
@@ -322,10 +308,13 @@ public class EconCommand extends CommandBase {
 		}
 		
 		Civilization civ = getNamedCiv(1);
+		
 		try {
+			
 			Double amount = Double.valueOf(args[2]);
 			civ.getTreasury().withdraw(amount);
 			CivMessage.sendSuccess(sender, "Added "+args[2]+" to "+args[1]);
+			
 		} catch (NumberFormatException e) {
 			throw new CivException(args[2]+" is not a number.");
 		}
@@ -335,12 +324,15 @@ public class EconCommand extends CommandBase {
 	public void doDefaultAction() throws CivException {
 		Player player = getPlayer();
 		Resident resident = CivGlobal.getResident(player);
+		
 		if (resident == null) {
 			return;
 		}
-		CivMessage.sendSuccess(player, resident.getTreasury().getBalance()+" Coins");
+		
+		CivMessage.sendSuccess(player, resident.getTreasury().getBalance()+" coins.");
+		
 	}
-	
+
 	@Override
 	public void showHelp() {
 		Player player;
@@ -356,8 +348,9 @@ public class EconCommand extends CommandBase {
 		}
 		showBasicHelp();
 	}
-	
+
 	@Override
 	public void permissionCheck() throws CivException {
+		
 	}
 }

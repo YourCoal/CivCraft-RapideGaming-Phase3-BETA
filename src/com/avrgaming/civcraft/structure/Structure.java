@@ -1,3 +1,21 @@
+/*************************************************************************
+ * 
+ * AVRGAMING LLC
+ * __________________
+ * 
+ *  [2013] AVRGAMING LLC
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of AVRGAMING LLC and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to AVRGAMING LLC
+ * and its suppliers and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from AVRGAMING LLC.
+ */
 package com.avrgaming.civcraft.structure;
 
 import java.io.IOException;
@@ -46,7 +64,7 @@ public class Structure extends Buildable {
 	public Structure(ResultSet rs) throws SQLException, CivException {
 		this.load(rs);
 	}
-	
+
 	@Override
 	public void onCheck() throws CivException {
 		/* Override in children */
@@ -62,13 +80,6 @@ public class Structure extends Buildable {
 		Structure struct;
 		
 		switch (id) {
-		case "s_shipyard":
-			if (rs == null) {
-				struct = (Structure) new Shipyard(center, id, town);
-			} else {
-				struct = (Structure) new Shipyard(rs);
-			}
-			break;
 		case "s_bank":
 			if (rs == null) {
 				struct = (Structure) new Bank(center, id, town);
@@ -76,13 +87,7 @@ public class Structure extends Buildable {
 				struct = (Structure) new Bank(rs);
 			}
 			break;
-		case "s_grocer":
-			if (rs == null) {
-				struct = (Structure) new Grocer(center, id, town);
-			} else {
-				struct = (Structure) new Grocer(rs);
-			}
-			break;
+		
 		case "s_trommel":
 			if (rs == null) {
 				struct = (Structure) new Trommel(center, id, town);
@@ -90,6 +95,7 @@ public class Structure extends Buildable {
 				struct = (Structure) new Trommel(rs);
 			}
 			break;	
+			
 		case "s_store":
 			if (rs == null) {
 				struct = (Structure) new Store(center, id, town);
@@ -97,6 +103,15 @@ public class Structure extends Buildable {
 				struct = (Structure) new Store(rs);
 			}
 			break;
+		
+		case "s_grocer":
+			if (rs == null) {
+				struct = (Structure) new Grocer(center, id, town);
+			} else {
+				struct = (Structure) new Grocer(rs);
+			}
+			break;
+			
 		case "s_library":
 			if (rs == null) {
 				struct = (Structure) new Library(center, id, town);
@@ -104,6 +119,7 @@ public class Structure extends Buildable {
 				struct = (Structure) new Library(rs);
 			}
 			break;	
+		
 		case "s_blacksmith":
 			if (rs == null) {
 				struct = (Structure) new Blacksmith(center, id, town);
@@ -111,6 +127,7 @@ public class Structure extends Buildable {
 				struct = (Structure) new Blacksmith(rs);
 			}
 			break;	
+			
 		case "s_granary":
 			if (rs == null) {
 				struct = (Structure) new Granary(center, id, town);
@@ -118,6 +135,7 @@ public class Structure extends Buildable {
 				struct = (Structure) new Granary(rs);
 			}
 			break;
+			
 		case "ti_cottage":
 			if (rs == null) {
 				struct = (Structure) new Cottage(center, id, town);
@@ -200,6 +218,13 @@ public class Structure extends Buildable {
 				struct = (ScoutTower) new ScoutTower(center, id, town);
 			} else {
 				struct = (ScoutTower) new ScoutTower(rs);
+			}
+			break;
+		case "s_shipyard":
+			if (rs == null) {
+				struct = (Structure) new WaterStructure(center, id, town);
+			} else {
+				struct = (Structure) new WaterStructure(rs);
 			}
 			break;
 		case "ti_wall":

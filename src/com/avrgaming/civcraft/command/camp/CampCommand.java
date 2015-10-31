@@ -1,7 +1,23 @@
+/*************************************************************************
+ * 
+ * AVRGAMING LLC
+ * __________________
+ * 
+ *  [2013] AVRGAMING LLC
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of AVRGAMING LLC and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to AVRGAMING LLC
+ * and its suppliers and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from AVRGAMING LLC.
+ */
 package com.avrgaming.civcraft.command.camp;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 
@@ -32,111 +48,8 @@ public class CampCommand extends CommandBase {
 		commands.put("leave", "Leaves the current camp you're in.");
 		commands.put("setowner", "[name] - Sets the camp's owner to the player name you give. They must be a current member.");
 		commands.put("info", "Shows information about your current camp.");
-		commands.put("disband", "Disbands this camp forever.");
-		commands.put("upgrade", "Manage camp upgrades you can buy.");
-		commands.put("rebuild", "Rebuild your camp. (Same as using /build refreshnearest when in a town)");
-		commands.put("location", "Shows the location of your camp.");
-		//XXX Added Camp Treasury (10/16/2015)
-		commands.put("deposit", "[amount] - deposits this amount into the camp's treasury.");
-		commands.put("withdraw", "[amount] - withdraws this amount from the camp's treasury.");
-	}
-	
-	
-	//XXX Added Camp Treasury (10/16/2015)
-	public void deposit_cmd() throws CivException, SQLException {
-		if (args.length < 2) {
-			throw new CivException("Enter the amount you want to deposit.");
-		}
-		
-		Resident resident = getResident();
-		Camp camp = getCurrentCamp();
-		Double amount = getNamedDouble(1);
-		
-		try {
-			if (amount < 1) {
-				throw new CivException("Cannot deposit less than 1");
-			}
-			amount = Math.floor(amount);
-			camp.depositFromResident(amount, resident);
-
-		} catch (NumberFormatException e) {
-			throw new CivException(args[1]+" is not a valid number.");
-		}
-		
-		CivMessage.sendSuccess(sender, "Deposited "+args[1]+" coins.");
-	}
-	
-	public void withdraw_cmd() throws CivException {
-		if (args.length < 2) {
-			throw new CivException("Enter the amount you want to withdraw.");
-		}
-		
-		Camp camp = getCurrentCamp();
-		Resident resident = getResident();
-		
-		if (resident.getCamp().getOwner() != resident) {
-			throw new CivException("Only the owner of the camp ("+resident.getCamp().getOwnerName()+") is allowed to do this.");
-		}
-		
-		try {
-			Double amount = Double.valueOf(args[1]);
-			if (amount < 1) {
-				throw new CivException("Cannot withdraw less than 1");
-			}
-			amount = Math.floor(amount);
-			
-			if(!camp.getTreasury().payTo(resident.getTreasury(), Double.valueOf(args[1]))) {
-				throw new CivException("The town does not have that much.");
-			}
-		} catch (NumberFormatException e) {
-			throw new CivException(args[1]+" is not a valid number.");
-		}
-		
-		CivMessage.sendSuccess(sender, "Withdrew "+args[1]+" coins.");
-	}
-	
-	
-	//XXX Added Location (10/9/2015)
-	public void location_cmd() throws CivException {
-		Resident resident = getResident();
-		if (!resident.hasCamp()) {
-			throw new CivException("You are not currently in a camp.");
-		}
-		
-		Camp camp = resident.getCamp();
-		if (camp != null) {
-			CivMessage.send(sender, "");
-			CivMessage.send(sender, "");
-			CivMessage.send(sender, CivColor.Green+CivColor.BOLD+"Camp Location: "+CivColor.LightGreen+camp.getCorner());
-			CivMessage.send(sender, "");
-			CivMessage.send(sender, "");
-		}
-	}
-	
-	//XXX Added Repair (10/9/2015)
-	public void rebuild_cmd() throws CivException {
-		Resident resident = getResident();
-		if (!resident.hasCamp()) {
-			throw new CivException("You are not currently in a camp.");
-		}
-		
-		Camp camp = resident.getCamp();
-		if (camp.getOwner() != resident) {
-			throw new CivException("Only the owner of the camp can rebuild it.");
-		}
-		
-		if (camp.isDestroyed())
-		{
-			throw new CivException("Your camp is destroyed and cannot be rebuilt.");
-		}
-		try {
-			camp.repairFromTemplate();
-		} catch (IOException e) {
-		} catch (CivException e) {
-			e.printStackTrace();
-		}
-		camp.reprocessCommandSigns();
-		CivMessage.send(sender, "Camp Repaired! (Warning: Any items in chests were ejected)");
+		commands.put("disband", "Disbands this camp.");
+		commands.put("upgrade", "Manage camp upgrades.");
 	}
 	
 	public void upgrade_cmd() {
@@ -144,8 +57,6 @@ public class CampCommand extends CommandBase {
 		cmd.onCommand(sender, null, "camp", this.stripArgs(args, 1));
 	}
 	
-	//XXX Edited 10/16/2015
-	//XXX Added Camp Treasury (10/16/2015)
 	public void info_cmd() throws CivException {
 		Camp camp = this.getCurrentCamp();
 		SimpleDateFormat sdf = new SimpleDateFormat("M/dd h:mm:ss a z");
@@ -153,6 +64,7 @@ public class CampCommand extends CommandBase {
 		CivMessage.sendHeading(sender, "Camp "+camp.getName()+" Info");
 		HashMap<String,String> info = new HashMap<String, String>();
 		info.put("Owner", camp.getOwnerName());
+		info.put("Members", ""+camp.getMembers().size());
 		info.put("Next Raid", ""+sdf.format(camp.getNextRaidDate()));
 		CivMessage.send(sender, this.makeInfoString(info, CivColor.Green, CivColor.LightGreen));
 		
@@ -160,24 +72,9 @@ public class CampCommand extends CommandBase {
 		info.put("Hours of Fire Left", ""+camp.getFirepoints());
 		info.put("Longhouse Level", ""+camp.getLonghouseLevel()+""+camp.getLonghouseCountString());
 		CivMessage.send(sender, this.makeInfoString(info, CivColor.Green, CivColor.LightGreen));
-		
+
 		info.clear();
-		info.put("Treasury", ""+camp.getTreasury().getBalance()+" coins");
-		CivMessage.send(sender, this.makeInfoString(info, CivColor.Green, CivColor.LightGreen));
-		
-		info.clear();
-		if (camp.getTreasury().inDebt()) {
-			info.put("", CivColor.Yellow+camp.getDaysLeftWarning());
-			info.put(CivColor.Yellow+"In Debt", ""+camp.getTreasury().getDebt()+" coins.");
-			CivMessage.send(sender, this.makeInfoString(info, "", ""));
-		}
-		
-		info.clear();
-		info.put("Member Count", ""+camp.getMembers().size());
-		CivMessage.send(sender, this.makeInfoString(info, CivColor.Green, CivColor.LightGreen));
-		
-		info.clear();
-		info.put("Member Names", camp.getMembersString());
+		info.put("Members", camp.getMembersString());
 		CivMessage.send(sender, this.makeInfoString(info, CivColor.Green, CivColor.LightGreen));
 	}
 	

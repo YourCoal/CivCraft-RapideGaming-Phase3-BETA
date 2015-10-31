@@ -10,7 +10,6 @@ import com.avrgaming.civcraft.exception.CivException;
 import com.avrgaming.civcraft.loreenhancements.LoreEnhancement;
 import com.avrgaming.civcraft.loreenhancements.LoreEnhancementAttack;
 import com.avrgaming.civcraft.loreenhancements.LoreEnhancementDefense;
-import com.avrgaming.civcraft.loreenhancements.LoreEnhancementPunchout;
 import com.avrgaming.civcraft.loreenhancements.LoreEnhancementSoulBound;
 import com.avrgaming.civcraft.lorestorage.LoreCraftableMaterial;
 import com.avrgaming.civcraft.lorestorage.LoreMaterial;
@@ -62,8 +61,7 @@ public class AdminItemCommand extends CommandBase {
 		enhancements.put("soulbound", new LoreEnhancementSoulBound());
 		enhancements.put("attack", new LoreEnhancementAttack());
 		enhancements.put("defence", new LoreEnhancementDefense());
-		enhancements.put("punchout", new LoreEnhancementPunchout());
-		
+
 		if (inHand == null || ItemManager.getId(inHand) == CivData.AIR) {
 			throw new CivException("You must have an item in your hand to enhance it.");
 		}

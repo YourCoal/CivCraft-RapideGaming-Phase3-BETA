@@ -85,8 +85,18 @@ public class AdminMobCommand extends CommandBase {
 		String name = getNamedString(1, "Enter a mob name");
 		
 		switch (name.toLowerCase()) {
+		case "behemoth":
+			CommonCustomMob.disabledMobs.add(CustomMobType.BEHEMOTH.toString());
+			break;
 		case "yobo":
 			CommonCustomMob.disabledMobs.add(CustomMobType.YOBO.toString());
+			break;
+		case "savagae":
+			CommonCustomMob.disabledMobs.add(CustomMobType.SAVAGE.toString());
+
+			break;
+		case "ruffian":
+			CommonCustomMob.disabledMobs.add(CustomMobType.RUFFIAN.toString());
 			break;
 		default:
 			throw new CivException("Must be behemoth, yobo, savage, or ruffian");
@@ -100,10 +110,19 @@ public class AdminMobCommand extends CommandBase {
 		String name = getNamedString(1, "Enter a mob name");
 		
 		switch (name.toLowerCase()) {
+		case "behemoth":
+			CommonCustomMob.disabledMobs.remove(CustomMobType.BEHEMOTH.toString());
+			break;
 		case "yobo":
 			CommonCustomMob.disabledMobs.remove(CustomMobType.YOBO.toString());
 			break;
 		case "savagae":
+			CommonCustomMob.disabledMobs.remove(CustomMobType.SAVAGE.toString());
+
+			break;
+		case "ruffian":
+			CommonCustomMob.disabledMobs.remove(CustomMobType.RUFFIAN.toString());
+			break;
 		default:
 			throw new CivException("Must be behemoth, yobo, savage, or ruffian");
 		}
@@ -123,4 +142,5 @@ public class AdminMobCommand extends CommandBase {
 	@Override
 	public void permissionCheck() throws CivException {
 	}
+
 }

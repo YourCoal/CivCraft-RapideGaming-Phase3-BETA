@@ -174,10 +174,8 @@ public abstract class LoreMaterial {
 			LoreCraftableMaterial craftMat = (LoreCraftableMaterial)material;
 			//craftMat.getConfigMaterial().category
 			attrs.addLore(CivColor.ITALIC+craftMat.getConfigMaterial().category);
-		if (craftMat.getConfigMaterial().fancy) {
-			attrs.setFancy();
-			}
 		}
+		
 		material.applyAttributes(attrs);
 		return attrs.getStack();
 	}

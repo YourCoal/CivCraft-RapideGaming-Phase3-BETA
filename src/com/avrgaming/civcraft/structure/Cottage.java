@@ -1,3 +1,21 @@
+/*************************************************************************
+ * 
+ * AVRGAMING LLC
+ * __________________
+ * 
+ *  [2013] AVRGAMING LLC
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of AVRGAMING LLC and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to AVRGAMING LLC
+ * and its suppliers and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from AVRGAMING LLC.
+ */
 package com.avrgaming.civcraft.structure;
 
 import java.sql.ResultSet;
@@ -148,14 +166,14 @@ public class Cottage extends Structure {
 		if (this.getTown().getBuffManager().hasBuff(Buff.REDUCE_CONSUME)) {
 			cottage_consume_mod *= this.getTown().getBuffManager().getEffectiveDouble(Buff.REDUCE_CONSUME);
 		}
-		if (this.getTown().getBuffManager().hasBuff("buff:pyramid_cottage_consume")) {
-			cottage_consume_mod *= this.getTown().getBuffManager().getEffectiveDouble("buff:pyramid_cottage_consume");
+		if (this.getTown().getBuffManager().hasBuff("buff_pyramid_cottage_consume")) {
+			cottage_consume_mod *= this.getTown().getBuffManager().getEffectiveDouble("buff_pyramid_cottage_consume");
 		}
 		
 		if (this.getTown().getBuffManager().hasBuff(Buff.FISHING)) {
 			// XXX change this to config var after testing...
 			int breadPerFish = this.getTown().getBuffManager().getEffectiveInt(Buff.FISHING);
-			getConsumeComponent().addEquivExchange(CivData.BREAD, CivData.FISH, breadPerFish);
+			getConsumeComponent().addEquivExchange(CivData.BREAD, CivData.FISH_RAW, breadPerFish);
 		}
 		
 		getConsumeComponent().setConsumeRate(cottage_consume_mod);
@@ -196,8 +214,8 @@ public class Cottage extends Structure {
 		}
 				
 		int total_coins = (int)Math.round(lvl.coins*this.getTown().getCottageRate());
-		if (this.getTown().getBuffManager().hasBuff("buff:pyramid_cottage_bonus")) {
-			total_coins *= this.getTown().getBuffManager().getEffectiveDouble("buff:pyramid_cottage_bonus");
+		if (this.getTown().getBuffManager().hasBuff("buff_pyramid_cottage_bonus")) {
+			total_coins *= this.getTown().getBuffManager().getEffectiveDouble("buff_pyramid_cottage_bonus");
 		}
 		
 		if (this.getCiv().hasTechnology("tech_taxation")) {

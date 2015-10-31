@@ -5,8 +5,8 @@ import net.minecraft.server.v1_8_R3.Entity;
 import net.minecraft.server.v1_8_R3.EntityCreature;
 import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
 
-import com.avrgaming.mob.ICustomMob;
-import com.avrgaming.mob.MobBaseWither;
+import com.moblib.mob.ICustomMob;
+import com.moblib.mob.MobBaseWither;
 
 public class Grendal extends CommonCustomMob implements ICustomMob {
 

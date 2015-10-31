@@ -157,11 +157,18 @@ public class CivMessage {
 	public static void sendSuccess(CommandSender sender, String message) {
 		send(sender, CivColor.LightGreen+message);
 	}
-
+	
 	public static void global(String string) {
 		CivLog.info("[Global] "+string);
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			player.sendMessage(CivColor.LightBlue+"[Global] "+CivColor.White+string);
+		}
+	}
+	
+	public static void mob(String string) {
+		CivLog.info("[Mob] "+string);
+		for (Player player : Bukkit.getOnlinePlayers()) {
+			player.sendMessage(CivColor.Yellow+"[Mob] "+CivColor.White+string);
 		}
 	}
 	
@@ -428,20 +435,18 @@ public class CivMessage {
 			player.sendMessage(str);
 		}
 	}
-
+	
 	public static void sendCamp(Camp camp, String message) {
 		for (Resident resident : camp.getMembers()) {
 			try {
 				Player player = CivGlobal.getPlayer(resident);
 				player.sendMessage(CivColor.Yellow+"[Camp] "+CivColor.Yellow+message);		
 				CivLog.info("[Camp:"+camp.getName()+"] "+message);
-
 			} catch (CivException e) {
-				//player not online.
 			}
 		}
 	}
-
+	
 	public static void sendTownHeading(Town town, String string) {
 		CivLog.info("[Town:"+town.getName()+"] "+string);
 		for (Resident resident : town.getResidents()) {
@@ -459,7 +464,7 @@ public class CivMessage {
 			}
 		}
 	}
-	
+
 	public static void sendSuccess(Resident resident, String message) {
 		try {
 			Player player = CivGlobal.getPlayer(resident);

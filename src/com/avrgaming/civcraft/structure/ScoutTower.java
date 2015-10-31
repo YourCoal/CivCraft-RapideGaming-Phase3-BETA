@@ -1,3 +1,21 @@
+/*************************************************************************
+ * 
+ * AVRGAMING LLC
+ * __________________
+ * 
+ *  [2013] AVRGAMING LLC
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of AVRGAMING LLC and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to AVRGAMING LLC
+ * and its suppliers and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from AVRGAMING LLC.
+ */
 package com.avrgaming.civcraft.structure;
 
 import java.sql.ResultSet;
@@ -21,17 +39,17 @@ import com.avrgaming.civcraft.object.Town;
 import com.avrgaming.civcraft.util.CivColor;
 
 public class ScoutTower extends Structure {
-	
+
 	double range;
 	private PlayerProximityComponent proximityComponent;
 	
-	private int reportSeconds = 30;
+	private int reportSeconds = 60;
 	private int count = 0;
 	
 	public ScoutTower(ResultSet rs) throws SQLException, CivException {
 		super(rs);
 	}
-	
+
 	protected ScoutTower(Location center, String id, Town town)
 			throws CivException {
 		super(center, id, town);
@@ -41,14 +59,19 @@ public class ScoutTower extends Structure {
 	@Override
 	public void loadSettings() {
 		super.loadSettings();
+
 		try {
 			range = CivSettings.getDouble(CivSettings.warConfig, "scout_tower.range");
 			proximityComponent = new PlayerProximityComponent();
 			proximityComponent.createComponent(this);
+			
 			proximityComponent.setBuildable(this);
 			proximityComponent.setCenter(this.getCenterLocation());
 			proximityComponent.setRadius(range);
+			
 			reportSeconds = (int)CivSettings.getDouble(CivSettings.warConfig, "scout_tower.update");
+			
+			
 		} catch (InvalidConfiguration e) {
 			e.printStackTrace();
 		}
@@ -102,11 +125,12 @@ public class ScoutTower extends Structure {
 			}
 			
 			if (player.isOp()) {
-				scoutDebug("Player is OP");
+				scoutDebug("player is op");
 				continue;
 			}
 			
 			Location center = this.getCenterLocation().getLocation();
+			
 			/* Do not re-announce players announced by other scout towers */
 			if (alreadyAnnounced.contains(this.getCiv().getName()+":"+player.getName())) {
 				scoutDebug("already announced:"+pc.getName());
@@ -131,7 +155,7 @@ public class ScoutTower extends Structure {
 				case ALLY:
 //				case VASSAL:
 //				case MASTER:
-					scoutDebug("Ally or Peace");
+					scoutDebug("ally or peace");
 					continue;
 				default:
 					break;
@@ -144,8 +168,9 @@ public class ScoutTower extends Structure {
 				relationColor = CivColor.Yellow;
 			}
 			
+			
 			if (center.getWorld() != this.getCorner().getLocation().getWorld()) {
-				scoutDebug("Wrong World");
+				scoutDebug("wrong world");
 				continue;
 			}
 			
@@ -156,28 +181,25 @@ public class ScoutTower extends Structure {
 							" at ("+player.getLocation().getBlockX()+","+player.getLocation().getBlockY()+","+player.getLocation().getBlockZ()+") in "+
 							this.getTown().getName());
 					alreadyAnnounced.add(this.getCiv().getName()+":"+player.getName());
+				
 			}
 		}
+		
 		if (empty) {
 			scoutDebug("Proximity cache was empty");
 		}
 	}
 	
+	@Override
+	public String getMarkerIconName() {
+		return "tower";
+	}
+
 	public int getReportSeconds() {
 		return reportSeconds;
 	}
-	
+
 	public void setReportSeconds(int reportSeconds) {
 		this.reportSeconds = reportSeconds;
-	}
-	
-	@Override
-	public String getDynmapDescription() {
-		return null;
-	}
-	
-	@Override
-	public String getMarkerIconName() {
-		return null;
 	}
 }

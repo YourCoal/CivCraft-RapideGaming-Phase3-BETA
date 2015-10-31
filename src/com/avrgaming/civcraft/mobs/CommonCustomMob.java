@@ -41,8 +41,8 @@ import com.avrgaming.civcraft.object.TownChunk;
 import com.avrgaming.civcraft.util.ChunkCoord;
 import com.avrgaming.civcraft.util.ItemManager;
 import com.avrgaming.civcraft.war.War;
-import com.avrgaming.mob.ICustomMob;
-import com.avrgaming.mob.ISpawnable;
+import com.moblib.mob.ICustomMob;
+import com.moblib.mob.ISpawnable;
 
 public abstract class CommonCustomMob implements ICustomMob {
 
@@ -114,7 +114,7 @@ public abstract class CommonCustomMob implements ICustomMob {
 	protected void initLevelAndType() {
 		this.setType(MobSpawner.CustomMobType.valueOf(getData("type")));
 		this.setLevel(MobSpawner.CustomMobLevel.valueOf(getData("level")));
-				
+		
 		/* common drops. */
 		this.addVanillaDrop(ItemManager.getId(Material.BONE), (short)0, 0.1);
 		this.addVanillaDrop(ItemManager.getId(Material.SUGAR), (short)0, 0.1);
@@ -144,7 +144,6 @@ public abstract class CommonCustomMob implements ICustomMob {
 			for (Object obj : list) {
 				System.out.println("Obj:"+obj.toString());
 			}
-
 		} catch (NoSuchFieldException e) {
 			e.printStackTrace();
 		} catch (SecurityException e) {
@@ -154,10 +153,8 @@ public abstract class CommonCustomMob implements ICustomMob {
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
-
+	
 	@Override
 	public String getBaseEntity() {
 		return null;
@@ -174,16 +171,16 @@ public abstract class CommonCustomMob implements ICustomMob {
 	}
 	
 	@SuppressWarnings("static-access")
+	@Override
 	public void onDeath(EntityCreature arg0) {
 		dropItems();
 		this.customMobs.remove(this.entity.getUniqueID());
-		//this.entity.getBukkitEntity().remove();
 	}
 	
 	public void onRangedAttack(Entity arg1) {
 	}
 	
-	public void checkForStuck() {
+	private void checkForStuck() {
 		if (this.targetName != null && this.lastLocation != null) {
 			Location loc = getLocation(entity);
 			if (loc.distance(this.lastLocation) < 0.5) {
@@ -226,16 +223,14 @@ public abstract class CommonCustomMob implements ICustomMob {
 	}
 	
 	private int tickCount = 0;
-	@SuppressWarnings("static-access")
 	@Override
 	public void onTick() {
 		if (entity == null) {
-			this.customMobs.remove(this.entity.getUniqueID());
 			return;
 		}
 		
 		tickCount++;
-		if (tickCount < 50) {
+		if (tickCount > 90) {
 			checkForStuck();
 			checkForTownBorders();
 			checkForisWarTime();
@@ -297,7 +292,6 @@ public abstract class CommonCustomMob implements ICustomMob {
 		} catch (NullPointerException e) {
 			value = 32.0D;
 		}
-		
 		return value;
 	}
 	
@@ -316,25 +310,23 @@ public abstract class CommonCustomMob implements ICustomMob {
 		entity.getAttributeInstance(GenericAttributes.c).setValue(resist);
 	}
 	
-
-	
 	protected void printAttributes() {
 		try {
 			if (entity == null) {
 				CivLog.info("Entity was null!");
 			}
-			CivLog.info("Speed:"+entity.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).getValue());
+			CivLog.info("Speed:"+entity.getAttributeInstance(GenericAttributes.c).getValue());
 			CivLog.info("MaxHealth:"+entity.getAttributeInstance(GenericAttributes.maxHealth).getValue()+" Health:"+entity.getHealth());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
+	
 	@Override
 	public String getSaveString() {
 		return this.getData("type")+":"+this.getData("level");
 	}
-
+	
 	@Override
 	public void loadSaveString(String str) {
 		String[] split = str.split(":");
@@ -343,11 +335,10 @@ public abstract class CommonCustomMob implements ICustomMob {
 		if (this.entity == null) {
 			return;
 		}
-		
 		this.onCreate();
 		this.onCreateAttributes();
 	}
-
+	
 	@Override
 	public abstract String getClassName();
 	
@@ -356,7 +347,6 @@ public abstract class CommonCustomMob implements ICustomMob {
 		if (mobs == null) {
 			mobs = new LinkedList<TypeLevel>();
 		}
-		
 		mobs.add(new TypeLevel(type, level));
 		biomes.put(biome.name(), mobs);
 	}
@@ -366,10 +356,9 @@ public abstract class CommonCustomMob implements ICustomMob {
 		if (mobs == null) {
 			mobs = new LinkedList<TypeLevel>();
 		}
-		
 		return mobs;
 	}
-
+	
 	public void onTarget(EntityTargetEvent event) {
 		if (event.isCancelled()) {
 			return;
@@ -378,7 +367,6 @@ public abstract class CommonCustomMob implements ICustomMob {
 		if ((event.getReason().equals(TargetReason.CLOSEST_PLAYER) ||
 				event.getReason().equals(TargetReason.OWNER_ATTACKED_TARGET)) &&
 				(event.getTarget() instanceof Player)) {
-			
 			double followRange = this.getFollowRange();
 			double distance = event.getEntity().getLocation().distance(event.getTarget().getLocation());
 			if ((distance-0.5) <= followRange) {
@@ -390,14 +378,13 @@ public abstract class CommonCustomMob implements ICustomMob {
 			this.lastLocation = null;
 		}
 	}
-
+	
 	public void addVanillaDrop(int type, short data, double chance) {
 		MobDrop drop = new MobDrop();
 		drop.isVanillaDrop = true;
 		drop.vanillaType = type;
 		drop.vanillaData = data;
 		drop.chance = chance;
-		
 		this.drops.add(drop);
 	}
 	
@@ -407,8 +394,7 @@ public abstract class CommonCustomMob implements ICustomMob {
 		drop.craftMatId = craftMatId;
 		drop.chance = chance;
 		//drop.maxAmount = max;
-	//	drop.minAmount = min;
-		
+		//drop.minAmount = min;
 		this.drops.add(drop);
 	}
 	
@@ -423,7 +409,6 @@ public abstract class CommonCustomMob implements ICustomMob {
 				dropped.add(d);
 			}
 		}
-		
 		return dropped;
 	}
 	
@@ -463,7 +448,8 @@ public abstract class CommonCustomMob implements ICustomMob {
 		this.coinMin = min;
 		this.coinMax = max;
 	}
-
+	
+	@SuppressWarnings("static-access")
 	public CustomMobLevel getLevel() {
 		if (level == null) {
 			/* re-init mob if it was unloaded or something. */
@@ -471,6 +457,7 @@ public abstract class CommonCustomMob implements ICustomMob {
 			//onCreate();
 			//onCreateAttributes();
 			CivLog.warning("This mob was unloaded?!");
+			this.customMobs.remove(this.entity.getUniqueID());
 		}
 		return level;
 	}

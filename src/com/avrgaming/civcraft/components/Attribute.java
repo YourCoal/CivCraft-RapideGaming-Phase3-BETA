@@ -4,7 +4,6 @@ public class Attribute {
 	public enum TypeKeys {
 		COINS,
 		HAPPINESS,
-		SAFETY,
 		HAMMERS,
 		GROWTH,
 		BEAKERS

@@ -9,6 +9,7 @@ import java.util.concurrent.ConcurrentMap;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
 import net.minecraft.server.v1_8_R3.NBTBase;
 import net.minecraft.server.v1_8_R3.NBTTagCompound;
 import net.minecraft.server.v1_8_R3.NBTTagInt;
@@ -23,6 +24,7 @@ import com.avrgaming.civcraft.loreenhancements.LoreEnhancement;
 import com.avrgaming.civcraft.main.CivData;
 import com.avrgaming.civcraft.util.ItemManager;
 import com.avrgaming.civcraft.util.NBTStaticHelper;
+
 import com.google.common.base.Function;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
@@ -61,10 +63,8 @@ public class AttributeUtil {
     public static class AttributeType {
         private static ConcurrentMap<String, AttributeType> LOOKUP = Maps.newConcurrentMap();
         public static final AttributeType GENERIC_MAX_HEALTH = new AttributeType("generic.maxHealth").register();
-        public static final AttributeType GENERIC_FOLLOW_RANGE = new AttributeType("generic.followRange").register();
         public static final AttributeType GENERIC_ATTACK_DAMAGE = new AttributeType("generic.attackDamage").register();
         public static final AttributeType GENERIC_MOVEMENT_SPEED = new AttributeType("generic.movementSpeed").register();
-        public static final AttributeType GENERIC_KNOCKBACK_RESISTANCE = new AttributeType("generic.knockbackResistance").register();
         
         private final String minecraftId;
         
@@ -184,7 +184,7 @@ public class AttributeUtil {
         
         // Makes it easier to construct an attribute
         public static class Builder {
-            private double amount;
+			private double amount;
             private Operation operation = Operation.ADD_NUMBER;
             private AttributeType type;
             private String name;
@@ -691,46 +691,6 @@ public class AttributeUtil {
 		}
 		
 		nmsStack.getTag().setInt("HideFlags", flags);
-	}
-	
-	public void setFancy() {
-		if (nmsStack == null) {
-			return;
-		}
-		
-    	if (nmsStack.getTag() == null) {
-    		nmsStack.setTag(new NBTTagCompound());
-    	}
-    	
-    	NBTTagCompound enchCompound = nmsStack.getTag().getCompound("ench");
-    	if (enchCompound == null) {
-    		enchCompound = new NBTTagCompound();
-    	}
-    	
-    	enchCompound.setShort("id", (short) 62); //Enchant id 62 = Lure
-    	enchCompound.setShort("lvl", (short)1);
-    	nmsStack.getTag().set("ench", enchCompound);
-    	this.setHideFlag(1);
-	}
-	
-	public boolean isFancy() {
-		if (nmsStack == null) {
-			return false;
-		}
-		
-		if (nmsStack.getTag() == null) {
-			return false;
-		}
-		
-    	NBTTagCompound enchCompound = nmsStack.getTag().getCompound("ench");
-    	if (enchCompound == null) {
-    		return false;
-    	}
-    	
-    	if (enchCompound.hasKey("id") && enchCompound.getShort("id") == (short)62) {
-    		return true;
-    	}
-		return false;
 	}
 	
 	public int getColor() {

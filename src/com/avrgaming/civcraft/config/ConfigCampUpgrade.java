@@ -77,11 +77,6 @@ public class ConfigCampUpgrade {
 		}
 		
 		switch(this.action.toLowerCase()) {
-		//XXX Added Cooking Pot (10/13/2015)
-		case "enable_cooking_pot":
-			camp.setCookingPotEnabled(true);
-			CivMessage.sendCamp(camp, "Our Cooking Pot has been enabled!");
-			break;
 		case "enable_sifter":
 			camp.setSifterEnabled(true);
 			CivMessage.sendCamp(camp, "Our Sifter has been enabled!");

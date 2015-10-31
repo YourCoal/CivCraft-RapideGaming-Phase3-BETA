@@ -13,19 +13,17 @@ import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
 
 import com.avrgaming.civcraft.exception.CivException;
 import com.avrgaming.civcraft.mobs.components.MobComponentDefense;
-import com.avrgaming.mob.ICustomMob;
-import com.avrgaming.mob.MobBaseZombieGiant;
+import com.moblib.mob.ICustomMob;
+import com.moblib.mob.MobBaseZombieGiant;
 
 public class YoboBoss extends CommonCustomMob implements ICustomMob {
+	
 	private String entityType = MobBaseZombieGiant.class.getName();
-
 	
 	public void onCreate() {
 	    initLevelAndType();
-		
 	    MobBaseZombieGiant zombie = (MobBaseZombieGiant)this.entity;
 	    zombie.width *= 6.0f;
-	  
 	    getGoalSelector().a(7, new PathfinderGoalRandomStroll((EntityCreature) entity, 100.0F));
 	    getGoalSelector().a(8, new PathfinderGoalLookAtPlayer((EntityInsentient) entity, EntityHuman.class, 8.0F));
 	    getGoalSelector().a(2, new PathfinderGoalMeleeAttack((EntityCreature) entity, EntityHuman.class, 100.0F, false));
@@ -33,7 +31,6 @@ public class YoboBoss extends CommonCustomMob implements ICustomMob {
 	    getTargetSelector().a(2, new PathfinderGoalNearestAttackableTarget<EntityHuman>((EntityCreature) entity, EntityHuman.class, true));
 	    MobComponentDefense defense = new MobComponentDefense(9.0);
 	    this.addComponent(defense);
-	    
 	    this.setName(this.getLevel().getName()+" "+this.getType().getName());
 	}
 	
@@ -63,14 +60,9 @@ public class YoboBoss extends CommonCustomMob implements ICustomMob {
 			}
 		}		
 	}
-
+	
 	@Override
 	public String getClassName() {
 		return YoboBoss.class.getName();
-	}
-
-	@Override
-	public void onTick() {
-		super.onTick();		
 	}
 }

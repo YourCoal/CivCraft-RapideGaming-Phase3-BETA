@@ -62,7 +62,12 @@ public class MissionLogger {
 		hashmap.put("town_id", town.getId());
 		hashmap.put("target_id", target.getId());
 		hashmap.put("time", new Date());
-		hashmap.put("playerName", resident.getUUIDString());
+		if (CivGlobal.useUUID) {
+			hashmap.put("playerName", resident.getUUIDString());
+		} else {
+			hashmap.put("playerName", resident.getName());		
+		}
+		
 		hashmap.put("missionName", missionName);
 		hashmap.put("result", result);
 		
@@ -109,4 +114,5 @@ public class MissionLogger {
 			SQL.close(rs, ps, context);
 		}
 	}
+	
 }

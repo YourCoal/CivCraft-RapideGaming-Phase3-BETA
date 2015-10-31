@@ -104,6 +104,7 @@ public abstract class CivAsyncTask implements Runnable {
 	}
 		
 	public Inventory getChestInventory(String worldname, int x, int y, int z, boolean retry) throws InterruptedException, CivTaskAbortException {
+
 		GetChestRequest request = new GetChestRequest(SyncGetChestInventory.lock);
 		request.worldName = worldname;
 		request.block_x = x;

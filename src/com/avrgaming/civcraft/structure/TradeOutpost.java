@@ -1,3 +1,21 @@
+/*************************************************************************
+ * 
+ * AVRGAMING LLC
+ * __________________
+ * 
+ *  [2013] AVRGAMING LLC
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of AVRGAMING LLC and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to AVRGAMING LLC
+ * and its suppliers and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from AVRGAMING LLC.
+ */
 package com.avrgaming.civcraft.structure;
 
 import java.sql.ResultSet;
@@ -36,31 +54,33 @@ public class TradeOutpost extends Structure {
 	protected TradeGood good = null;
 	protected BonusGoodie goodie = null;
 	
+	
 	protected TradeOutpost(Location center, String id, Town town)
 			throws CivException {
 		super(center, id, town);
 		loadSettings();
 	}
-	
+
 	public TradeOutpost(ResultSet rs) throws SQLException, CivException {
 		super(rs);
 		loadSettings();
 	}
-	
+
 	public void loadSettings() {
 	}
 	
 	public void checkForTradeGood(BlockCoord coord) {
+		
 	}
-	
+
 	public BlockCoord getTradeGoodCoord() {
 		return tradeGoodCoord;
 	}
-	
+
 	public void setTradeGoodCoord(BlockCoord tradeGoodCoord) {
 		this.tradeGoodCoord = tradeGoodCoord;
 	}
-	
+
 	@Override
 	public String getDynmapDescription() {
 		return null;
@@ -158,9 +178,9 @@ public class TradeOutpost extends Structure {
 		this.addStructureBlock(sb.getCoord(), false);
 		
 		/* Place the itemframe. */
-		b = centerLoc.getBlock().getRelative(0,1,0);
+		b = centerLoc.getBlock().getRelative(1,1,0);
 		this.addStructureBlock(new BlockCoord(b), false);
-		Block b2 = b.getRelative(1, 0, 0);
+		Block b2 = b.getRelative(0, 0, 0);
 		Entity entity = CivGlobal.getEntityAtLocation(b2.getLocation());
 		this.addStructureBlock(new BlockCoord(b2), false);
 		
@@ -282,36 +302,37 @@ public class TradeOutpost extends Structure {
 	
 	public void fancyDestroyStructureBlocks() {
 		for (BlockCoord coord : this.structureBlocks.keySet()) {
+			
 			if (CivGlobal.getStructureChest(coord) != null) {
 				continue;
 			}
+			
 			if (CivGlobal.getStructureSign(coord) != null) {
 				continue;
 			}
+			
 			if (ItemManager.getId(coord.getBlock()) == CivData.BEDROCK || ItemManager.getId(coord.getBlock()) == CivData.AIR) {
 				//Be a bit more careful not to destroy any of the item frames..
 				continue;
 			}
 			
 			Random rand = new Random();
-			//5% chance to turn into gravel
-			if (rand.nextInt(100) <= 5) {
+			
+			// Each block has a 10% chance to turn into gravel
+			if (rand.nextInt(100) <= 10) {
 				ItemManager.setTypeId(coord.getBlock(), CivData.GRAVEL);
 				continue;
 			}
-			//5% chance to turn into c-stone
-			if (rand.nextInt(100) <= 5) {
-				ItemManager.setTypeId(coord.getBlock(), CivData.COBBLESTONE);
-				continue;
-			}
-			//15% chance of starting a fire
-			if (rand.nextInt(100) <= 15) {
+			
+			// Each block has a 50% chance of starting a fire
+			if (rand.nextInt(100) <= 50) {
 				ItemManager.setTypeId(coord.getBlock(), CivData.FIRE);
 				continue;
 			}
-			//1% chance of launching an explosion effect
+			
+			// Each block has a 1% chance of launching an explosion effect
 			if (rand.nextInt(100) <= 1) {
-				FireworkEffect effect = FireworkEffect.builder().with(org.bukkit.FireworkEffect.Type.BURST).withColor(Color.ORANGE).withColor(Color.RED).withColor(Color.GRAY).withTrail().withFlicker().build();
+				FireworkEffect effect = FireworkEffect.builder().with(org.bukkit.FireworkEffect.Type.BURST).withColor(Color.ORANGE).withColor(Color.RED).withTrail().withFlicker().build();
 				FireworkEffectPlayer fePlayer = new FireworkEffectPlayer();
 				for (int i = 0; i < 3; i++) {
 					try {
@@ -323,4 +344,5 @@ public class TradeOutpost extends Structure {
 			}
 		}
 	}
+	
 }

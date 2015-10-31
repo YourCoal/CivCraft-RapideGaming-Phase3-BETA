@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.avrgaming.civcraft.command.admin;
 
 import java.sql.SQLException;
@@ -26,6 +8,8 @@ import org.bukkit.inventory.ItemStack;
 
 import com.avrgaming.civcraft.camp.Camp;
 import com.avrgaming.civcraft.command.CommandBase;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.config.ConfigPlatinumReward;
 import com.avrgaming.civcraft.exception.AlreadyRegisteredException;
 import com.avrgaming.civcraft.exception.CivException;
 import com.avrgaming.civcraft.exception.InvalidNameException;
@@ -33,6 +17,7 @@ import com.avrgaming.civcraft.main.CivGlobal;
 import com.avrgaming.civcraft.main.CivMessage;
 import com.avrgaming.civcraft.object.Resident;
 import com.avrgaming.civcraft.object.Town;
+import com.avrgaming.global.perks.PlatinumManager;
 
 public class AdminResCommand extends CommandBase {
 
@@ -48,14 +33,24 @@ public class AdminResCommand extends CommandBase {
 		commands.put("giveplat", "[player] [amount] - Gives this player the specified amount of platinum.");
 		commands.put("givereward", "[player] [rewardID] - Gives player this achievement with its plat rewards.");
 		commands.put("rename", "[old_name] [new_name] - Rename this resident. Useful if players change their name.");
+		commands.put("removeres", "Remove the resident from MySQL Database.");
+	}
+	
+	public void removeres_cmd() throws CivException {
+		Resident resident = getNamedResident(1);
+		try {
+			resident.delete();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new CivException(e.getMessage());
+		}
+		CivGlobal.removeResident(resident);
+		CivMessage.sendSuccess(sender, "Resident Removed");
 	}
 	
 	public void rename_cmd() throws CivException {
 		Resident resident = getNamedResident(1);
 		String newName = getNamedString(2, "Enter a new name");
-
-		
-		
 		Resident newResident = CivGlobal.getResident(newName);
 		if (newResident != null) {
 			throw new CivException("Already another resident with the name:"+newResident.getName()+" cannot rename "+resident.getName());
@@ -92,6 +87,40 @@ public class AdminResCommand extends CommandBase {
 		resident.save();
 		
 		CivMessage.send(sender, "Resident renamed.");
+	}
+	
+	public void givereward_cmd() throws CivException {
+		Resident resident = getNamedResident(1);
+		String rewardID = getNamedString(2, "Enter a Reward ID");
+		
+		for (ConfigPlatinumReward reward : CivSettings.platinumRewards.values()) {
+			if (reward.name.equals(rewardID)) {
+				switch (reward.occurs) {
+				case "once":
+					PlatinumManager.givePlatinumOnce(resident, reward.name, reward.amount, "Sweet! An admin gave you a platinum reward of %d");
+					break;
+				case "daily":
+					PlatinumManager.givePlatinumDaily(resident, reward.name, reward.amount, "Sweet! An admin gave you a platinum reward of %d");
+					break;
+				default:
+					PlatinumManager.givePlatinum(resident, reward.amount, "Sweet! An admin gave you a platinum reward of %d");
+					break;
+				}
+				CivMessage.sendSuccess(sender, "Reward Given.");
+				return;
+			}
+		}
+		
+		CivMessage.sendError(sender, "Couldn't find reward named:"+rewardID);
+	}
+	
+	
+	public void giveplat_cmd() throws CivException {
+		Resident resident = getNamedResident(1);
+		Integer plat = getNamedInteger(2);
+		
+		PlatinumManager.givePlatinum(resident, plat, "Sweet! You were given %d by an admin!");
+		CivMessage.sendSuccess(sender, "Gave "+resident.getName()+" "+plat+" platinum");
 	}
 	
 	public void enchant_cmd() throws CivException {

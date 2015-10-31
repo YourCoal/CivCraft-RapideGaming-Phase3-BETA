@@ -342,14 +342,18 @@ public class RandomEvent extends SQLObject {
 	}
 
 	public static double getUnhappiness(Town town) {
+	//	CivGlobal.getSessionDB().add("randomevent:unhappiness", unhappiness+":"+duration, this.getParentTown().getCiv().getId(), this.getParentTown().getId(), 0);	
+
 		ArrayList<SessionEntry> entries = CivGlobal.getSessionDB().lookup(Unhappiness.getKey(town));
 		double unhappy = 0.0;
+		
 		ArrayList<SessionEntry> removed = new ArrayList<SessionEntry>();
 		for (SessionEntry entry : entries) {
 			String[] split = entry.value.split(":");
 			int unhappiness = Integer.valueOf(split[0]);
 			int duration = Integer.valueOf(split[1]);
 
+			
 			Date start = new Date(entry.time);
 			Date now = new Date();
 			
@@ -358,6 +362,7 @@ public class RandomEvent extends SQLObject {
 				removed.add(entry);
 				continue;
 			}
+			
 			unhappy += unhappiness;
 		}
 		
@@ -365,18 +370,21 @@ public class RandomEvent extends SQLObject {
 		for (SessionEntry entry : removed) {
 			CivGlobal.getSessionDB().delete(entry.request_id, entry.key);
 		}
+		
 		return unhappy;
 	}
 
 	public static double getHappiness(Town town) {
 		ArrayList<SessionEntry> entries = CivGlobal.getSessionDB().lookup(Happiness.getKey(town));
 		double happy = 0.0;
+		
 		ArrayList<SessionEntry> removed = new ArrayList<SessionEntry>();
 		for (SessionEntry entry : entries) {
 			String[] split = entry.value.split(":");
 			int happiness = Integer.valueOf(split[0]);
 			int duration = Integer.valueOf(split[1]);
 
+			
 			Date start = new Date(entry.time);
 			Date now = new Date();
 			
@@ -385,6 +393,7 @@ public class RandomEvent extends SQLObject {
 				removed.add(entry);
 				continue;
 			}
+			
 			happy += happiness;
 		}
 		
@@ -392,61 +401,8 @@ public class RandomEvent extends SQLObject {
 		for (SessionEntry entry : removed) {
 			CivGlobal.getSessionDB().delete(entry.request_id, entry.key);
 		}
+		
 		return happy;
-	}
-	
-	public static double getUnsafety(Town town) {
-		ArrayList<SessionEntry> entries = CivGlobal.getSessionDB().lookup(Unhappiness.getKey(town));
-		double unsafe = 0.0;
-		ArrayList<SessionEntry> removed = new ArrayList<SessionEntry>();
-		for (SessionEntry entry : entries) {
-			String[] split = entry.value.split(":");
-			int unsafety = Integer.valueOf(split[0]);
-			int duration = Integer.valueOf(split[1]);
-
-			Date start = new Date(entry.time);
-			Date now = new Date();
-			
-			if (now.getTime() > (start.getTime() + (duration*RandomEventSweeper.MILLISECONDS_PER_HOUR))) {
-				/* Entry is expired, delete it and continue. */
-				removed.add(entry);
-				continue;
-			}
-			unsafe += unsafety;
-		}
-		
-		/* Remove any expired entries */
-		for (SessionEntry entry : removed) {
-			CivGlobal.getSessionDB().delete(entry.request_id, entry.key);
-		}
-		return unsafe;
-	}
-
-	public static double getSafety(Town town) {
-		ArrayList<SessionEntry> entries = CivGlobal.getSessionDB().lookup(Happiness.getKey(town));
-		double safe = 0.0;
-		ArrayList<SessionEntry> removed = new ArrayList<SessionEntry>();
-		for (SessionEntry entry : entries) {
-			String[] split = entry.value.split(":");
-			int safety = Integer.valueOf(split[0]);
-			int duration = Integer.valueOf(split[1]);
-
-			Date start = new Date(entry.time);
-			Date now = new Date();
-			
-			if (now.getTime() > (start.getTime() + (duration*RandomEventSweeper.MILLISECONDS_PER_HOUR))) {
-				/* Entry is expired, delete it and continue. */
-				removed.add(entry);
-				continue;
-			}
-			safe += safety;
-		}
-		
-		/* Remove any expired entries */
-		for (SessionEntry entry : removed) {
-			CivGlobal.getSessionDB().delete(entry.request_id, entry.key);
-		}
-		return safe;
 	}
 
 	public static double getHammerRate(Town town) {
@@ -468,6 +424,7 @@ public class RandomEvent extends SQLObject {
 				removed.add(entry);
 				continue;
 			}
+			
 			hammerrate *= rate;
 		}
 		
@@ -475,9 +432,10 @@ public class RandomEvent extends SQLObject {
 		for (SessionEntry entry : removed) {
 			CivGlobal.getSessionDB().delete(entry.request_id, entry.key);
 		}
+		
 		return hammerrate;	
 	}
-	
+
 	public List<String> getMessages() {
 		return savedMessages;
 	}
@@ -505,6 +463,7 @@ public class RandomEvent extends SQLObject {
 		for (RandomEventComponent comp : this.actions.values()) {
 			comp.process();
 		}
+		
 		this.save();
 	}
 }

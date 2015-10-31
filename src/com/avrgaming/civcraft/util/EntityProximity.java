@@ -44,6 +44,8 @@ public class EntityProximity {
 				entities.add(e.getBukkitEntity());
 			}
 		}
+		
 		return entities;
 	}
+	
 }

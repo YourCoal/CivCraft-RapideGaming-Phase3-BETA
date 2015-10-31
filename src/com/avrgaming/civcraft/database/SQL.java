@@ -58,6 +58,8 @@ import com.avrgaming.civcraft.threading.TaskMaster;
 import com.avrgaming.civcraft.util.BiomeCache;
 import com.avrgaming.global.perks.PerkManager;
 import com.avrgaming.global.perks.PerkManagerSimple;
+import com.avrgaming.global.perks.PlatinumManager;
+import com.avrgaming.global.reports.ReportManager;
 import com.avrgaming.global.scores.ScoreManager;
 import com.jolbox.bonecp.Statistics;
 
@@ -129,10 +131,24 @@ public class SQL {
 		CivLog.info("\t Connected to GLOBAL database");
 		
 		CivGlobal.perkManager = new PerkManager();
+		if (PlatinumManager.isLegacyEnabled()) {
+			CivLog.heading("Initializing Perk/Web Database");	
+			PerkManager.hostname = CivSettings.getStringBase("perk_database.hostname");
+			PerkManager.port = CivSettings.getStringBase("perk_database.port");
+			PerkManager.db_name = CivSettings.getStringBase("perk_database.database");
+			PerkManager.username = CivSettings.getStringBase("perk_database.username");
+			PerkManager.password = CivSettings.getStringBase("perk_database.password");
+			PerkManager.dsn = "jdbc:mysql://" + PerkManager.hostname + ":" + PerkManager.port + "/" + PerkManager.db_name;
+			CivLog.info("\t Using "+PerkManager.dsn+" as PERK database.");
+			perkDatabase = new ConnectionPool(PerkManager.dsn, PerkManager.username, PerkManager.password, SQL.global_min_conns, SQL.global_max_conns, SQL.global_parts);
+			CivLog.info("\t Connected to PERK database.");
+		} else if (PlatinumManager.isEnabled()) {
 			CivGlobal.perkManager = new PerkManagerSimple();
 			CivGlobal.perkManager.init();
 			CivLog.info("Enabled SIMPLE PerkManager");
-			
+		}
+
+		
 		CivLog.heading("Initializing SQL Finished");
 	}
 
@@ -162,6 +178,7 @@ public class SQL {
 		RandomEvent.init();
 					
 		CivLog.heading("Building Global Tables!!");
+		ReportManager.init();
 		ScoreManager.init();
 		
 		CivLog.info("----- Done Building Tables ----");
@@ -544,6 +561,23 @@ public class SQL {
 			SQL.close(null, ps, context);
 		}
 	}
+	
+	//XXX Added for resetting market
+	public static void delete(String tablename) throws SQLException {
+		Connection context = null;
+		PreparedStatement ps = null;
+		
+		try {
+			String sql = "DELETE FROM " + SQL.tb_prefix + tablename + " WHERE `name` = ?";
+			context = SQL.getGameConnection();		
+			ps = context.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			ps.execute();
+			ps.close();
+		} finally {
+			SQL.close(null, ps, context);
+		}
+	}
+	
 	public static void makeCol(String colname, String type, String TABLE_NAME) throws SQLException {
 		if (!SQL.hasColumn(TABLE_NAME, colname)) {
 			CivLog.info("\tCouldn't find "+colname+" column for "+TABLE_NAME);
@@ -603,5 +637,4 @@ public class SQL {
 			}
 		}
 	}
-	
 }

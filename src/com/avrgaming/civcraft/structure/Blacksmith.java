@@ -1,3 +1,21 @@
+/*************************************************************************
+ * 
+ * AVRGAMING LLC
+ * __________________
+ * 
+ *  [2013] AVRGAMING LLC
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of AVRGAMING LLC and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to AVRGAMING LLC
+ * and its suppliers and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from AVRGAMING LLC.
+ */
 package com.avrgaming.civcraft.structure;
 
 import gpl.AttributeUtil;
@@ -40,24 +58,24 @@ import com.avrgaming.civcraft.util.TimeTools;
 
 public class Blacksmith extends Structure {
 	
-	private static final long COOLDOWN = 10;
+	private static final long COOLDOWN = 5;
 	//private static final double BASE_CHANCE = 0.8;
-	public static int SMELT_TIME_SECONDS = 3600*2;
-	public static double YIELD_RATE = 1.2;
+	public static int SMELT_TIME_SECONDS = 3600*3;
+	public static double YIELD_RATE = 1.25;
 	
 	private Date lastUse = new Date();
 	
 	private NonMemberFeeComponent nonMemberFeeComponent;
 	
 	public static HashMap<BlockCoord, Blacksmith> blacksmithAnvils = new HashMap<BlockCoord, Blacksmith>();
-	
+
 	protected Blacksmith(Location center, String id, Town town)
 			throws CivException {
 		super(center, id, town);
 		nonMemberFeeComponent = new NonMemberFeeComponent(this);
 		nonMemberFeeComponent.onSave();
 	}
-	
+
 	public Blacksmith(ResultSet rs) throws SQLException, CivException {
 		super(rs);
 		nonMemberFeeComponent = new NonMemberFeeComponent(this);
@@ -67,7 +85,7 @@ public class Blacksmith extends Structure {
 	public double getNonResidentFee() {
 		return nonMemberFeeComponent.getFeeRate();
 	}
-	
+
 	public void setNonResidentFee(double nonResidentFee) {
 		this.nonMemberFeeComponent.setFeeRate(nonResidentFee);
 	}
@@ -77,8 +95,19 @@ public class Blacksmith extends Structure {
 	}
 	
 	@Override
+	public String getDynmapDescription() {
+		return null;
+	}
+	
+	@Override
+	public String getMarkerIconName() {
+		return "factory";
+	}
+	
+	@Override
 	public void processSignAction(Player player, StructureSign sign, PlayerInteractEvent event) throws CivException {
 		int special_id = Integer.valueOf(sign.getAction());
+		
 		Date now = new Date();
 		
 		long diff = now.getTime() - lastUse.getTime();
@@ -89,6 +118,7 @@ public class Blacksmith extends Structure {
 		}
 		
 		lastUse = now;
+		
 		switch (special_id) {
 		case 0:
 			this.deposit_forge(player);
@@ -104,11 +134,13 @@ public class Blacksmith extends Structure {
 			this.withdrawSmelt(player);
 			break;
 		}
+		
 	}
 	
 	@Override
 	public void updateSignText() {
 		double cost = CivSettings.getDoubleStructure("blacksmith.forge_cost");
+		
 		for (StructureSign sign : getSigns()) {
 			int special_id = Integer.valueOf(sign.getAction());
 
@@ -127,7 +159,8 @@ public class Blacksmith extends Structure {
 			case 3:
 				sign.setText("Withdraw\nOre\nResidents Only");
 				break;
-			}	
+			}
+				
 			sign.update();
 		}
 	}
@@ -135,13 +168,16 @@ public class Blacksmith extends Structure {
 	public String getkey(Player player, Structure struct, String tag) {
 		return player.getUniqueId().toString()+"_"+struct.getConfigId()+"_"+struct.getCorner().toString()+"_"+tag;
 	}
-	
+
 	public void saveItem(ItemStack item, String key) {
+		
 		String value = ""+ItemManager.getId(item)+":";
+		
 		for (Enchantment e : item.getEnchantments().keySet()) {
 			value += ItemManager.getId(e)+","+item.getEnchantmentLevel(e);
 			value += ":";
 		}
+		
 		sessionAdd(key, value);
 	}
 	
@@ -152,21 +188,18 @@ public class Blacksmith extends Structure {
 	
 	public static boolean canSmelt(int blockid) {
 		switch (blockid) {
-		case CivData.EMERALD_ORE:
-		case CivData.DIAMOND_ORE:
 		case CivData.GOLD_ORE:
 		case CivData.IRON_ORE:
 			return true;
 		}
 		return false;
 	}
-	
+		
+	/*
+	 * Converts the ore id's into the ingot id's
+	 */
 	public static int convertType(int blockid) {
 		switch(blockid) {
-		case CivData.EMERALD_ORE:
-			return CivData.EMERALD;
-		case CivData.DIAMOND_ORE:
-			return CivData.DIAMOND;
 		case CivData.GOLD_ORE:
 			return CivData.GOLD_INGOT;
 		case CivData.IRON_ORE:
@@ -181,10 +214,13 @@ public class Blacksmith extends Structure {
 	 * item's id, data, and damage.
 	 */
 	public void deposit_forge(Player player) throws CivException {
+		
 		ItemStack item = player.getItemInHand();
+		
 		ArrayList<SessionEntry> sessions = null;
 		String key = this.getkey(player, this, "forge");
 		sessions = CivGlobal.getSessionDB().lookup(key);
+		
 		if (sessions == null || sessions.size() == 0) {
 			/* Validate that the item being added is a catalyst */
 			LoreCraftableMaterial craftMat = LoreCraftableMaterial.getCraftMaterial(item);
@@ -200,6 +236,7 @@ public class Blacksmith extends Structure {
 				player.setItemInHand(new ItemStack(Material.AIR));
 			//	player.getInventory().remove(item);
 			}
+			
 			CivMessage.sendSuccess(player, "Deposited Catalyst.");
 		} else {
 			/* Catalyst already in blacksmith, withdraw it. */
@@ -226,6 +263,7 @@ public class Blacksmith extends Structure {
 	 * give the player the newly created pick.
 	 */
 	public void perform_forge(Player player, double cost) throws CivException {
+
 		/* Try and retrieve any catalyst in the forge. */
 		String key = getkey(player, this, "forge");
 		ArrayList<SessionEntry> sessions = CivGlobal.getSessionDB().lookup(key);
@@ -234,6 +272,8 @@ public class Blacksmith extends Structure {
 		ItemStack stack = player.getItemInHand();
 		AttributeUtil attrs = new AttributeUtil(stack);
 		Catalyst catalyst;
+		
+		
 		String freeStr = attrs.getCivCraftProperty("freeCatalyst");
 		if (freeStr == null) {
 			/* No free enhancements on item, search for catalyst. */
@@ -281,15 +321,20 @@ public class Blacksmith extends Structure {
 				}
 			}
 			attrs.setLore(lore);
+			
 			if (level != 0) {
 				attrs.setCivCraftProperty("freeCatalyst", level+":"+mid);
 			} else {
 				attrs.removeCivCraftProperty("freeCatalyst");
 			}
+			
 			player.setItemInHand(attrs.getStack());
+			
 		}
+		
 		stack = player.getItemInHand();
 		ItemStack enhancedItem = catalyst.getEnchantedItem(stack);
+		
 		if (enhancedItem == null) {
 			throw new CivException("You cannot use this catalyst on this item.");
 		}
@@ -349,6 +394,7 @@ public class Blacksmith extends Structure {
 		player.updateInventory();
 	}
 	
+	
 	/* 
 	 * Queries the sessionDB for entries for this player
 	 * When entries are found, their inserted time is compared to
@@ -362,6 +408,7 @@ public class Blacksmith extends Structure {
 	 */
 	@SuppressWarnings("deprecation")
 	public void withdrawSmelt(Player player) throws CivException {
+		
 		String key = getkey(player, this, "smelt");
 		ArrayList<SessionEntry> entries = null;
 		
@@ -429,22 +476,14 @@ public class Blacksmith extends Structure {
 					CivGlobal.getSessionDB().update(se.request_id, se.key, newValue);
 				}
 			}
+			
 			// only withdraw one item at a time.
 			break;
-		}			
+		}	
+				
 		player.updateInventory();
 	}
 	
 	public void onPostBuild(BlockCoord absCoord, SimpleBlock commandBlock) {
-	}
-	
-	@Override
-	public String getDynmapDescription() {
-		return null;
-	}
-	
-	@Override
-	public String getMarkerIconName() {
-		return null;
 	}
 }

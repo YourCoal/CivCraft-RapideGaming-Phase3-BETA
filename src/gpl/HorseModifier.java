@@ -98,7 +98,7 @@ public class HorseModifier {
     	}
     	
     	EntityInsentient nmsEntity = (EntityInsentient) ((CraftLivingEntity) entity).getHandle();
-    	AttributeInstance attributes = nmsEntity.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED);
+    	AttributeInstance attributes = nmsEntity.getAttributeInstance(GenericAttributes.c);
     	AttributeModifier modifier = new AttributeModifier(movementSpeedUID, "civcraft horse movement speed", amount, 0);
     	attributes.b(modifier); //remove the modifier, adding a duplicate causes errors
     	attributes.a(modifier); //add the modifier
@@ -112,7 +112,7 @@ public class HorseModifier {
     	}
     	
     	EntityInsentient nmsEntity = (EntityInsentient) ((CraftLivingEntity) entity).getHandle();
-    	AttributeInstance attributes = nmsEntity.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED);
+    	AttributeInstance attributes = nmsEntity.getAttributeInstance(GenericAttributes.c);
     	
     	if (attributes.a(movementSpeedUID) == null) {
     		return false;

@@ -26,24 +26,22 @@ import com.avrgaming.civcraft.config.ConfigBuff;
 public class Buff {
 	
 	/* Quick redefines for id/name from yml. */
-	public static final String CONSTRUCTION = "buff:construction";
-	public static final String FINE_ART = "buff:fine_art";
-	public static final String FISHING = "buff:fishing";
-	public static final String GROWTH_RATE = "buff:year_of_plenty";
-	public static final String REDUCE_CONSUME = "buff:preservative";
-	public static final String SCIENCE_RATE = "buff:innovation";
-	public static final String SHIPPING = "buff:shipping";
-	public static final String TRADE = "buff:monopoly";
-	public static final String EXTRA_CULTURE = "buff:doesnotexist";
-	public static final String COTTAGE_RATE = "buff:doesnotexist";
-	public static final String ADVANCED_TOOLING = "buff:advanced_tooling";
-	public static final String BARRICADE = "buff:barricade";
-	public static final String BARTER = "buff:barter";
-	public static final String EXTRACTION = "buff:extraction";
-	public static final String FIRE_BOMB = "buff:fire_bomb";
-	public static final String MEDICINE = "buff:medicine";
-	public static final String RUSH = "buff:rush";
-	
+	public static final String FINE_ART = "buff_fine_art";
+	public static final String CONSTRUCTION = "buff_construction";
+	public static final String GROWTH_RATE = "buff_year_of_plenty";
+	public static final String TRADE = "buff_monopoly";
+	public static final String REDUCE_CONSUME = "buff_preservative";	
+	public static final String SCIENCE_RATE = "buff_innovation";
+	public static final String EXTRA_CULTURE = "buff_doesnotexist";
+	public static final String COTTAGE_RATE = "buff_doesnotexist";
+	public static final String ADVANCED_TOOLING = "buff_advanced_tooling";
+	public static final String BARRICADE = "buff_barricade";
+	public static final String BARTER = "buff_barter";
+	public static final String EXTRACTION = "buff_extraction";
+	public static final String FIRE_BOMB = "buff_fire_bomb";
+	public static final String FISHING = "buff_fishing";
+	public static final String MEDICINE = "buff_medicine";
+	public static final String RUSH = "buff_rush";
 	public static final String DEBUFF_PYRAMID_LEECH = "debuff_pyramid_leech";
 	
 	private ConfigBuff config;

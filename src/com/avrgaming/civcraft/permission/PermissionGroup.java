@@ -116,11 +116,10 @@ public class PermissionGroup extends SQLObject {
 					return;
 				}
 			}
-			
 			civ.addGroup(this);
 		}
 	}
-
+	
 	@Override
 	public void save() {	
 		SQLUpdate.add(this);
@@ -129,12 +128,10 @@ public class PermissionGroup extends SQLObject {
 	@Override
 	public void saveNow() throws SQLException {
 		HashMap<String, Object> hashmap = new HashMap<String, Object>();
-		
 		hashmap.put("name", this.getName());
 		hashmap.put("members", this.getMembersSaveString());
 		hashmap.put("town_id", this.getTownId());
 		hashmap.put("civ_id", this.getCivId());
-		
 		SQL.updateNamedObject(this, hashmap, TABLE_NAME);	
 	}
 
@@ -158,11 +155,13 @@ public class PermissionGroup extends SQLObject {
 		
 		for (String n : names) {
 			Resident res;
+			
 			if (n.length() >= 1)
-			{
-				res = CivGlobal.getResidentViaUUID(UUID.fromString(n));
+				{
+				 	res = CivGlobal.getResidentViaUUID(UUID.fromString(n));
+			
 			if (res != null) {
-				members.put(n, res);
+					members.put(n, res);
 				}
 			}
 		}

@@ -1,3 +1,21 @@
+/*************************************************************************
+ * 
+ * AVRGAMING LLC
+ * __________________
+ * 
+ *  [2013] AVRGAMING LLC
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of AVRGAMING LLC and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to AVRGAMING LLC
+ * and its suppliers and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from AVRGAMING LLC.
+ */
 package com.avrgaming.civcraft.main;
 
 import java.io.File;
@@ -81,6 +99,7 @@ import com.avrgaming.civcraft.threading.tasks.CivLeaderQuestionTask;
 import com.avrgaming.civcraft.threading.tasks.CivQuestionTask;
 import com.avrgaming.civcraft.threading.tasks.CultureProcessAsyncTask;
 import com.avrgaming.civcraft.threading.tasks.PlayerQuestionTask;
+import com.avrgaming.civcraft.threading.tasks.UpdateTagBetweenCivsTask;
 import com.avrgaming.civcraft.threading.tasks.onLoadTask;
 import com.avrgaming.civcraft.util.BlockCoord;
 import com.avrgaming.civcraft.util.BukkitObjects;
@@ -156,14 +175,12 @@ public class CivGlobal {
 	
 	//TODO convert this to completely static?
 	private static SessionDatabase sdb;
-	
+
 	public static boolean trommelsEnabled = true;
 	public static boolean towersEnabled = true;
 	public static boolean growthEnabled = true;
-	
 	public static Boolean banWordsAlways = false;
 	public static boolean banWordsActive = false;
-	
 	public static boolean scoringEnabled = true;
 	public static boolean warningsEnabled = true;
 	public static boolean tradeEnabled = true;
@@ -266,8 +283,9 @@ public class CivGlobal {
 	}
 	
 	private static void loadTradeGoods() {
+		
 	}
-	
+
 	private static void loadTradeGoodies() throws SQLException {
 		Connection context = null;
 		ResultSet rs = null;
@@ -666,29 +684,29 @@ public class CivGlobal {
 	}
 	
 	public static Resident getResident(Player player) {
-		return residents.get(player.getName());
+		return residents.get(player.getName().toLowerCase());
 	}
 	
 	public static Resident getResident(Resident resident) {
-		return residents.get(resident.getName());
+		return residents.get(resident.getName().toLowerCase());
 	}
 
 	public static boolean hasResident(String name) {
-		return residents.containsKey(name);
+		return residents.containsKey(name.toLowerCase());
 	}
 
 	public static void addResident(Resident res) {
-		residents.put(res.getName(), res);
+		residents.put(res.getName().toLowerCase(), res);
 		residentsViaUUID.put(res.getUUID(), res);
 	}
 	
 	public static void removeResident(Resident res) {
-		residents.remove(res.getName());
+		residents.remove(res.getName().toLowerCase());
 		residentsViaUUID.remove(res.getUUID());
 	}
 
 	public static Resident getResident(String name) {
-		return residents.get(name);
+		return residents.get(name.toLowerCase());
 	}
 	
 	public static Resident getResidentViaUUID(UUID uuid) {
@@ -1420,8 +1438,13 @@ public class CivGlobal {
 		}
 		out += otherCiv.getName();
 		CivMessage.global(out);
+		CivGlobal.updateTagsBetween(civ, otherCiv);
 	}
 	
+	private static void updateTagsBetween(Civilization civ, Civilization otherCiv) {
+		TaskMaster.asyncTask(new UpdateTagBetweenCivsTask(civ, otherCiv), 0);
+	}
+
 	public static void requestRelation(Civilization fromCiv, Civilization toCiv, String question, 
 			long timeout, QuestionResponseInterface finishedFunction) throws CivException {
 		
@@ -1858,23 +1881,23 @@ public class CivGlobal {
 	public static CampBlock getCampBlock(BlockCoord bcoord) {
 		return campBlocks.get(bcoord);
 	}
-	
+
 	public static void removeCampBlock(BlockCoord bcoord) {
 		campBlocks.remove(bcoord);
 	}
-	
+
 	public static Collection<Camp> getCamps() {
 		return camps.values();
 	}
-	
+
 	public static Camp getCampFromChunk(ChunkCoord coord) {
 		return campChunks.get(coord);
 	}
-	
+
 	public static void removeCampChunk(ChunkCoord coord) {
 		campChunks.remove(coord);
 	}
-	
+
 	public static Collection<Market> getMarkets() {
 		return markets.values();
 	}
@@ -1886,7 +1909,7 @@ public class CivGlobal {
 	public static void removeMarket(Market market) {
 		markets.remove(market.getCorner());
 	}
-	
+
 	public static Camp getCampFromId(int campID) {
 		for (Camp camp : camps.values()) {
 			if (camp.getId() == campID) {
@@ -1895,7 +1918,7 @@ public class CivGlobal {
 		}
 		return null;
 	}
-	
+
 	public static Collection<Structure> getStructures() {
 		return structures.values();
 	}

@@ -76,13 +76,6 @@ public class Structure extends Buildable {
 				struct = (Structure) new Bank(rs);
 			}
 			break;
-		case "ti_fishery":
-			if (rs == null) {
-				struct = (Structure) new Fishery(center, id, town);
-			} else {
-				struct = (Structure) new Fishery(rs);
-			}
-			break;
 		case "s_grocer":
 			if (rs == null) {
 				struct = (Structure) new Grocer(center, id, town);

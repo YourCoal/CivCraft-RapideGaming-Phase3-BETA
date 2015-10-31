@@ -20,10 +20,10 @@ import org.bukkit.ChatColor;
 import org.bukkit.craftbukkit.v1_8_R3.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 
-import com.avrgaming.civcraft.loreenhancements.LoreEnhancement;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.util.ItemManager;
-import com.avrgaming.civcraft.util.NBTStaticHelper;
+import com.civcraft.loreenhancements.LoreEnhancement;
+import com.civcraft.main.CivData;
+import com.civcraft.util.ItemManager;
+import com.civcraft.util.NBTStaticHelper;
 
 import com.google.common.base.Function;
 import com.google.common.base.Objects;

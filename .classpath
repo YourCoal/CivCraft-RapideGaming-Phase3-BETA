@@ -20,5 +20,6 @@
 	<classpathentry kind="lib" path="C:/Users/Cole/Desktop/Folder/1This Is Organized/Minecraft/Coding Libraries/CivCraftv1/jars/VanishNoPacket.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Cole/Desktop/Folder/1This Is Organized/Minecraft/Coding Libraries/CivCraftv1/jars/Vault.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Cole/Desktop/Folder/1This Is Organized/Minecraft/Coding Libraries/CivCraftv1/jars/WorldBorder.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Cole/Desktop/Folder/1This Is Organized/Minecraft/Coding Libraries/round3/jars/CivCraft-MobLib-1.8.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

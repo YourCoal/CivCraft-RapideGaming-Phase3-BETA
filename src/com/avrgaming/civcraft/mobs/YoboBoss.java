@@ -13,7 +13,6 @@ import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
 
 import com.avrgaming.civcraft.exception.CivException;
 import com.avrgaming.civcraft.mobs.components.MobComponentDefense;
-
 import com.avrgaming.mob.ICustomMob;
 import com.avrgaming.mob.MobBaseZombieGiant;
 
@@ -68,5 +67,10 @@ public class YoboBoss extends CommonCustomMob implements ICustomMob {
 	@Override
 	public String getClassName() {
 		return YoboBoss.class.getName();
+	}
+
+	@Override
+	public void onTick() {
+		super.onTick();		
 	}
 }

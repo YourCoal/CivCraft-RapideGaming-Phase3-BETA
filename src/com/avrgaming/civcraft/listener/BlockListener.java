@@ -954,7 +954,22 @@ public class BlockListener implements Listener {
 				}
 			}
 		}
-
+		
+//		if (resident.getCiv().hasTechnology("tech_agriculture")) {
+//			event.setCancelled(true);
+//			CivMessage.sendError(event.getPlayer(), "You had the technology to bonemeal this crop.");
+//			if (event.getItem().getType().equals(Material.INK_SACK) && event.getItem().getDurability() == 15) {
+//				Block clickedBlock = event.getClickedBlock();
+//					if (ItemManager.getId(clickedBlock) == CivData.WHEAT || 
+//						ItemManager.getId(clickedBlock) == CivData.CARROTS || 
+//						ItemManager.getId(clickedBlock) == CivData.POTATOES) {
+//					} else {
+//					event.setCancelled(false);
+//					CivMessage.sendError(event.getPlayer(), "You cannot use bone meal on carrots, wheat, or potatoes.");
+//				}
+//			}
+//		}
+		
 		Block soilBlock = event.getPlayer().getLocation().getBlock().getRelative(BlockFace.DOWN);
 
 		// prevent players trampling crops

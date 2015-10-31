@@ -62,6 +62,13 @@ public class Structure extends Buildable {
 		Structure struct;
 		
 		switch (id) {
+		case "s_shipyard":
+			if (rs == null) {
+				struct = (Structure) new Shipyard(center, id, town);
+			} else {
+				struct = (Structure) new Shipyard(rs);
+			}
+			break;
 		case "s_bank":
 			if (rs == null) {
 				struct = (Structure) new Bank(center, id, town);
@@ -200,13 +207,6 @@ public class Structure extends Buildable {
 				struct = (ScoutTower) new ScoutTower(center, id, town);
 			} else {
 				struct = (ScoutTower) new ScoutTower(rs);
-			}
-			break;
-		case "s_shipyard":
-			if (rs == null) {
-				struct = (Structure) new WaterStructure(center, id, town);
-			} else {
-				struct = (Structure) new WaterStructure(rs);
 			}
 			break;
 		case "ti_wall":

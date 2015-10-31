@@ -46,8 +46,7 @@ public class TradeGoodPopulator extends BlockPopulator {
     private static final int FLAG_HEIGHT = 3;
 //    private static final double MIN_DISTANCE = 400.0;
     
-
-    public static void buildTradeGoodie(ConfigTradeGood good, BlockCoord coord, World world, boolean sync) {
+	public static void buildTradeGoodie(ConfigTradeGood good, BlockCoord coord, World world, boolean sync) {
     	TradeGood new_good = new TradeGood(good, coord);            
     	CivGlobal.addTradeGood(new_good);
 
@@ -76,7 +75,7 @@ public class TradeGoodPopulator extends BlockPopulator {
     	for (int y = coord.getY(); y < coord.getY() + FLAG_HEIGHT; y++) {
     		top = world.getBlockAt(coord.getX(), y, coord.getZ());
     		top.setType(Material.BEDROCK);
-
+    		
     		ProtectedBlock pb = new ProtectedBlock(new BlockCoord(top), ProtectedBlock.Type.TRADE_MARKER);
     		CivGlobal.addProtectedBlock(pb);
     		if (sync) {

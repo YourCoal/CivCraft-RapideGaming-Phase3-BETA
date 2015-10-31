@@ -20,33 +20,24 @@ import com.avrgaming.mob.ICustomMob;
 import com.avrgaming.mob.MobBaseZombie;
 
 public class AngryYobo extends CommonCustomMob implements ICustomMob {
-
+	
 	public void onCreate() {
 	    initLevelAndType();
-
 	    getGoalSelector().a(0, new PathfinderGoalFloat((EntityInsentient) entity));
 	    getGoalSelector().a(2, new PathfinderGoalMeleeAttack((EntityCreature) entity, EntityHuman.class, 1.0D, false));
 	    getGoalSelector().a(8, new PathfinderGoalLookAtPlayer((EntityInsentient) entity, EntityHuman.class, 8.0F));
 	    getTargetSelector().a(2, new PathfinderGoalNearestAttackableTarget<EntityHuman>((EntityCreature) entity, EntityHuman.class, true));
-	    
 	    this.setName(this.getLevel().getName()+" "+this.getType().getName());
 	    MobBaseZombie zombie = ((MobBaseZombie)this.entity);
 	    zombie.setBaby(true);
 	}
-
-	@Override
-	public void onTick() {
-		super.onTick();		
-	}
-
+	
 	@Override
 	public String getBaseEntity() {
 		return MobBaseZombie.class.getName();
 	}
-
+	
 	public void onDamage(EntityCreature e, DamageSource damagesource, PathfinderGoalSelector goalSelector, PathfinderGoalSelector targetSelector) {
-
-		
 	}
 	
 	public void onCreateAttributes() {
@@ -109,9 +100,8 @@ public class AngryYobo extends CommonCustomMob implements ICustomMob {
 	
 	@Override
 	public void onRangedAttack(Entity target) {
-		
 	}
-
+	
 	@Override
 	public String getClassName() {
 		return AngryYobo.class.getName();
@@ -125,5 +115,10 @@ public class AngryYobo extends CommonCustomMob implements ICustomMob {
 		    event.getReason().equals(TargetReason.TARGET_DIED)) {
 			event.getEntity().remove();
 		}
+	}
+	
+	@Override
+	public void onTick() {
+		super.onTick();		
 	}
 }

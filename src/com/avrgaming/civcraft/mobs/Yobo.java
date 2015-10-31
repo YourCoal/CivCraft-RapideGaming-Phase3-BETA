@@ -36,11 +36,9 @@ public class Yobo extends CommonCustomMob implements ICustomMob {
 	
 	public void onCreate() {
 	    initLevelAndType();
-
 	    getGoalSelector().a(7, new PathfinderGoalRandomStroll((EntityCreature) entity, 1.0D));
 	    getGoalSelector().a(8, new PathfinderGoalLookAtPlayer((EntityInsentient) entity, EntityHuman.class, 8.0F));
 	    getTargetSelector().a(1, new PathfinderGoalHurtByTarget((EntityCreature) entity, true));
-
 	    this.setName(this.getLevel().getName()+" "+this.getType().getName());
 	}
 	
@@ -201,5 +199,10 @@ public class Yobo extends CommonCustomMob implements ICustomMob {
 				e.getBukkitEntity().remove();
 			}
 		}
+	}
+
+	@Override
+	public void onTick() {
+		super.onTick();		
 	}
 }

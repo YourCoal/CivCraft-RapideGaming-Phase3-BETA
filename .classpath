@@ -16,10 +16,10 @@
 	<classpathentry kind="lib" path="C:/Users/Cole/Desktop/Folder/1This Is Organized/Minecraft/Coding Libraries/phase3/jars/NoCheatPlus.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Cole/Desktop/Folder/1This Is Organized/Minecraft/Coding Libraries/phase3/jars/slf4j-api-1.7.5.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Cole/Desktop/Folder/1This Is Organized/Minecraft/Coding Libraries/phase3/jars/slf4j-simple-1.7.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Cole/Desktop/Folder/1This Is Organized/Minecraft/Coding Libraries/phase3/jars/spigot-1.8.8.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Cole/Desktop/Folder/1This Is Organized/Minecraft/Coding Libraries/phase3/jars/TagAPI.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Cole/Desktop/Folder/1This Is Organized/Minecraft/Coding Libraries/phase3/jars/VanishNoPacket.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Cole/Desktop/Folder/1This Is Organized/Minecraft/Coding Libraries/phase3/jars/Vault.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Cole/Desktop/Folder/1This Is Organized/Minecraft/Coding Libraries/phase3/jars/WorldBorder.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Cole/Desktop/Folder/1This Is Organized/Minecraft/Coding Libraries/phase3/jars/spigot-1.8.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

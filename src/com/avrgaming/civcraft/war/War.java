@@ -145,6 +145,7 @@ public class War {
 			War.processDefeated();
 			
 			CivGlobal.fisheriesEnabled = true;
+			CivGlobal.shippingEnabled = true;
 			CivGlobal.trommelsEnabled = true;
 			CivGlobal.growthEnabled = true;
 			CivGlobal.tradeEnabled = true;
@@ -186,6 +187,7 @@ public class War {
 			}
 			
 			CivGlobal.fisheriesEnabled = false;
+			CivGlobal.shippingEnabled = false;
 			CivGlobal.trommelsEnabled = false;
 			CivGlobal.growthEnabled = false;
 			CivGlobal.tradeEnabled = false;

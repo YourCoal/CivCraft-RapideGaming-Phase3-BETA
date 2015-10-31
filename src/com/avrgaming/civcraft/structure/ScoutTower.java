@@ -21,17 +21,17 @@ import com.avrgaming.civcraft.object.Town;
 import com.avrgaming.civcraft.util.CivColor;
 
 public class ScoutTower extends Structure {
-
+	
 	double range;
 	private PlayerProximityComponent proximityComponent;
 	
-	private int reportSeconds = 60;
+	private int reportSeconds = 30;
 	private int count = 0;
 	
 	public ScoutTower(ResultSet rs) throws SQLException, CivException {
 		super(rs);
 	}
-
+	
 	protected ScoutTower(Location center, String id, Town town)
 			throws CivException {
 		super(center, id, town);
@@ -102,12 +102,11 @@ public class ScoutTower extends Structure {
 			}
 			
 			if (player.isOp()) {
-				scoutDebug("player is op");
+				scoutDebug("Player is OP");
 				continue;
 			}
 			
 			Location center = this.getCenterLocation().getLocation();
-			
 			/* Do not re-announce players announced by other scout towers */
 			if (alreadyAnnounced.contains(this.getCiv().getName()+":"+player.getName())) {
 				scoutDebug("already announced:"+pc.getName());
@@ -132,7 +131,7 @@ public class ScoutTower extends Structure {
 				case ALLY:
 //				case VASSAL:
 //				case MASTER:
-					scoutDebug("ally or peace");
+					scoutDebug("Ally or Peace");
 					continue;
 				default:
 					break;
@@ -145,9 +144,8 @@ public class ScoutTower extends Structure {
 				relationColor = CivColor.Yellow;
 			}
 			
-			
 			if (center.getWorld() != this.getCorner().getLocation().getWorld()) {
-				scoutDebug("wrong world");
+				scoutDebug("Wrong World");
 				continue;
 			}
 			

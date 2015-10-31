@@ -577,8 +577,8 @@ public class Town extends SQLObject {
 		
 		double additional = this.getBuffManager().getEffectiveDouble(Buff.FINE_ART);
 		
-		if (this.getBuffManager().hasBuff("buff_pyramid_culture")) {
-			additional += this.getBuffManager().getEffectiveDouble("buff_pyramid_culture");
+		if (this.getBuffManager().hasBuff("buff:pyramid_culture")) {
+			additional += this.getBuffManager().getEffectiveDouble("buff:pyramid_culture");
 		}
 		
 		rates.put("Wonders/Goodies", additional);
@@ -642,7 +642,7 @@ public class Town extends SQLObject {
 
 	public void addAccumulatedCulture(double generated) {
 		ConfigCultureLevel clc = CivSettings.cultureLevels.get(this.getCultureLevel());
-				
+			
 		this.culture += generated;
 		this.save();
 		if (this.getCultureLevel() != CivSettings.getMaxCultureLevel()) {
@@ -1301,8 +1301,8 @@ public class Town extends SQLObject {
 		
 		upkeep *= getGovernment().upkeep_rate;
 		
-		if (this.getBuffManager().hasBuff("buff_colossus_reduce_upkeep")) {
-			upkeep = upkeep - (upkeep*this.getBuffManager().getEffectiveDouble("buff_colossus_reduce_upkeep"));
+		if (this.getBuffManager().hasBuff("buff:colossus_reduce_upkeep")) {
+			upkeep = upkeep - (upkeep*this.getBuffManager().getEffectiveDouble("buff:colossus_reduce_upkeep"));
 		}
 		
 		if (this.getBuffManager().hasBuff("debuff_colossus_leech_upkeep")) {
@@ -1794,9 +1794,9 @@ public class Town extends SQLObject {
 		
 		/* Wonders and Goodies. */
 		double additional = this.getBuffManager().getEffectiveDouble(Buff.GROWTH_RATE);
-		additional += this.getBuffManager().getEffectiveDouble("buff_hanging_gardens_growth");
+		additional += this.getBuffManager().getEffectiveDouble("buff:hanging_gardens_growth");
 		
-		double additionalGrapes = this.getBuffManager().getEffectiveDouble("buff_hanging_gardens_additional_growth");
+		double additionalGrapes = this.getBuffManager().getEffectiveDouble("buff:hanging_gardens_additional_growth");
 		int grapeCount = 0;
 		for (BonusGoodie goodie : this.getBonusGoodies()) {
 			if (goodie.getDisplayName().equalsIgnoreCase("grapes")) {
@@ -1869,6 +1869,14 @@ public class Town extends SQLObject {
 		return as;	
 	}
 	
+	public double getMonumentRate() {
+		double rate = getGovernment().culture_rate;
+		
+		/* Adjust for happiness & safety state. */
+		rate *= this.getHappinessState().culture_rate;
+		return rate;
+	}
+	
 	public double getCottageRate() {
 		double rate = getGovernment().cottage_rate;
 
@@ -1880,7 +1888,7 @@ public class Town extends SQLObject {
 		rate *= this.getSafetyState().coin_rate;
 		return rate;
 	}
-
+	
 	public double getSpreadUpkeep() throws InvalidConfiguration {
 		double total = 0.0;
 		double grace_distance = CivSettings.getDoubleTown("town.upkeep_town_block_grace_distance");
@@ -2563,7 +2571,7 @@ public class Town extends SQLObject {
 		/* Additional rate increases from buffs. */
 		/* Great Library buff is made to not stack with Science_Rate */
 		double additional = rate*getBuffManager().getEffectiveDouble(Buff.SCIENCE_RATE);
-		additional += rate*getBuffManager().getEffectiveDouble("buff_greatlibrary_extra_beakers");
+		additional += rate*getBuffManager().getEffectiveDouble("buff:greatlibrary_extra_beakers");
 		rate += additional;
 		rates.put("Goodies/Wonders", additional);
 
@@ -2657,7 +2665,7 @@ public class Town extends SQLObject {
 		sources.put("Base Happiness", townlevel);
 		
 		/* Grab any sources from buffs. */
-		double goodiesWonders = this.buffManager.getEffectiveDouble("buff_hedonism");
+		double goodiesWonders = this.buffManager.getEffectiveDouble("buff:hedonism");
 		sources.put("Goodies/Wonders", goodiesWonders);
 		total += goodiesWonders;
 		
@@ -2845,7 +2853,7 @@ public class Town extends SQLObject {
 		sources.put("Base Safety", townlevel);
 		
 		/* Grab any sources from buffs. */
-//		double goodiesWonders = this.buffManager.getEffectiveDouble("buff_hedonism");
+//		double goodiesWonders = this.buffManager.getEffectiveDouble("buff:hedonism");
 //		sources.put("Goodies/Wonders", goodiesWonders);
 //		total += goodiesWonders;
 		

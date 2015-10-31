@@ -61,7 +61,7 @@ public class CultureProcessAsyncTask extends CivAsyncTask {
 		}
 		
 		_processCultureBreadthFirst(town, origin, starting, expanded);
-
+		
 		town.trimCultureChunks(expanded);
 		int expandedAmount = expanded.size() - town.getCultureChunks().size();
 		if (expandedAmount > 0) {

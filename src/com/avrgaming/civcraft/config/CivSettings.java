@@ -72,7 +72,8 @@ public class CivSettings {
 	public static FileConfiguration cultureConfig; /* culture.yml */
 	public static Map<Integer, ConfigCultureLevel> cultureLevels = new HashMap<Integer, ConfigCultureLevel>();
 	private static Map<String, ConfigCultureBiomeInfo> cultureBiomes = new HashMap<String, ConfigCultureBiomeInfo>();
-
+	public static Map<Integer, ConfigMonumentLevel> monumentLevels = new HashMap<Integer, ConfigMonumentLevel>();
+	
 	public static FileConfiguration structureConfig; /* structures.yml */
 	public static Map<String, ConfigBuildableInfo> structures = new HashMap<String, ConfigBuildableInfo>();
 	public static Map<Integer, ConfigGrocerLevel> grocerLevels = new HashMap<Integer, ConfigGrocerLevel>();
@@ -88,7 +89,7 @@ public class CivSettings {
 	public static Map<String, ConfigTech> techs = new HashMap<String, ConfigTech>();
 	public static Map<Integer, ConfigTechItem> techItems = new HashMap<Integer, ConfigTechItem>();
 	public static Map<Integer, ConfigTechPotion> techPotions = new HashMap<Integer, ConfigTechPotion>();
-
+	
 	public static FileConfiguration goodsConfig; /* goods.yml */
 	public static Map<String, ConfigTradeGood> goods = new HashMap<String, ConfigTradeGood>();
 	public static Map<String, ConfigTradeGood> landGoods = new HashMap<String, ConfigTradeGood>();
@@ -359,6 +360,7 @@ public class CivSettings {
 	}
 
 	private static void loadConfigObjects() throws InvalidConfiguration {
+		ConfigMonumentLevel.loadConfig(cultureConfig, monumentLevels);
 		ConfigTownLevel.loadConfig(townConfig, townLevels);
 		ConfigTownUpgrade.loadConfig(townConfig, townUpgrades);
 		ConfigCultureLevel.loadConfig(cultureConfig, cultureLevels);
@@ -387,7 +389,6 @@ public class CivSettings {
 		ConfigStableHorse.loadConfig(structureConfig, horses);
 		ConfigTownHappinessLevel.loadConfig(happinessConfig, townHappinessLevels);
 		ConfigHappinessState.loadConfig(happinessConfig, happinessStates);
-		//XXX Added Safety (10/9/2015)
 		ConfigTownSafetyLevel.loadConfig(safetyConfig, townSafetyLevels);
 		ConfigSafetyState.loadConfig(safetyConfig, safetyStates);
 		ConfigCultureBiomeInfo.loadConfig(cultureConfig, cultureBiomes);

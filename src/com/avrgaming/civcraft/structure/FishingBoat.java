@@ -190,11 +190,8 @@ public class FishingBoat extends TradeOutpost {
 	@Override
 	protected void checkBlockPermissionsAndRestrictions(Player player, Block centerBlock, int regionX, int regionY, int regionZ, Location savedLocation) throws CivException {
 		super.checkBlockPermissionsAndRestrictions(player, centerBlock, regionX, regionY, regionZ, savedLocation);
-		
 		if ((player.getLocation().getBlockY() - WATER_LEVEL) > TOLERANCE) {
 			throw new CivException("You must be close to the water's surface to build this structure.");
 		}
-		
 	}
-	
 }

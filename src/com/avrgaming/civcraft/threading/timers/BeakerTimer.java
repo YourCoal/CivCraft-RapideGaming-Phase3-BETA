@@ -32,15 +32,12 @@ public class BeakerTimer extends CivAsyncTask {
 	public static final int BEAKER_PERIOD = 60;
 	
 	public BeakerTimer(int periodInSeconds) {
-		
 	//	this.beakersPerRun = ((double)periodInSeconds/60);
 	}
 	
 	@Override
 	public void run() {
-		
 		for (Civilization civ : CivGlobal.getCivs()) {
-			
 			if (civ.getCapitolName() == null) {
 				CivMessage.sendCiv(civ, "ERROR: your capitol name is not set right! No research is progressing. Contact an admin.");
 				continue;
@@ -72,8 +69,5 @@ public class BeakerTimer extends CivAsyncTask {
 				e.printStackTrace();
 			}
 		}
-		
-		
 	}
-
 }

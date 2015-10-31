@@ -114,6 +114,19 @@ public class PlayerListener implements Listener {
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
+	public void onPlayerQuit(PlayerQuitEvent event) {
+		Resident resident = CivGlobal.getResident(event.getPlayer());
+		if (resident != null) {
+			if (resident.previewUndo != null) {
+				resident.previewUndo.clear();
+			}
+			resident.clearInteractiveMode();
+		}
+		PlayerLocationCacheUpdate.playerQueue.remove(event.getPlayer().getName());
+		MobSpawnerTimer.playerQueue.remove((event.getPlayer().getName()));
+	}
+	
+	@EventHandler(priority = EventPriority.MONITOR)
 	public void onPlayerTeleportEvent(PlayerTeleportEvent event) {
 		if (event.getCause().equals(TeleportCause.COMMAND) ||
 				event.getCause().equals(TeleportCause.PLUGIN)) {
@@ -195,17 +208,6 @@ public class PlayerListener implements Listener {
 				}
 			}
 		}
-	}
-	
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerQuit(PlayerQuitEvent event) {
-		Resident resident = CivGlobal.getResident(event.getPlayer());
-		if (resident != null) {
-			if (resident.previewUndo != null) {
-				resident.previewUndo.clear();
-			}
-			resident.clearInteractiveMode();
-		}		
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)

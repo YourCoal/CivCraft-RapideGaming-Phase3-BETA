@@ -18,7 +18,6 @@ import org.bukkit.event.world.ChunkLoadEvent;
 
 import com.avrgaming.civcraft.main.CivMessage;
 import com.avrgaming.civcraft.mobs.CommonCustomMob;
-
 import com.avrgaming.moblib.MobLib;
 
 public class MobListener implements Listener {

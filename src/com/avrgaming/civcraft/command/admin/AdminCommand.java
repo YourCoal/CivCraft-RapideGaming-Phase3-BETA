@@ -41,7 +41,6 @@ import com.avrgaming.civcraft.endgame.EndGameCondition;
 import com.avrgaming.civcraft.exception.CivException;
 import com.avrgaming.civcraft.lorestorage.LoreCraftableMaterial;
 import com.avrgaming.civcraft.lorestorage.LoreGuiItem;
-import com.avrgaming.civcraft.lorestorage.LoreGuiItemListener;
 import com.avrgaming.civcraft.lorestorage.LoreMaterial;
 import com.avrgaming.civcraft.main.CivGlobal;
 import com.avrgaming.civcraft.main.CivLog;
@@ -193,13 +192,6 @@ public class AdminCommand extends CommandBase {
 					stack = LoreGuiItem.asGuiItem(stack);
 					stack = LoreGuiItem.setAction(stack, "SpawnItem");
 					inv.addItem(stack);
-					
-					/* Add back buttons. */
-					ItemStack backButton = LoreGuiItem.build("Back", ItemManager.getId(Material.MAP), 0, "Back to Categories");
-					backButton = LoreGuiItem.setAction(backButton, "OpenInventory");
-					backButton = LoreGuiItem.setActionData(backButton, "invType", "showCraftingHelp");
-					inv.setItem(LoreGuiItem.MAX_INV_SIZE-1, backButton);
-					LoreGuiItemListener.guiInventories.put(inv.getName(), inv);
 				}
 			}
 		}

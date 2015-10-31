@@ -141,4 +141,9 @@ public class Barbarian extends CommonCustomMob implements ICustomMob {
 		}
 		super.onTarget(event);
 	}
+
+	@Override
+	public void onTick() {
+		super.onTick();		
+	}
 }

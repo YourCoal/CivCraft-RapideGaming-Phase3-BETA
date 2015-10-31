@@ -183,7 +183,7 @@ public abstract class CommonCustomMob implements ICustomMob {
 	public void onRangedAttack(Entity arg1) {
 	}
 	
-	private void checkForStuck() {
+	public void checkForStuck() {
 		if (this.targetName != null && this.lastLocation != null) {
 			Location loc = getLocation(entity);
 			if (loc.distance(this.lastLocation) < 0.5) {
@@ -201,59 +201,65 @@ public abstract class CommonCustomMob implements ICustomMob {
 		}
 	}
 	
+	@SuppressWarnings("static-access")
 	private void checkForTownBorders() {
 		Location loc = getLocation(entity);
 		TownChunk tc = CivGlobal.getTownChunk(loc);
 		if (tc != null) {
-			entity.getBukkitEntity().remove();
+			//entity.getBukkitEntity().remove();
+			this.customMobs.remove(this.entity.getUniqueID());
 		}
 		
 		Camp camp = CivGlobal.getCampFromChunk(new ChunkCoord(loc));
 		if (camp != null) {
-			entity.getBukkitEntity().remove();
+			//entity.getBukkitEntity().remove();
+			this.customMobs.remove(this.entity.getUniqueID());
 		}
 	}
 	
+	@SuppressWarnings("static-access")
 	private void checkForisWarTime() {
 		if (War.isWarTime()) {
-			entity.getBukkitEntity().remove();
+			//entity.getBukkitEntity().remove();
+			this.customMobs.remove(this.entity.getUniqueID());
 		}
 	}
-
+	
 	private int tickCount = 0;
+	@SuppressWarnings("static-access")
 	@Override
 	public void onTick() {
 		if (entity == null) {
+			this.customMobs.remove(this.entity.getUniqueID());
 			return;
 		}
 		
 		tickCount++;
-		if (tickCount > 90) {
+		if (tickCount < 50) {
 			checkForStuck();
 			checkForTownBorders();
 			checkForisWarTime();
 			tickCount = 0;
 		}
 	}
-
+	
 	public void setData(String key, String value) {
 		dataMap.put(key, value);
 	}
 	
-	
 	public String getData(String key) {
 		return dataMap.get(key);
 	}
-
+	
 	@Override
 	public void setEntity(EntityLiving e) {
 		this.entity = e;
 	}
-
+	
 	public Collection<MobComponent> getMobComponents() {
 		return this.components.values();
 	}
-
+	
 	public void addComponent(MobComponent comp) {
 		this.components.put(comp.getClass().getName(), comp);
 	}
@@ -271,7 +277,6 @@ public abstract class CommonCustomMob implements ICustomMob {
 		Entity e = ((CraftEntity)entity).getHandle();
 		return getCCM(e);
 	}
-	
 	
 	public void setAttack(double attack) {
 		entity.getAttributeInstance(GenericAttributes.ATTACK_DAMAGE).setValue(attack);
@@ -440,7 +445,6 @@ public abstract class CommonCustomMob implements ICustomMob {
 					LoreCraftableMaterial craftMat = LoreCraftableMaterial.getCraftMaterialFromId(d.craftMatId);
 					stack = LoreCraftableMaterial.spawn(craftMat);
 				}
-				
 				world.dropItem(loc, stack);
 			}
 			
@@ -449,7 +453,6 @@ public abstract class CommonCustomMob implements ICustomMob {
 				Random random = new Random();
 				int coins = random.nextInt(this.coinMax - this.coinMin) + this.coinMin;
 				orb.setExperience(coins);
-
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -471,15 +474,15 @@ public abstract class CommonCustomMob implements ICustomMob {
 		}
 		return level;
 	}
-
+	
 	public void setLevel(CustomMobLevel level) {
 		this.level = level;
 	}
-
+	
 	public CustomMobType getType() {
 		return type;
 	}
-
+	
 	public void setType(CustomMobType type) {
 		if (type == null) {
 			/* re-init mob if it was unloaded or something. */
@@ -489,5 +492,4 @@ public abstract class CommonCustomMob implements ICustomMob {
 		}
 		this.type = type;
 	}
-	
 }

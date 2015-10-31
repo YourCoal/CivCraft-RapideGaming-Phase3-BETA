@@ -158,6 +158,7 @@ public class CivGlobal {
 	private static SessionDatabase sdb;
 	
 	public static boolean fisheriesEnabled = true;
+	public static boolean shippingEnabled = true;
 	public static boolean trommelsEnabled = true;
 	public static boolean towersEnabled = true;
 	public static boolean growthEnabled = true;
@@ -1859,23 +1860,23 @@ public class CivGlobal {
 	public static CampBlock getCampBlock(BlockCoord bcoord) {
 		return campBlocks.get(bcoord);
 	}
-
+	
 	public static void removeCampBlock(BlockCoord bcoord) {
 		campBlocks.remove(bcoord);
 	}
-
+	
 	public static Collection<Camp> getCamps() {
 		return camps.values();
 	}
-
+	
 	public static Camp getCampFromChunk(ChunkCoord coord) {
 		return campChunks.get(coord);
 	}
-
+	
 	public static void removeCampChunk(ChunkCoord coord) {
 		campChunks.remove(coord);
 	}
-
+	
 	public static Collection<Market> getMarkets() {
 		return markets.values();
 	}
@@ -1887,7 +1888,7 @@ public class CivGlobal {
 	public static void removeMarket(Market market) {
 		markets.remove(market.getCorner());
 	}
-
+	
 	public static Camp getCampFromId(int campID) {
 		for (Camp camp : camps.values()) {
 			if (camp.getId() == campID) {
@@ -1896,7 +1897,7 @@ public class CivGlobal {
 		}
 		return null;
 	}
-
+	
 	public static Collection<Structure> getStructures() {
 		return structures.values();
 	}

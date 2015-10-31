@@ -2,37 +2,15 @@ package com.avrgaming.civcraft.structure;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.concurrent.locks.ReentrantLock;
 
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
-import com.avrgaming.civcraft.config.CivSettings;
 import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.object.Buff;
 import com.avrgaming.civcraft.object.Town;
 
 public class Shipyard extends Structure {
-	private static final double SMALL_IMPORT = CivSettings.getDoubleStructure("shipyard.small_import");
-	private static final double MEDIUM_IMPORT = CivSettings.getDoubleStructure("shipyard.medium_import");
-	private static final double LARGE_IMPORT = CivSettings.getDoubleStructure("shipyard.large_import");
-	private static final double MEGA_IMPORT = CivSettings.getDoubleStructure("shipyard.mega_import");
-	private static final double SPECIAL_IMPORT_1 = CivSettings.getDoubleStructure("shipyard.special_import_1");
-	private static final double SPECIAL_IMPORT_2 = CivSettings.getDoubleStructure("shipyard.special_import_2");
-	
-	public int skippedCounter = 0;
-	public ReentrantLock lock = new ReentrantLock();
-	
-	public enum ShipyardStock {
-		SMALL,
-		MEDIUM,
-		LARGE,
-		MEGA,
-		SPECIAL1,
-		SPECIAL2
-	}
 	
 	protected Shipyard(Location center, String id, Town town) throws CivException {
 		super(center, id, town);	
@@ -50,43 +28,6 @@ public class Shipyard extends Structure {
 	@Override
 	public String getMarkerIconName() {
 		return "anchor";
-	}
-	
-	public double getImportSize(ShipyardStock ss) {
-		double chance = 0;
-		switch (ss) {
-		case SMALL:
-			chance = SMALL_IMPORT;
-			break;
-		case MEDIUM:
-			chance = MEDIUM_IMPORT;
-			break;
-		case LARGE:
-			chance = LARGE_IMPORT;
-			break;
-		case MEGA:
-			chance = MEGA_IMPORT;
-			break;
-		case SPECIAL1:
-			chance = SPECIAL_IMPORT_1;
-			break;
-		case SPECIAL2:
-			chance = SPECIAL_IMPORT_2;
-		}
-		
-		double increase = chance*this.getTown().getBuffManager().getEffectiveDouble(Buff.SHIPPING);
-		chance += increase;
-		
-		try {
-			if (this.getTown().getGovernment().id.equals("gov_republic")) {
-				chance *= CivSettings.getDouble(CivSettings.structureConfig, "shipyard.republic_rate");
-			} else if (this.getTown().getGovernment().id.equals("gov_theocracy")){
-				chance *= CivSettings.getDouble(CivSettings.structureConfig, "shipyard.penalty_rate");
-			}
-		} catch (InvalidConfiguration e) {
-			e.printStackTrace();
-		}
-		return chance;
 	}
 	
 	@Override
@@ -117,7 +58,6 @@ public class Shipyard extends Structure {
 			else if (dir.equalsIgnoreCase("south")) {
 				loc.setX(loc.getX() - (x_size / 2));
 				loc.setZ(loc.getZ() + SHIFT_OUT);
-	
 			}
 		}
 		
@@ -125,7 +65,6 @@ public class Shipyard extends Structure {
 			// Y-Shift based on the config, this allows templates to be built underground.
 			loc.setY(WATER_LEVEL + this.getTemplateYShift());
 		}
-	
 		return loc;
 	}
 	

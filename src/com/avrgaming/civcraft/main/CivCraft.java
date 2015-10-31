@@ -79,7 +79,6 @@ import com.avrgaming.civcraft.threading.timers.PlayerLocationCacheUpdate;
 import com.avrgaming.civcraft.threading.timers.PlayerProximityComponentTimer;
 import com.avrgaming.civcraft.threading.timers.ReduceExposureTimer;
 import com.avrgaming.civcraft.threading.timers.RegenTimer;
-import com.avrgaming.civcraft.threading.timers.ShipyardFishTimer;
 import com.avrgaming.civcraft.threading.timers.UnitTrainTimer;
 import com.avrgaming.civcraft.threading.timers.UpdateEventTimer;
 import com.avrgaming.civcraft.threading.timers.WindmillTimer;
@@ -168,8 +167,6 @@ public final class CivCraft extends JavaPlugin {
 		TaskMaster.asyncTimer("pvptimer", new PvPTimer(), TimeTools.toTicks(30));
 		
 		TaskMaster.syncTimer("MobSpawner", new MobSpawnerTimer(), TimeTools.toTicks(5));
-		
-		TaskMaster.asyncTimer("ShipyardFishTimer", new ShipyardFishTimer(), TimeTools.toTicks(5));
 	}
 	
 	private void registerEvents() {

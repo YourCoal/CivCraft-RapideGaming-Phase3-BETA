@@ -104,6 +104,8 @@ import com.avrgaming.civcraft.war.War;
 import com.avrgaming.civcraft.war.WarRegen;
 import com.avrgaming.moblib.MobLib;
 
+
+
 public class BlockListener implements Listener {
 
 	/* Experimental, reuse the same object because it is single threaded. */
@@ -153,6 +155,8 @@ public class BlockListener implements Listener {
 				}
 			}
 	    }
+
+
 		coord.setFromLocation(event.getBlock().getLocation());
 		TownChunk tc = CivGlobal.getTownChunk(coord);
 
@@ -954,22 +958,7 @@ public class BlockListener implements Listener {
 				}
 			}
 		}
-		
-//		if (resident.getCiv().hasTechnology("tech_agriculture")) {
-//			event.setCancelled(true);
-//			CivMessage.sendError(event.getPlayer(), "You had the technology to bonemeal this crop.");
-//			if (event.getItem().getType().equals(Material.INK_SACK) && event.getItem().getDurability() == 15) {
-//				Block clickedBlock = event.getClickedBlock();
-//					if (ItemManager.getId(clickedBlock) == CivData.WHEAT || 
-//						ItemManager.getId(clickedBlock) == CivData.CARROTS || 
-//						ItemManager.getId(clickedBlock) == CivData.POTATOES) {
-//					} else {
-//					event.setCancelled(false);
-//					CivMessage.sendError(event.getPlayer(), "You cannot use bone meal on carrots, wheat, or potatoes.");
-//				}
-//			}
-//		}
-		
+
 		Block soilBlock = event.getPlayer().getLocation().getBlock().getRelative(BlockFace.DOWN);
 
 		// prevent players trampling crops
@@ -1107,11 +1096,6 @@ public class BlockListener implements Listener {
 					switch (event.getClickedBlock().getType()) {
 					case WOODEN_DOOR:
 					case IRON_DOOR:
-					case SPRUCE_DOOR:
-					case BIRCH_DOOR:
-					case JUNGLE_DOOR:
-					case ACACIA_DOOR:
-					case DARK_OAK_DOOR:
 						return;
 					default:
 						break;
@@ -1216,13 +1200,6 @@ public class BlockListener implements Listener {
 					if (inHand.getType().equals(Material.SEEDS) ||
 						inHand.getType().equals(Material.MELON_SEEDS) ||
 						inHand.getType().equals(Material.PUMPKIN_SEEDS)) {
-						denyBreeding = true;
-					}
-					break;
-				case RABBIT:
-					if (inHand.getType().equals(Material.CARROT) ||
-						inHand.getType().equals(Material.GOLDEN_CARROT) ||
-						inHand.getType().equals(Material.YELLOW_FLOWER)) {
 						denyBreeding = true;
 					}
 					break;
@@ -1469,20 +1446,13 @@ public class BlockListener implements Listener {
 				return;			
 			}
 		}
-		
+
 		if (event.getEntity().getType().equals(EntityType.IRON_GOLEM) &&
 			event.getSpawnReason().equals(SpawnReason.BUILD_IRONGOLEM)) {
 				event.setCancelled(true);
 				return;
 		}
-		
-		if (event.getEntity().getType().equals(EntityType.BAT) ||
-			event.getEntity().getType().equals(EntityType.OCELOT) ||
-			event.getEntity().getType().equals(EntityType.ENDERMAN)) {
-			event.setCancelled(true);
-			return;
-		}
-		
+
 		if (MobLib.isMobLibEntity(event.getEntity())) {
 			return;
 		}
@@ -1502,11 +1472,11 @@ public class BlockListener implements Listener {
 			event.setCancelled(true);
 			return;
 		}
-		
-//		if (event.getSpawnReason().equals(SpawnReason.SPAWNER)) {
-//			event.setCancelled(true);
-//			return;
-//		}
+
+		if (event.getSpawnReason().equals(SpawnReason.SPAWNER)) {
+			event.setCancelled(true);
+			return;
+		}
 	}
 
 	public boolean allowPistonAction(Location loc) {
@@ -1698,12 +1668,7 @@ public class BlockListener implements Listener {
 		CampBlock cb = CivGlobal.getCampBlock(bcoord);
 		if (cb != null) {
 			if (ItemManager.getId(event.getBlock()) == CivData.WOOD_DOOR ||
-					ItemManager.getId(event.getBlock()) == CivData.IRON_DOOR||
-					ItemManager.getId(event.getBlock()) == CivData.SPRUCE_DOOR||
-					ItemManager.getId(event.getBlock()) == CivData.BIRCH_DOOR||
-					ItemManager.getId(event.getBlock()) == CivData.JUNGLE_DOOR||
-					ItemManager.getId(event.getBlock()) == CivData.ACACIA_DOOR||
-					ItemManager.getId(event.getBlock()) == CivData.DARK_OAK_DOOR) {
+					ItemManager.getId(event.getBlock()) == CivData.IRON_DOOR) {
 				event.setNewCurrent(0);
 				return;
 			}

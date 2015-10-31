@@ -72,7 +72,6 @@ public class CivSettings {
 	public static FileConfiguration cultureConfig; /* culture.yml */
 	public static Map<Integer, ConfigCultureLevel> cultureLevels = new HashMap<Integer, ConfigCultureLevel>();
 	private static Map<String, ConfigCultureBiomeInfo> cultureBiomes = new HashMap<String, ConfigCultureBiomeInfo>();
-	public static Map<Integer, ConfigMonumentLevel> monumentLevels = new HashMap<Integer, ConfigMonumentLevel>();
 	
 	public static FileConfiguration structureConfig; /* structures.yml */
 	public static Map<String, ConfigBuildableInfo> structures = new HashMap<String, ConfigBuildableInfo>();
@@ -360,7 +359,6 @@ public class CivSettings {
 	}
 
 	private static void loadConfigObjects() throws InvalidConfiguration {
-		ConfigMonumentLevel.loadConfig(cultureConfig, monumentLevels);
 		ConfigTownLevel.loadConfig(townConfig, townLevels);
 		ConfigTownUpgrade.loadConfig(townConfig, townUpgrades);
 		ConfigCultureLevel.loadConfig(cultureConfig, cultureLevels);

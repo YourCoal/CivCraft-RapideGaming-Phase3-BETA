@@ -54,27 +54,28 @@ public class BuildChooseTemplate implements GuiAction {
 		inv.addItem(infoRec);
 		
 		for (Perk perk : perkList) {
-			infoRec = LoreGuiItem.build(perk.getDisplayName(), 
-					perk.configPerk.type_id, 
-					perk.configPerk.data, CivColor.Gold+"<Click To Build>",
+			if (!perk.getIdent().contains("template")) {
+				infoRec = LoreGuiItem.build(perk.getDisplayName(), perk.configPerk.type_id, 
+						perk.configPerk.data, CivColor.Gold+"<Click To Build>",
 					CivColor.Gray+"Provided by: "+CivColor.LightBlue+perk.provider);
-			infoRec = LoreGuiItem.setAction(infoRec, "BuildWithTemplate");
-			infoRec = LoreGuiItem.setActionData(infoRec, "perk", perk.getIdent());
-			inv.addItem(infoRec);
+				infoRec = LoreGuiItem.setAction(infoRec, "BuildWithTemplate");
+				infoRec = LoreGuiItem.setActionData(infoRec, "perk", perk.getIdent());
+				inv.addItem(infoRec);
+			}
 		}
 		
 		for (Perk perk : personalUnboundPerks) {
-			infoRec = LoreGuiItem.build(perk.getDisplayName(), 
-					CivData.BEDROCK, 
+			if (!perk.getIdent().contains("template")) {
+				infoRec = LoreGuiItem.build(perk.getDisplayName(), CivData.BEDROCK, 
 					perk.configPerk.data, CivColor.Gold+"<Click To Bind>",
-					CivColor.Gray+"Unbound Temple",
-					CivColor.Gray+"You own this template.",
-					CivColor.Gray+"The town is missing it.",
-					CivColor.Gray+"Click to bind to town first.",
-					CivColor.Gray+"Then build again.");				
-			infoRec = LoreGuiItem.setAction(infoRec, "ActivatePerk");
-			infoRec = LoreGuiItem.setActionData(infoRec, "perk", perk.getIdent());
-			
+						CivColor.Gray+"Unbound Temple",
+						CivColor.Gray+"You own this template.",
+						CivColor.Gray+"The town is missing it.",
+						CivColor.Gray+"Click to bind to town first.",
+						CivColor.Gray+"Then build again.");				
+				infoRec = LoreGuiItem.setAction(infoRec, "ActivatePerk");
+				infoRec = LoreGuiItem.setActionData(infoRec, "perk", perk.getIdent());
+			}
 		}
 		
 		TaskMaster.syncTask(new OpenInventoryTask(player, inv));

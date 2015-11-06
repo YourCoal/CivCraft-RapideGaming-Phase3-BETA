@@ -19,8 +19,12 @@ import com.avrgaming.civcraft.util.TimeTools;
 public class SLSManager implements Runnable {
 
 	public static String serverName;
+	public static String serverNameURL;
+	public static String serverNameURLDescription;
 	public static String serverDescription;
 	public static String serverAddress;
+	public static String serverAddressURL;
+	public static String serverAddressURLDescription;
 	public static String serverTimezone;
 	public static String gen_id;
 	
@@ -40,6 +44,16 @@ public class SLSManager implements Runnable {
 			throw new CivException("Cannot have a server name with a ';' in it.");
 		}
 		
+		serverNameURL = CivSettings.getStringBase("server_name_url");
+		if (serverNameURL.contains(";")) {
+			throw new CivException("Cannot have a server url with a ';' in it.");
+		}
+		
+		serverNameURLDescription = CivSettings.getStringBase("server_name_url_description");
+		if (serverNameURLDescription.contains(";")) {
+			throw new CivException("Cannot have a server url description with a ';' in it.");
+		}
+		
 		serverDescription = CivSettings.getStringBase("server_description");
 		if (serverDescription.contains(";")) {
 			throw new CivException("Cannot have a server description with a ';' in it.");
@@ -48,6 +62,16 @@ public class SLSManager implements Runnable {
 		serverAddress = CivSettings.getStringBase("server_address");
 		if (serverAddress.contains(";")) {
 			throw new CivException("Cannot have a server address with a ';' in it.");
+		}
+		
+		serverAddressURL = CivSettings.getStringBase("server_address_url");
+		if (serverAddressURL.contains(";")) {
+			throw new CivException("Cannot have a server url with a ';' in it.");
+		}
+		
+		serverAddressURLDescription = CivSettings.getStringBase("server_address_url_description");
+		if (serverAddressURLDescription.contains(";")) {
+			throw new CivException("Cannot have a server url description with a ';' in it.");
 		}
 		
 		serverTimezone = CivSettings.getStringBase("server_timezone");
@@ -64,7 +88,7 @@ public class SLSManager implements Runnable {
 		}
 		
 	
-		TaskMaster.asyncTimer("SLS", new SLSManager(), TimeTools.toTicks(60));
+		TaskMaster.asyncTimer("SLS", new SLSManager(), TimeTools.toTicks(4));
 	}
 	
 	public static String getParsedVersion() {
@@ -76,8 +100,17 @@ public class SLSManager implements Runnable {
 	public static void sendHeartbeat() {
 		try {
 			InetAddress address = InetAddress.getByName("atlas.civcraft.net");
-			String message = gen_id+";"+serverName+";"+serverDescription+";"+serverTimezone+";"+serverAddress+";"+
-					Bukkit.getOnlinePlayers().size()+";"+Bukkit.getMaxPlayers()+";"+getParsedVersion();
+			String message = gen_id+";"
+				
+				+ "<a href=\""+serverNameURL+"\" title=\""+serverNameURLDescription+"\" target=\"_blank\" style=\"color:red\"><strong>"+serverName+"</strong></a>;"
+				
+				+ "<strong>"+serverDescription+"</strong>;"
+				
+				+ "<strong>"+serverTimezone+"</strong>;"
+				
+				+ "<a href=\""+serverAddressURL+"\" title=\""+serverAddressURLDescription+"\" target=\"_blank\" style=\"color:navy\"><strong>"+serverAddress+"</strong></a>;"
+				
+				+ Bukkit.getOnlinePlayers().size()+";"+Bukkit.getMaxPlayers()+";"+getParsedVersion();
 			
 			try {
 				if (CivSettings.getStringBase("debug_heartbeat").equalsIgnoreCase("true")) {
@@ -100,11 +133,9 @@ public class SLSManager implements Runnable {
 			//e.printStackTrace();
 		}
 	}
-
-
+	
 	@Override
 	public void run() {
 		SLSManager.sendHeartbeat();
 	}
-	
 }

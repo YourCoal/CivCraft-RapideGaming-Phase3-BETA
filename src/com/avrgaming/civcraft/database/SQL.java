@@ -28,7 +28,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import com.avrgaming.civcraft.arena.ArenaTeam;
 import com.avrgaming.civcraft.camp.Camp;
 import com.avrgaming.civcraft.config.CivSettings;
 import com.avrgaming.civcraft.config.ConfigMarketItem;
@@ -60,7 +59,6 @@ import com.avrgaming.civcraft.util.BiomeCache;
 import com.avrgaming.global.perks.PerkManager;
 import com.avrgaming.global.perks.PerkManagerSimple;
 import com.avrgaming.global.perks.PlatinumManager;
-import com.avrgaming.global.reports.ReportManager;
 import com.avrgaming.global.scores.ScoreManager;
 import com.jolbox.bonecp.Statistics;
 
@@ -177,10 +175,8 @@ public class SQL {
 		Camp.init();
 		ConfigMarketItem.init();
 		RandomEvent.init();
-		ArenaTeam.init();
 					
 		CivLog.heading("Building Global Tables!!");
-		ReportManager.init();
 		ScoreManager.init();
 		
 		CivLog.info("----- Done Building Tables ----");
@@ -563,6 +559,23 @@ public class SQL {
 			SQL.close(null, ps, context);
 		}
 	}
+	
+	//XXX Added for resetting market
+	public static void delete(String tablename) throws SQLException {
+		Connection context = null;
+		PreparedStatement ps = null;
+		
+		try {
+			String sql = "DELETE FROM " + SQL.tb_prefix + tablename + " WHERE `name` = ?";
+			context = SQL.getGameConnection();		
+			ps = context.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			ps.execute();
+			ps.close();
+		} finally {
+			SQL.close(null, ps, context);
+		}
+	}
+	
 	public static void makeCol(String colname, String type, String TABLE_NAME) throws SQLException {
 		if (!SQL.hasColumn(TABLE_NAME, colname)) {
 			CivLog.info("\tCouldn't find "+colname+" column for "+TABLE_NAME);
@@ -622,5 +635,4 @@ public class SQL {
 			}
 		}
 	}
-	
 }

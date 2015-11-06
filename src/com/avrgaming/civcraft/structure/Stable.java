@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.avrgaming.civcraft.structure;
 
 import gpl.HorseModifier;
@@ -120,7 +102,7 @@ public class Stable extends Structure {
 				double paid;
 				if (resident.getTown() != getTown()) {
 					if (!resident.getTreasury().hasEnough(getItemCost(cost))) {
-						CivMessage.sendError(player, "You do not have the required "+getItemCost(cost)+" coins.");
+						CivMessage.sendError(player, "You do not have the required "+getItemCost(cost)+" Redbacks.");
 						return;
 					}
 					
@@ -131,7 +113,7 @@ public class Stable extends Structure {
 					paid = getItemCost(cost);
 				} else {
 					if (!resident.getTreasury().hasEnough(cost)) {
-						CivMessage.sendError(player, "You do not have the required "+cost+" coins.");
+						CivMessage.sendError(player, "You do not have the required "+cost+" Redbacks.");
 						return;
 					}
 
@@ -155,7 +137,7 @@ public class Stable extends Structure {
 				((Horse)mod.getHorse()).setOwner(player);
 				((Horse)mod.getHorse()).setBaby();
 				
-				CivMessage.send(player, CivColor.LightGreen+"Paid "+paid+" coins.");
+				CivMessage.send(player, CivColor.LightGreen+"Paid "+paid+" Redbacks.");
 			}
 		}
 		
@@ -177,7 +159,7 @@ public class Stable extends Structure {
 				double paid;
 				if (resident.getTown() != getTown()) {
 					if (!resident.getTreasury().hasEnough(getItemCost(cost))) {
-						CivMessage.sendError(player, "You do not have the required "+getItemCost(cost)+" coins.");
+						CivMessage.sendError(player, "You do not have the required "+getItemCost(cost)+" Redbacks.");
 						return;
 					}
 					
@@ -186,7 +168,7 @@ public class Stable extends Structure {
 					paid = getItemCost(cost);
 				} else {
 					if (!resident.getTreasury().hasEnough(cost)) {
-						CivMessage.sendError(player, "You do not have the required "+cost+" coins.");
+						CivMessage.sendError(player, "You do not have the required "+cost+" Redbacks.");
 						return;
 					}
 					
@@ -201,7 +183,7 @@ public class Stable extends Structure {
 					}
 				}
 				
-				CivMessage.send(player, CivColor.LightGreen+"Paid "+paid+" coins.");
+				CivMessage.send(player, CivColor.LightGreen+"Paid "+paid+" Redbacks.");
 			}
 			
 		}

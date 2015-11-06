@@ -99,7 +99,7 @@ public class TownHall extends Structure implements RespawnLocationHolder {
 	public void delete() throws SQLException {
 		if (this.getTown() != null) {
 			/* Remove any protected item frames. */
-			for (ItemFrameStorage framestore : goodieFrames ) {
+			for (ItemFrameStorage framestore : goodieFrames) {
 				BonusGoodie goodie = CivGlobal.getBonusGoodie(framestore.getItem());
 				if (goodie != null) {
 					goodie.replenish();
@@ -185,19 +185,19 @@ public class TownHall extends Structure implements RespawnLocationHolder {
 
 		switch (direction) {
 		case CivData.DATA_SIGN_EAST:
-			attachedBlock = absCoord.getBlock().getRelative(BlockFace.WEST);
+			attachedBlock = absCoord.getBlock();
 			facingDirection = BlockFace.EAST;
 			break;
 		case CivData.DATA_SIGN_WEST:
-			attachedBlock = absCoord.getBlock().getRelative(BlockFace.EAST);
+			attachedBlock = absCoord.getBlock();
 			facingDirection = BlockFace.WEST;
 			break;
 		case CivData.DATA_SIGN_NORTH:
-			attachedBlock = absCoord.getBlock().getRelative(BlockFace.SOUTH);
+			attachedBlock = absCoord.getBlock();
 			facingDirection = BlockFace.NORTH;
 			break;
 		case CivData.DATA_SIGN_SOUTH:
-			attachedBlock = absCoord.getBlock().getRelative(BlockFace.NORTH);
+			attachedBlock = absCoord.getBlock();
 			facingDirection = BlockFace.SOUTH;
 			break;
 		default:
@@ -223,9 +223,9 @@ public class TownHall extends Structure implements RespawnLocationHolder {
 				e.printStackTrace();
 				return;
 			}
-			//if (facingDirection != BlockFace.EAST) {
-				//itemStore.setFacingDirection(facingDirection);
-			//}
+			if (facingDirection != BlockFace.EAST) {
+				itemStore.setFacingDirection(facingDirection);
+			}
 		}
 		
 		itemStore.setBuildable(this);
@@ -521,5 +521,16 @@ public class TownHall extends Structure implements RespawnLocationHolder {
 		}
 		
 		CivMessage.sendCiv(getCiv(), "Our "+this.getDisplayName()+" has been hit by a cannon! ("+this.hitpoints+"/"+this.getMaxHitPoints()+")");
+	}
+	
+	public void onTNTDamage(int damage) {
+		this.hitpoints -= damage;
+		
+		if (hitpoints <= 0) {
+			CivMessage.sendCiv(getCiv(), "Our "+this.getDisplayName()+" is out of hitpoints, walls can be destroyed by TNT blasts!");
+			hitpoints = 0;
+		}
+		
+		CivMessage.sendCiv(getCiv(), "Our "+this.getDisplayName()+" has been hit by TNT! ("+this.hitpoints+"/"+this.getMaxHitPoints()+")");
 	}
 }

@@ -120,7 +120,7 @@ public class Civilization extends SQLObject {
 	
 	public Civilization(String name, String capitolName, Resident leader) throws InvalidNameException {
 		this.setName(name);
-		this.leaderName = leader.getName();
+		this.leaderName = leader.getUUID().toString();
 		this.setCapitolName(capitolName);
 		
 		this.government = CivSettings.governments.get("gov_tribalism");		
@@ -189,11 +189,9 @@ public class Civilization extends SQLObject {
 		this.setId(rs.getInt("id"));
 		this.setName(rs.getString("name"));		
 
-		if (CivGlobal.useUUID) {
-			leaderName = CivGlobal.getResidentViaUUID(UUID.fromString(rs.getString("leaderName"))).getName();
-		} else {
-			leaderName = rs.getString("leaderName");		
-		}
+		String resUUID = rs.getString("leaderName");
+//		Resident res = CivGlobal.getResidentViaUUID(UUID.fromString(resUUID));
+		leaderName = resUUID;
 		
 		capitolName = rs.getString("capitolName");
 		setLeaderGroupName(rs.getString("leaderGroupName"));
@@ -244,11 +242,7 @@ public class Civilization extends SQLObject {
 	public void saveNow() throws SQLException {
 		HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		hashmap.put("name", this.getName());
-		if (CivGlobal.useUUID) {
-			hashmap.put("leaderName", this.getLeader().getUUIDString());
-		} else {
-			hashmap.put("leaderName", leaderName);			
-		}
+		hashmap.put("leaderName", this.getLeader().getUUIDString());
 		hashmap.put("capitolName", this.capitolName);
 		hashmap.put("leaderGroupName", this.getLeaderGroupName());
 		hashmap.put("advisersGroupName", this.getAdvisersGroupName());
@@ -404,11 +398,11 @@ public class Civilization extends SQLObject {
 	}
 
 	public Resident getLeader() {
-		return CivGlobal.getResident(leaderName);
+		return CivGlobal.getResidentViaUUID(UUID.fromString(leaderName));
 	}
 
 	public void setLeader(Resident leader) {
-		this.leaderName = leader.getName();
+		this.leaderName = leader.getUUID().toString();
 	}
 
 	@Override

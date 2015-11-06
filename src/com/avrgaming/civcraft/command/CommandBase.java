@@ -33,7 +33,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.avrgaming.civcraft.arena.ArenaTeam;
 import com.avrgaming.civcraft.camp.Camp;
 import com.avrgaming.civcraft.exception.CivException;
 import com.avrgaming.civcraft.main.CivGlobal;
@@ -619,7 +618,6 @@ public abstract class CommandBase implements CommandExecutor {
 		if (!resident.hasCamp()) {
 			throw new CivException("You are not currently in a camp.");
 		}
-		
 		return resident.getCamp();
 	}
 	
@@ -651,7 +649,6 @@ public abstract class CommandBase implements CommandExecutor {
 			throw new CivException("No camp matching that name.");
 		}
 		
-		
 		if (potentialMatches.size() != 1) {
 			CivMessage.send(sender, CivColor.LightPurple+ChatColor.UNDERLINE+"Potential Matches");
 			CivMessage.send(sender, " ");
@@ -663,51 +660,6 @@ public abstract class CommandBase implements CommandExecutor {
 			CivMessage.send(sender, CivColor.LightBlue+ChatColor.ITALIC+out);
 			throw new CivException("More than one camp matches, please clarify.");
 		}
-		
 		return potentialMatches.get(0);
 	}
-	
-	protected ArenaTeam getNamedTeam(int index) throws CivException {
-		if (args.length < (index+1)) {
-			throw new CivException("Enter a team name.");
-		}
-		
-		String name = args[index].toLowerCase();
-		name = name.replace("%", "(\\w*)");
-				
-		ArrayList<ArenaTeam> potentialMatches = new ArrayList<ArenaTeam>();
-		for (ArenaTeam team : ArenaTeam.arenaTeams.values()) {
-			String str = team.getName().toLowerCase();
-			try {
-				if (str.matches(name)) {
-					potentialMatches.add(team);
-				}
-			} catch (Exception e) {
-				throw new CivException("Invalid pattern.");
-			}
-			
-			if (potentialMatches.size() > MATCH_LIMIT) {
-				throw new CivException("Too many potential matches. Refine your search.");
-			}
-		}
-		
-		if (potentialMatches.size() == 0) {
-			throw new CivException("No team matching that name.");
-		}
-		
-		if (potentialMatches.size() != 1) {
-			CivMessage.send(sender, CivColor.LightPurple+ChatColor.UNDERLINE+"Potential Matches");
-			CivMessage.send(sender, " ");
-			String out = "";
-			for (ArenaTeam team : potentialMatches) {
-				out += team.getName()+", ";
-			}
-		
-			CivMessage.send(sender, CivColor.LightBlue+ChatColor.ITALIC+out);
-			throw new CivException("More than one team matches, please clarify.");
-		}
-		
-		return potentialMatches.get(0);
-	}
-	
 }

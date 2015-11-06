@@ -27,7 +27,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -54,7 +53,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import com.avrgaming.civcraft.arena.ArenaTeam;
 import com.avrgaming.civcraft.camp.Camp;
 import com.avrgaming.civcraft.camp.CampBlock;
 import com.avrgaming.civcraft.camp.WarCamp;
@@ -64,8 +62,6 @@ import com.avrgaming.civcraft.endgame.EndGameCondition;
 import com.avrgaming.civcraft.event.EventTimer;
 import com.avrgaming.civcraft.exception.CivException;
 import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.exception.InvalidNameException;
-import com.avrgaming.civcraft.exception.InvalidObjectException;
 import com.avrgaming.civcraft.items.BonusGoodie;
 import com.avrgaming.civcraft.object.Civilization;
 import com.avrgaming.civcraft.object.CultureChunk;
@@ -158,7 +154,7 @@ public class CivGlobal {
 	public static HashSet<String> researchedTechs = new HashSet<String>();
 	
 	/* TODO change this to true for MC 1.8 */
-	public static boolean useUUID = false;
+	public static boolean useUUID = true;
 	
 	public static Map<Integer, Boolean> CivColorInUse = new ConcurrentHashMap<Integer, Boolean>();
 	public static TradeGoodPreGenerate preGenerator = new TradeGoodPreGenerate();
@@ -219,7 +215,6 @@ public class CivGlobal {
 		loadTradeGoodies();
 		loadRandomEvents();
 		loadProtectedBlocks();
-		loadTeams();
 		EventTimer.loadGlobalEvents();
 		EndGameCondition.init();
 		War.init();
@@ -290,35 +285,7 @@ public class CivGlobal {
 	private static void loadTradeGoods() {
 		
 	}
-	
-	private static void loadTeams() throws SQLException {
-		Connection context = null;
-		ResultSet rs = null;
-		PreparedStatement ps = null;
-		
-		try {
-			context = SQL.getGameConnection();		
-			ps = context.prepareStatement("SELECT * FROM "+SQL.tb_prefix+ArenaTeam.TABLE_NAME);
-			rs = ps.executeQuery();
-	
-			while(rs.next()) {
-				try {
-					new ArenaTeam(rs);
-				} catch (InvalidNameException | InvalidObjectException
-						| CivException e) {
-					e.printStackTrace();
-				}
-			}
-	
-			Collections.sort(ArenaTeam.teamRankings);
-			Collections.reverse(ArenaTeam.teamRankings); //Lazy method.
-			
-			CivLog.info("Loaded "+ArenaTeam.arenaTeams.size()+" Arena Teams");
-		} finally {
-			SQL.close(rs, ps, context);
-		}
-	}
-	
+
 	private static void loadTradeGoodies() throws SQLException {
 		Connection context = null;
 		ResultSet rs = null;

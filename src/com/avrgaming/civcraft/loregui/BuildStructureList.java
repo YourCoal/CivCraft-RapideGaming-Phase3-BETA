@@ -38,7 +38,4 @@ public class BuildStructureList implements GuiAction {
 //		LoreGuiItemListener.guiInventories.put(guiInventory.getName(), guiInventory);		
 //		TaskMaster.syncTask(new OpenInventoryTask(player, guiInventory));
 	}
-
-
-
 }

@@ -61,27 +61,15 @@ public class PermissionGroup extends SQLObject {
 	}
 
 	public void addMember(Resident res) {
-		if (CivGlobal.useUUID) {
-			members.put(res.getUUIDString(), res);
-		} else {
-			members.put(res.getName(), res);
-		}
+		members.put(res.getUUIDString(), res);
 	}
 	
 	public void removeMember(Resident res) {
-		if (CivGlobal.useUUID) {
-			members.remove(res.getUUIDString());
-		} else {		
-			members.remove(res.getName());
-		}
+		members.remove(res.getUUIDString());
 	}
 
 	public boolean hasMember(Resident res) {		
-		if (CivGlobal.useUUID) {
-			return members.containsKey(res.getUUIDString());
-		} else {
-			return members.containsKey(res.getName());	
-		}
+		return members.containsKey(res.getUUIDString());
 	}
 	
 	public void clearMembers() {
@@ -128,11 +116,10 @@ public class PermissionGroup extends SQLObject {
 					return;
 				}
 			}
-			
 			civ.addGroup(this);
 		}
 	}
-
+	
 	@Override
 	public void save() {	
 		SQLUpdate.add(this);
@@ -141,12 +128,10 @@ public class PermissionGroup extends SQLObject {
 	@Override
 	public void saveNow() throws SQLException {
 		HashMap<String, Object> hashmap = new HashMap<String, Object>();
-		
 		hashmap.put("name", this.getName());
 		hashmap.put("members", this.getMembersSaveString());
 		hashmap.put("town_id", this.getTownId());
 		hashmap.put("civ_id", this.getCivId());
-		
 		SQL.updateNamedObject(this, hashmap, TABLE_NAME);	
 	}
 
@@ -170,14 +155,14 @@ public class PermissionGroup extends SQLObject {
 		
 		for (String n : names) {
 			Resident res;
-			if (CivGlobal.useUUID) {
-				res = CivGlobal.getResidentViaUUID(UUID.fromString(n));
-			} else {
-				res = CivGlobal.getResident(n);		
-			}
+			
+			if (n.length() >= 1)
+				{
+				 	res = CivGlobal.getResidentViaUUID(UUID.fromString(n));
 			
 			if (res != null) {
-				members.put(n, res);
+					members.put(n, res);
+				}
 			}
 		}
 	}
@@ -244,16 +229,10 @@ public class PermissionGroup extends SQLObject {
 	public String getMembersString() {
 		String out = "";
 		
-		if (CivGlobal.useUUID) {
-			for (String uuid : members.keySet()) {
-				Resident res = CivGlobal.getResidentViaUUID(UUID.fromString(uuid));
-				out += res.getName()+", ";
+		for (String uuid : members.keySet()) {
+			Resident res = CivGlobal.getResidentViaUUID(UUID.fromString(uuid));
+			out += res.getName()+", ";
 			}
-		} else {
-			for (String name : members.keySet()) {
-				out += name+", ";
-			}
-		}
 		return out;
 	}
 

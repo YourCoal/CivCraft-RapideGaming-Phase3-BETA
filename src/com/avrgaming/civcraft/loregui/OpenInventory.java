@@ -43,6 +43,9 @@ public class OpenInventory implements GuiAction {
 				case "showTutorialInventory":
 					CivTutorial.showTutorialInventory(player);
 					break;
+				case "showServerInfoInventory":
+					CivTutorial.showServerInfoInventory(player);
+					break;
 				case "showCraftingHelp":
 					CivTutorial.showCraftingHelp(player);
 					break;

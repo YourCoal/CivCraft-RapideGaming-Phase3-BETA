@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.avrgaming.civcraft.command.admin;
 
 import java.sql.SQLException;
@@ -51,14 +33,24 @@ public class AdminResCommand extends CommandBase {
 		commands.put("giveplat", "[player] [amount] - Gives this player the specified amount of platinum.");
 		commands.put("givereward", "[player] [rewardID] - Gives player this achievement with its plat rewards.");
 		commands.put("rename", "[old_name] [new_name] - Rename this resident. Useful if players change their name.");
+		commands.put("removeres", "Remove the resident from MySQL Database.");
+	}
+	
+	public void removeres_cmd() throws CivException {
+		Resident resident = getNamedResident(1);
+		try {
+			resident.delete();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new CivException(e.getMessage());
+		}
+		CivGlobal.removeResident(resident);
+		CivMessage.sendSuccess(sender, "Resident Removed");
 	}
 	
 	public void rename_cmd() throws CivException {
 		Resident resident = getNamedResident(1);
 		String newName = getNamedString(2, "Enter a new name");
-
-		
-		
 		Resident newResident = CivGlobal.getResident(newName);
 		if (newResident != null) {
 			throw new CivException("Already another resident with the name:"+newResident.getName()+" cannot rename "+resident.getName());

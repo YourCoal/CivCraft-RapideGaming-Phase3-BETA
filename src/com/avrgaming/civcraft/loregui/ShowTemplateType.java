@@ -19,36 +19,17 @@ public class ShowTemplateType implements GuiAction {
 		String perk_id = LoreGuiItem.getActionData(stack, "perk");
 		Perk perk = resident.perks.get(perk_id);
 		if (perk != null) {
-			if (perk.getIdent().startsWith("template_arctic"))
+			if (perk.getIdent().startsWith("template_test"))
 			{
-				resident.showTemplatePerks("arctic");
+				resident.showTemplatePerks("test");
 			}
-			else if (perk.getIdent().startsWith("template_aztec"))
-			{
-				resident.showTemplatePerks("aztec");
-			}
-			else if (perk.getIdent().startsWith("template_cultist"))
-			{
-				resident.showTemplatePerks("cultist");
-			}
-			else if (perk.getIdent().startsWith("template_egyptian"))
-			{
-				resident.showTemplatePerks("egyptian");
-			}
-			else if (perk.getIdent().startsWith("template_elven"))
-			{
-				resident.showTemplatePerks("elven");
-			}
-			else if (perk.getIdent().startsWith("template_roman"))
-			{
-				resident.showTemplatePerks("roman");
-			}
-			else if (perk.getIdent().startsWith("template_hell"))
-			{
-				resident.showTemplatePerks("hell");
-			}
+//			else if (perk.getIdent().startsWith("template_aztec"))
+//			{
+//				resident.showTemplatePerks("aztec");
+//			}
 		} else {
 			CivLog.error("Couldn't activate perk:"+perk_id+" cause it wasn't found in perks hashmap.");
 		}
 	}
+
 }

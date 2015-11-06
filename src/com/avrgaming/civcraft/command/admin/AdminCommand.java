@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.avrgaming.civcraft.command.admin;
 
 import java.lang.reflect.InvocationTargetException;
@@ -87,14 +69,7 @@ public class AdminCommand extends CommandBase {
 		commands.put("road", "Road management commands");
 		commands.put("clearendgame", "[key] [civ] - clears this end game condition for this civ.");
 		commands.put("endworld", "Starts the Apocalypse.");
-		commands.put("arena", "Arena management commands.");
 		commands.put("perk", "Admin perk management.");
-		commands.put("mob", "Mob management commands");
-	}
-	
-	public void mob_cmd() {
-		AdminMobCommand cmd = new AdminMobCommand();	
-		cmd.onCommand(sender, null, "mob", this.stripArgs(args, 1));
 	}
 	
 	public void perk_cmd() {
@@ -144,11 +119,37 @@ public class AdminCommand extends CommandBase {
 			
 			/* Build the Category Inventory. */
 			for (ConfigMaterialCategory cat : ConfigMaterialCategory.getCategories()) {
-				ItemStack infoRec = LoreGuiItem.build(cat.name, 
-						ItemManager.getId(Material.WRITTEN_BOOK), 
-						0, 
-						CivColor.LightBlue+cat.materials.size()+" Items",
-						CivColor.Gold+"<Click To Open>");
+				int identifier;
+				if (cat.name.contains("Element")) {
+					identifier = ItemManager.getId(Material.EXP_BOTTLE);
+				} else if (cat.name.contains("Gear Tier 0")) {
+					identifier = ItemManager.getId(Material.STONE_SWORD);
+				} else if (cat.name.contains("Gear Tier 1")) {
+					identifier = ItemManager.getId(Material.IRON_HELMET);
+				} else if (cat.name.contains("Gear Tier 2")) {
+					identifier = ItemManager.getId(Material.GOLD_CHESTPLATE);
+				} else if (cat.name.contains("Gear Tier 3")) {
+					identifier = ItemManager.getId(Material.CHAINMAIL_LEGGINGS);
+				} else if (cat.name.contains("Gear Tier 4")) {
+					identifier = ItemManager.getId(Material.DIAMOND_BOOTS);
+				} else if (cat.name.contains("Special")) {
+					identifier = ItemManager.getId(Material.BEACON);
+				} else if (cat.name.contains("Tier 1 Material")) {
+					identifier = ItemManager.getId(Material.IRON_BLOCK);
+				} else if (cat.name.contains("Tier 2 Material")) {
+					identifier = ItemManager.getId(Material.GOLD_BLOCK);
+				} else if (cat.name.contains("Tier 3 Material")) {
+					identifier = ItemManager.getId(Material.DIAMOND_BLOCK);
+				} else if (cat.name.contains("Tier 4 Material")) {
+					identifier = ItemManager.getId(Material.EMERALD_BLOCK);
+				} else if (cat.name.contains("Upgrader")) {
+					identifier = ItemManager.getId(Material.NETHER_STAR);
+				} else {
+					identifier = ItemManager.getId(Material.WRITTEN_BOOK);
+				}
+				
+				ItemStack infoRec = LoreGuiItem.build(cat.name, identifier, 0, 
+						CivColor.LightBlue+cat.materials.size()+" Items", CivColor.Gold+"<Click To Open>");
 						infoRec = LoreGuiItem.setAction(infoRec, "OpenInventory");
 						infoRec = LoreGuiItem.setActionData(infoRec, "invType", "showGuiInv");
 						infoRec = LoreGuiItem.setActionData(infoRec, "invName", cat.name+" Spawn");
@@ -170,11 +171,6 @@ public class AdminCommand extends CommandBase {
 		}
 		
 		player.openInventory(spawnInventory);
-	}
-	
-	public void arena_cmd() {
-		AdminArenaCommand cmd = new AdminArenaCommand();	
-		cmd.onCommand(sender, null, "arena", this.stripArgs(args, 1));
 	}
 	
 	public void road_cmd() {

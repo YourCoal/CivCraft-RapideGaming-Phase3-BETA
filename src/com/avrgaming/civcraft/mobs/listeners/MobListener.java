@@ -5,9 +5,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.IronGolem;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Monster;
-import org.bukkit.entity.PigZombie;
-import org.bukkit.entity.Witch;
-import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -18,7 +15,7 @@ import org.bukkit.event.world.ChunkLoadEvent;
 
 import com.avrgaming.civcraft.main.CivMessage;
 import com.avrgaming.civcraft.mobs.CommonCustomMob;
-import com.moblib.moblib.MobLib;
+import com.avrgaming.moblib.MobLib;
 
 public class MobListener implements Listener {
 
@@ -31,22 +28,7 @@ public class MobListener implements Listener {
 				return;
 			}
 			
-			if (e instanceof Zombie) {
-				e.remove();
-				return;
-			}
-			
 			if (e instanceof IronGolem) {
-				e.remove();
-				return;
-			}
-			
-			if (e instanceof PigZombie) {
-				e.remove();
-				return;
-			}
-			
-			if (e instanceof Witch) {
 				e.remove();
 				return;
 			}
@@ -63,11 +45,12 @@ public class MobListener implements Listener {
 		if (!MobLib.isMobLibEntity((LivingEntity) event.getEntity())) {
 			return;
 		}
-		
+			
 		CommonCustomMob mob = CommonCustomMob.getCCM(event.getEntity());
 		if (mob != null) {
 			mob.onTarget(event);
 		}
+		
 	}
 	
 	@EventHandler(priority = EventPriority.NORMAL)
@@ -115,4 +98,5 @@ public class MobListener implements Listener {
 			}
 		}
 	}
+	
 }

@@ -41,7 +41,6 @@ public class CivData {
 	public static final byte DATA_JUNGLE = 3;
 	
 	
-	public static final int DIRT = 3;
 	public static final int GOLD_ORE = 14;
 	public static final int IRON_ORE = 15;
 	public static final int IRON_INGOT = 265;

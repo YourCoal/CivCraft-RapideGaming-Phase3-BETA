@@ -7,8 +7,8 @@ import org.bukkit.Location;
 
 import com.avrgaming.civcraft.exception.CivException;
 import com.avrgaming.civcraft.util.CivColor;
-import com.moblib.mob.ICustomMob;
-import com.moblib.moblib.MobLib;
+import com.avrgaming.mob.ICustomMob;
+import com.avrgaming.moblib.MobLib;
 
 public class MobSpawner {
 
@@ -52,10 +52,6 @@ public class MobSpawner {
 		
 		public String getClassName() {
 			return className;
-		}
-
-		public boolean equalsIgnoreCase(String string) {
-			return false;
 		}
 	}
 	
@@ -116,4 +112,6 @@ public class MobSpawner {
 			e.printStackTrace();
 		}
 	}
+	
+	
 }

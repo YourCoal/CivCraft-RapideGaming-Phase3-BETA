@@ -7,7 +7,10 @@ import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
 import org.bukkit.entity.Player;
 
+import com.avrgaming.civcraft.arena.ArenaManager;
 import com.avrgaming.civcraft.command.CommandBase;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.config.ConfigArena;
 import com.avrgaming.civcraft.exception.CivException;
 import com.avrgaming.civcraft.main.CivMessage;
 import com.avrgaming.civcraft.util.ChunkCoord;
@@ -22,6 +25,15 @@ public class DebugWorldCommand extends CommandBase {
 		commands.put("create", "[name] - creates a new test world with this name.");
 		commands.put("tp", "[name] teleports you to spawn at the specified world.");
 		commands.put("list", "Lists worlds according to bukkit.");
+		commands.put("createarena", "[name] - creates and arena with the given name");
+	}
+	
+	public void createarena_cmd() throws CivException {
+		String name = getNamedString(1, "enter a arena name.");
+		
+		ConfigArena arena = CivSettings.arenas.get(name);
+		ArenaManager.createArena(arena);
+		CivMessage.sendSuccess(sender, "Created arena:"+arena.name);
 	}
 	
 	public void list_cmd() {

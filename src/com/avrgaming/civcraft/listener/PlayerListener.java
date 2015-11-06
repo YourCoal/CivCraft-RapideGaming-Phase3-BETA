@@ -216,6 +216,7 @@ public class PlayerListener implements Listener {
 			return;
 		}
 		
+		if (War.isWarTime() && !resident.isInsideArena()) {
 			if (resident.getTown().getCiv().getDiplomacyManager().isAtWar()) {
 				//TownHall townhall = resident.getTown().getTownHall();
 				Capitol capitol = resident.getCiv().getCapitolStructure();
@@ -228,9 +229,11 @@ public class PlayerListener implements Listener {
 						CivMessage.send(player, CivColor.LightGray+"You've respawned in the War Room since it's WarTime and you're at war.");
 						
 						//TaskMaster.asyncTask("", reviveTask, 0);
+					}
 				}
 			}
 		}
+		
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
@@ -538,5 +541,9 @@ public class PlayerListener implements Listener {
 				}
 			}
 		}
+		
+		
+		
+		
 	}
 }

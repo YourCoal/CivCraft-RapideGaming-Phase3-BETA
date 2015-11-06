@@ -125,18 +125,9 @@ public class EconCommand extends CommandBase {
 	}
 	
 	private void validEcon() throws CivException {
-//		if (!getPlayer().isOp() || !getPlayer().hasPermission(CivSettings.ECON)) {
-//			throw new CivException("You must be OP to use this command.");
-//		}
-		if (sender instanceof Player) {
-			if (((Player)sender).hasPermission(CivSettings.ECON)) {
-				return;
-			}
-		}
-		
-		if (sender.isOp() == false) {
-			throw new CivException("Only admins can use this command.");			
-		}
+		if (!getPlayer().isOp() || !getPlayer().hasPermission(CivSettings.ECON)) {
+			throw new CivException("You must be OP to use this command.");
+		}		
 	}
 	
 	public void add_cmd() throws CivException {
@@ -153,7 +144,6 @@ public class EconCommand extends CommandBase {
 			Double amount = Double.valueOf(args[2]);
 			resident.getTreasury().deposit(amount);
 			CivMessage.sendSuccess(sender, "Added "+args[2]+" to "+args[1]);
-			CivMessage.sendSuccess(resident, "An admin gave you "+args[2]+" coins!");
 			
 		} catch (NumberFormatException e) {
 			throw new CivException(args[2]+" is not a number.");
@@ -346,11 +336,14 @@ public class EconCommand extends CommandBase {
 		if (!player.isOp() && !player.hasPermission(CivSettings.ECON)) {
 			return;
 		}
+		
 		showBasicHelp();
+		
 	}
 
 	@Override
 	public void permissionCheck() throws CivException {
 		
 	}
+
 }

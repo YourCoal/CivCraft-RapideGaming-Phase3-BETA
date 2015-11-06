@@ -223,9 +223,9 @@ public class CivTutorial {
 			craftRec = LoreGuiItem.setActionData(craftRec, "invType", "showCraftingHelp");
 			guiInventory.addItem(craftRec);
 			
-//			ItemStack buildMenu = LoreGuiItem.build("Build Structure", ItemManager.getId(Material.BRICK_STAIRS), 0, CivColor.Gold+"<Click to View>");
-//			buildMenu = LoreGuiItem.setAction(buildMenu, "BuildStructureList");
-//			guiInventory.addItem(buildMenu);
+			ItemStack buildMenu = LoreGuiItem.build("Build Structure", ItemManager.getId(Material.BRICK_STAIRS), 0, CivColor.Gold+"<Click to View>");
+			buildMenu = LoreGuiItem.setAction(buildMenu, "BuildStructureList");
+			guiInventory.addItem(buildMenu);
 			
 			
 			LoreGuiItemListener.guiInventories.put(guiInventory.getName(), guiInventory);

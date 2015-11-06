@@ -30,33 +30,33 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import net.minecraft.server.v1_8_R3.AttributeMapBase;
-import net.minecraft.server.v1_8_R3.AttributeMapServer;
-import net.minecraft.server.v1_8_R3.GenericAttributes;
-import net.minecraft.server.v1_8_R3.InventoryEnderChest;
-import net.minecraft.server.v1_8_R3.NBTCompressedStreamTools;
-import net.minecraft.server.v1_8_R3.NBTTagCompound;
-import net.minecraft.server.v1_8_R3.NBTTagDouble;
-import net.minecraft.server.v1_8_R3.NBTTagFloat;
-import net.minecraft.server.v1_8_R3.NBTTagList;
-import net.minecraft.server.v1_8_R3.PlayerAbilities;
-import net.minecraft.server.v1_8_R3.PlayerInventory;
+import net.minecraft.server.v1_7_R4.AttributeMapBase;
+import net.minecraft.server.v1_7_R4.AttributeMapServer;
+import net.minecraft.server.v1_7_R4.GenericAttributes;
+import net.minecraft.server.v1_7_R4.InventoryEnderChest;
+import net.minecraft.server.v1_7_R4.NBTCompressedStreamTools;
+import net.minecraft.server.v1_7_R4.NBTTagCompound;
+import net.minecraft.server.v1_7_R4.NBTTagDouble;
+import net.minecraft.server.v1_7_R4.NBTTagFloat;
+import net.minecraft.server.v1_7_R4.NBTTagList;
+import net.minecraft.server.v1_7_R4.PlayerAbilities;
+import net.minecraft.server.v1_7_R4.PlayerInventory;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_8_R3.inventory.CraftInventory;
-import org.bukkit.craftbukkit.v1_8_R3.inventory.CraftInventoryPlayer;
+import org.bukkit.craftbukkit.v1_7_R4.inventory.CraftInventory;
+import org.bukkit.craftbukkit.v1_7_R4.inventory.CraftInventoryPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.util.Vector;
 
-import com.civcraft.main.CivGlobal;
-import com.civcraft.object.Resident;
-import com.civcraft.util.NBTStaticHelper;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.object.Resident;
+import com.avrgaming.civcraft.util.NBTStaticHelper;
 import com.google.common.io.Files;
 
 /**

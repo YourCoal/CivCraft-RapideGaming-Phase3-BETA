@@ -32,8 +32,8 @@ import com.avrgaming.civcraft.main.CivGlobal;
 import com.avrgaming.civcraft.main.CivMessage;
 import com.avrgaming.civcraft.util.CivColor;
 import com.avrgaming.civcraft.util.ItemManager;
-import com.moblib.moblib.MobLib;
-import com.moblib.moblib.MobLibEntity;
+import com.avrgaming.moblib.MobLib;
+import com.avrgaming.moblib.MobLibEntity;
 
 public class PvPLogger implements Listener, Runnable {
 

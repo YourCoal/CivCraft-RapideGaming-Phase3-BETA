@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import com.avrgaming.civcraft.arena.ArenaTeam;
 import com.avrgaming.civcraft.camp.Camp;
 import com.avrgaming.civcraft.config.CivSettings;
 import com.avrgaming.civcraft.config.ConfigMarketItem;
@@ -176,6 +177,7 @@ public class SQL {
 		Camp.init();
 		ConfigMarketItem.init();
 		RandomEvent.init();
+		ArenaTeam.init();
 					
 		CivLog.heading("Building Global Tables!!");
 		ReportManager.init();
@@ -561,23 +563,6 @@ public class SQL {
 			SQL.close(null, ps, context);
 		}
 	}
-	
-	//XXX Added for resetting market
-	public static void delete(String tablename) throws SQLException {
-		Connection context = null;
-		PreparedStatement ps = null;
-		
-		try {
-			String sql = "DELETE FROM " + SQL.tb_prefix + tablename + " WHERE `name` = ?";
-			context = SQL.getGameConnection();		
-			ps = context.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			ps.execute();
-			ps.close();
-		} finally {
-			SQL.close(null, ps, context);
-		}
-	}
-	
 	public static void makeCol(String colname, String type, String TABLE_NAME) throws SQLException {
 		if (!SQL.hasColumn(TABLE_NAME, colname)) {
 			CivLog.info("\tCouldn't find "+colname+" column for "+TABLE_NAME);
@@ -637,4 +622,5 @@ public class SQL {
 			}
 		}
 	}
+	
 }

@@ -183,6 +183,7 @@ public class ConfigMarketItem {
 				if(buy_value == sell_value) {
 					buy_value++;
 				}
+				
 				this.saveItemNow();
 			}
 			
@@ -350,6 +351,7 @@ public class ConfigMarketItem {
 				buy_value++;
 			}
 			//buy_value += STEP;
+			//sell_value = buy_value - (PRICE_DIFF*2);
 			buysell_count = 0;
 			this.lastaction = LastAction.BUY;
 		}
@@ -384,4 +386,5 @@ public class ConfigMarketItem {
 	public boolean isStackable() {
 		return this.stackable;
 	}
+
 }

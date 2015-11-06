@@ -100,7 +100,9 @@ public class MissionLogger {
 					}
 					
 					String playerName = rs.getString("playerName");
-					playerName = CivGlobal.getResidentViaUUID(UUID.fromString(playerName)).getName();
+					if (CivGlobal.useUUID) {
+						playerName = CivGlobal.getResidentViaUUID(UUID.fromString(playerName)).getName();
+					}
 					
 					String str = sdf.format(date)+" - "+rs.getString("playerName")+":"+target.getName()+":"+rs.getString("missionName")+" -- "+rs.getString("result");
 					out.add(str);

@@ -33,6 +33,7 @@ import com.avrgaming.civcraft.main.CivLog;
 import com.avrgaming.civcraft.main.CivMessage;
 import com.avrgaming.civcraft.object.Resident;
 import com.avrgaming.civcraft.threading.TaskMaster;
+import com.avrgaming.civcraft.util.CivColor;
 import com.avrgaming.civcraft.util.TimeTools;
 import com.avrgaming.civcraft.war.War;
 import com.avrgaming.civcraft.war.WarAntiCheat;
@@ -129,9 +130,47 @@ public class ACManager implements PluginMessageListener {
 						
 					} catch (CivException e) {
 					}
+					
 				}
 			}
+			
 			TaskMaster.syncTask(new WarCheckTask(player.getName()), TimeTools.toTicks(30));
+		}
+		
+		Resident resident = CivGlobal.getResident(player);
+		if (resident != null && resident.isInsideArena()) {
+			class ArenaCheckTask implements Runnable {
+				String name;
+				
+				public ArenaCheckTask(String name) {
+					this.name = name;
+				}
+				
+				@Override
+				public void run() {
+					try {
+						Player player = CivGlobal.getPlayer(name);
+						Resident resident = CivGlobal.getResident(player);
+						
+						if (!resident.isUsesAntiCheat()) {
+							
+							/* Player is rejoining but doesnt have anti-cheat installed. */
+							resident.teleportHome();
+							resident.restoreInventory();
+							resident.setInsideArena(false);
+							resident.save();
+							
+							CivMessage.send(resident, CivColor.LightGray+"You've been teleported home since you cannot be inside an arena without anti-cheat.");
+						}
+						
+					} catch (CivException e) {
+					}
+					
+				}
+				
+			}
+			
+			TaskMaster.syncTask(new ArenaCheckTask(player.getName()), TimeTools.toTicks(30));
 		}
 	}
 

@@ -208,6 +208,18 @@ public class DebugCommand extends CommandBase {
 		commands.put("arenainfo", "Shows arena info for this player.");
 	}
 	
+	public void arenainfo_cmd() throws CivException {
+		Resident resident = getResident();
+		String arenaName = "";
+		
+		if (resident.getTeam() != null && resident.getTeam().getCurrentArena() != null) {
+			arenaName = resident.getTeam().getCurrentArena().getInstanceName();
+		}
+		
+		
+		CivMessage.send(sender, "InsideArena:"+resident.isInsideArena()+" Team Active arena:"+arenaName);
+	}
+	
 	public void saveinv_cmd() throws CivException {
 		Resident resident = getResident();
 		resident.saveInventory();
@@ -858,7 +870,6 @@ public class DebugCommand extends CommandBase {
 		CivMessage.send(sender, out);
 	}
 	
-	@SuppressWarnings("deprecation")
 	public void refreshchunk_cmd() throws CivException {
 		Player you = getPlayer();
 		ChunkCoord coord = new ChunkCoord(you.getLocation());

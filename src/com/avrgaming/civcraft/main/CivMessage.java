@@ -29,6 +29,8 @@ import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.avrgaming.civcraft.arena.Arena;
+import com.avrgaming.civcraft.arena.ArenaTeam;
 import com.avrgaming.civcraft.camp.Camp;
 import com.avrgaming.civcraft.exception.CivException;
 import com.avrgaming.civcraft.object.Civilization;
@@ -157,18 +159,11 @@ public class CivMessage {
 	public static void sendSuccess(CommandSender sender, String message) {
 		send(sender, CivColor.LightGreen+message);
 	}
-	
+
 	public static void global(String string) {
 		CivLog.info("[Global] "+string);
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			player.sendMessage(CivColor.LightBlue+"[Global] "+CivColor.White+string);
-		}
-	}
-	
-	public static void mob(String string) {
-		CivLog.info("[Mob] "+string);
-		for (Player player : Bukkit.getOnlinePlayers()) {
-			player.sendMessage(CivColor.Yellow+"[Mob] "+CivColor.White+string);
 		}
 	}
 	
@@ -435,18 +430,20 @@ public class CivMessage {
 			player.sendMessage(str);
 		}
 	}
-	
+
 	public static void sendCamp(Camp camp, String message) {
 		for (Resident resident : camp.getMembers()) {
 			try {
 				Player player = CivGlobal.getPlayer(resident);
 				player.sendMessage(CivColor.Yellow+"[Camp] "+CivColor.Yellow+message);		
 				CivLog.info("[Camp:"+camp.getName()+"] "+message);
+
 			} catch (CivException e) {
+				//player not online.
 			}
 		}
 	}
-	
+
 	public static void sendTownHeading(Town town, String string) {
 		CivLog.info("[Town:"+town.getName()+"] "+string);
 		for (Resident resident : town.getResidents()) {
@@ -473,4 +470,26 @@ public class CivMessage {
 			return;
 		}
 	}
+
+	public static void sendTeam(ArenaTeam team, String message) {
+		for (Resident resident : team.teamMembers) {
+			CivMessage.send(resident, CivColor.Blue+"[Team ("+team.getName()+")] "+CivColor.RESET+message);
+		}
+	}
+	
+	public static void sendTeamHeading(ArenaTeam team, String message) {
+		for (Resident resident : team.teamMembers) {
+			CivMessage.sendHeading(resident, message);
+		}
+	}
+	
+	public static void sendArena(Arena arena, String message) {
+		CivLog.info("[Arena] "+message);
+		for (ArenaTeam team : arena.getTeams()) {
+			for (Resident resident : team.teamMembers) {
+				CivMessage.send(resident, CivColor.LightBlue+"[Arena] "+CivColor.RESET+message);
+			}
+		}
+	}
+	
 }

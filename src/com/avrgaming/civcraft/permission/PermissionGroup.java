@@ -61,15 +61,27 @@ public class PermissionGroup extends SQLObject {
 	}
 
 	public void addMember(Resident res) {
-		members.put(res.getUUIDString(), res);
+		if (CivGlobal.useUUID) {
+			members.put(res.getUUIDString(), res);
+		} else {
+			members.put(res.getName(), res);
+		}
 	}
 	
 	public void removeMember(Resident res) {
-		members.remove(res.getUUIDString());
+		if (CivGlobal.useUUID) {
+			members.remove(res.getUUIDString());
+		} else {		
+			members.remove(res.getName());
+		}
 	}
 
 	public boolean hasMember(Resident res) {		
-		return members.containsKey(res.getUUIDString());
+		if (CivGlobal.useUUID) {
+			return members.containsKey(res.getUUIDString());
+		} else {
+			return members.containsKey(res.getName());	
+		}
 	}
 	
 	public void clearMembers() {
@@ -116,10 +128,11 @@ public class PermissionGroup extends SQLObject {
 					return;
 				}
 			}
+			
 			civ.addGroup(this);
 		}
 	}
-	
+
 	@Override
 	public void save() {	
 		SQLUpdate.add(this);
@@ -128,10 +141,12 @@ public class PermissionGroup extends SQLObject {
 	@Override
 	public void saveNow() throws SQLException {
 		HashMap<String, Object> hashmap = new HashMap<String, Object>();
+		
 		hashmap.put("name", this.getName());
 		hashmap.put("members", this.getMembersSaveString());
 		hashmap.put("town_id", this.getTownId());
 		hashmap.put("civ_id", this.getCivId());
+		
 		SQL.updateNamedObject(this, hashmap, TABLE_NAME);	
 	}
 
@@ -155,14 +170,14 @@ public class PermissionGroup extends SQLObject {
 		
 		for (String n : names) {
 			Resident res;
-			
-			if (n.length() >= 1)
-				{
-				 	res = CivGlobal.getResidentViaUUID(UUID.fromString(n));
+			if (CivGlobal.useUUID) {
+				res = CivGlobal.getResidentViaUUID(UUID.fromString(n));
+			} else {
+				res = CivGlobal.getResident(n);		
+			}
 			
 			if (res != null) {
-					members.put(n, res);
-				}
+				members.put(n, res);
 			}
 		}
 	}
@@ -229,10 +244,16 @@ public class PermissionGroup extends SQLObject {
 	public String getMembersString() {
 		String out = "";
 		
-		for (String uuid : members.keySet()) {
-			Resident res = CivGlobal.getResidentViaUUID(UUID.fromString(uuid));
-			out += res.getName()+", ";
+		if (CivGlobal.useUUID) {
+			for (String uuid : members.keySet()) {
+				Resident res = CivGlobal.getResidentViaUUID(UUID.fromString(uuid));
+				out += res.getName()+", ";
 			}
+		} else {
+			for (String name : members.keySet()) {
+				out += name+", ";
+			}
+		}
 		return out;
 	}
 

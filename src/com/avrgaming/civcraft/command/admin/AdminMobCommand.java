@@ -3,7 +3,7 @@ package com.avrgaming.civcraft.command.admin;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import net.minecraft.server.v1_8_R3.EntityCreature;
+import net.minecraft.server.v1_7_R4.EntityCreature;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -47,6 +47,7 @@ public class AdminMobCommand extends CommandBase {
 			mob.entity.getBukkitEntity().remove();
 			count++;
 		}
+		
 		CivMessage.sendSuccess(player, "Removed "+count+ " mobs of type "+name);
 	}
 

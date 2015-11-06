@@ -158,39 +158,46 @@ public class TradeGood extends SQLObject {
 	@Override
 	public void delete() throws SQLException {		
 	}
-	
+
+
 	public Town getTown() {
 		return town;
 	}
-	
+
+
 	public void setTown(Town town) {
 		this.town = town;
 	}
-	
+
+
 	public Civilization getCiv() {
 		return civ;
 	}
-	
+
+
 	public void setCiv(Civilization civ) {
 		this.civ = civ;
 	}
-	
+
+
 	public ConfigTradeGood getInfo() {
 		return info;
 	}
-	
+
+
 	public void setInfo(ConfigTradeGood info) {
 		this.info = info;
 	}
-	
+
+
 	public BlockCoord getCoord() {
 		return coord;
 	}
-	
+
+
 	public void setCoord(BlockCoord coord) {
 		this.coord = coord;
 	}
-	
 	public static double getBaseValue(TradeGood good) {
 		ConfigTradeGood configTradeGood = good.getInfo();
 		double value = configTradeGood.value;

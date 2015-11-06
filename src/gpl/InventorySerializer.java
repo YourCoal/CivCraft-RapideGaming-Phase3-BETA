@@ -11,8 +11,8 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
 
-import com.civcraft.lorestorage.LoreCraftableMaterial;
-import com.civcraft.util.ItemManager;
+import com.avrgaming.civcraft.lorestorage.LoreCraftableMaterial;
+import com.avrgaming.civcraft.util.ItemManager;
 
 /*
  * Original serializer by Phil2812 (https://forums.bukkit.org/threads/serialize-inventory-to-single-string-and-vice-versa.92094/)

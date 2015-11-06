@@ -41,9 +41,7 @@ public class FoundCamp extends ItemComponent implements CallbackInterface {
 	@Override
 	public void onPrepareCreate(AttributeUtil attrUtil) {
 		attrUtil.addLore(ChatColor.RESET+CivColor.Gold+"Starts a Camp");
-		attrUtil.addLore(ChatColor.RESET+CivColor.Rose+"<Right Click To Use>");
-		attrUtil.addEnhancement("LoreEnhancementSoulBound", null, null);
-		attrUtil.addLore(CivColor.Gold+"Soulbound");
+		attrUtil.addLore(ChatColor.RESET+CivColor.Rose+"<Right Click To Use>");		
 	}
 	
 	public void foundCamp(Player player) throws CivException {
@@ -68,15 +66,18 @@ public class FoundCamp extends ItemComponent implements CallbackInterface {
 		info.template_base_name = "camp";
 		info.tile_improvement = false;
 		info.templateYShift = -1;
+		
 		Buildable.buildVerifyStatic(player, info, player.getLocation(), this);
 	}
 	
 	public void onInteract(PlayerInteractEvent event) {
+		
 		event.setCancelled(true);
 		if (!event.getAction().equals(Action.RIGHT_CLICK_AIR) &&
 				!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
 			return;
 		}
+		
 		try {
 			foundCamp(event.getPlayer());
 		} catch (CivException e) {
@@ -103,7 +104,9 @@ public class FoundCamp extends ItemComponent implements CallbackInterface {
 			}
 		}
 		TaskMaster.syncTask(new SyncTask(event.getPlayer().getName()));
+		
 		return;
+		
 	}
 
 	@Override
@@ -115,11 +118,13 @@ public class FoundCamp extends ItemComponent implements CallbackInterface {
 			return;
 		}
 		Resident resident = CivGlobal.getResident(playerName);
+		
 		CivMessage.sendHeading(player, "Setting up Camp!");
 		CivMessage.send(player, CivColor.LightGreen+"You and your small band of travelers need a place to sleep for the night.");
 		CivMessage.send(player, " ");
 		CivMessage.send(player, CivColor.LightGreen+ChatColor.BOLD+"What shall your new camp be called?");
 		CivMessage.send(player, CivColor.LightGray+"(To cancel, type 'cancel')");
+		
 		resident.setInteractiveMode(new InteractiveCampName());
 	}
 }

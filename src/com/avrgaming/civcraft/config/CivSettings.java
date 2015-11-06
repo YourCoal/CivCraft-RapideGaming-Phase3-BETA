@@ -35,7 +35,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-import org.apache.commons.io.FileUtils;
+import net.minecraft.util.org.apache.commons.io.FileUtils;
+
 import org.bukkit.Material;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -181,6 +182,9 @@ public class CivSettings {
 	
 	public static FileConfiguration nocheatConfig; /* nocheatConfig.yml */
 	public static HashMap<String, ConfigValidMod> validMods = new HashMap<String, ConfigValidMod>();
+	
+	public static FileConfiguration arenaConfig; /* arenas.yml */
+	public static HashMap<String, ConfigArena> arenas = new HashMap<String, ConfigArena>();
 	
 	public static FileConfiguration fishingConfig; /* fishing.yml */
 	public static ArrayList<ConfigFishing> fishingDrops = new ArrayList<ConfigFishing>();
@@ -356,6 +360,7 @@ public class CivSettings {
 		materialsConfig = loadCivConfig("materials.yml");
 		randomEventsConfig = loadCivConfig("randomevents.yml");
 		nocheatConfig = loadCivConfig("nocheat.yml");
+		arenaConfig = loadCivConfig("arena.yml");
 		fishingConfig = loadCivConfig("fishing.yml");
 	}
 
@@ -394,6 +399,7 @@ public class CivSettings {
 		ConfigEndCondition.loadConfig(civConfig, endConditions);
 		ConfigPlatinumReward.loadConfig(civConfig, platinumRewards);
 		ConfigValidMod.loadConfig(nocheatConfig, validMods);
+		ConfigArena.loadConfig(arenaConfig, arenas);
 		ConfigFishing.loadConfig(fishingConfig, fishingDrops);
 	
 		ConfigRemovedRecipes.removeRecipes(materialsConfig, removedRecipies );

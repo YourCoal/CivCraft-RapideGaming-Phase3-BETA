@@ -182,7 +182,7 @@ public class Camp extends Buildable {
 	}
 	
 	public Camp(Resident owner, String name, Location corner) throws CivException {
-		this.ownerName = owner.getUUID().toString();
+		this.ownerName = owner.getName();
 		this.corner = new BlockCoord(corner);
 		try {
 			this.setName(name);
@@ -192,6 +192,7 @@ public class Camp extends Buildable {
 		}
 		nextRaidDate = new Date();
 		nextRaidDate.setTime(nextRaidDate.getTime() + 24*60*60*1000);
+
 		try {
 			this.firepoints = CivSettings.getInteger(CivSettings.campConfig, "camp.firepoints");
 			this.hitpoints = CivSettings.getInteger(CivSettings.campConfig, "camp.hitpoints");
@@ -268,10 +269,15 @@ public class Camp extends Buildable {
 			InvalidObjectException, CivException {
 		this.setId(rs.getInt("id"));
 		this.setName(rs.getString("name"));
-		this.ownerName = rs.getString("owner_name");
+		if (CivGlobal.useUUID) {
+			this.ownerName = CivGlobal.getResidentViaUUID(UUID.fromString(rs.getString("owner_name"))).getName();		
+		} else {
+			this.ownerName = rs.getString("owner_name");
+		}
 		this.corner = new BlockCoord(rs.getString("corner"));
 		this.nextRaidDate = new Date(rs.getLong("next_raid_date"));
 		this.setTemplateName(rs.getString("template_name"));
+		
 		try {
 			this.hitpoints = CivSettings.getInteger(CivSettings.campConfig, "camp.hitpoints");
 		} catch (InvalidConfiguration e) {
@@ -299,12 +305,17 @@ public class Camp extends Buildable {
 	public void saveNow() throws SQLException {
 		HashMap<String, Object> hashmap = new HashMap<String, Object>();
 		hashmap.put("name", this.getName());
-		hashmap.put("owner_name", this.getOwner().getUUIDString());
+		if (CivGlobal.useUUID) {
+			hashmap.put("owner_name", this.getOwner().getUUIDString());		
+		} else {
+			hashmap.put("owner_name", this.getOwner().getName());
+		}
 		hashmap.put("firepoints", this.firepoints);
 		hashmap.put("corner", this.corner.toString());
 		hashmap.put("next_raid_date", this.nextRaidDate.getTime());
 		hashmap.put("upgrades", this.getUpgradeSaveString());
 		hashmap.put("template_name", this.getSavedTemplatePath());
+
 		SQL.updateNamedObject(this, hashmap, TABLE_NAME);			
 	}	
 	
@@ -733,11 +744,10 @@ public class Camp extends Buildable {
 			ItemStack token = LoreCraftableMaterial.spawn(craftMat);
 			
 			Tagged tag = (Tagged) craftMat.getComponent("Tagged");
-			Resident res = CivGlobal.getResident(this.getOwnerName());
-			token = tag.addTag(token, res.getName());
-			
+			token = tag.addTag(token, this.getOwnerName());
+	
 			AttributeUtil attrs = new AttributeUtil(token);
-			attrs.addLore(CivColor.LightGray+res.getName());
+			attrs.addLore(CivColor.LightGray+this.getOwnerName());
 			token = attrs.getStack();
 			
 			mInv.addItem(token);
@@ -1003,12 +1013,12 @@ public class Camp extends Buildable {
 	}
 
 	public Resident getOwner() {
-		return CivGlobal.getResidentViaUUID(UUID.fromString(ownerName));
+		return CivGlobal.getResident(ownerName);
 	}
 
 
 	public void setOwner(Resident owner) {
-		this.ownerName = owner.getUUID().toString();
+		this.ownerName = owner.getName();
 	}
 
 
@@ -1146,58 +1156,70 @@ public class Camp extends Buildable {
 		CivGlobal.getSessionDB().add(key, value, 0, 0, 0);
 	}
 	
+	//XXX TODO make sure these all work...
 	@Override
 	public void processUndo() throws CivException {
+		// TODO Auto-generated method stub
+		
 	}
-	
+
 	@Override
 	public void updateBuildProgess() {
+		// TODO Auto-generated method stub
+		
 	}
-	
+
 	@Override
 	public void build(Player player, Location centerLoc, Template tpl) throws Exception {		
 	}
-	
+
 	@Override
 	protected void runOnBuild(Location centerLoc, Template tpl) throws CivException {
 		return;
 	}
-	
+
 	@Override
 	public String getDynmapDescription() {
+		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Override
 	public String getMarkerIconName() {
+		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Override
 	public void onComplete() {
+		// TODO Auto-generated method stub
+		
 	}
-	
+
 	@Override
 	public void onLoad() {
+		// TODO Auto-generated method stub
+		
 	}
-	
+
 	@Override
 	public void onUnload() {
+		// TODO Auto-generated method stub
+		
 	}
-	
+
 	public Collection<Resident> getMembers() {
 		return this.members.values();
 	}
-	
+
 	public String getOwnerName() {
-		Resident res = CivGlobal.getResidentViaUUID(UUID.fromString(ownerName));
-		return res.getName();
+		return ownerName;
 	}
-	
+
 	public void setOwnerName(String ownerName) {
 		this.ownerName = ownerName;
 	}
-	
+
 	public int getLonghouseLevel() {
 		return this.consumeComponent.getLevel();
 	}

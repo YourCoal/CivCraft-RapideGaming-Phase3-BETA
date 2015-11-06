@@ -10,21 +10,20 @@ import java.util.concurrent.ConcurrentMap;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import net.minecraft.server.v1_8_R3.NBTBase;
-import net.minecraft.server.v1_8_R3.NBTTagCompound;
-import net.minecraft.server.v1_8_R3.NBTTagInt;
-import net.minecraft.server.v1_8_R3.NBTTagList;
-import net.minecraft.server.v1_8_R3.NBTTagString;
+import net.minecraft.server.v1_7_R4.NBTBase;
+import net.minecraft.server.v1_7_R4.NBTTagCompound;
+import net.minecraft.server.v1_7_R4.NBTTagInt;
+import net.minecraft.server.v1_7_R4.NBTTagList;
+import net.minecraft.server.v1_7_R4.NBTTagString;
 
 import org.bukkit.ChatColor;
-import org.bukkit.craftbukkit.v1_8_R3.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_7_R4.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 
-import com.civcraft.loreenhancements.LoreEnhancement;
-import com.civcraft.main.CivData;
-import com.civcraft.util.ItemManager;
-import com.civcraft.util.NBTStaticHelper;
-
+import com.avrgaming.civcraft.loreenhancements.LoreEnhancement;
+import com.avrgaming.civcraft.main.CivData;
+import com.avrgaming.civcraft.util.ItemManager;
+import com.avrgaming.civcraft.util.NBTStaticHelper;
 import com.google.common.base.Function;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
@@ -63,8 +62,10 @@ public class AttributeUtil {
     public static class AttributeType {
         private static ConcurrentMap<String, AttributeType> LOOKUP = Maps.newConcurrentMap();
         public static final AttributeType GENERIC_MAX_HEALTH = new AttributeType("generic.maxHealth").register();
+        public static final AttributeType GENERIC_FOLLOW_RANGE = new AttributeType("generic.followRange").register();
         public static final AttributeType GENERIC_ATTACK_DAMAGE = new AttributeType("generic.attackDamage").register();
         public static final AttributeType GENERIC_MOVEMENT_SPEED = new AttributeType("generic.movementSpeed").register();
+        public static final AttributeType GENERIC_KNOCKBACK_RESISTANCE = new AttributeType("generic.knockbackResistance").register();
         
         private final String minecraftId;
         
@@ -184,7 +185,7 @@ public class AttributeUtil {
         
         // Makes it easier to construct an attribute
         public static class Builder {
-			private double amount;
+            private double amount;
             private Operation operation = Operation.ADD_NUMBER;
             private AttributeType type;
             private String name;
@@ -221,7 +222,7 @@ public class AttributeUtil {
     }
     
     // This may be modified
-    public net.minecraft.server.v1_8_R3.ItemStack nmsStack;
+    public net.minecraft.server.v1_7_R4.ItemStack nmsStack;
     
     private NBTTagCompound parent;
     private NBTTagList attributes;
@@ -243,11 +244,10 @@ public class AttributeUtil {
       //  }
         
         // Load NBT
-        if (nmsStack.getTag() == null) {
-        	parent = new NBTTagCompound();        	
-            nmsStack.setTag(parent);
+        if (nmsStack.tag == null) {
+            parent = (nmsStack.tag = new NBTTagCompound());
         } else {
-            parent = nmsStack.getTag();
+            parent = nmsStack.tag;
         }
         
         // Load attribute list
@@ -269,7 +269,7 @@ public class AttributeUtil {
     		return ItemManager.createItemStack(CivData.WOOL, 0);
     	}
     	
-    	if (nmsStack.getTag() != null) {
+    	if (nmsStack.tag != null) {
     		if (attributes.size() == 0) {
     			parent.remove("AttributeModifiers");
     		}
@@ -315,9 +315,7 @@ public class AttributeUtil {
     
     public void removeAll() {
     	 attributes = new NBTTagList();
-    	 if (parent != null) {
-    		 parent.set("AttributeModifiers", attributes);
-    	 }
+         parent.set("AttributeModifiers", attributes);
     }
     
     
@@ -371,11 +369,11 @@ public class AttributeUtil {
     		return;
     	}
     	
-    	if (nmsStack.getTag() == null) {
-    		nmsStack.setTag(new NBTTagCompound());
+    	if (nmsStack.tag == null) {
+    		nmsStack.tag = new NBTTagCompound();
     	}
     	//this.lore.add(str);
-    	NBTTagCompound displayCompound = nmsStack.getTag().getCompound("display");
+    	NBTTagCompound displayCompound = nmsStack.tag.getCompound("display");
     
     	if (displayCompound == null) {
     		displayCompound = new NBTTagCompound();
@@ -388,7 +386,7 @@ public class AttributeUtil {
     	
     	loreList.add(new NBTTagString(str));
     	displayCompound.set("Lore", loreList);
-    	nmsStack.getTag().set("display", displayCompound);    	 
+    	nmsStack.tag.set("display", displayCompound);    	 
     }
     
     public String[] getLore() {
@@ -396,11 +394,11 @@ public class AttributeUtil {
     		return null;
     	}
     	
-    	if (nmsStack.getTag() == null) {
+    	if (nmsStack.tag == null) {
     		return null;
     	}
     	
-    	NBTTagCompound displayCompound = nmsStack.getTag().getCompound("display");
+    	NBTTagCompound displayCompound = nmsStack.tag.getCompound("display");
     	
     	if (displayCompound == null) {
     		return null;
@@ -431,7 +429,7 @@ public class AttributeUtil {
     
     public void setLore(String[] strings) {
     	//this.lore.add(str);
-    	NBTTagCompound displayCompound = nmsStack.getTag().getCompound("display");
+    	NBTTagCompound displayCompound = nmsStack.tag.getCompound("display");
     
     	if (displayCompound == null) {
     		displayCompound = new NBTTagCompound();
@@ -444,7 +442,7 @@ public class AttributeUtil {
     	}
     	
     	displayCompound.set("Lore", loreList);
-    	nmsStack.getTag().set("display", displayCompound);    	 
+    	nmsStack.tag.set("display", displayCompound);    	 
     }
     
     public void addEnhancement(String enhancementName, String key, String value) {
@@ -452,7 +450,7 @@ public class AttributeUtil {
     		throw new IllegalArgumentException();
     	}
     	
-    	NBTTagCompound compound = nmsStack.getTag().getCompound("item_enhancements");
+    	NBTTagCompound compound = nmsStack.tag.getCompound("item_enhancements");
     	
     	if (compound == null) {
     		compound = new NBTTagCompound();
@@ -469,7 +467,7 @@ public class AttributeUtil {
     	enhCompound.set("name", new NBTTagString(enhancementName));
     	
     	compound.set(enhancementName, enhCompound);
-    	nmsStack.getTag().set("item_enhancements", compound);
+    	nmsStack.tag.set("item_enhancements", compound);
     }
     
 //	not used yet...
@@ -509,7 +507,7 @@ public class AttributeUtil {
 			return null;
 		}
     	
-		NBTTagCompound compound = nmsStack.getTag().getCompound("item_enhancements");
+		NBTTagCompound compound = nmsStack.tag.getCompound("item_enhancements");
 		NBTTagCompound enhCompound = compound.getCompound(enhName);
 		
 		if (!enhCompound.hasKey(key)) {
@@ -526,7 +524,7 @@ public class AttributeUtil {
 			return returnList;
 		}
 		
-    	NBTTagCompound compound = nmsStack.getTag().getCompound("item_enhancements");
+    	NBTTagCompound compound = nmsStack.tag.getCompound("item_enhancements");
 
     	for (Object keyObj : compound.c()) {
     		if (!(keyObj instanceof String)) {
@@ -553,7 +551,7 @@ public class AttributeUtil {
 	}
 	
     public boolean hasEnhancement(String enhName) {
-    	NBTTagCompound compound = nmsStack.getTag().getCompound("item_enhancements");
+    	NBTTagCompound compound = nmsStack.tag.getCompound("item_enhancements");
     	if (compound == null) {
     		return false;
     	}
@@ -566,11 +564,11 @@ public class AttributeUtil {
 			return false;
 		}
 		
-		if (nmsStack.getTag() == null) {
+		if (nmsStack.tag == null) {
 			return false;
 		}
 		
-		return nmsStack.getTag().hasKey("item_enhancements");
+		return nmsStack.tag.hasKey("item_enhancements");
 	}
     
     public void setCivCraftProperty(String key, String value) {
@@ -579,25 +577,25 @@ public class AttributeUtil {
     		return;
     	}
     	
-    	if (nmsStack.getTag() == null) {
-    		nmsStack.setTag(new NBTTagCompound());
+    	if (nmsStack.tag == null) {
+    		nmsStack.tag = new NBTTagCompound();
     	}
     	
-    	NBTTagCompound civcraftCompound = nmsStack.getTag().getCompound("civcraft");
+    	NBTTagCompound civcraftCompound = nmsStack.tag.getCompound("civcraft");
     	
     	if (civcraftCompound == null) {
     		civcraftCompound = new NBTTagCompound();
     	}
     	
     	civcraftCompound.set(key, new NBTTagString(value));
-    	nmsStack.getTag().set("civcraft", civcraftCompound);
+    	nmsStack.tag.set("civcraft", civcraftCompound);
     }
     
     public String getCivCraftProperty(String key) {
     	if (nmsStack == null) {
     		return null;
     	}
-    	NBTTagCompound civcraftCompound = nmsStack.getTag().getCompound("civcraft");
+    	NBTTagCompound civcraftCompound = nmsStack.tag.getCompound("civcraft");
     	
     	if (civcraftCompound == null) {
     		return null;
@@ -616,7 +614,7 @@ public class AttributeUtil {
     		return;
     	}
     
-		NBTTagCompound civcraftCompound = nmsStack.getTag().getCompound("civcraft");
+		NBTTagCompound civcraftCompound = nmsStack.tag.getCompound("civcraft");
     	if (civcraftCompound == null) {
     		return;
     	}
@@ -633,22 +631,22 @@ public class AttributeUtil {
     		return;
     	}
     	
-    	if (nmsStack.getTag() == null) {
-    		nmsStack.setTag(new NBTTagCompound());
+    	if (nmsStack.tag == null) {
+    		nmsStack.tag = new NBTTagCompound();
     	}
 		
-    	NBTTagCompound displayCompound = nmsStack.getTag().getCompound("display");
+    	NBTTagCompound displayCompound = nmsStack.tag.getCompound("display");
     	
 		if (displayCompound == null) {
     		displayCompound = new NBTTagCompound();
     	}
 		
 		displayCompound.set("Name", new NBTTagString(ChatColor.RESET+name));
-    	nmsStack.getTag().set("display", displayCompound);    	 
+    	nmsStack.tag.set("display", displayCompound);    	 
 	}
 	
 	public String getName() {
-    	NBTTagCompound displayCompound = nmsStack.getTag().getCompound("display");
+    	NBTTagCompound displayCompound = nmsStack.tag.getCompound("display");
     	
 		if (displayCompound == null) {
     		displayCompound = new NBTTagCompound();
@@ -661,40 +659,18 @@ public class AttributeUtil {
 
 
 	public void setColor(Long long1) {
-    	NBTTagCompound displayCompound = nmsStack.getTag().getCompound("display");
+    	NBTTagCompound displayCompound = nmsStack.tag.getCompound("display");
     	
 		if (displayCompound == null) {
     		displayCompound = new NBTTagCompound();
     	}
 				
 		displayCompound.set("color", new NBTTagInt(long1.intValue()));
-    	nmsStack.getTag().set("display", displayCompound); 
-	}
-	
-	public void setSkullOwner(String string) {
-		if (nmsStack == null) {
-			return;
-		}
-		
-		NBTTagCompound skullCompound = nmsStack.getTag().getCompound("SkullOwner");
-		if (skullCompound == null) {
-			skullCompound = new NBTTagCompound();
-		}
-		
-		skullCompound.set("Name", new NBTTagString(string));
-		nmsStack.getTag().set("SkullOwner", skullCompound);		
-	}
-	
-	public void setHideFlag(int flags) {
-		if (nmsStack == null) {
-			return;
-		}
-		
-		nmsStack.getTag().setInt("HideFlags", flags);
+    	nmsStack.tag.set("display", displayCompound); 
 	}
 	
 	public int getColor() {
-    	NBTTagCompound displayCompound = nmsStack.getTag().getCompound("display");
+    	NBTTagCompound displayCompound = nmsStack.tag.getCompound("display");
     	if (displayCompound == null) {
     		return 0;
     	}
@@ -707,11 +683,11 @@ public class AttributeUtil {
 			return false;
 		}
 		
-		if (nmsStack.getTag() == null) {
+		if (nmsStack.tag == null) {
 			return false;
 		}
 		
-    	NBTTagCompound displayCompound = nmsStack.getTag().getCompound("display");
+    	NBTTagCompound displayCompound = nmsStack.tag.getCompound("display");
     	if (displayCompound == null) {
     		return false;
     	}
@@ -734,12 +710,12 @@ public class AttributeUtil {
     		return;
     	}
     
-		NBTTagCompound civcraftCompound = nmsStack.getTag().getCompound("civcraft");
+		NBTTagCompound civcraftCompound = nmsStack.tag.getCompound("civcraft");
     	if (civcraftCompound == null) {
     		return;
     	}
     	
-    	nmsStack.getTag().remove("civcraft");		
+    	nmsStack.tag.remove("civcraft");		
 	}
 
 	public boolean hasLegacyEnhancements() {
@@ -747,10 +723,11 @@ public class AttributeUtil {
 			return false;
 		}
 		
-		if (nmsStack.getTag() == null) {
+		if (nmsStack.tag == null) {
 			return false;
 		}
 		
-        return nmsStack.getTag().hasKey("civ_enhancements");
+        return nmsStack.tag.hasKey("civ_enhancements");
 	}
+
 }

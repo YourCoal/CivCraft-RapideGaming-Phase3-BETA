@@ -23,7 +23,7 @@ import gpl.HorseModifier;
 import java.util.HashSet;
 import java.util.Random;
 
-import net.minecraft.server.v1_8_R3.NBTTagCompound;
+import net.minecraft.server.v1_7_R4.NBTTagCompound;
 
 import org.bukkit.Chunk;
 import org.bukkit.Color;
@@ -33,7 +33,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_7_R4.entity.CraftEntity;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Fireball;
@@ -120,7 +120,9 @@ import com.avrgaming.civcraft.util.ItemFrameStorage;
 import com.avrgaming.civcraft.util.ItemManager;
 import com.avrgaming.civcraft.war.War;
 import com.avrgaming.civcraft.war.WarRegen;
-import com.moblib.moblib.MobLib;
+import com.avrgaming.moblib.MobLib;
+
+
 
 public class BlockListener implements Listener {
 
@@ -1056,13 +1058,14 @@ public class BlockListener implements Listener {
 	}
 	
 	public void OnPlayerBedEnterEvent(PlayerBedEnterEvent event) {
+		
 		Resident resident = CivGlobal.getResident(event.getPlayer().getName());
 
 		if (resident == null) {
 			event.setCancelled(true);
 			return;
 		}
-		
+				
 		coord.setFromLocation(event.getPlayer().getLocation());
 		Camp camp = CivGlobal.getCampFromChunk(coord);
 		if (camp != null) {
@@ -1073,8 +1076,9 @@ public class BlockListener implements Listener {
 			}
 		}		
 	}
-	
+
 	public static void OnPlayerSwitchEvent(PlayerInteractEvent event) {
+
 		if (event.getClickedBlock() == null) {
 			return;
 		}
@@ -1599,7 +1603,6 @@ public class BlockListener implements Listener {
 
 	}
 
-	@SuppressWarnings("deprecation")
 	@EventHandler(priority = EventPriority.HIGHEST) 
 	public void onBlockPistonRetractEvent(BlockPistonRetractEvent event) {
 		if (!allowPistonAction(event.getRetractLocation())) {

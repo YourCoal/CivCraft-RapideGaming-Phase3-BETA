@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.structure;
+package com.avrgaming.civcraft.structure;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,24 +25,24 @@ import java.util.ArrayList;
 import org.bukkit.Location;
 import org.bukkit.inventory.Inventory;
 
-import com.civcraft.components.ConsumeLevelComponent;
-import com.civcraft.components.ConsumeLevelComponent.Result;
-import com.civcraft.config.CivSettings;
-import com.civcraft.config.ConfigCottageLevel;
-import com.civcraft.exception.CivException;
-import com.civcraft.exception.CivTaskAbortException;
-import com.civcraft.exception.InvalidConfiguration;
-import com.civcraft.main.CivData;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.Buff;
-import com.civcraft.object.StructureChest;
-import com.civcraft.object.Town;
-import com.civcraft.sessiondb.SessionEntry;
-import com.civcraft.threading.CivAsyncTask;
-import com.civcraft.util.CivColor;
-import com.civcraft.util.ItemManager;
-import com.civcraft.util.MultiInventory;
+import com.avrgaming.civcraft.components.ConsumeLevelComponent;
+import com.avrgaming.civcraft.components.ConsumeLevelComponent.Result;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.config.ConfigCottageLevel;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.exception.CivTaskAbortException;
+import com.avrgaming.civcraft.exception.InvalidConfiguration;
+import com.avrgaming.civcraft.main.CivData;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.Buff;
+import com.avrgaming.civcraft.object.StructureChest;
+import com.avrgaming.civcraft.object.Town;
+import com.avrgaming.civcraft.sessiondb.SessionEntry;
+import com.avrgaming.civcraft.threading.CivAsyncTask;
+import com.avrgaming.civcraft.util.CivColor;
+import com.avrgaming.civcraft.util.ItemManager;
+import com.avrgaming.civcraft.util.MultiInventory;
 
 public class Cottage extends Structure {
 

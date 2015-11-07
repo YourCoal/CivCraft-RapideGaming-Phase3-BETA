@@ -1,4 +1,4 @@
-package com.civcraft.structure;
+package com.avrgaming.civcraft.structure;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,17 +16,17 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
-import com.civcraft.config.CivSettings;
-import com.civcraft.exception.CivException;
-import com.civcraft.exception.InvalidConfiguration;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.Town;
-import com.civcraft.sessiondb.SessionEntry;
-import com.civcraft.threading.TaskMaster;
-import com.civcraft.threading.tasks.LoadPastureEntityTask;
-import com.civcraft.util.BlockCoord;
-import com.civcraft.util.ChunkCoord;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.exception.InvalidConfiguration;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.Town;
+import com.avrgaming.civcraft.sessiondb.SessionEntry;
+import com.avrgaming.civcraft.threading.TaskMaster;
+import com.avrgaming.civcraft.threading.tasks.LoadPastureEntityTask;
+import com.avrgaming.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.util.ChunkCoord;
 
 public class Pasture extends Structure {
 

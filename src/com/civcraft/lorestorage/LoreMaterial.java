@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.lorestorage;
+package com.avrgaming.civcraft.lorestorage;
 
 import gpl.AttributeUtil;
 
@@ -43,10 +43,10 @@ import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import com.civcraft.loreenhancements.LoreEnhancement;
-import com.civcraft.object.BuildableDamageBlock;
-import com.civcraft.util.CivColor;
-import com.civcraft.util.ItemManager;
+import com.avrgaming.civcraft.loreenhancements.LoreEnhancement;
+import com.avrgaming.civcraft.object.BuildableDamageBlock;
+import com.avrgaming.civcraft.util.CivColor;
+import com.avrgaming.civcraft.util.ItemManager;
 
 public abstract class LoreMaterial {
 

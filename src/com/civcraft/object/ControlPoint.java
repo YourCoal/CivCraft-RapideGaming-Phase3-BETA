@@ -16,10 +16,10 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.object;
+package com.avrgaming.civcraft.object;
 
-import com.civcraft.structure.Buildable;
-import com.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.structure.Buildable;
+import com.avrgaming.civcraft.util.BlockCoord;
 
 public class ControlPoint {
 

@@ -16,18 +16,18 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.tasks;
+package com.avrgaming.civcraft.threading.tasks;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.civcraft.config.CivSettings;
-import com.civcraft.exception.CivException;
-import com.civcraft.lorestorage.LoreCraftableMaterial;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivLog;
-import com.civcraft.object.Resident;
-import com.civcraft.util.ItemManager;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.lorestorage.LoreCraftableMaterial;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.object.Resident;
+import com.avrgaming.civcraft.util.ItemManager;
 
 public class GivePlayerStartingKit implements Runnable {
 

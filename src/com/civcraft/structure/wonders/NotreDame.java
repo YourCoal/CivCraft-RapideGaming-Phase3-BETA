@@ -16,18 +16,18 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.structure.wonders;
+package com.avrgaming.civcraft.structure.wonders;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.bukkit.Location;
 
-import com.civcraft.exception.CivException;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.Civilization;
-import com.civcraft.object.Town;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.Civilization;
+import com.avrgaming.civcraft.object.Town;
 
 public class NotreDame extends Wonder {
 

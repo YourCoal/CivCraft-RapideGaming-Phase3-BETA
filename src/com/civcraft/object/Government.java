@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.object;
+package com.avrgaming.civcraft.object;
 
 public class Government {
 //is this needed?

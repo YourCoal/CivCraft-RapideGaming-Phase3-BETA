@@ -16,21 +16,21 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.timers;
+package com.avrgaming.civcraft.threading.timers;
 
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.civcraft.camp.Camp;
-import com.civcraft.camp.CampUpdateTick;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.structure.Structure;
-import com.civcraft.structure.wonders.Wonder;
-import com.civcraft.threading.CivAsyncTask;
-import com.civcraft.threading.TaskMaster;
-import com.civcraft.threading.tasks.TrommelAsyncTask;
-import com.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.camp.Camp;
+import com.avrgaming.civcraft.camp.CampUpdateTick;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.structure.Structure;
+import com.avrgaming.civcraft.structure.wonders.Wonder;
+import com.avrgaming.civcraft.threading.CivAsyncTask;
+import com.avrgaming.civcraft.threading.TaskMaster;
+import com.avrgaming.civcraft.threading.tasks.TrommelAsyncTask;
+import com.avrgaming.civcraft.util.BlockCoord;
 
 public class UpdateEventTimer extends CivAsyncTask {
 		

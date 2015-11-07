@@ -16,28 +16,28 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.timers;
+package com.avrgaming.civcraft.threading.timers;
 
 import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.civcraft.config.CivSettings;
-import com.civcraft.exception.InvalidConfiguration;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivLog;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.AttrSource;
-import com.civcraft.object.Civilization;
-import com.civcraft.object.Town;
-import com.civcraft.structure.Cottage;
-import com.civcraft.structure.Mine;
-import com.civcraft.structure.Structure;
-import com.civcraft.structure.TownHall;
-import com.civcraft.threading.CivAsyncTask;
-import com.civcraft.util.BlockCoord;
-import com.civcraft.util.CivColor;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.exception.InvalidConfiguration;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.AttrSource;
+import com.avrgaming.civcraft.object.Civilization;
+import com.avrgaming.civcraft.object.Town;
+import com.avrgaming.civcraft.structure.Cottage;
+import com.avrgaming.civcraft.structure.Mine;
+import com.avrgaming.civcraft.structure.Structure;
+import com.avrgaming.civcraft.structure.TownHall;
+import com.avrgaming.civcraft.threading.CivAsyncTask;
+import com.avrgaming.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.util.CivColor;
 
 public class EffectEventTimer extends CivAsyncTask {
 	

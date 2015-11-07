@@ -16,14 +16,14 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.test;
+package com.avrgaming.civcraft.test;
 
 import java.util.Date;
 import java.util.Random;
 
-import com.civcraft.exception.CivTaskAbortException;
-import com.civcraft.main.CivLog;
-import com.civcraft.threading.CivAsyncTask;
+import com.avrgaming.civcraft.exception.CivTaskAbortException;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.threading.CivAsyncTask;
 
 public class TestGetChestThread extends CivAsyncTask {
 	

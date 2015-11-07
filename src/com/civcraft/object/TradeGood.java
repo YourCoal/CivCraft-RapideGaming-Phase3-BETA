@@ -16,24 +16,24 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.object;
+package com.avrgaming.civcraft.object;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
-import com.civcraft.config.CivSettings;
-import com.civcraft.config.ConfigTradeGood;
-import com.civcraft.database.SQL;
-import com.civcraft.database.SQLUpdate;
-import com.civcraft.exception.InvalidConfiguration;
-import com.civcraft.exception.InvalidNameException;
-import com.civcraft.items.BonusGoodie;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivLog;
-import com.civcraft.structure.Structure;
-import com.civcraft.structure.TradeOutpost;
-import com.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.config.ConfigTradeGood;
+import com.avrgaming.civcraft.database.SQL;
+import com.avrgaming.civcraft.database.SQLUpdate;
+import com.avrgaming.civcraft.exception.InvalidConfiguration;
+import com.avrgaming.civcraft.exception.InvalidNameException;
+import com.avrgaming.civcraft.items.BonusGoodie;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.structure.Structure;
+import com.avrgaming.civcraft.structure.TradeOutpost;
+import com.avrgaming.civcraft.util.BlockCoord;
 
 public class TradeGood extends SQLObject {
 

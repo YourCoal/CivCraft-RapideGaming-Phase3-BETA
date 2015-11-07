@@ -1,8 +1,8 @@
-package com.civcraft.randomevents.components;
+package com.avrgaming.civcraft.randomevents.components;
 
-import com.civcraft.main.CivGlobal;
-import com.civcraft.object.Town;
-import com.civcraft.randomevents.RandomEventComponent;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.object.Town;
+import com.avrgaming.civcraft.randomevents.RandomEventComponent;
 
 public class Unhappiness extends RandomEventComponent {
 

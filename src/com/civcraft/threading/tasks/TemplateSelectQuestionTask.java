@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.tasks;
+package com.avrgaming.civcraft.threading.tasks;
 
 
 public class TemplateSelectQuestionTask extends PlayerQuestionTask {

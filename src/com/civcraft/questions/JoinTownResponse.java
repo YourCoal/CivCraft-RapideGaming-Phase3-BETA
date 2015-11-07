@@ -16,15 +16,15 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.questions;
+package com.avrgaming.civcraft.questions;
 
 import org.bukkit.entity.Player;
 
-import com.civcraft.exception.AlreadyRegisteredException;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.Resident;
-import com.civcraft.object.Town;
-import com.civcraft.util.CivColor;
+import com.avrgaming.civcraft.exception.AlreadyRegisteredException;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.Resident;
+import com.avrgaming.civcraft.object.Town;
+import com.avrgaming.civcraft.util.CivColor;
 
 public class JoinTownResponse implements QuestionResponseInterface {
 

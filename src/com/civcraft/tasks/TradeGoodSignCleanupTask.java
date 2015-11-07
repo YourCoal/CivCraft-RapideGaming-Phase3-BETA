@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.tasks;
+package com.avrgaming.civcraft.tasks;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -24,13 +24,13 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 
-import com.civcraft.exception.CivException;
-import com.civcraft.main.CivData;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.TradeGood;
-import com.civcraft.util.BlockCoord;
-import com.civcraft.util.ItemManager;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.main.CivData;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.TradeGood;
+import com.avrgaming.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.util.ItemManager;
 
 public class TradeGoodSignCleanupTask implements Runnable {
 

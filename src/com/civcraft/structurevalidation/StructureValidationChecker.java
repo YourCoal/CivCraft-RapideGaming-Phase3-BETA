@@ -1,14 +1,14 @@
-package com.civcraft.structurevalidation;
+package com.avrgaming.civcraft.structurevalidation;
 
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-import com.civcraft.exception.CivException;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivLog;
-import com.civcraft.structure.Structure;
-import com.civcraft.util.BlockCoord;
-import com.civcraft.war.War;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.structure.Structure;
+import com.avrgaming.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.war.War;
 
 public class StructureValidationChecker implements Runnable {
 

@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.util;
+package com.avrgaming.civcraft.util;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -29,11 +29,11 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.ItemFrame;
 import org.bukkit.inventory.ItemStack;
 
-import com.civcraft.exception.CivException;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivLog;
-import com.civcraft.object.Town;
-import com.civcraft.structure.Buildable;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.object.Town;
+import com.avrgaming.civcraft.structure.Buildable;
 
 public class ItemFrameStorage {	
 	

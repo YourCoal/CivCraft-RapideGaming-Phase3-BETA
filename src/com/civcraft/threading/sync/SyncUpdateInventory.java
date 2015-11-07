@@ -16,14 +16,14 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.sync;
+package com.avrgaming.civcraft.threading.sync;
 
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.civcraft.exception.CivException;
-import com.civcraft.threading.sync.request.UpdateInventoryRequest;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.threading.sync.request.UpdateInventoryRequest;
 
 public class SyncUpdateInventory implements Runnable {
 	

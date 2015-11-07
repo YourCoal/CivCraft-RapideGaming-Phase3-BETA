@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.structure.wonders;
+package com.avrgaming.civcraft.structure.wonders;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -27,21 +27,21 @@ import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
-import com.civcraft.config.CivSettings;
-import com.civcraft.config.ConfigBuff;
-import com.civcraft.config.ConfigWonderBuff;
-import com.civcraft.database.SQL;
-import com.civcraft.database.SQLUpdate;
-import com.civcraft.exception.CivException;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivLog;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.Civilization;
-import com.civcraft.object.Town;
-import com.civcraft.structure.Buildable;
-import com.civcraft.template.Template;
-import com.civcraft.util.BlockCoord;
-import com.civcraft.util.CivColor;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.config.ConfigBuff;
+import com.avrgaming.civcraft.config.ConfigWonderBuff;
+import com.avrgaming.civcraft.database.SQL;
+import com.avrgaming.civcraft.database.SQLUpdate;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.Civilization;
+import com.avrgaming.civcraft.object.Town;
+import com.avrgaming.civcraft.structure.Buildable;
+import com.avrgaming.civcraft.template.Template;
+import com.avrgaming.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.util.CivColor;
 
 public abstract class Wonder extends Buildable {
 

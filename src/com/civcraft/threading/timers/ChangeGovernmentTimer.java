@@ -16,15 +16,15 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.timers;
+package com.avrgaming.civcraft.threading.timers;
 
 import java.util.ArrayList;
 
-import com.civcraft.config.CivSettings;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.Civilization;
-import com.civcraft.sessiondb.SessionEntry;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.Civilization;
+import com.avrgaming.civcraft.sessiondb.SessionEntry;
 
 public class ChangeGovernmentTimer implements Runnable {
 

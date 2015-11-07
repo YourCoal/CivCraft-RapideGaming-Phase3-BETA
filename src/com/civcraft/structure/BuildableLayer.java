@@ -1,4 +1,4 @@
-package com.civcraft.structure;
+package com.avrgaming.civcraft.structure;
 
 public class BuildableLayer {
 	public BuildableLayer(int cur, int max) {

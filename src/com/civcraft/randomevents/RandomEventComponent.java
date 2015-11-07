@@ -1,9 +1,9 @@
-package com.civcraft.randomevents;
+package com.avrgaming.civcraft.randomevents;
 
 import java.util.HashMap;
 
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.Town;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.Town;
 
 public abstract class RandomEventComponent {
 	private String name;

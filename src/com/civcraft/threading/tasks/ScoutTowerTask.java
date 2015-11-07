@@ -16,16 +16,16 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.tasks;
+package com.avrgaming.civcraft.threading.tasks;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-import com.civcraft.main.CivGlobal;
-import com.civcraft.structure.ScoutTower;
-import com.civcraft.structure.Structure;
-import com.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.structure.ScoutTower;
+import com.avrgaming.civcraft.structure.Structure;
+import com.avrgaming.civcraft.util.BlockCoord;
 
 public class ScoutTowerTask implements Runnable {
 	@Override

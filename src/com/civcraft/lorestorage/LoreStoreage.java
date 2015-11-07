@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.lorestorage;
+package com.avrgaming.civcraft.lorestorage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +26,7 @@ import java.util.Map;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import com.civcraft.util.CivColor;
+import com.avrgaming.civcraft.util.CivColor;
 
 public class LoreStoreage {
 

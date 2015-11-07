@@ -1,11 +1,11 @@
-package com.civcraft.randomevents.components;
+package com.avrgaming.civcraft.randomevents.components;
 
 
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivLog;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.Resident;
-import com.civcraft.randomevents.RandomEventComponent;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.Resident;
+import com.avrgaming.civcraft.randomevents.RandomEventComponent;
 
 public class PayPlayer extends RandomEventComponent {
 

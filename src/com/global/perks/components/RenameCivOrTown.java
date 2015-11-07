@@ -1,9 +1,9 @@
-package com.global.perks.components;
+package com.avrgaming.global.perks.components;
 
 
-import com.civcraft.interactive.InteractiveRenameCivOrTown;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.Resident;
+import com.avrgaming.civcraft.interactive.InteractiveRenameCivOrTown;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.Resident;
 
 public class RenameCivOrTown extends PerkComponent {
 

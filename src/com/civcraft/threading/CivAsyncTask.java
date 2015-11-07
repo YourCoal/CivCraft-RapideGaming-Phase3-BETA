@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading;
+package com.avrgaming.civcraft.threading;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -25,22 +25,22 @@ import java.util.concurrent.TimeUnit;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import com.civcraft.exception.CivTaskAbortException;
-import com.civcraft.main.CivLog;
-import com.civcraft.structure.farm.FarmChunk;
-import com.civcraft.structure.farm.GrowBlock;
-import com.civcraft.threading.sync.SyncBuildUpdateTask;
-import com.civcraft.threading.sync.SyncGetChestInventory;
-import com.civcraft.threading.sync.SyncGrowTask;
-import com.civcraft.threading.sync.SyncLoadChunk;
-import com.civcraft.threading.sync.SyncUpdateInventory;
-import com.civcraft.threading.sync.request.GetChestRequest;
-import com.civcraft.threading.sync.request.GrowRequest;
-import com.civcraft.threading.sync.request.LoadChunkRequest;
-import com.civcraft.threading.sync.request.UpdateInventoryRequest;
-import com.civcraft.threading.sync.request.UpdateInventoryRequest.Action;
-import com.civcraft.util.MultiInventory;
-import com.civcraft.util.SimpleBlock;
+import com.avrgaming.civcraft.exception.CivTaskAbortException;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.structure.farm.FarmChunk;
+import com.avrgaming.civcraft.structure.farm.GrowBlock;
+import com.avrgaming.civcraft.threading.sync.SyncBuildUpdateTask;
+import com.avrgaming.civcraft.threading.sync.SyncGetChestInventory;
+import com.avrgaming.civcraft.threading.sync.SyncGrowTask;
+import com.avrgaming.civcraft.threading.sync.SyncLoadChunk;
+import com.avrgaming.civcraft.threading.sync.SyncUpdateInventory;
+import com.avrgaming.civcraft.threading.sync.request.GetChestRequest;
+import com.avrgaming.civcraft.threading.sync.request.GrowRequest;
+import com.avrgaming.civcraft.threading.sync.request.LoadChunkRequest;
+import com.avrgaming.civcraft.threading.sync.request.UpdateInventoryRequest;
+import com.avrgaming.civcraft.threading.sync.request.UpdateInventoryRequest.Action;
+import com.avrgaming.civcraft.util.MultiInventory;
+import com.avrgaming.civcraft.util.SimpleBlock;
 
 public abstract class CivAsyncTask implements Runnable {
 	/*

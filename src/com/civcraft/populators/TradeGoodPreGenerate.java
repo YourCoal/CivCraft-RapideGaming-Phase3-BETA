@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.populators;
+package com.avrgaming.civcraft.populators;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,12 +26,12 @@ import java.util.TreeSet;
 
 import org.bukkit.Bukkit;
 
-import com.civcraft.config.CivSettings;
-import com.civcraft.config.ConfigHemisphere;
-import com.civcraft.config.ConfigTradeGood;
-import com.civcraft.exception.InvalidConfiguration;
-import com.civcraft.main.CivLog;
-import com.civcraft.util.ChunkCoord;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.config.ConfigHemisphere;
+import com.avrgaming.civcraft.config.ConfigTradeGood;
+import com.avrgaming.civcraft.exception.InvalidConfiguration;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.util.ChunkCoord;
 
 public class TradeGoodPreGenerate {
 

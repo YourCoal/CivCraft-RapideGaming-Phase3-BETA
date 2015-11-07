@@ -16,19 +16,19 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.tasks;
+package com.avrgaming.civcraft.threading.tasks;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-import com.civcraft.main.CivData;
-import com.civcraft.object.Civilization;
-import com.civcraft.object.Town;
-import com.civcraft.structure.TownHall;
-import com.civcraft.threading.CivAsyncTask;
-import com.civcraft.util.BlockCoord;
-import com.civcraft.util.SimpleBlock;
-import com.civcraft.util.SimpleBlock.Type;
+import com.avrgaming.civcraft.main.CivData;
+import com.avrgaming.civcraft.object.Civilization;
+import com.avrgaming.civcraft.object.Town;
+import com.avrgaming.civcraft.structure.TownHall;
+import com.avrgaming.civcraft.threading.CivAsyncTask;
+import com.avrgaming.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.util.SimpleBlock;
+import com.avrgaming.civcraft.util.SimpleBlock.Type;
 
 public class UpdateTechBar extends CivAsyncTask {
 

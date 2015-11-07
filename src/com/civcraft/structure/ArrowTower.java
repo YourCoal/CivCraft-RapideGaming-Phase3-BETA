@@ -16,18 +16,18 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.structure;
+package com.avrgaming.civcraft.structure;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.bukkit.Location;
 
-import com.civcraft.components.ProjectileArrowComponent;
-import com.civcraft.exception.CivException;
-import com.civcraft.object.Buff;
-import com.civcraft.object.Town;
-import com.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.components.ProjectileArrowComponent;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.object.Buff;
+import com.avrgaming.civcraft.object.Town;
+import com.avrgaming.civcraft.util.BlockCoord;
 
 public class ArrowTower extends Structure {
 

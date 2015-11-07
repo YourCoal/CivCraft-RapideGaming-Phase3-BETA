@@ -1,7 +1,7 @@
-package com.civcraft.randomevents.components;
+package com.avrgaming.civcraft.randomevents.components;
 
 
-import com.civcraft.randomevents.RandomEventComponent;
+import com.avrgaming.civcraft.randomevents.RandomEventComponent;
 
 public class MessageTown extends RandomEventComponent {
 

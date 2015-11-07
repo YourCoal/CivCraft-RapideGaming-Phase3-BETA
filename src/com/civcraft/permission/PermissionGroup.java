@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.permission;
+package com.avrgaming.civcraft.permission;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,15 +26,15 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.civcraft.database.SQL;
-import com.civcraft.database.SQLUpdate;
-import com.civcraft.exception.InvalidNameException;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivLog;
-import com.civcraft.object.Civilization;
-import com.civcraft.object.Resident;
-import com.civcraft.object.SQLObject;
-import com.civcraft.object.Town;
+import com.avrgaming.civcraft.database.SQL;
+import com.avrgaming.civcraft.database.SQLUpdate;
+import com.avrgaming.civcraft.exception.InvalidNameException;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.object.Civilization;
+import com.avrgaming.civcraft.object.Resident;
+import com.avrgaming.civcraft.object.SQLObject;
+import com.avrgaming.civcraft.object.Town;
 
 public class PermissionGroup extends SQLObject {
 

@@ -5,12 +5,8 @@ import java.util.Calendar;
 
 import com.civcraft.camp.CampHourlyTick;
 import com.civcraft.config.CivSettings;
-import com.civcraft.exception.CivException;
 import com.civcraft.exception.InvalidConfiguration;
 import com.civcraft.main.CivLog;
-import com.civcraft.main.CivMessage;
-import com.civcraft.mobs.MobSpawner;
-import com.civcraft.mobs.timers.MobDespawnTimer;
 import com.civcraft.threading.TaskMaster;
 import com.civcraft.threading.tasks.CultureProcessAsyncTask;
 import com.civcraft.threading.timers.EffectEventTimer;
@@ -26,18 +22,6 @@ public class HourlyTickEvent implements EventInterface {
 		TaskMaster.syncTask(new SyncTradeTimer(), 0);
 		TaskMaster.syncTask(new CampHourlyTick(), 0);
 		CivLog.info("TimerEvent: Hourly Finished -----------------------------");
-		try {
-			CivMessage.mob("Despawning all mobs...");
-			MobSpawner.despawnAll();
-			MobDespawnTimer.despawn_yobo();
-			MobDespawnTimer.despawn_angryyobo();
-			MobDespawnTimer.despawn_behemoth();
-			MobDespawnTimer.despawn_ruffian();
-			MobDespawnTimer.despawn_savage();
-			CivMessage.mob("All mobs have been despawned!");
-		} catch (CivException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Override

@@ -1,8 +1,8 @@
-package com.civcraft.structure;
+package com.avrgaming.civcraft.structure;
 
 import java.util.List;
 
-import com.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.util.BlockCoord;
 
 public interface RespawnLocationHolder {
 

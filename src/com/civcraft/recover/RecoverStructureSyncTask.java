@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.recover;
+package com.avrgaming.civcraft.recover;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,15 +24,15 @@ import java.util.ArrayList;
 import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
 
-import com.civcraft.exception.CivException;
-import com.civcraft.main.CivData;
-import com.civcraft.main.CivLog;
-import com.civcraft.main.CivMessage;
-import com.civcraft.structure.Structure;
-import com.civcraft.template.Template;
-import com.civcraft.util.CivColor;
-import com.civcraft.util.ItemManager;
-import com.civcraft.util.SimpleBlock.Type;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.main.CivData;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.structure.Structure;
+import com.avrgaming.civcraft.template.Template;
+import com.avrgaming.civcraft.util.CivColor;
+import com.avrgaming.civcraft.util.ItemManager;
+import com.avrgaming.civcraft.util.SimpleBlock.Type;
 
 public class RecoverStructureSyncTask implements Runnable {
 

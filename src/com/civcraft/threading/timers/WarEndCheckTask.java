@@ -16,13 +16,13 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.timers;
+package com.avrgaming.civcraft.threading.timers;
 
 import java.util.Date;
 
-import com.civcraft.threading.TaskMaster;
-import com.civcraft.util.TimeTools;
-import com.civcraft.war.War;
+import com.avrgaming.civcraft.threading.TaskMaster;
+import com.avrgaming.civcraft.util.TimeTools;
+import com.avrgaming.civcraft.war.War;
 
 public class WarEndCheckTask implements Runnable {
 

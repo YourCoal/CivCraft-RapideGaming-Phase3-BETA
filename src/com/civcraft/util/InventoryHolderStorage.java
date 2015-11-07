@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.util;
+package com.avrgaming.civcraft.util;
 
 import org.bukkit.Location;
 import org.bukkit.block.Chest;
@@ -24,8 +24,8 @@ import org.bukkit.block.DoubleChest;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.InventoryHolder;
 
-import com.civcraft.exception.CivException;
-import com.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.main.CivGlobal;
 
 public class InventoryHolderStorage {
 

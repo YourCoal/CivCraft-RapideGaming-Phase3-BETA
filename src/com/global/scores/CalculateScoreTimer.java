@@ -16,17 +16,17 @@
  * Dissemination of this information or reproduction of this material
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
- */package com.global.scores;
+ */package com.avrgaming.global.scores;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-import com.civcraft.main.CivGlobal;
-import com.civcraft.object.Civilization;
-import com.civcraft.object.Town;
-import com.civcraft.sessiondb.SessionEntry;
-import com.civcraft.threading.CivAsyncTask;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.object.Civilization;
+import com.avrgaming.civcraft.object.Town;
+import com.avrgaming.civcraft.sessiondb.SessionEntry;
+import com.avrgaming.civcraft.threading.CivAsyncTask;
 
 public class CalculateScoreTimer extends CivAsyncTask {
 	

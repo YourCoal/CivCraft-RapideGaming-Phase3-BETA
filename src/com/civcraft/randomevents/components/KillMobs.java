@@ -1,4 +1,4 @@
-package com.civcraft.randomevents.components;
+package com.avrgaming.civcraft.randomevents.components;
 
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
@@ -9,8 +9,8 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.plugin.PluginManager;
 
-import com.civcraft.main.CivCraft;
-import com.civcraft.randomevents.RandomEventComponent;
+import com.avrgaming.civcraft.main.CivCraft;
+import com.avrgaming.civcraft.randomevents.RandomEventComponent;
 
 public class KillMobs extends RandomEventComponent implements Listener {
 

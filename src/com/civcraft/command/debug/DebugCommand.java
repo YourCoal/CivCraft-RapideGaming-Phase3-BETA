@@ -75,9 +75,6 @@ import com.civcraft.main.CivData;
 import com.civcraft.main.CivGlobal;
 import com.civcraft.main.CivLog;
 import com.civcraft.main.CivMessage;
-import com.civcraft.mobs.MobSpawner;
-import com.civcraft.mobs.MobSpawner.CustomMobLevel;
-import com.civcraft.mobs.MobSpawner.CustomMobType;
 import com.civcraft.object.Civilization;
 import com.civcraft.object.CultureChunk;
 import com.civcraft.object.Resident;
@@ -195,7 +192,6 @@ public class DebugCommand extends CommandBase {
 		commands.put("matmap", "prints the material map.");
 		commands.put("ping", "print something.");
 		commands.put("datebypass", "Bypasses certain date restrictions");
-		commands.put("spawn", "remote entities test");
 		commands.put("heal", "heals you....");
 		commands.put("skull", "[player] [title]");
 		commands.put("giveperk", "<id> gives yourself this perk id.");
@@ -205,7 +201,6 @@ public class DebugCommand extends CommandBase {
 		commands.put("cannon", "builds a war cannon.");
 		commands.put("saveinv", "save an inventory");
 		commands.put("restoreinv", "restore your inventory.");
-		commands.put("arenainfo", "Shows arena info for this player.");
 	}
 	
 	public void saveinv_cmd() throws CivException {
@@ -278,25 +273,6 @@ public class DebugCommand extends CommandBase {
 		player.setHealth(player.getMaxHealth());
 		player.setFoodLevel(50);
 		CivMessage.send(player, "Healed....");
-	}
-	
-	public void spawn_cmd() throws CivException {
-		Player player = getPlayer();		
-		String mob = getNamedString(1, "name");
-		String lvl = getNamedString(2, "level");
-		
-		MobSpawner.CustomMobType type = CustomMobType.valueOf(mob.toUpperCase());
-		MobSpawner.CustomMobLevel level = CustomMobLevel.valueOf(lvl.toUpperCase());
-		
-		if (type == null) {
-			throw new CivException("no mob named:"+mob);
-		}
-		
-		if (level == null) {
-			throw new CivException("no level named:"+lvl);
-		}
-		
-		MobSpawner.spawnCustomMob(type, level, player.getLocation());
 	}
 	
 	public void datebypass_cmd() {

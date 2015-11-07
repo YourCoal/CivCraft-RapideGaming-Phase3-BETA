@@ -1,4 +1,4 @@
-package com.civcraft.listener;
+package com.avrgaming.civcraft.listener;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -11,12 +11,12 @@ import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.player.PlayerExpChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import com.civcraft.main.CivData;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.Resident;
-import com.civcraft.util.CivColor;
-import com.civcraft.util.ItemManager;
+import com.avrgaming.civcraft.main.CivData;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.Resident;
+import com.avrgaming.civcraft.util.CivColor;
+import com.avrgaming.civcraft.util.ItemManager;
 
 public class DisableXPListener implements Listener {
 

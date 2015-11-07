@@ -1,12 +1,12 @@
-package com.civcraft.structure.wonders;
+package com.avrgaming.civcraft.structure.wonders;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.bukkit.Location;
 
-import com.civcraft.exception.CivException;
-import com.civcraft.object.Town;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.object.Town;
 
 public class CouncilOfEight extends Wonder {
 

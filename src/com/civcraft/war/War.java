@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.war;
+package com.avrgaming.civcraft.war;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,23 +26,23 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import com.civcraft.camp.WarCamp;
-import com.civcraft.config.CivSettings;
-import com.civcraft.endgame.EndGameCondition;
-import com.civcraft.event.EventTimer;
-import com.civcraft.exception.InvalidConfiguration;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivLog;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.Civilization;
-import com.civcraft.object.Relation;
-import com.civcraft.object.Relation.Status;
-import com.civcraft.object.Resident;
-import com.civcraft.object.Town;
-import com.civcraft.sessiondb.SessionEntry;
-import com.civcraft.siege.Cannon;
-import com.civcraft.util.CivColor;
-import com.global.perks.PlatinumManager;
+import com.avrgaming.civcraft.camp.WarCamp;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.endgame.EndGameCondition;
+import com.avrgaming.civcraft.event.EventTimer;
+import com.avrgaming.civcraft.exception.InvalidConfiguration;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.Civilization;
+import com.avrgaming.civcraft.object.Relation;
+import com.avrgaming.civcraft.object.Relation.Status;
+import com.avrgaming.civcraft.object.Resident;
+import com.avrgaming.civcraft.object.Town;
+import com.avrgaming.civcraft.sessiondb.SessionEntry;
+import com.avrgaming.civcraft.siege.Cannon;
+import com.avrgaming.civcraft.util.CivColor;
+import com.avrgaming.global.perks.PlatinumManager;
 
 public class War {
 

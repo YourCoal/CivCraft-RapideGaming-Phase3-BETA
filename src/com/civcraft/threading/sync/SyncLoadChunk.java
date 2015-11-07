@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.sync;
+package com.avrgaming.civcraft.threading.sync;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -25,8 +25,8 @@ import java.util.concurrent.locks.ReentrantLock;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 
-import com.civcraft.main.CivLog;
-import com.civcraft.threading.sync.request.LoadChunkRequest;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.threading.sync.request.LoadChunkRequest;
 
 public class SyncLoadChunk implements Runnable {
 	/*

@@ -16,17 +16,17 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.tasks;
+package com.avrgaming.civcraft.threading.tasks;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.civcraft.exception.CivException;
-import com.civcraft.main.CivData;
-import com.civcraft.structure.Windmill;
-import com.civcraft.util.BlockCoord;
-import com.civcraft.util.ItemManager;
-import com.civcraft.util.MultiInventory;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.main.CivData;
+import com.avrgaming.civcraft.structure.Windmill;
+import com.avrgaming.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.util.ItemManager;
+import com.avrgaming.civcraft.util.MultiInventory;
 
 public class WindmillPostProcessSyncTask implements Runnable {
 

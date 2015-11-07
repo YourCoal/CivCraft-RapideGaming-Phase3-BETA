@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.command.civ;
+package com.avrgaming.civcraft.command.civ;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -29,21 +29,21 @@ import java.util.TimeZone;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-import com.civcraft.command.CommandBase;
-import com.civcraft.config.CivSettings;
-import com.civcraft.endgame.EndConditionDiplomacy;
-import com.civcraft.endgame.EndGameCondition;
-import com.civcraft.exception.CivException;
-import com.civcraft.exception.InvalidConfiguration;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.Civilization;
-import com.civcraft.object.Relation.Status;
-import com.civcraft.object.Resident;
-import com.civcraft.object.Town;
-import com.civcraft.sessiondb.SessionEntry;
-import com.civcraft.util.CivColor;
-import com.civcraft.war.War;
+import com.avrgaming.civcraft.command.CommandBase;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.endgame.EndConditionDiplomacy;
+import com.avrgaming.civcraft.endgame.EndGameCondition;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.exception.InvalidConfiguration;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.Civilization;
+import com.avrgaming.civcraft.object.Relation.Status;
+import com.avrgaming.civcraft.object.Resident;
+import com.avrgaming.civcraft.object.Town;
+import com.avrgaming.civcraft.sessiondb.SessionEntry;
+import com.avrgaming.civcraft.util.CivColor;
+import com.avrgaming.civcraft.war.War;
 
 public class CivCommand extends CommandBase {
 

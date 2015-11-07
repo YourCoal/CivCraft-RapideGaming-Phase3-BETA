@@ -1,13 +1,13 @@
-package com.civcraft.loregui;
+package com.avrgaming.civcraft.loregui;
 
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.civcraft.lorestorage.LoreGuiItem;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.object.Resident;
+import com.avrgaming.civcraft.lorestorage.LoreGuiItem;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.object.Resident;
 
 public class ShowPerkPage implements GuiAction {
 

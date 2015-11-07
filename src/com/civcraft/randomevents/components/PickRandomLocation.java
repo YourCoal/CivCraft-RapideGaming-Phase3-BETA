@@ -1,16 +1,16 @@
-package com.civcraft.randomevents.components;
+package com.avrgaming.civcraft.randomevents.components;
 
 import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 
-import com.civcraft.config.CivSettings;
-import com.civcraft.exception.InvalidConfiguration;
-import com.civcraft.randomevents.RandomEvent;
-import com.civcraft.randomevents.RandomEventComponent;
-import com.civcraft.threading.TaskMaster;
-import com.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.exception.InvalidConfiguration;
+import com.avrgaming.civcraft.randomevents.RandomEvent;
+import com.avrgaming.civcraft.randomevents.RandomEventComponent;
+import com.avrgaming.civcraft.threading.TaskMaster;
+import com.avrgaming.civcraft.util.BlockCoord;
 
 public class PickRandomLocation extends RandomEventComponent {
 

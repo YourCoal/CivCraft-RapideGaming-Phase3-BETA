@@ -1,4 +1,4 @@
-package com.civcraft.loregui;
+package com.avrgaming.civcraft.loregui;
 
 import java.io.IOException;
 
@@ -6,16 +6,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.civcraft.exception.CivException;
-import com.civcraft.lorestorage.LoreGuiItem;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivLog;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.Resident;
-import com.civcraft.template.Template;
-import com.global.perks.Perk;
-import com.global.perks.components.CustomPersonalTemplate;
-import com.global.perks.components.CustomTemplate;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.lorestorage.LoreGuiItem;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.Resident;
+import com.avrgaming.civcraft.template.Template;
+import com.avrgaming.global.perks.Perk;
+import com.avrgaming.global.perks.components.CustomPersonalTemplate;
+import com.avrgaming.global.perks.components.CustomTemplate;
 
 public class BuildWithTemplate implements GuiAction {
 

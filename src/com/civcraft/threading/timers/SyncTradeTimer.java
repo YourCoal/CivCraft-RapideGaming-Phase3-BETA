@@ -16,15 +16,15 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.timers;
+package com.avrgaming.civcraft.threading.timers;
 
 import java.text.DecimalFormat;
 
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.Town;
-import com.civcraft.object.TradeGood;
-import com.civcraft.util.CivColor;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.Town;
+import com.avrgaming.civcraft.object.TradeGood;
+import com.avrgaming.civcraft.util.CivColor;
 
 public class SyncTradeTimer implements Runnable {
 

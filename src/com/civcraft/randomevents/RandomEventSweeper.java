@@ -1,4 +1,4 @@
-package com.civcraft.randomevents;
+package com.avrgaming.civcraft.randomevents;
 
 import java.util.Date;
 import java.util.LinkedList;

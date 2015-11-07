@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.sync;
+package com.avrgaming.civcraft.threading.sync;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -26,10 +26,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 
-import com.civcraft.main.CivData;
-import com.civcraft.main.CivLog;
-import com.civcraft.util.ItemManager;
-import com.civcraft.util.SimpleBlock;
+import com.avrgaming.civcraft.main.CivData;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.util.ItemManager;
+import com.avrgaming.civcraft.util.SimpleBlock;
 
 
 public class SyncBuildUpdateTask implements Runnable {

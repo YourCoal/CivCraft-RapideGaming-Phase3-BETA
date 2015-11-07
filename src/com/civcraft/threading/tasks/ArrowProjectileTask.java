@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.tasks;
+package com.avrgaming.civcraft.threading.tasks;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -24,10 +24,10 @@ import java.util.Calendar;
 import org.bukkit.entity.Arrow;
 import org.bukkit.util.Vector;
 
-import com.civcraft.cache.ArrowFiredCache;
-import com.civcraft.cache.CivCache;
-import com.civcraft.config.CivSettings;
-import com.civcraft.exception.InvalidConfiguration;
+import com.avrgaming.civcraft.cache.ArrowFiredCache;
+import com.avrgaming.civcraft.cache.CivCache;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.exception.InvalidConfiguration;
 
 public class ArrowProjectileTask implements Runnable {
 

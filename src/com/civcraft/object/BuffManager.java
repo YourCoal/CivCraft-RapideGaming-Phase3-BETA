@@ -16,14 +16,14 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.object;
+package com.avrgaming.civcraft.object;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
-import com.civcraft.exception.CivException;
-import com.civcraft.main.CivLog;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.main.CivLog;
 
 public class BuffManager {
 

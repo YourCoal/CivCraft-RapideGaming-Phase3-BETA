@@ -16,23 +16,23 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.object;
+package com.avrgaming.civcraft.object;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
-import com.civcraft.database.SQL;
-import com.civcraft.database.SQLUpdate;
-import com.civcraft.exception.CivException;
-import com.civcraft.exception.InvalidNameException;
-import com.civcraft.exception.InvalidObjectException;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivLog;
-import com.civcraft.structure.Structure;
-import com.civcraft.structure.Wall;
-import com.civcraft.util.BlockCoord;
-import com.civcraft.util.ChunkCoord;
+import com.avrgaming.civcraft.database.SQL;
+import com.avrgaming.civcraft.database.SQLUpdate;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.exception.InvalidNameException;
+import com.avrgaming.civcraft.exception.InvalidObjectException;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.structure.Structure;
+import com.avrgaming.civcraft.structure.Wall;
+import com.avrgaming.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.util.ChunkCoord;
 
 public class WallBlock extends SQLObject {
 

@@ -1,4 +1,4 @@
-package com.civcraft.loreenhancements;
+package com.avrgaming.civcraft.loreenhancements;
 
 import gpl.AttributeUtil;
 
@@ -7,9 +7,9 @@ import java.util.HashMap;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.civcraft.main.CivData;
-import com.civcraft.object.BuildableDamageBlock;
-import com.civcraft.util.ItemManager;
+import com.avrgaming.civcraft.main.CivData;
+import com.avrgaming.civcraft.object.BuildableDamageBlock;
+import com.avrgaming.civcraft.util.ItemManager;
 
 public abstract class LoreEnhancement {
 	public AttributeUtil add(AttributeUtil attrs) {

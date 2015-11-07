@@ -16,16 +16,16 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.timers;
+package com.avrgaming.civcraft.threading.timers;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 import org.bukkit.entity.Player;
 
-import com.civcraft.cache.PlayerLocationCache;
-import com.civcraft.exception.CivException;
-import com.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.cache.PlayerLocationCache;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.main.CivGlobal;
 
 public class PlayerLocationCacheUpdate implements Runnable {
 

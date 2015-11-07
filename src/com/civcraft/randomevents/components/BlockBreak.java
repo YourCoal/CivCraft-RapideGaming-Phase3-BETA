@@ -1,4 +1,4 @@
-package com.civcraft.randomevents.components;
+package com.avrgaming.civcraft.randomevents.components;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -7,13 +7,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.plugin.PluginManager;
 
-import com.civcraft.main.CivCraft;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.Resident;
-import com.civcraft.randomevents.RandomEventComponent;
-import com.civcraft.util.BlockCoord;
-import com.civcraft.util.CivColor;
+import com.avrgaming.civcraft.main.CivCraft;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.Resident;
+import com.avrgaming.civcraft.randomevents.RandomEventComponent;
+import com.avrgaming.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.util.CivColor;
 
 public class BlockBreak extends RandomEventComponent implements Listener {
 	

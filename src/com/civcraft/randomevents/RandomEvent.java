@@ -1,4 +1,4 @@
-package com.civcraft.randomevents;
+package com.avrgaming.civcraft.randomevents;
 
 
 import java.sql.ResultSet;
@@ -11,22 +11,22 @@ import java.util.List;
 
 import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
 
-import com.civcraft.config.CivSettings;
-import com.civcraft.database.SQL;
-import com.civcraft.database.SQLUpdate;
-import com.civcraft.exception.CivException;
-import com.civcraft.exception.InvalidNameException;
-import com.civcraft.exception.InvalidObjectException;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivLog;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.SQLObject;
-import com.civcraft.object.Town;
-import com.civcraft.randomevents.components.HammerRate;
-import com.civcraft.randomevents.components.Happiness;
-import com.civcraft.randomevents.components.Unhappiness;
-import com.civcraft.sessiondb.SessionEntry;
-import com.civcraft.util.CivColor;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.database.SQL;
+import com.avrgaming.civcraft.database.SQLUpdate;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.exception.InvalidNameException;
+import com.avrgaming.civcraft.exception.InvalidObjectException;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.SQLObject;
+import com.avrgaming.civcraft.object.Town;
+import com.avrgaming.civcraft.randomevents.components.HammerRate;
+import com.avrgaming.civcraft.randomevents.components.Happiness;
+import com.avrgaming.civcraft.randomevents.components.Unhappiness;
+import com.avrgaming.civcraft.sessiondb.SessionEntry;
+import com.avrgaming.civcraft.util.CivColor;
 import com.mysql.jdbc.StringUtils;
 
 public class RandomEvent extends SQLObject {
@@ -204,10 +204,10 @@ public class RandomEvent extends SQLObject {
 	}
 	
 	public void buildComponents() {
-		buildComponents("com.civcraft.randomevents.components.", configRandomEvent.actions, actions);
-		buildComponents("com.civcraft.randomevents.components.", configRandomEvent.requirements, requirements);		
-		buildComponents("com.civcraft.randomevents.components.", configRandomEvent.success, success);		
-		buildComponents("com.civcraft.randomevents.components.", configRandomEvent.failure, failure);		
+		buildComponents("com.avrgaming.civcraft.randomevents.components.", configRandomEvent.actions, actions);
+		buildComponents("com.avrgaming.civcraft.randomevents.components.", configRandomEvent.requirements, requirements);		
+		buildComponents("com.avrgaming.civcraft.randomevents.components.", configRandomEvent.success, success);		
+		buildComponents("com.avrgaming.civcraft.randomevents.components.", configRandomEvent.failure, failure);		
 	}
 	
 	public void buildComponents(String classPath, List<HashMap<String,String>> compInfoList, HashMap<String, RandomEventComponent> components) {	

@@ -1,9 +1,9 @@
-package com.civcraft.randomevents.components;
+package com.avrgaming.civcraft.randomevents.components;
 
-import com.civcraft.config.CivSettings;
-import com.civcraft.object.Resident;
-import com.civcraft.randomevents.RandomEventComponent;
-import com.global.perks.PlatinumManager;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.object.Resident;
+import com.avrgaming.civcraft.randomevents.RandomEventComponent;
+import com.avrgaming.global.perks.PlatinumManager;
 
 public class GivePlatinum extends RandomEventComponent {
 

@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.lorestorage;
+package com.avrgaming.civcraft.lorestorage;
 
 import java.util.HashMap;
 

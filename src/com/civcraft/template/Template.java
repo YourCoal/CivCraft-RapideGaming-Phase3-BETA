@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.template;
+package com.avrgaming.civcraft.template;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -37,21 +37,21 @@ import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 
-import com.civcraft.config.CivSettings;
-import com.civcraft.config.ConfigBuildableInfo;
-import com.civcraft.exception.CivException;
-import com.civcraft.main.CivData;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivLog;
-import com.civcraft.object.Resident;
-import com.civcraft.object.Town;
-import com.civcraft.structure.Buildable;
-import com.civcraft.structure.Structure;
-import com.civcraft.structure.wonders.Wonder;
-import com.civcraft.util.BlockCoord;
-import com.civcraft.util.ItemManager;
-import com.civcraft.util.PlayerBlockChangeUtil;
-import com.civcraft.util.SimpleBlock;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.config.ConfigBuildableInfo;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.main.CivData;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.object.Resident;
+import com.avrgaming.civcraft.object.Town;
+import com.avrgaming.civcraft.structure.Buildable;
+import com.avrgaming.civcraft.structure.Structure;
+import com.avrgaming.civcraft.structure.wonders.Wonder;
+import com.avrgaming.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.util.ItemManager;
+import com.avrgaming.civcraft.util.PlayerBlockChangeUtil;
+import com.avrgaming.civcraft.util.SimpleBlock;
 
 public class Template {
 	/* Handles the processing of CivTemplates which store cubiods of blocks for later use. */

@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.sync.request;
+package com.avrgaming.civcraft.threading.sync.request;
 
 import java.util.concurrent.locks.ReentrantLock;
 

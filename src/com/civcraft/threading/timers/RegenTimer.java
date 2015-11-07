@@ -1,12 +1,12 @@
-package com.civcraft.threading.timers;
+package com.avrgaming.civcraft.threading.timers;
 
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-import com.civcraft.main.CivGlobal;
-import com.civcraft.structure.Structure;
-import com.civcraft.structure.wonders.Wonder;
-import com.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.structure.Structure;
+import com.avrgaming.civcraft.structure.wonders.Wonder;
+import com.avrgaming.civcraft.util.BlockCoord;
 
 public class RegenTimer implements Runnable {
 

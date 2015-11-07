@@ -16,14 +16,14 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.permission;
+package com.avrgaming.civcraft.permission;
 
 import java.util.ArrayList;
 
-import com.civcraft.exception.CivException;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.object.Resident;
-import com.civcraft.object.Town;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.object.Resident;
+import com.avrgaming.civcraft.object.Town;
 
 public class PlotPermissions {
 	

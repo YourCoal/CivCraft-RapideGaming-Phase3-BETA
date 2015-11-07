@@ -16,15 +16,15 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.structure;
+package com.avrgaming.civcraft.structure;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.bukkit.Location;
 
-import com.civcraft.exception.CivException;
-import com.civcraft.object.Town;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.object.Town;
 
 public class Monument extends Structure {
 

@@ -16,12 +16,12 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.object;
+package com.avrgaming.civcraft.object;
 
 import java.text.DecimalFormat;
 
-import com.civcraft.config.CivSettings;
-import com.civcraft.config.ConfigBuff;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.config.ConfigBuff;
 
 public class Buff {
 	

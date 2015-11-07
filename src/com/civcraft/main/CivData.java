@@ -16,15 +16,15 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.main;
+package com.avrgaming.civcraft.main;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 
-import com.civcraft.exception.InvalidBlockLocation;
-import com.civcraft.util.BlockSnapshot;
-import com.civcraft.util.ItemManager;
+import com.avrgaming.civcraft.exception.InvalidBlockLocation;
+import com.avrgaming.civcraft.util.BlockSnapshot;
+import com.avrgaming.civcraft.util.ItemManager;
 
 public class CivData {
 	//TODO make this an enum

@@ -16,9 +16,9 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.object;
+package com.avrgaming.civcraft.object;
 
-import com.civcraft.exception.InvalidNameException;
+import com.avrgaming.civcraft.exception.InvalidNameException;
 
 
 public class NamedObject {

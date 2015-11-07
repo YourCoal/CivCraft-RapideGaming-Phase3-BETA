@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.util;
+package com.avrgaming.civcraft.util;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +25,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 
-import com.civcraft.structure.Buildable;
+import com.avrgaming.civcraft.structure.Buildable;
 
 public class SimpleBlock {
 	

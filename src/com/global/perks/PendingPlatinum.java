@@ -1,6 +1,6 @@
-package com.global.perks;
+package com.avrgaming.global.perks;
 
-import com.civcraft.object.Resident;
+import com.avrgaming.civcraft.object.Resident;
 
 public class PendingPlatinum {
 	public Resident resident;

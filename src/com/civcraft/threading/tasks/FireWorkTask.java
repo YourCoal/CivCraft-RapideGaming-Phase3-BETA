@@ -16,13 +16,13 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.tasks;
+package com.avrgaming.civcraft.threading.tasks;
 
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
 import org.bukkit.World;
 
-import com.civcraft.util.FireworkEffectPlayer;
+import com.avrgaming.civcraft.util.FireworkEffectPlayer;
 
 public class FireWorkTask implements Runnable {
 	

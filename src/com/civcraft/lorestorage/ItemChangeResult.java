@@ -1,4 +1,4 @@
-package com.civcraft.lorestorage;
+package com.avrgaming.civcraft.lorestorage;
 
 import org.bukkit.inventory.ItemStack;
 

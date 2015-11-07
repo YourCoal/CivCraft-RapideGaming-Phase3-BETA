@@ -16,9 +16,9 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.sync;
+package com.avrgaming.civcraft.threading.sync;
 
-import com.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivGlobal;
 
 public class SyncCheckForDuplicateGoodies implements Runnable {
 

@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.object;
+package com.avrgaming.civcraft.object;
 
 import java.sql.SQLException;
 import java.util.Collection;
@@ -26,8 +26,8 @@ import java.util.LinkedList;
 
 import org.bukkit.entity.Player;
 
-import com.civcraft.main.CivGlobal;
-import com.civcraft.object.Relation.Status;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.object.Relation.Status;
 
 public class DiplomacyManager {
 	

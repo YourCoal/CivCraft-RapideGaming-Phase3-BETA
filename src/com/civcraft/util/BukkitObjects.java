@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.util;
+package com.avrgaming.civcraft.util;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ import org.bukkit.World;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scheduler.BukkitTask;
 
-import com.civcraft.main.CivCraft;
+import com.avrgaming.civcraft.main.CivCraft;
 
 public class BukkitObjects {
 

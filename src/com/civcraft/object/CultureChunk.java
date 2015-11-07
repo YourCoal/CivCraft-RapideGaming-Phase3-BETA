@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.object;
+package com.avrgaming.civcraft.object;
 
 import java.util.ArrayList;
 
@@ -25,18 +25,18 @@ import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
-import com.civcraft.components.Attribute;
-import com.civcraft.components.AttributeBiomeBase;
-import com.civcraft.components.AttributeBiomeRadiusPerLevel;
-import com.civcraft.components.Component;
-import com.civcraft.config.CivSettings;
-import com.civcraft.config.ConfigCultureBiomeInfo;
-import com.civcraft.config.ConfigCultureLevel;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivMessage;
-import com.civcraft.util.BiomeCache;
-import com.civcraft.util.ChunkCoord;
-import com.civcraft.util.CivColor;
+import com.avrgaming.civcraft.components.Attribute;
+import com.avrgaming.civcraft.components.AttributeBiomeBase;
+import com.avrgaming.civcraft.components.AttributeBiomeRadiusPerLevel;
+import com.avrgaming.civcraft.components.Component;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.config.ConfigCultureBiomeInfo;
+import com.avrgaming.civcraft.config.ConfigCultureLevel;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.util.BiomeCache;
+import com.avrgaming.civcraft.util.ChunkCoord;
+import com.avrgaming.civcraft.util.CivColor;
 
 public class CultureChunk {
 

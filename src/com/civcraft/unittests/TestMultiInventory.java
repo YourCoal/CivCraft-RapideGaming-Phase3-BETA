@@ -1,4 +1,4 @@
-package com.civcraft.unittests;
+package com.avrgaming.civcraft.unittests;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -10,9 +10,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.civcraft.main.CivData;
-import com.civcraft.util.ItemManager;
-import com.civcraft.util.MultiInventory;
+import com.avrgaming.civcraft.main.CivData;
+import com.avrgaming.civcraft.util.ItemManager;
+import com.avrgaming.civcraft.util.MultiInventory;
 
 @RunWith(JUnit4.class)
 public class TestMultiInventory {

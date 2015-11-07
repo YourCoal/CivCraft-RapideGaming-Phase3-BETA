@@ -1,14 +1,14 @@
-package com.civcraft.loreenhancements;
+package com.avrgaming.civcraft.loreenhancements;
 
 import gpl.AttributeUtil;
 
 import org.bukkit.inventory.ItemStack;
 
-import com.civcraft.config.CivSettings;
-import com.civcraft.exception.InvalidConfiguration;
-import com.civcraft.lorestorage.LoreCraftableMaterial;
-import com.civcraft.main.CivLog;
-import com.civcraft.util.CivColor;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.exception.InvalidConfiguration;
+import com.avrgaming.civcraft.lorestorage.LoreCraftableMaterial;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.util.CivColor;
 
 public class LoreEnhancementAttack extends LoreEnhancement {
 	

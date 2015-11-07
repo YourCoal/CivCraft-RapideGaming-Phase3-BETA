@@ -16,17 +16,17 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.object;
+package com.avrgaming.civcraft.object;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
-import com.civcraft.database.SQL;
-import com.civcraft.database.SQLUpdate;
-import com.civcraft.exception.InvalidNameException;
-import com.civcraft.main.CivLog;
-import com.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.database.SQL;
+import com.avrgaming.civcraft.database.SQLUpdate;
+import com.avrgaming.civcraft.exception.InvalidNameException;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.util.BlockCoord;
 
 public class ProtectedBlock extends SQLObject {
 	

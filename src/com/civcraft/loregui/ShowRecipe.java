@@ -1,4 +1,4 @@
-package com.civcraft.loregui;
+package com.avrgaming.civcraft.loregui;
 
 import gpl.AttributeUtil;
 
@@ -9,16 +9,16 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import com.civcraft.config.CivSettings;
-import com.civcraft.config.ConfigIngredient;
-import com.civcraft.config.ConfigMaterialCategory;
-import com.civcraft.config.ConfigTech;
-import com.civcraft.lorestorage.LoreCraftableMaterial;
-import com.civcraft.lorestorage.LoreGuiItem;
-import com.civcraft.lorestorage.LoreGuiItemListener;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.object.Resident;
-import com.civcraft.util.ItemManager;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.config.ConfigIngredient;
+import com.avrgaming.civcraft.config.ConfigMaterialCategory;
+import com.avrgaming.civcraft.config.ConfigTech;
+import com.avrgaming.civcraft.lorestorage.LoreCraftableMaterial;
+import com.avrgaming.civcraft.lorestorage.LoreGuiItem;
+import com.avrgaming.civcraft.lorestorage.LoreGuiItemListener;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.object.Resident;
+import com.avrgaming.civcraft.util.ItemManager;
 
 public class ShowRecipe implements GuiAction {
 

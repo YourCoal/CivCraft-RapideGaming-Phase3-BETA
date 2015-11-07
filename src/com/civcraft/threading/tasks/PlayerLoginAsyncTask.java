@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.threading.tasks;
+package com.avrgaming.civcraft.threading.tasks;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -24,26 +24,26 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import com.civcraft.anticheat.ACManager;
-import com.civcraft.config.CivSettings;
-import com.civcraft.endgame.EndConditionDiplomacy;
-import com.civcraft.exception.CivException;
-import com.civcraft.exception.InvalidConfiguration;
-import com.civcraft.exception.InvalidNameException;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivLog;
-import com.civcraft.main.CivMessage;
-import com.civcraft.object.CultureChunk;
-import com.civcraft.object.Relation;
-import com.civcraft.object.Resident;
-import com.civcraft.sessiondb.SessionEntry;
-import com.civcraft.threading.TaskMaster;
-import com.civcraft.tutorial.CivTutorial;
-import com.civcraft.util.BlockCoord;
-import com.civcraft.util.ChunkCoord;
-import com.civcraft.util.CivColor;
-import com.civcraft.war.War;
-import com.global.perks.PlatinumManager;
+import com.avrgaming.anticheat.ACManager;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.endgame.EndConditionDiplomacy;
+import com.avrgaming.civcraft.exception.CivException;
+import com.avrgaming.civcraft.exception.InvalidConfiguration;
+import com.avrgaming.civcraft.exception.InvalidNameException;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.CultureChunk;
+import com.avrgaming.civcraft.object.Relation;
+import com.avrgaming.civcraft.object.Resident;
+import com.avrgaming.civcraft.sessiondb.SessionEntry;
+import com.avrgaming.civcraft.threading.TaskMaster;
+import com.avrgaming.civcraft.tutorial.CivTutorial;
+import com.avrgaming.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.util.ChunkCoord;
+import com.avrgaming.civcraft.util.CivColor;
+import com.avrgaming.civcraft.war.War;
+import com.avrgaming.global.perks.PlatinumManager;
 
 public class PlayerLoginAsyncTask implements Runnable {
 	
@@ -129,7 +129,14 @@ public class PlayerLoginAsyncTask implements Runnable {
 			if (!resident.isGivenKit()) {
 				TaskMaster.syncTask(new GivePlayerStartingKit(resident.getName()));
 			}
-					
+			
+			if (getPlayer().isOp() || getPlayer().hasPermission(CivSettings.MINI_ADMIN)) {
+			} else if (!resident.isUsesAntiCheat() && getPlayer().hasPermission(CivSettings.HACKER)) {
+				TaskMaster.syncTask(new PlayerKickBan(getPlayer().getName(), true, false, "You are reruied to use anti-cheat"
+						+ "at all times on the server. Visit https://www.rapidegaming.enjin.com/ to get it."));
+				return;
+			}
+			
 			if (War.isWarTime() && War.isOnlyWarriors()) {
 				if (getPlayer().isOp() || getPlayer().hasPermission(CivSettings.MINI_ADMIN)) {
 					//Allowed to connect since player is OP or mini admin.
@@ -191,6 +198,12 @@ public class PlayerLoginAsyncTask implements Runnable {
 						resident.giveAllFreePerks();
 					}
 				}
+				if (getPlayer().hasPermission(CivSettings.TEST_THEME)) {
+					resident.giveAllTestPerks();
+				}
+				//if (getPlayer().hasPermission(CivSettings.TEST_THEME)) {
+				//	resident.giveAllTestPerks();
+				//}
 			} catch (InvalidConfiguration e) {
 				e.printStackTrace();
 			}
@@ -264,7 +277,6 @@ public class PlayerLoginAsyncTask implements Runnable {
 			// Player logged out while async task was running.
 			CivLog.warning("Couldn't complete PlayerLoginAsyncTask. Player may have been kicked while async task was running.");
 		} catch (InvalidNameException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}

@@ -1,4 +1,4 @@
-package com.civcraft.randomevents;
+package com.avrgaming.civcraft.randomevents;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.Map;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
-import com.civcraft.main.CivLog;
+import com.avrgaming.civcraft.main.CivLog;
 
 public class ConfigRandomEvent {
 

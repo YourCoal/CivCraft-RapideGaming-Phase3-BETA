@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.populators;
+package com.avrgaming.civcraft.populators;
 
 import java.sql.SQLException;
 import java.util.Random;
@@ -30,15 +30,15 @@ import org.bukkit.block.BlockState;
 import org.bukkit.block.Sign;
 import org.bukkit.generator.BlockPopulator;
 
-import com.civcraft.config.ConfigTradeGood;
-import com.civcraft.main.CivData;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.object.ProtectedBlock;
-import com.civcraft.object.StructureSign;
-import com.civcraft.object.TradeGood;
-import com.civcraft.util.BlockCoord;
-import com.civcraft.util.ChunkCoord;
-import com.civcraft.util.ItemManager;
+import com.avrgaming.civcraft.config.ConfigTradeGood;
+import com.avrgaming.civcraft.main.CivData;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.object.ProtectedBlock;
+import com.avrgaming.civcraft.object.StructureSign;
+import com.avrgaming.civcraft.object.TradeGood;
+import com.avrgaming.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.util.ChunkCoord;
+import com.avrgaming.civcraft.util.ItemManager;
 
 public class TradeGoodPopulator extends BlockPopulator {
 	

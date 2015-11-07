@@ -1,4 +1,4 @@
-package com.civcraft.util;
+package com.avrgaming.civcraft.util;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.listener;
+package com.avrgaming.civcraft.listener;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -57,31 +57,29 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
-import com.civcraft.config.CivSettings;
-import com.civcraft.config.ConfigTechPotion;
-import com.civcraft.items.units.Unit;
-import com.civcraft.items.units.UnitItemMaterial;
-import com.civcraft.items.units.UnitMaterial;
-import com.civcraft.lorestorage.LoreMaterial;
-import com.civcraft.main.CivData;
-import com.civcraft.main.CivGlobal;
-import com.civcraft.main.CivLog;
-import com.civcraft.main.CivMessage;
-import com.civcraft.mobs.timers.MobSpawnerTimer;
-import com.civcraft.object.CultureChunk;
-import com.civcraft.object.Resident;
-import com.civcraft.road.Road;
-import com.civcraft.structure.Capitol;
-import com.civcraft.threading.TaskMaster;
-import com.civcraft.threading.tasks.PlayerChunkNotifyAsyncTask;
-import com.civcraft.threading.tasks.PlayerLoginAsyncTask;
-import com.civcraft.threading.timers.PlayerLocationCacheUpdate;
-import com.civcraft.util.BlockCoord;
-import com.civcraft.util.ChunkCoord;
-import com.civcraft.util.CivColor;
-import com.civcraft.util.ItemManager;
-import com.civcraft.war.War;
-import com.civcraft.war.WarStats;
+import com.avrgaming.civcraft.config.CivSettings;
+import com.avrgaming.civcraft.config.ConfigTechPotion;
+import com.avrgaming.civcraft.items.units.UnitItemMaterial;
+import com.avrgaming.civcraft.items.units.UnitMaterial;
+import com.avrgaming.civcraft.lorestorage.LoreMaterial;
+import com.avrgaming.civcraft.main.CivData;
+import com.avrgaming.civcraft.main.CivGlobal;
+import com.avrgaming.civcraft.main.CivLog;
+import com.avrgaming.civcraft.main.CivMessage;
+import com.avrgaming.civcraft.object.CultureChunk;
+import com.avrgaming.civcraft.object.Resident;
+import com.avrgaming.civcraft.road.Road;
+import com.avrgaming.civcraft.structure.Capitol;
+import com.avrgaming.civcraft.threading.TaskMaster;
+import com.avrgaming.civcraft.threading.tasks.PlayerChunkNotifyAsyncTask;
+import com.avrgaming.civcraft.threading.tasks.PlayerLoginAsyncTask;
+import com.avrgaming.civcraft.threading.timers.PlayerLocationCacheUpdate;
+import com.avrgaming.civcraft.util.BlockCoord;
+import com.avrgaming.civcraft.util.ChunkCoord;
+import com.avrgaming.civcraft.util.CivColor;
+import com.avrgaming.civcraft.util.ItemManager;
+import com.avrgaming.civcraft.war.War;
+import com.avrgaming.civcraft.war.WarStats;
 
 public class PlayerListener implements Listener {
 	@EventHandler(priority = EventPriority.MONITOR)
@@ -112,7 +110,6 @@ public class PlayerListener implements Listener {
 		
 		CivGlobal.playerFirstLoginMap.put(event.getPlayer().getName(), new Date());
 		PlayerLocationCacheUpdate.playerQueue.add(event.getPlayer().getName());
-		MobSpawnerTimer.playerQueue.add((event.getPlayer().getName()));
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
@@ -127,39 +124,6 @@ public class PlayerListener implements Listener {
 	private void setModifiedMovementSpeed(Player player) {
 		/* Change move speed based on armor. */
 		double speed = CivSettings.normal_speed;
-		
-		/* Set speed from armor. */
-		if (Unit.isWearingFullComposite(player)) {
-			speed *= CivSettings.T4_leather_speed;
-		}
-		
-		if (Unit.isWearingFullHardened(player)) {
-			speed *= CivSettings.T3_leather_speed;
-		}
-		
-		if (Unit.isWearingFullRefined(player)) {
-			speed *= CivSettings.T2_leather_speed;
-		}
-		
-		if (Unit.isWearingFullBasicLeather(player)) {
-			speed *= CivSettings.T1_leather_speed;
-		}
-		
-		if (Unit.isWearingAnyIron(player)) {
-			speed *= CivSettings.T1_metal_speed;
-		}
-		
-		if (Unit.isWearingAnyChain(player)) {
-			speed *= CivSettings.T2_metal_speed;
-		}
-		
-		if (Unit.isWearingAnyGold(player)) {
-			speed *= CivSettings.T3_metal_speed;
-		}
-		
-		if (Unit.isWearingAnyDiamond(player)) {
-			speed *= CivSettings.T4_metal_speed;
-		}
 		
 		Resident resident = CivGlobal.getResident(player);
 		if (resident != null && resident.isOnRoad()) {	

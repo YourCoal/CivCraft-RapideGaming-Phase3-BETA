@@ -16,9 +16,9 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.civcraft.questions;
+package com.avrgaming.civcraft.questions;
 
-import com.civcraft.object.Resident;
+import com.avrgaming.civcraft.object.Resident;
 
 public interface QuestionResponseInterface {	
 	void processResponse(String param);

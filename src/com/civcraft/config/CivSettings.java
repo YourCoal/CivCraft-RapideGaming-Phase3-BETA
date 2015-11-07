@@ -377,7 +377,7 @@ public class CivSettings {
 		ConfigValidMod.loadConfig(nocheatConfig, validMods);
 		ConfigFishing.loadConfig(fishingConfig, fishingDrops);
 	
-		ConfigRemovedRecipes.removeRecipes(materialsConfig, removedRecipies );
+		ConfigRemovedRecipes.removeRecipes(materialsConfig, removedRecipies);
 		CivGlobal.preGenerator.preGenerate();
 		Wall.init_settings();
 	}
@@ -664,10 +664,9 @@ public class CivSettings {
 				return sinfo;
 			}
 		}
-		
 		return null;
 	}
-
+	
 	public static ConfigTech getTechByName(String techname) {
 		for (ConfigTech tech : techs.values()) {
 			if (tech.name.equalsIgnoreCase(techname)) {
@@ -676,7 +675,7 @@ public class CivSettings {
 		}
 		return null;
 	}
-
+	
 	public static int getCottageMaxLevel() {
 		int returnLevel = 0;
 		for (Integer level : cottageLevels.keySet()) {
@@ -684,10 +683,9 @@ public class CivSettings {
 				returnLevel = level;
 			}
 		}
-		
 		return returnLevel;
 	}
-
+	
 	public static int getMineMaxLevel() {
 		int returnLevel = 0;
 		for (Integer level : mineLevels.keySet()) {
@@ -695,10 +693,9 @@ public class CivSettings {
 				returnLevel = level;
 			}
 		}
-		
 		return returnLevel;
 	}
-
+	
 	public static int getMaxCultureLevel() {
 		int returnLevel = 0;
 		for (Integer level : cultureLevels.keySet()) {
@@ -706,22 +703,14 @@ public class CivSettings {
 				returnLevel = level;
 			}
 		}
-		
 		return returnLevel;
-		
 	}
-
 	
 	public static ConfigCultureBiomeInfo getCultureBiome(String name) {
 		ConfigCultureBiomeInfo biomeInfo = cultureBiomes.get(name);
 		if (biomeInfo == null) {
 			biomeInfo = cultureBiomes.get("UNKNOWN");
 		}
-		
 		return biomeInfo;
 	}
-
-	
-	
-	
 }

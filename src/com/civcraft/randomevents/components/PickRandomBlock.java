@@ -59,7 +59,7 @@ public class PickRandomBlock extends RandomEventComponent {
 						}
 						
 						/* Search for a 'valid' block to be used as breakable in the chunk. */
-						int startY = rand.nextInt(20) + 4; /* Select a y somewhere between 4 and 24. */
+						int startY = rand.nextInt(17) + 8; /* Select a y somewhere between 8 and 25. */
 						for (int x = 0; x < 16; x++) {
 							for (int z = 0; z < 16; z++) {
 								for (int y = startY; y < 50; y++) { /* no need to check higher than 128, unlikely to find a good block. */
@@ -90,8 +90,8 @@ public class PickRandomBlock extends RandomEventComponent {
 					
 					/* Obfuscate and display block location to players */
 					Random rand = new Random();
-					int y_min = bcoord.getY() - rand.nextInt(10);
-					int y_max = bcoord.getY() + rand.nextInt(10);
+					int y_min = bcoord.getY() - rand.nextInt(5);
+					int y_max = bcoord.getY() + rand.nextInt(5);
 					
 					sendMessage("Block is somewhere near chunk "+coord.getX()+","+coord.getZ()+" between y="+y_min+" and y="+y_max);
 					sendMessage("To get the actual coordinates multiply these numbers by 16.");
@@ -102,5 +102,4 @@ public class PickRandomBlock extends RandomEventComponent {
 		}
 	TaskMaster.syncTask(new SyncTask(this.getParent()));		
 	}
-
 }

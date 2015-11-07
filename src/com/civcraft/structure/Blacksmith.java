@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.civcraft.structure;
 
 import gpl.AttributeUtil;
@@ -60,7 +42,7 @@ public class Blacksmith extends Structure {
 	
 	private static final long COOLDOWN = 5;
 	//private static final double BASE_CHANCE = 0.8;
-	public static int SMELT_TIME_SECONDS = 3600*3;
+	public static int SMELT_TIME_SECONDS = 3600*2;
 	public static double YIELD_RATE = 1.25;
 	
 	private Date lastUse = new Date();

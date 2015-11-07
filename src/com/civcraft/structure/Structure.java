@@ -80,6 +80,13 @@ public class Structure extends Buildable {
 		Structure struct;
 		
 		switch (id) {
+		case "s_quarry":
+			if (rs == null) {
+				struct = (Structure) new Quarry(center, id, town);
+			} else {
+				struct = (Structure) new Quarry(rs);
+			}
+			break;
 		case "s_bank":
 			if (rs == null) {
 				struct = (Structure) new Bank(center, id, town);
@@ -87,15 +94,13 @@ public class Structure extends Buildable {
 				struct = (Structure) new Bank(rs);
 			}
 			break;
-		
 		case "s_trommel":
 			if (rs == null) {
 				struct = (Structure) new Trommel(center, id, town);
 			} else {
 				struct = (Structure) new Trommel(rs);
 			}
-			break;	
-			
+			break;
 		case "s_store":
 			if (rs == null) {
 				struct = (Structure) new Store(center, id, town);

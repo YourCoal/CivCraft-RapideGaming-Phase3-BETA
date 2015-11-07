@@ -95,7 +95,6 @@ public class EffectEventTimer extends CivAsyncTask {
 				}
 				break;
 			}
-			
 		}
 		
 		/*

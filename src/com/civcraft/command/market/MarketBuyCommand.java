@@ -23,7 +23,9 @@ import com.civcraft.exception.CivException;
 import com.civcraft.main.CivGlobal;
 import com.civcraft.main.CivMessage;
 import com.civcraft.object.Civilization;
+import com.civcraft.object.Relation;
 import com.civcraft.object.Town;
+import com.civcraft.object.Relation.Status;
 import com.civcraft.util.CivColor;
 import com.civcraft.war.War;
 
@@ -64,7 +66,7 @@ public class MarketBuyCommand extends CommandBase {
 		}
 	}
 	
-	public void towns_cmd() throws CivException {
+	public void towns_cmd(Relation re) throws CivException {
 		this.validLeaderAdvisor();
 		Civilization senderCiv = this.getSenderCiv();
 		
@@ -92,8 +94,12 @@ public class MarketBuyCommand extends CommandBase {
 			throw new CivException("Can only buy towns that are up for sale.");
 		}
 		
-		if (War.isWarTime() || War.isWithinWarDeclareDays()) {
-			throw new CivException("Can not buy towns during WarTime or within 3 days of WarTime.");
+		if (War.isWarTime()) {
+			throw new CivException("Can not buy towns during WarTime.");
+		}
+		
+		if (War.isWithinWarDeclareDays() && re.getStatus() == Status.WAR) {
+			throw new CivException("Can not buy towns within 3 days of WarTime when at war.");
 		}
 		
 		senderCiv.buyTown(town);
@@ -102,7 +108,7 @@ public class MarketBuyCommand extends CommandBase {
 	}
 	
 	
-	public void civs_cmd() throws CivException {
+	public void civs_cmd(Relation re) throws CivException {
 		this.validLeaderAdvisor();
 		Civilization senderCiv = this.getSenderCiv();
 		
@@ -126,8 +132,12 @@ public class MarketBuyCommand extends CommandBase {
 			throw new CivException("Can only buy civilizations that are up for sale.");
 		}
 		
-		if (War.isWarTime() || War.isWithinWarDeclareDays()) {
-			throw new CivException("Can not buy civs during WarTime or within 3 days of WarTime.");
+		if (War.isWarTime()) {
+			throw new CivException("Can not buy towns during WarTime.");
+		}
+		
+		if (War.isWithinWarDeclareDays() && re.getStatus() == Status.WAR) {
+			throw new CivException("Can not buy towns within 3 days of WarTime when at war.");
 		}
 		
 		senderCiv.buyCiv(civBought);

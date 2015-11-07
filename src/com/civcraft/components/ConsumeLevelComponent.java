@@ -95,15 +95,12 @@ public class ConsumeLevelComponent extends Component {
 		} else if (buildable instanceof Mine) {
 			for (ConfigMineLevel lvl : CivSettings.mineLevels.values()) {
 				this.addLevel(lvl.level, lvl.count);
-				
 				HashMap<Integer, Integer> redstoneAmounts = new HashMap<Integer, Integer>();
 				redstoneAmounts.put(CivData.REDSTONE_DUST, lvl.amount);
 				this.setConsumes(lvl.level, redstoneAmounts);
 			}
 		}
-		
 	}
-	
 	
 	/* Possible Results. */
 	public enum Result {

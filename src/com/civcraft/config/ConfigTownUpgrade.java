@@ -35,8 +35,10 @@ import com.civcraft.object.Town;
 import com.civcraft.structure.Bank;
 import com.civcraft.structure.Grocer;
 import com.civcraft.structure.Library;
+import com.civcraft.structure.Quarry;
 import com.civcraft.structure.Store;
 import com.civcraft.structure.Structure;
+import com.civcraft.structure.Trommel;
 
 public class ConfigTownUpgrade {
 	public String id;
@@ -166,6 +168,47 @@ public class ConfigTownUpgrade {
 					grocer.updateSignText();
 					CivMessage.sendTown(town, "The grocer is now level "+grocer.getLevel());
 				}
+			}
+			break;
+		case "set_trommel_level":
+			boolean didUpgrade = false;
+			int trommelLevel = 1;
+			for (Structure structure : town.getStructures()) {
+				if (structure.getConfigId().equalsIgnoreCase("s_trommel")) {
+					if (structure != null && (structure instanceof Trommel)) {
+						Trommel trommel = (Trommel)structure;
+						if (trommel.getLevel() < Integer.valueOf(args[1].trim())) {
+							didUpgrade = true;
+							trommel.setLevel(Integer.valueOf(args[1].trim()));
+							town.saved_trommel_level = trommel.getLevel();
+							trommelLevel = trommel.getLevel();
+						}
+					}
+				}
+			}
+			if (didUpgrade) {
+				CivMessage.sendTown(town, "Our Trommels are now level "+trommelLevel);
+			}
+			break;
+		case "set_quarry_level":
+			boolean didUpgradeQuarry = false;
+			int quarryLevel = 1;
+			for (Structure structure : town.getStructures()) {
+				if (structure.getConfigId().equalsIgnoreCase("s_quarry")) {
+					if (structure != null && (structure instanceof Quarry)) {
+						Quarry quarry = (Quarry)structure;
+						if (quarry.getLevel() < Integer.valueOf(args[1].trim())) {
+							didUpgradeQuarry = true;
+							quarry.setLevel(Integer.valueOf(args[1].trim()));
+							quarry.updateSignText();
+							town.saved_quarry_level = quarry.getLevel();
+							quarryLevel = quarry.getLevel();
+						}
+					}
+				}
+			}
+			if (didUpgradeQuarry) {
+				CivMessage.sendTown(town, "Our Quarries are now level "+quarryLevel);
 			}
 			break;
 		}

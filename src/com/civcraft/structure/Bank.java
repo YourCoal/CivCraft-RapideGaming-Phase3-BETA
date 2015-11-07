@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.civcraft.structure;
 
 import java.sql.ResultSet;
@@ -45,10 +27,8 @@ public class Bank extends Structure {
 	
 	private int level = 1;
 	private double interestRate = 0;
-	
 	private NonMemberFeeComponent nonMemberFeeComponent;
 	
-//	private static final int EMERALD_SIGN = 3;
 	private static final int IRON_SIGN = 0;
 	private static final int GOLD_SIGN = 1;
 	private static final int DIAMOND_SIGN = 2;
@@ -65,39 +45,39 @@ public class Bank extends Structure {
 		nonMemberFeeComponent = new NonMemberFeeComponent(this);
 		nonMemberFeeComponent.onLoad();
 	}
-
+	
 	public double getBankExchangeRate() {
 		double exchange_rate = 0.0;
 		switch (level) {
 		case 1:
-			exchange_rate = 0.40;
+			exchange_rate = 0.4;
 			break;
 		case 2:
-			exchange_rate = 0.50;
+			exchange_rate = 0.5;
 			break;
 		case 3:
-			exchange_rate = 0.60;
+			exchange_rate = 0.6;
 			break;
 		case 4:
-			exchange_rate = 0.70;
+			exchange_rate = 0.7;
 			break;
 		case 5:
-			exchange_rate = 0.80;
+			exchange_rate = 0.8;
 			break;
 		case 6:
-			exchange_rate = 0.90;
+			exchange_rate = 1.0;
 			break;
 		case 7:
-			exchange_rate = 1;
+			exchange_rate = 1.25;
 			break;
 		case 8:
-			exchange_rate = 1.20;
+			exchange_rate = 1.5;
 			break;
 		case 9:
-			exchange_rate = 1.50;
+			exchange_rate = 1.75;
 			break;
 		case 10:
-			exchange_rate = 2;
+			exchange_rate = 2.0;
 			break;
 		}
 		
@@ -137,7 +117,6 @@ public class Bank extends Structure {
 			itemPrice = CivSettings.emerald_rate;
 		}
 		
-		
 		String out = "1 = ";
 		out += (int)(itemPrice*getBankExchangeRate());
 		out += " Coins";
@@ -148,7 +127,6 @@ public class Bank extends Structure {
 		double exchange_rate = 0.0;
 		String itemName;
 		Player player = CivGlobal.getPlayer(resident);
-		
 		if (itemId == CivData.IRON_INGOT)
 			itemName = "Iron";
 		else if (itemId == CivData.GOLD_INGOT)
@@ -159,19 +137,18 @@ public class Bank extends Structure {
 			itemName = "Emerald";
 		
 		exchange_rate = getBankExchangeRate();
-				
+		
 		if (!resident.takeItemInHand(itemId, 0, 1)) {
 			throw new CivException("You do not have enough "+itemName+" in your hand.");
 		}
 		
 		Town usersTown = resident.getTown();
-		
 		// Resident is in his own town.
 		if (usersTown == this.getTown()) {		
 			DecimalFormat df = new DecimalFormat();
 			resident.getTreasury().deposit((double)((int)(coins*exchange_rate)));
 			CivMessage.send(player,
-					CivColor.LightGreen + "Exchanged 1 "+itemName+" for "+ df.format(coins*exchange_rate)+ " coins.");	
+					CivColor.LightGreen + "Exchanged a "+itemName+" for "+ df.format(coins*exchange_rate)+ " coins.");	
 			return;
 		}
 		
@@ -179,30 +156,23 @@ public class Bank extends Structure {
 		double giveToPlayer = (double)((int)(coins*exchange_rate));
 		double giveToTown = (double)((int)giveToPlayer*this.getNonResidentFee());
 		giveToPlayer -= giveToTown;
-		
 		giveToTown = Math.round(giveToTown);
 		giveToPlayer = Math.round(giveToPlayer);
-		
-			this.getTown().depositDirect(giveToTown);
-			resident.getTreasury().deposit(giveToPlayer);
-		
-		CivMessage.send(player, CivColor.LightGreen + "Exchanged 1 "+itemName+" for "+ giveToPlayer+ " coins.");
+		this.getTown().depositDirect(giveToTown);
+		resident.getTreasury().deposit(giveToPlayer);
+		CivMessage.send(player, CivColor.LightGreen + "Exchanged a "+itemName+" for "+ giveToPlayer+ " coins.");
 		CivMessage.send(player,CivColor.Yellow+" Paid "+giveToTown+" coins in non-resident taxes.");
 		return;
-		
 	}
 	
 	@Override
 	public void processSignAction(Player player, StructureSign sign, PlayerInteractEvent event) {
-		//int special_id = Integer.valueOf(sign.getAction());
 		Resident resident = CivGlobal.getResident(player);
-		
 		if (resident == null) {
 			return;
 		}
 		
 		try {
-			
 			if (LoreMaterial.isCustom(player.getItemInHand())) {
 				throw new CivException("You cannot exchange this item at the bank.");
 			}
@@ -229,7 +199,6 @@ public class Bank extends Structure {
 	@Override
 	public void updateSignText() {
 		for (StructureSign sign : getSigns()) {
-			
 			switch (sign.getAction().toLowerCase()) {
 			case "iron":
 				sign.setText("Iron\n"+
@@ -256,12 +225,10 @@ public class Bank extends Structure {
 							getNonResidentFeeString());
 					break;
 			}
-				
-			
 			sign.update();
 		}
 	}
-
+	
 	@Override
 	public String getDynmapDescription() {
 		String out = "<u><b>Bank</u></b><br/>";
@@ -277,43 +244,38 @@ public class Bank extends Structure {
 	public int getLevel() {
 		return level;
 	}
-
+	
 	public void setLevel(int level) {
 		this.level = level;
 	}
-
+	
 	public double getNonResidentFee() {
 		return this.nonMemberFeeComponent.getFeeRate();
 	}
-
+	
 	public void setNonResidentFee(double nonResidentFee) {
 		this.nonMemberFeeComponent.setFeeRate(nonResidentFee);
 	}
-
+	
 	public double getInterestRate() {
 		return interestRate;
 	}
-
+	
 	public void setInterestRate(double interestRate) {
 		this.interestRate = interestRate;
 	}
 	
 	@Override
 	public void onLoad() {
-		/* Process the interest rate. */
 		if (interestRate == 0.0) {
 			this.getTown().getTreasury().setPrincipalAmount(0);
 			return;
 		}
-		
-		/* Update the principal with the new value. */
 		this.getTown().getTreasury().setPrincipalAmount(this.getTown().getTreasury().getBalance());
 	}
 	
 	@Override
 	public void onDailyEvent() {
-		
-		/* Process the interest rate. */
 		double effectiveInterestRate = interestRate;
 		if (effectiveInterestRate == 0.0) {
 			this.getTown().getTreasury().setPrincipalAmount(0);
@@ -321,7 +283,6 @@ public class Bank extends Structure {
 		}
 		
 		double principal = this.getTown().getTreasury().getPrincipalAmount();
-		
 		if (this.getTown().getBuffManager().hasBuff("buff_greed")) {
 			double increase = this.getTown().getBuffManager().getEffectiveDouble("buff_greed");
 			effectiveInterestRate += increase;
@@ -329,19 +290,12 @@ public class Bank extends Structure {
 		}
 		
 		double newCoins = principal*effectiveInterestRate;
-
-		//Dont allow fractional coins.
 		newCoins = Math.floor(newCoins);
-		
 		if (newCoins != 0) {
 			CivMessage.sendTown(this.getTown(), CivColor.LightGreen+"Our town earned "+newCoins+" coins from interest on a principal of "+principal+" coins.");
 			this.getTown().getTreasury().deposit(newCoins);
-			
 		}
-		
-		/* Update the principal with the new value. */
 		this.getTown().getTreasury().setPrincipalAmount(this.getTown().getTreasury().getBalance());
-		
 	}
 	
 	@Override
@@ -349,11 +303,11 @@ public class Bank extends Structure {
 		this.level = getTown().saved_bank_level;
 		this.interestRate = getTown().saved_bank_interest_amount;
 	}
-
+	
 	public NonMemberFeeComponent getNonMemberFeeComponent() {
 		return nonMemberFeeComponent;
 	}
-
+	
 	public void setNonMemberFeeComponent(NonMemberFeeComponent nonMemberFeeComponent) {
 		this.nonMemberFeeComponent = nonMemberFeeComponent;
 	}
@@ -361,9 +315,8 @@ public class Bank extends Structure {
 	public void onGoodieFromFrame() {
 		this.updateSignText();
 	}
-
+	
 	public void onGoodieToFrame() {
 		this.updateSignText();
 	}
-	
 }

@@ -99,7 +99,6 @@ import com.civcraft.threading.tasks.CivLeaderQuestionTask;
 import com.civcraft.threading.tasks.CivQuestionTask;
 import com.civcraft.threading.tasks.CultureProcessAsyncTask;
 import com.civcraft.threading.tasks.PlayerQuestionTask;
-import com.civcraft.threading.tasks.UpdateTagBetweenCivsTask;
 import com.civcraft.threading.tasks.onLoadTask;
 import com.civcraft.util.BlockCoord;
 import com.civcraft.util.BukkitObjects;
@@ -175,7 +174,8 @@ public class CivGlobal {
 	
 	//TODO convert this to completely static?
 	private static SessionDatabase sdb;
-
+	
+	public static boolean quarriesEnabled = true;
 	public static boolean trommelsEnabled = true;
 	public static boolean towersEnabled = true;
 	public static boolean growthEnabled = true;
@@ -1438,11 +1438,6 @@ public class CivGlobal {
 		}
 		out += otherCiv.getName();
 		CivMessage.global(out);
-		CivGlobal.updateTagsBetween(civ, otherCiv);
-	}
-	
-	private static void updateTagsBetween(Civilization civ, Civilization otherCiv) {
-		TaskMaster.asyncTask(new UpdateTagBetweenCivsTask(civ, otherCiv), 0);
 	}
 
 	public static void requestRelation(Civilization fromCiv, Civilization toCiv, String question, 

@@ -41,9 +41,17 @@ public class CivData {
 	public static final byte DATA_JUNGLE = 3;
 	
 	
+	public static final int STONE = 1;
+	public static final byte GRANITE = 1;
+	public static final byte POLISHED_GRANITE = 2;
+	public static final byte DIORITE = 3;
+	public static final byte POLISHED_DIORITE = 4;
+	public static final byte ANDESITE = 5;
+	public static final byte POLISHED_ANDESITE = 6;
 	public static final int DIRT = 3;
 	public static final int GOLD_ORE = 14;
 	public static final int IRON_ORE = 15;
+	public static final int PUMPKIN_PIE = 400;
 	public static final int IRON_INGOT = 265;
 	public static final int GOLD_INGOT = 266;
 	public static final int WATER = 9;
@@ -96,7 +104,7 @@ public class CivData {
 	public static final int COOKED_FISH = 350;
 	public static final int OBSIDIAN = 49;
 	public static final int FIRE = 51;
-	public static final int FISH_RAW = 349;
+	public static final int FISH = 349;
 	public static final int BREAD = 297;
 	public static final int GLOWSTONE = 89;
 	public static final int DYE = 351;
@@ -162,7 +170,6 @@ public class CivData {
 	public static final int ANVIL = 145;
 	public static final int IRON_BLOCK = 42;
 	public static final int COBWEB = 30;
-	public static final int STONE = 1;
 	public static final short MUNDANE_POTION_DATA = 8192;
 	public static final short MUNDANE_POTION_EXT_DATA = 64;
 	public static final short THICK_POTION_DATA = 32;

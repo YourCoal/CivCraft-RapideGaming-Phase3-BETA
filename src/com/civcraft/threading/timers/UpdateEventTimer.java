@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.civcraft.threading.timers;
 
 import java.util.Iterator;
@@ -29,6 +11,7 @@ import com.civcraft.structure.Structure;
 import com.civcraft.structure.wonders.Wonder;
 import com.civcraft.threading.CivAsyncTask;
 import com.civcraft.threading.TaskMaster;
+import com.civcraft.threading.tasks.QuarryAsyncTask;
 import com.civcraft.threading.tasks.TrommelAsyncTask;
 import com.civcraft.util.BlockCoord;
 
@@ -55,18 +38,23 @@ public class UpdateEventTimer extends CivAsyncTask {
 				
 				if (!struct.isActive())
 					continue;
-				
 				try {
 					if (struct.getUpdateEvent() != null && !struct.getUpdateEvent().equals("")) {
 						if (struct.getUpdateEvent().equals("trommel_process")) {
 							if (!CivGlobal.trommelsEnabled) {
 								continue;
 							}
-							
 							TaskMaster.asyncTask("trommel-"+struct.getCorner().toString(), new TrommelAsyncTask(struct), 0);
 						}
 					}
-					
+					if (struct.getUpdateEvent() != null && !struct.getUpdateEvent().equals("")) {
+						if (struct.getUpdateEvent().equals("quarry_process")) {
+							if (!CivGlobal.quarriesEnabled) {
+								continue;
+							}
+							TaskMaster.asyncTask("quarry-"+struct.getCorner().toString(), new QuarryAsyncTask(struct), 0);
+						}
+					}
 					struct.onUpdate();
 				} catch (Exception e) {
 					e.printStackTrace();

@@ -65,7 +65,6 @@ import com.civcraft.listener.DisableXPListener;
 import com.civcraft.listener.HeroChatListener;
 import com.civcraft.listener.MarkerPlacementManager;
 import com.civcraft.listener.PlayerListener;
-import com.civcraft.listener.TagAPIListener;
 import com.civcraft.lorestorage.LoreCraftableMaterialListener;
 import com.civcraft.lorestorage.LoreGuiItemListener;
 import com.civcraft.nocheat.NoCheatPlusSurvialFlyHandler;
@@ -203,10 +202,6 @@ public final class CivCraft extends JavaPlugin {
 		pluginManager.registerEvents(new WarListener(), this);
 		pluginManager.registerEvents(new FishingListener(), this);	
 		pluginManager.registerEvents(new PvPListener(), this);
-		
-		if (hasPlugin("TagAPI")) {
-			pluginManager.registerEvents(new TagAPIListener(), this);
-		}
 		
 		if (hasPlugin("HeroChat")) {
 			pluginManager.registerEvents(new HeroChatListener(), this);

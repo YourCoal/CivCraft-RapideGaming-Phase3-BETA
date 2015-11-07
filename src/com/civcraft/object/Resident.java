@@ -161,7 +161,6 @@ public class Resident extends SQLObject {
 	private boolean showInfo = false;
 	private String itemMode = "all";
 	private String savedInventory = null;
-	private boolean insideArena = false;
 	private boolean isProtected = false;
 	
 	public ConcurrentHashMap<BlockCoord, SimpleBlock> previewUndo = null;
@@ -211,7 +210,6 @@ public class Resident extends SQLObject {
 					"`banned` bool NOT NULL DEFAULT '0'," +
 					"`bannedMessage` mediumtext DEFAULT NULL,"+
 					"`savedInventory` mediumtext DEFAULT NULL,"+
-					"`insideArena` bool NOT NULL DEFAULT '0',"+
 					"`isProtected` bool NOT NULL DEFAULT '0',"+
 					"`flags` mediumtext DEFAULT NULL,"+
 					"`last_ip` mediumtext DEFAULT NULL,"+
@@ -272,7 +270,6 @@ public class Resident extends SQLObject {
 			
 			SQL.makeCol("flags", "mediumtext", TABLE_NAME);
 			SQL.makeCol("savedInventory", "mediumtext", TABLE_NAME);
-			SQL.makeCol("insideArena", "bool NOT NULL DEFAULT '0'", TABLE_NAME);
 			SQL.makeCol("isProtected", "bool NOT NULL DEFAULT '0'", TABLE_NAME);
 		}		
 	}
@@ -298,7 +295,6 @@ public class Resident extends SQLObject {
 		this.setTimezone(rs.getString("timezone"));
 		this.loadFlagSaveString(rs.getString("flags"));
 		this.savedInventory = rs.getString("savedInventory");
-		this.insideArena = rs.getBoolean("insideArena");
 		this.isProtected = rs.getBoolean("isProtected");
 		
 		if (this.getTimezone() == null) {
@@ -465,7 +461,6 @@ public class Resident extends SQLObject {
 		hashmap.put("flags", this.getFlagSaveString());
 		hashmap.put("last_ip", this.getLastIP());
 		hashmap.put("savedInventory", this.savedInventory);
-		hashmap.put("insideArena", this.insideArena);
 		hashmap.put("isProtected", this.isProtected);
 		
 		if (this.getTown() != null) {

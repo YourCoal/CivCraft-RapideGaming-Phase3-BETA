@@ -432,15 +432,12 @@ public class TownInfoCommand extends CommandBase {
 		out.add(CivColor.Green+"Cottage Rate: "+CivColor.Yellow+df.format(town.getCottageRate()*100)+"%");
 		total *= town.getCottageRate();
 		out.add(CivColor.Green+"Total: "+CivColor.Yellow+df.format(total)+" coins.");
-		
 		CivMessage.send(sender, out);
 	}
-	
 	
 	public void mine_cmd() throws CivException {
 		Town town = getSelectedTown();
 		ArrayList<String> out = new ArrayList<String>();	
-		
 		CivMessage.sendHeading(sender, town.getName()+" Mine Info");
 		double total = 0;
 		
@@ -450,27 +447,23 @@ public class TownInfoCommand extends CommandBase {
 			}
 			
 			Mine mine = (Mine)struct;
-			
 			String color;
 			if (struct.isActive()) {
 				color = CivColor.LightGreen;
 			} else {
 				color = CivColor.Rose;
 			}
-									
+			
 			out.add(color+"Mine ("+struct.getCorner()+")");
 			out.add(CivColor.Green+"    level: "+CivColor.Yellow+mine.getLevel()+
 					CivColor.Green+" count: "+CivColor.Yellow+"("+mine.getCount()+"/"+mine.getMaxCount()+")");
 			out.add(CivColor.Green+"    hammers per tile: "+CivColor.Yellow+mine.getHammersPerTile()+
 					CivColor.Green+" Last Result: "+CivColor.Yellow+mine.getLastResult().name());
-			
 			total += mine.getHammersPerTile()*9; //XXX estimate based on tile radius of 1.
-			
 		}
 		out.add(CivColor.Green+"----------------------------");
 		out.add(CivColor.Green+"Sub Total: "+CivColor.Yellow+total);
 		out.add(CivColor.Green+"Total: "+CivColor.Yellow+df.format(total)+" hammers (estimate).");
-		
 		CivMessage.send(sender, out);
 	}
 	

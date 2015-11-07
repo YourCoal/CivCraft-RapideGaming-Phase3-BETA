@@ -70,8 +70,6 @@ import com.civcraft.structure.TradeOutpost;
 import com.civcraft.structure.Wall;
 import com.civcraft.structure.wonders.Wonder;
 import com.civcraft.template.Template;
-import com.civcraft.threading.TaskMaster;
-import com.civcraft.threading.sync.SyncUpdateTags;
 import com.civcraft.threading.tasks.BuildAsyncTask;
 import com.civcraft.util.BlockCoord;
 import com.civcraft.util.ChunkCoord;
@@ -150,6 +148,8 @@ public class Town extends SQLObject {
 	public LinkedList<Buildable> invalidStructures = new LinkedList<Buildable>();
 	
 	/* XXX kind of a hacky way to save the bank's level information between build undo calls */
+	public int saved_quarry_level = 1;
+	public int saved_trommel_level = 1;
 	public int saved_bank_level = 1;
 	public double saved_bank_interest_amount = 0;
 	
@@ -577,10 +577,16 @@ public class Town extends SQLObject {
 		rates.put("Government", newRate - rate);
 		rate = newRate;
 		
-		ConfigHappinessState state = CivSettings.getHappinessState(this.getHappinessPercentage());
-		newRate = rate * state.culture_rate;
-		rates.put("Happiness", newRate - rate);
+		double randomRate = RandomEvent.getCultureRate(this);
+		newRate = rate * randomRate;
+		rates.put("Random Events", newRate - rate);
 		rate = newRate;
+		
+		//XXX Disabled round 3
+		//ConfigHappinessState state = CivSettings.getHappinessState(this.getHappinessPercentage());
+		//newRate = rate * state.culture_rate;
+		//rates.put("Happiness", newRate - rate);
+		//rate = newRate;
 		
 		double additional = this.getBuffManager().getEffectiveDouble(Buff.FINE_ART);
 		
@@ -590,12 +596,10 @@ public class Town extends SQLObject {
 		
 		rates.put("Wonders/Goodies", additional);
 		rate += additional;
-		
 		return new AttrSource(rates, rate, null);
 	}
 	
 	public AttrSource getCulture() {
-
 		AttrCache cache = this.attributeCache.get("CULTURE");
 		if (cache == null) {
 			cache = new AttrCache();
@@ -1798,8 +1802,18 @@ public class Town extends SQLObject {
 		double rate = 1.0;
 		HashMap<String, Double> rates = new HashMap<String, Double>();
 		
-		double newRate = rate * getGovernment().growth_rate;
+		ConfigHappinessState state = this.getHappinessState();
+		double newRate = rate*state.growth_rate;
+		rates.put("Happiness", newRate - rate);
+		rate = newRate;
+
+		newRate = rate*getGovernment().growth_rate;
 		rates.put("Government", newRate - rate);
+		rate = newRate;
+		
+		double randomRate = RandomEvent.getGrowthRate(this);
+		newRate = rate * randomRate;
+		rates.put("Random Events", newRate - rate);
 		rate = newRate;
 		
 		/* Wonders and Goodies. */
@@ -1817,7 +1831,6 @@ public class Town extends SQLObject {
 		additional += (additionalGrapes*grapeCount);
 		rates.put("Wonders/Goodies", additional);
 		rate += additional;
-	
 		return new AttrSource(rates, rate, null);
 	}
 	
@@ -2367,13 +2380,11 @@ public class Town extends SQLObject {
 	public void addOutlaw(String name) {
 		Resident res = CivGlobal.getResident(name);
 		this.outlaws.add(res.getUUIDString());
-		TaskMaster.syncTask(new SyncUpdateTags(res.getUUIDString(), this.residents.values()));
 	}
 	
 	public void removeOutlaw(String name) {
 		Resident res = CivGlobal.getResident(name);
 		this.outlaws.remove(res.getUUIDString());
-		TaskMaster.syncTask(new SyncUpdateTags(res.getUUIDString(), this.residents.values()));
 	}
 	
 	public void changeCiv(Civilization newCiv) {
@@ -2585,7 +2596,12 @@ public class Town extends SQLObject {
 		newRate = rate*getGovernment().beaker_rate;
 		rates.put("Government", newRate - rate);
 		rate = newRate;
-	
+		
+		double randomRate = RandomEvent.getBeakerRate(this);
+		newRate = rate * randomRate;
+		rates.put("Random Events", newRate - rate);
+		rate = newRate;
+		
 		/* Additional rate increases from buffs. */
 		/* Great Library buff is made to not stack with Science_Rate */
 		double additional = rate*getBuffManager().getEffectiveDouble(Buff.SCIENCE_RATE);

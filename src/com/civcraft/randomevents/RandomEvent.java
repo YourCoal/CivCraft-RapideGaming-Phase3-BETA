@@ -22,6 +22,9 @@ import com.civcraft.main.CivLog;
 import com.civcraft.main.CivMessage;
 import com.civcraft.object.SQLObject;
 import com.civcraft.object.Town;
+import com.civcraft.randomevents.components.BeakerRate;
+import com.civcraft.randomevents.components.CultureRate;
+import com.civcraft.randomevents.components.GrowthRate;
 import com.civcraft.randomevents.components.HammerRate;
 import com.civcraft.randomevents.components.Happiness;
 import com.civcraft.randomevents.components.Unhappiness;
@@ -335,15 +338,12 @@ public class RandomEvent extends SQLObject {
 			CivMessage.sendTown(town, str);
 			savedMessages.add(str);		
 		}
-		
-		
 		town.setActiveEvent(this);
 		this.start();
 	}
 
 	public static double getUnhappiness(Town town) {
-	//	CivGlobal.getSessionDB().add("randomevent:unhappiness", unhappiness+":"+duration, this.getParentTown().getCiv().getId(), this.getParentTown().getId(), 0);	
-
+	//	CivGlobal.getSessionDB().add("randomevent:unhappiness", unhappiness+":"+duration, this.getParentTown().getCiv().getId(), this.getParentTown().getId(), 0);
 		ArrayList<SessionEntry> entries = CivGlobal.getSessionDB().lookup(Unhappiness.getKey(town));
 		double unhappy = 0.0;
 		
@@ -352,28 +352,21 @@ public class RandomEvent extends SQLObject {
 			String[] split = entry.value.split(":");
 			int unhappiness = Integer.valueOf(split[0]);
 			int duration = Integer.valueOf(split[1]);
-
-			
 			Date start = new Date(entry.time);
 			Date now = new Date();
 			
 			if (now.getTime() > (start.getTime() + (duration*RandomEventSweeper.MILLISECONDS_PER_HOUR))) {
-				/* Entry is expired, delete it and continue. */
 				removed.add(entry);
 				continue;
 			}
-			
 			unhappy += unhappiness;
 		}
-		
-		/* Remove any expired entries */
 		for (SessionEntry entry : removed) {
 			CivGlobal.getSessionDB().delete(entry.request_id, entry.key);
 		}
-		
 		return unhappy;
 	}
-
+	
 	public static double getHappiness(Town town) {
 		ArrayList<SessionEntry> entries = CivGlobal.getSessionDB().lookup(Happiness.getKey(town));
 		double happy = 0.0;
@@ -383,28 +376,21 @@ public class RandomEvent extends SQLObject {
 			String[] split = entry.value.split(":");
 			int happiness = Integer.valueOf(split[0]);
 			int duration = Integer.valueOf(split[1]);
-
-			
 			Date start = new Date(entry.time);
 			Date now = new Date();
 			
 			if (now.getTime() > (start.getTime() + (duration*RandomEventSweeper.MILLISECONDS_PER_HOUR))) {
-				/* Entry is expired, delete it and continue. */
 				removed.add(entry);
 				continue;
 			}
-			
 			happy += happiness;
 		}
-		
-		/* Remove any expired entries */
 		for (SessionEntry entry : removed) {
 			CivGlobal.getSessionDB().delete(entry.request_id, entry.key);
 		}
-		
 		return happy;
 	}
-
+	
 	public static double getHammerRate(Town town) {
 		ArrayList<SessionEntry> entries = CivGlobal.getSessionDB().lookup(HammerRate.getKey(town));
 		double hammerrate = 1.0;
@@ -414,26 +400,91 @@ public class RandomEvent extends SQLObject {
 			String[] split = entry.value.split(":");
 			double rate = Double.valueOf(split[0]);
 			int duration = Integer.valueOf(split[1]);
-
-			
 			Date start = new Date(entry.time);
 			Date now = new Date();
 			
 			if (now.getTime() > (start.getTime() + (duration*RandomEventSweeper.MILLISECONDS_PER_HOUR))) {
-				/* Entry is expired, delete it and continue. */
 				removed.add(entry);
 				continue;
 			}
-			
 			hammerrate *= rate;
 		}
-		
-		/* Remove any expired entries */
 		for (SessionEntry entry : removed) {
 			CivGlobal.getSessionDB().delete(entry.request_id, entry.key);
 		}
-		
 		return hammerrate;	
+	}
+	
+	public static double getBeakerRate(Town town) {
+		ArrayList<SessionEntry> entries = CivGlobal.getSessionDB().lookup(BeakerRate.getKey(town));
+		double beakerrate = 1.0;
+		
+		ArrayList<SessionEntry> removed = new ArrayList<SessionEntry>();
+		for (SessionEntry entry : entries) {
+			String[] split = entry.value.split(":");
+			double rate = Double.valueOf(split[0]);
+			int duration = Integer.valueOf(split[1]);
+			Date start = new Date(entry.time);
+			Date now = new Date();
+			
+			if (now.getTime() > (start.getTime() + (duration*RandomEventSweeper.MILLISECONDS_PER_HOUR))) {
+				removed.add(entry);
+				continue;
+			}
+			beakerrate *= rate;
+		}
+		for (SessionEntry entry : removed) {
+			CivGlobal.getSessionDB().delete(entry.request_id, entry.key);
+		}
+		return beakerrate;	
+	}
+	
+	public static double getGrowthRate(Town town) {
+		ArrayList<SessionEntry> entries = CivGlobal.getSessionDB().lookup(GrowthRate.getKey(town));
+		double growthrate = 1.0;
+		
+		ArrayList<SessionEntry> removed = new ArrayList<SessionEntry>();
+		for (SessionEntry entry : entries) {
+			String[] split = entry.value.split(":");
+			double rate = Double.valueOf(split[0]);
+			int duration = Integer.valueOf(split[1]);
+			Date start = new Date(entry.time);
+			Date now = new Date();
+			
+			if (now.getTime() > (start.getTime() + (duration*RandomEventSweeper.MILLISECONDS_PER_HOUR))) {
+				removed.add(entry);
+				continue;
+			}
+			growthrate *= rate;
+		}
+		for (SessionEntry entry : removed) {
+			CivGlobal.getSessionDB().delete(entry.request_id, entry.key);
+		}
+		return growthrate;	
+	}
+	
+	public static double getCultureRate(Town town) {
+		ArrayList<SessionEntry> entries = CivGlobal.getSessionDB().lookup(CultureRate.getKey(town));
+		double culturerate = 1.0;
+		
+		ArrayList<SessionEntry> removed = new ArrayList<SessionEntry>();
+		for (SessionEntry entry : entries) {
+			String[] split = entry.value.split(":");
+			double rate = Double.valueOf(split[0]);
+			int duration = Integer.valueOf(split[1]);
+			Date start = new Date(entry.time);
+			Date now = new Date();
+			
+			if (now.getTime() > (start.getTime() + (duration*RandomEventSweeper.MILLISECONDS_PER_HOUR))) {
+				removed.add(entry);
+				continue;
+			}
+			culturerate *= rate;
+		}
+		for (SessionEntry entry : removed) {
+			CivGlobal.getSessionDB().delete(entry.request_id, entry.key);
+		}
+		return culturerate;	
 	}
 
 	public List<String> getMessages() {

@@ -173,7 +173,7 @@ public class Cottage extends Structure {
 		if (this.getTown().getBuffManager().hasBuff(Buff.FISHING)) {
 			// XXX change this to config var after testing...
 			int breadPerFish = this.getTown().getBuffManager().getEffectiveInt(Buff.FISHING);
-			getConsumeComponent().addEquivExchange(CivData.BREAD, CivData.FISH_RAW, breadPerFish);
+			getConsumeComponent().addEquivExchange(CivData.BREAD, CivData.FISH, breadPerFish);
 		}
 		
 		getConsumeComponent().setConsumeRate(cottage_consume_mod);

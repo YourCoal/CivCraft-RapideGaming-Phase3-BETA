@@ -1,0 +1,71 @@
+iron_cannon:
+ # Template for deployable cannon
+ template: cannon
+ # amount of blocks to destroy per shot
+ yield: 10.0
+ # TNT cost, number of TNT blocks it costs per shot.
+ tnt_cost: 4
+ # Number of seconds between shots.
+ cooldown: 20
+ # Amount of HP each cannon has
+ hitpoints: 15
+ # Amount of damage done to PLAYERS when hit by a blast
+ player_damage: 200
+ # Amount of damage d one to STRUCTURES when hit by a blast
+ structure_damage: 100
+ # Maximum range a cannon shot will travel.
+ max_range: 200.0
+#
+bronze_cannon:
+ # Template for deployable cannon
+ template: cannon
+ # amount of blocks to destroy per shot
+ yield: 10.0
+ # TNT cost, number of TNT blocks it costs per shot.
+ tnt_cost: 4
+ # Number of seconds between shots.
+ cooldown: 20
+ # Amount of HP each cannon has
+ hitpoints: 15
+ # Amount of damage done to PLAYERS when hit by a blast
+ player_damage: 200
+ # Amount of damage d one to STRUCTURES when hit by a blast
+ structure_damage: 100
+ # Maximum range a cannon shot will travel.
+ max_range: 200.0
+#
+steel_cannon:
+ # Template for deployable cannon
+ template: cannon
+ # amount of blocks to destroy per shot
+ yield: 10.0
+ # TNT cost, number of TNT blocks it costs per shot.
+ tnt_cost: 4
+ # Number of seconds between shots.
+ cooldown: 20
+ # Amount of HP each cannon has
+ hitpoints: 15
+ # Amount of damage done to PLAYERS when hit by a blast
+ player_damage: 200
+ # Amount of damage d one to STRUCTURES when hit by a blast
+ structure_damage: 100
+ # Maximum range a cannon shot will travel.
+ max_range: 200.0
+#
+titanium_cannon:
+ # Template for deployable cannon
+ template: cannon
+ # amount of blocks to destroy per shot
+ yield: 10.0
+ # TNT cost, number of TNT blocks it costs per shot.
+ tnt_cost: 4
+ # Number of seconds between shots.
+ cooldown: 20
+ # Amount of HP each cannon has
+ hitpoints: 15
+ # Amount of damage done to PLAYERS when hit by a blast
+ player_damage: 200
+ # Amount of damage d one to STRUCTURES when hit by a blast
+ structure_damage: 100
+ # Maximum range a cannon shot will travel.
+ max_range: 200.0

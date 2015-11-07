@@ -84,7 +84,10 @@ import com.civcraft.object.TownChunk;
 import com.civcraft.permission.PermissionGroup;
 import com.civcraft.populators.TradeGoodPopulator;
 import com.civcraft.road.Road;
-import com.civcraft.siege.Cannon;
+import com.civcraft.siege.bronze.BronzeCannon;
+import com.civcraft.siege.iron.IronCannon;
+import com.civcraft.siege.steel.SteelCannon;
+import com.civcraft.siege.titanium.TitaniumCannon;
 import com.civcraft.structure.ArrowTower;
 import com.civcraft.structure.Buildable;
 import com.civcraft.structure.Capitol;
@@ -198,7 +201,10 @@ public class DebugCommand extends CommandBase {
 		commands.put("packet", "sends custom auth packet.");	
 		commands.put("disablemap", "disables zan's minimap");
 		commands.put("world", "Show world debug options");
-		commands.put("cannon", "builds a war cannon.");
+		commands.put("ironcannon", "builds an iron cannon.");
+		commands.put("bronzecannon", "builds an bronze cannon.");
+		commands.put("steelcannon", "builds a steel cannon.");
+		commands.put("titaniumcannon", "builds a titanium cannon.");
 		commands.put("saveinv", "save an inventory");
 		commands.put("restoreinv", "restore your inventory.");
 	}
@@ -215,11 +221,32 @@ public class DebugCommand extends CommandBase {
 		CivMessage.sendSuccess(resident, "restore inventory.");
 	}
 	
-	public void cannon_cmd() throws CivException {
+	public void ironcannon_cmd() throws CivException {
 		Resident resident = getResident();
-		Cannon.newCannon(resident);
+		IronCannon.newCannon(resident);
 		
-		CivMessage.sendSuccess(resident, "built cannon.");
+		CivMessage.sendSuccess(resident, "built iron cannon.");
+	}
+	
+	public void steelcannon_cmd() throws CivException {
+		Resident resident = getResident();
+		SteelCannon.newCannon(resident);
+		
+		CivMessage.sendSuccess(resident, "built steel cannon.");
+	}
+	
+	public void bronzecannon_cmd() throws CivException {
+		Resident resident = getResident();
+		BronzeCannon.newCannon(resident);
+		
+		CivMessage.sendSuccess(resident, "built bronze cannon.");
+	}
+	
+	public void titaniumcannon_cmd() throws CivException {
+		Resident resident = getResident();
+		TitaniumCannon.newCannon(resident);
+		
+		CivMessage.sendSuccess(resident, "built titanium cannon.");
 	}
 	
 	public void world_cmd() {

@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.civcraft.main;
 
 import java.io.IOException;
@@ -71,7 +53,10 @@ import com.civcraft.nocheat.NoCheatPlusSurvialFlyHandler;
 import com.civcraft.populators.TradeGoodPopulator;
 import com.civcraft.randomevents.RandomEventSweeper;
 import com.civcraft.sessiondb.SessionDBAsyncTimer;
-import com.civcraft.siege.CannonListener;
+import com.civcraft.siege.bronze.BronzeCannonListener;
+import com.civcraft.siege.iron.IronCannonListener;
+import com.civcraft.siege.steel.SteelCannonListener;
+import com.civcraft.siege.titanium.TitaniumCannonListener;
 import com.civcraft.structure.Farm;
 import com.civcraft.structure.farm.FarmGrowthSyncTask;
 import com.civcraft.structure.farm.FarmPreCachePopulateTimer;
@@ -198,7 +183,10 @@ public final class CivCraft extends JavaPlugin {
 		pluginManager.registerEvents(new LoreCraftableMaterialListener(), this);
 		pluginManager.registerEvents(new LoreGuiItemListener(), this);
 		pluginManager.registerEvents(new DisableXPListener(), this);
-		pluginManager.registerEvents(new CannonListener(), this);
+		pluginManager.registerEvents(new IronCannonListener(), this);
+		pluginManager.registerEvents(new BronzeCannonListener(), this);
+		pluginManager.registerEvents(new SteelCannonListener(), this);
+		pluginManager.registerEvents(new TitaniumCannonListener(), this);
 		pluginManager.registerEvents(new WarListener(), this);
 		pluginManager.registerEvents(new FishingListener(), this);	
 		pluginManager.registerEvents(new PvPListener(), this);

@@ -17,7 +17,7 @@ import com.civcraft.main.CivData;
 import com.civcraft.main.CivGlobal;
 import com.civcraft.main.CivMessage;
 import com.civcraft.object.CultureChunk;
-import com.civcraft.siege.Cannon;
+import com.civcraft.siege.iron.IronCannon;
 import com.civcraft.util.ChunkCoord;
 import com.civcraft.util.ItemManager;
 
@@ -114,7 +114,6 @@ public class WarListener implements Listener {
 	
 	@EventHandler(priority = EventPriority.HIGH)
 	public void onEntityExplode(EntityExplodeEvent event) {
-			
 		if (event.isCancelled()) {
 			return;
 		}
@@ -133,24 +132,24 @@ public class WarListener implements Listener {
 		
 		if (event.getEntityType().equals(EntityType.PRIMED_TNT) ||
 				event.getEntityType().equals(EntityType.MINECART_TNT)) {
-						
-			int yield;
+			
+			int yield1;
 			try {
-				yield = CivSettings.getInteger(CivSettings.warConfig, "cannon.yield");
+				yield1 = CivSettings.getInteger(CivSettings.cannonConfig, "iron_cannon.yield");
 			} catch (InvalidConfiguration e) {
 				e.printStackTrace();
 				return;
 			}
 		
-			yield = yield / 2;
+			yield1 = yield1 / 2;
 		
-			for (int y = -yield; y <= yield; y++) {
-				for (int x = -yield; x <= yield; x++) {
-					for (int z = -yield; z <= yield; z++) {
+			for (int y = -yield1; y <= yield1; y++) {
+				for (int x = -yield1; x <= yield1; x++) {
+					for (int z = -yield1; z <= yield1; z++) {
 						Location loc = event.getLocation().clone().add(new Vector(x,y,z));
 					
-						if (loc.distance(event.getLocation()) < yield) {
-							WarRegen.saveBlock(loc.getBlock(), Cannon.RESTORE_NAME, false);
+						if (loc.distance(event.getLocation()) < yield1) {
+							WarRegen.saveBlock(loc.getBlock(), IronCannon.RESTORE_NAME, false);
 							ItemManager.setTypeIdAndData(loc.getBlock(), CivData.AIR, 0, false);
 						}
 					}	
@@ -159,6 +158,4 @@ public class WarListener implements Listener {
 			event.setCancelled(true);
 		}
 	}
-
 }
-

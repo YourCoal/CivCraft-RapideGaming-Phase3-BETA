@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.civcraft.war;
 
 import java.io.File;
@@ -40,7 +22,10 @@ import com.civcraft.object.Relation.Status;
 import com.civcraft.object.Resident;
 import com.civcraft.object.Town;
 import com.civcraft.sessiondb.SessionEntry;
-import com.civcraft.siege.Cannon;
+import com.civcraft.siege.bronze.BronzeCannon;
+import com.civcraft.siege.iron.IronCannon;
+import com.civcraft.siege.steel.SteelCannon;
+import com.civcraft.siege.titanium.TitaniumCannon;
 import com.civcraft.util.CivColor;
 import com.global.perks.PlatinumManager;
 
@@ -79,14 +64,11 @@ public class War {
 						"Spoils to the victor! You've earned %d");	
 			}
 		}
-		
 		EndGameCondition.onCivilizationWarDefeat(defeated);
 		CivGlobal.getSessionDB().add(key, value, master.getId(), 0, 0);
 	}
 	
-	/*
-	 * Rebuild the defeated civs session db vars when a transfer of defeated towns occurs.
-	 */
+	/* Rebuild the defeated civs session db vars when a transfer of defeated towns occurs. */
 	public static void resaveAllDefeatedCivs() {
 		CivGlobal.getSessionDB().delete_all("capturedCiv");
 
@@ -98,7 +80,6 @@ public class War {
 	
 	public static void resaveAllDefeatedTowns() {
 		CivGlobal.getSessionDB().delete_all("capturedTown");
-		
 		for (String townName : defeatedTowns.keySet()) {
 			Civilization master = defeatedTowns.get(townName);
 			saveDefeatedTown(townName, master);
@@ -107,7 +88,6 @@ public class War {
 	
 	public static void loadDefeatedTowns() {
 		ArrayList<SessionEntry> entries = CivGlobal.getSessionDB().lookup("capturedTown");
-		
 		for (SessionEntry entry : entries) {
 			String[] split = entry.value.split(":");
 			defeatedTowns.put(split[0], CivGlobal.getCivFromId(Integer.valueOf(split[1])));
@@ -116,7 +96,6 @@ public class War {
 	
 	public static void loadDefeatedCivs() {
 		ArrayList<SessionEntry> entries = CivGlobal.getSessionDB().lookup("capturedCiv");
-		
 		for (SessionEntry entry : entries) {
 			String[] split = entry.value.split(":");
 			defeatedCivs.put(split[0], CivGlobal.getCivFromId(Integer.valueOf(split[1])));
@@ -134,18 +113,11 @@ public class War {
 		processDefeated();
 	}
 	
-	/**
-	 * @return the warTime
-	 */
 	public static boolean isWarTime() {
 		return warTime;
 	}
-
-	/**
-	 * @param warTime the warTime to set
-	 */
+	
 	public static void setWarTime(boolean warTime) {
-		
 		if (warTime == false) {
 			/* War time has ended. */
 			War.setStart(null);
@@ -177,7 +149,6 @@ public class War {
 			for (Civilization civ : CivGlobal.getCivs()) {
 				civ.onWarEnd();
 			}
-			
 		} else {
 			/* War time has started. */
 			CivMessage.globalHeading(CivColor.BOLD+"WarTime Has Started");
@@ -199,7 +170,6 @@ public class War {
 			CivGlobal.trommelsEnabled = false;
 			CivGlobal.growthEnabled = false;
 			CivGlobal.tradeEnabled = false;
-			
 			try {
 				int mins = CivSettings.getInteger(CivSettings.warConfig, "war.time_length");
 				Calendar endCal = Calendar.getInstance();
@@ -210,16 +180,12 @@ public class War {
 				e.printStackTrace();
 			}
 		}
-		
 		War.warTime = warTime;
 	}
-
-	/*
-	 * When a civ conqueres a town, then has its capitol conquered,
-	 * the town that it just conquered needs to go to the new owner.
-	 * If the new owner was the town's old owner, then that town is no longer
-	 * defeated.
-	 */
+	
+	/* When a civ conqueres a town, then has its capitol conquered, the town that it just 
+	 * conquered needs to go to the new owner. If the new owner was the town's old owner,
+	 * then that town is no longer defeated. */
 	public static void transferDefeated(Civilization loser, Civilization winner) {
 		
 		/* Transfer any defeated towns */
@@ -252,7 +218,6 @@ public class War {
 			}
 		}
 		resaveAllDefeatedCivs();
-		
 	}
 	
 	private static void processDefeated() {
@@ -320,23 +285,20 @@ public class War {
 				}
 			}
 		}
-		
 		defeatedTowns.clear();
 		defeatedCivs.clear();
 		clearSavedDefeats();
 	}
-
-	/*
-	 * The 'claimed' flag is used to tag towns that had illegal town hall placements, and have already been claimed.
-	 * When war time starts, we should reset the claim flag so it can be claimed by someone else.
-	 */
+	
+	/* The 'claimed' flag is used to tag towns that had illegal town hall placements, and have already been claimed.
+	 * When war time starts, we should reset the claim flag so it can be claimed by someone else. */
 	private static void resetTownClaimFlags() {
 		for (Town t : CivGlobal.getTowns()) {
 			t.claimed = false;
 			t.defeated = false;
 		}
 	}
-
+	
 	private static void repositionPlayers(String reason) {
 		for (Civilization civ : CivGlobal.getCivs()) {
 			try {
@@ -346,7 +308,7 @@ public class War {
 			}
 		}
 	}
-
+	
 	private static void restoreAllTowns() {
 		for (Town town : CivGlobal.getTowns()) {
 			try {
@@ -359,50 +321,42 @@ public class War {
 				e.printStackTrace();
 			}
 		}
-		
 		WarRegen.restoreBlocksFor(WarCamp.RESTORE_NAME);
-		WarRegen.restoreBlocksFor(Cannon.RESTORE_NAME);
-		Cannon.cleanupAll();
+		WarRegen.restoreBlocksFor(IronCannon.RESTORE_NAME);
+		WarRegen.restoreBlocksFor(BronzeCannon.RESTORE_NAME);
+		WarRegen.restoreBlocksFor(SteelCannon.RESTORE_NAME);
+		WarRegen.restoreBlocksFor(TitaniumCannon.RESTORE_NAME);
+		IronCannon.cleanupAll();
+		BronzeCannon.cleanupAll();
+		SteelCannon.cleanupAll();
+		TitaniumCannon.cleanupAll();
 	}
-
-	/**
-	 * @return the start
-	 */
+	
 	public static Date getStart() {
 		return start;
 	}
-
 	
-	/**
-	 * @param start the start to set
-	 */
 	public static void setStart(Date start) {
 		War.start = start;
 	}
-
-	/**
-	 * @return the end
-	 */
+	
 	public static Date getEnd() {
 		return end;
 	}
-
-	/**
-	 * @param end the end to set
-	 */
+	
 	public static void setEnd(Date end) {
 		War.end = end;
 	}
-
+	
 	public static Date getNextWarTime() {
 		EventTimer warTimer = EventTimer.timers.get("war");
 		return warTimer.getNext().getTime();
 	}
-
+	
 	public static boolean isOnlyWarriors() {
 		return onlyWarriors;
 	}
-
+	
 	public static void setOnlyWarriors(boolean onlyWarriors) {
 		War.onlyWarriors = onlyWarriors;
 	}
@@ -415,10 +369,9 @@ public class War {
 		if ((now.getTime() + time_declare_days*(1000*60*60*24)) >= nextWar.getTime()) {
 			return true;
 		}
-		
 		return false;	
 	}
-
+	
 	public static boolean isWithinAllyDeclareHours() {
 		Date nextWar = War.getNextWarTime();
 		int ally_declare_hours = getAllyDeclareHours();
@@ -429,7 +382,6 @@ public class War {
 		if (cal.getTime().after(nextWar)) {
 			return true;
 		}
-		
 		return false;	
 	}
 	
@@ -480,5 +432,4 @@ public class War {
 		}
 		return false;
 	}
-	
 }

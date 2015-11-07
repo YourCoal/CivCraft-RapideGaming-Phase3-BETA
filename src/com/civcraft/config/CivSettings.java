@@ -131,6 +131,7 @@ public class CivSettings {
 	public static HashSet<Integer> alwaysCrumble = new HashSet<Integer>();
 	
 	public static FileConfiguration warConfig; /* war.yml */
+	public static FileConfiguration cannonConfig; /* cannon.yml */
 	
 	public static FileConfiguration scoreConfig; /* score.yml */
 	
@@ -316,6 +317,7 @@ public class CivSettings {
 	
 		
 	private static void loadConfigFiles() throws FileNotFoundException, IOException, InvalidConfigurationException {
+		cannonConfig = loadCivConfig("cannon.yml");
 		townConfig = loadCivConfig("town.yml");
 		civConfig = loadCivConfig("civ.yml");
 		cultureConfig = loadCivConfig("culture.yml");

@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.timers;
+package com.civcraft.threading.timers;
 
 public class LagSimulationTimer implements Runnable {
 

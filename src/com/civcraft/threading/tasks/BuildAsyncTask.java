@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.tasks;
+package com.civcraft.threading.tasks;
 
 import java.sql.SQLException;
 import java.util.Date;
@@ -25,18 +25,18 @@ import java.util.Queue;
 
 import org.bukkit.block.Block;
 
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.structure.Buildable;
-import com.avrgaming.civcraft.structure.wonders.Wonder;
-import com.avrgaming.civcraft.template.Template;
-import com.avrgaming.civcraft.threading.CivAsyncTask;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.SimpleBlock;
-import com.avrgaming.civcraft.util.SimpleBlock.Type;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivLog;
+import com.civcraft.main.CivMessage;
+import com.civcraft.structure.Buildable;
+import com.civcraft.structure.wonders.Wonder;
+import com.civcraft.template.Template;
+import com.civcraft.threading.CivAsyncTask;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.SimpleBlock;
+import com.civcraft.util.SimpleBlock.Type;
 
 public class BuildAsyncTask extends CivAsyncTask {
 	/*

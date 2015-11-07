@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.randomevents.components;
+package com.civcraft.randomevents.components;
 
 import java.util.Random;
 
@@ -7,9 +7,9 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.EntityType;
 
-import com.avrgaming.civcraft.object.TownChunk;
-import com.avrgaming.civcraft.randomevents.RandomEventComponent;
-import com.avrgaming.civcraft.threading.TaskMaster;
+import com.civcraft.object.TownChunk;
+import com.civcraft.randomevents.RandomEventComponent;
+import com.civcraft.threading.TaskMaster;
 
 public class SpawnMobs extends RandomEventComponent {
 

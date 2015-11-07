@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.tasks;
+package com.civcraft.threading.tasks;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -25,17 +25,17 @@ import org.bukkit.ChunkSnapshot;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.exception.CivTaskAbortException;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.object.StructureChest;
-import com.avrgaming.civcraft.structure.Windmill;
-import com.avrgaming.civcraft.threading.CivAsyncTask;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.ItemManager;
-import com.avrgaming.civcraft.util.MultiInventory;
+import com.civcraft.config.CivSettings;
+import com.civcraft.exception.CivTaskAbortException;
+import com.civcraft.exception.InvalidConfiguration;
+import com.civcraft.main.CivData;
+import com.civcraft.object.StructureChest;
+import com.civcraft.structure.Windmill;
+import com.civcraft.threading.CivAsyncTask;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.ItemManager;
+import com.civcraft.util.MultiInventory;
 
 public class WindmillPreProcessTask extends CivAsyncTask {
 

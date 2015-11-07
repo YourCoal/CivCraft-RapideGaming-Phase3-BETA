@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.tasks;
+package com.civcraft.threading.tasks;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -24,11 +24,11 @@ import java.util.Set;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.object.Civilization;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.threading.sync.SyncUpdateTagsBetweenCivs;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.object.Civilization;
+import com.civcraft.object.Resident;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.threading.sync.SyncUpdateTagsBetweenCivs;
 
 public class UpdateTagBetweenCivsTask implements Runnable {
 

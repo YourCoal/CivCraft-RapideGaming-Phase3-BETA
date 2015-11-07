@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.structure;
+package com.civcraft.structure;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,17 +26,17 @@ import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.sessiondb.SessionEntry;
-import com.avrgaming.civcraft.structure.farm.FarmChunk;
-import com.avrgaming.civcraft.threading.CivAsyncTask;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.util.ChunkCoord;
-import com.avrgaming.civcraft.util.ItemManager;
+import com.civcraft.config.CivSettings;
+import com.civcraft.exception.CivException;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.object.Town;
+import com.civcraft.sessiondb.SessionEntry;
+import com.civcraft.structure.farm.FarmChunk;
+import com.civcraft.threading.CivAsyncTask;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.util.ChunkCoord;
+import com.civcraft.util.ItemManager;
 
 public class Farm extends Structure {
 	

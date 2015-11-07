@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.listener;
+package com.civcraft.listener;
 
 import java.util.Map.Entry;
 
@@ -50,21 +50,21 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigTradeGood;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.items.BonusGoodie;
-import com.avrgaming.civcraft.items.units.UnitItemMaterial;
-import com.avrgaming.civcraft.items.units.UnitMaterial;
-import com.avrgaming.civcraft.lorestorage.LoreMaterial;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.ItemFrameStorage;
-import com.avrgaming.civcraft.util.ItemManager;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigTradeGood;
+import com.civcraft.exception.CivException;
+import com.civcraft.items.BonusGoodie;
+import com.civcraft.items.units.UnitItemMaterial;
+import com.civcraft.items.units.UnitMaterial;
+import com.civcraft.lorestorage.LoreMaterial;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.Resident;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.ItemFrameStorage;
+import com.civcraft.util.ItemManager;
 
 public class BonusGoodieManager implements Listener {
 

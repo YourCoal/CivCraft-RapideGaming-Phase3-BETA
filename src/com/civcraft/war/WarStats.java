@@ -1,12 +1,12 @@
-package com.avrgaming.civcraft.war;
+package com.civcraft.war;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.avrgaming.civcraft.object.Civilization;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.util.CivColor;
+import com.civcraft.object.Civilization;
+import com.civcraft.object.Town;
+import com.civcraft.util.CivColor;
 
 public class WarStats {
 

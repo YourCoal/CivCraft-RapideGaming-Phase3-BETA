@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.util;
+package com.civcraft.util;
 
 import java.util.UUID;
 

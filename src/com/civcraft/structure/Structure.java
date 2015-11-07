@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.structure;
+package com.civcraft.structure;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -29,20 +29,20 @@ import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
-import com.avrgaming.civcraft.components.Component;
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.database.SQL;
-import com.avrgaming.civcraft.database.SQLUpdate;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.road.Road;
-import com.avrgaming.civcraft.template.Template;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.CivColor;
+import com.civcraft.components.Component;
+import com.civcraft.config.CivSettings;
+import com.civcraft.database.SQL;
+import com.civcraft.database.SQLUpdate;
+import com.civcraft.exception.CivException;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.Resident;
+import com.civcraft.object.Town;
+import com.civcraft.road.Road;
+import com.civcraft.template.Template;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.CivColor;
 
 public class Structure extends Buildable {
 		
@@ -651,7 +651,7 @@ public class Structure extends Buildable {
 		List<HashMap<String,String>> compInfoList = this.getComponentInfoList();
 		if (compInfoList != null) {
 			for (HashMap<String,String> compInfo : compInfoList) {
-				String className = "com.avrgaming.civcraft.components."+compInfo.get("name");
+				String className = "com.civcraft.components."+compInfo.get("name");
 				Class<?> someClass;
 				try {
 					someClass = Class.forName(className);

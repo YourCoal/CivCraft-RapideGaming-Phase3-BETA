@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.war;
+package com.civcraft.war;
 
 import gpl.InventorySerializer;
 
@@ -38,10 +38,10 @@ import org.bukkit.block.Hopper;
 import org.bukkit.block.Sign;
 import org.bukkit.inventory.Inventory;
 
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.util.BukkitObjects;
-import com.avrgaming.civcraft.util.ItemManager;
+import com.civcraft.main.CivData;
+import com.civcraft.object.Town;
+import com.civcraft.util.BukkitObjects;
+import com.civcraft.util.ItemManager;
 
 public class WarRegen {
 

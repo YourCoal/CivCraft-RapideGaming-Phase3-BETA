@@ -1,14 +1,14 @@
-package com.avrgaming.civcraft.randomevents;
+package com.civcraft.randomevents;
 
 import java.util.Calendar;
 import java.util.Random;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.event.EventInterface;
-import com.avrgaming.civcraft.event.EventTimer;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.object.Town;
+import com.civcraft.config.CivSettings;
+import com.civcraft.event.EventInterface;
+import com.civcraft.event.EventTimer;
+import com.civcraft.exception.InvalidConfiguration;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.object.Town;
 
 public class RandomEventTimer implements EventInterface {
 

@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.listener;
+package com.civcraft.listener;
 
 import gpl.AttributeUtil;
 
@@ -38,27 +38,27 @@ import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import com.avrgaming.civcraft.cache.ArrowFiredCache;
-import com.avrgaming.civcraft.cache.CivCache;
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigRemovedRecipes;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.items.ItemDurabilityEntry;
-import com.avrgaming.civcraft.items.components.Catalyst;
-import com.avrgaming.civcraft.loreenhancements.LoreEnhancement;
-import com.avrgaming.civcraft.lorestorage.ItemChangeResult;
-import com.avrgaming.civcraft.lorestorage.LoreCraftableMaterial;
-import com.avrgaming.civcraft.lorestorage.LoreGuiItem;
-import com.avrgaming.civcraft.lorestorage.LoreMaterial;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.ItemManager;
+import com.civcraft.cache.ArrowFiredCache;
+import com.civcraft.cache.CivCache;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigRemovedRecipes;
+import com.civcraft.exception.CivException;
+import com.civcraft.exception.InvalidConfiguration;
+import com.civcraft.items.ItemDurabilityEntry;
+import com.civcraft.items.components.Catalyst;
+import com.civcraft.loreenhancements.LoreEnhancement;
+import com.civcraft.lorestorage.ItemChangeResult;
+import com.civcraft.lorestorage.LoreCraftableMaterial;
+import com.civcraft.lorestorage.LoreGuiItem;
+import com.civcraft.lorestorage.LoreMaterial;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.Resident;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.ItemManager;
 
 public class CustomItemManager implements Listener {
 	

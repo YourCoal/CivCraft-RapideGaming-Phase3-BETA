@@ -8,9 +8,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Resident;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.Resident;
 
 public class PvPListener implements Listener {
 	

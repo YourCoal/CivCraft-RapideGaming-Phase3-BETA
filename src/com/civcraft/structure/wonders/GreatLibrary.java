@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.structure.wonders;
+package com.civcraft.structure.wonders;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,19 +27,19 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigEnchant;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.loreenhancements.LoreEnhancement;
-import com.avrgaming.civcraft.lorestorage.LoreMaterial;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.object.StructureSign;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.ItemManager;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigEnchant;
+import com.civcraft.exception.CivException;
+import com.civcraft.loreenhancements.LoreEnhancement;
+import com.civcraft.lorestorage.LoreMaterial;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.Resident;
+import com.civcraft.object.StructureSign;
+import com.civcraft.object.Town;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.ItemManager;
 
 public class GreatLibrary extends Wonder {
 

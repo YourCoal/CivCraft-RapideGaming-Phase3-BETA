@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.structure;
+package com.civcraft.structure;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -35,27 +35,27 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigUnit;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.interactive.InteractiveRepairItem;
-import com.avrgaming.civcraft.items.components.RepairCost;
-import com.avrgaming.civcraft.lorestorage.LoreCraftableMaterial;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.object.StructureChest;
-import com.avrgaming.civcraft.object.StructureSign;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.sessiondb.SessionEntry;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.threading.tasks.UnitSaveAsyncTask;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.ItemManager;
-import com.avrgaming.civcraft.util.SimpleBlock;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigUnit;
+import com.civcraft.exception.CivException;
+import com.civcraft.exception.InvalidConfiguration;
+import com.civcraft.interactive.InteractiveRepairItem;
+import com.civcraft.items.components.RepairCost;
+import com.civcraft.lorestorage.LoreCraftableMaterial;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.Resident;
+import com.civcraft.object.StructureChest;
+import com.civcraft.object.StructureSign;
+import com.civcraft.object.Town;
+import com.civcraft.sessiondb.SessionEntry;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.threading.tasks.UnitSaveAsyncTask;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.ItemManager;
+import com.civcraft.util.SimpleBlock;
 
 public class Barracks extends Structure {
 

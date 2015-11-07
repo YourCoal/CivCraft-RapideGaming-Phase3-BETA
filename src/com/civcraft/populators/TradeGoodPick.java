@@ -16,10 +16,10 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.populators;
+package com.civcraft.populators;
 
-import com.avrgaming.civcraft.config.ConfigTradeGood;
-import com.avrgaming.civcraft.util.ChunkCoord;
+import com.civcraft.config.ConfigTradeGood;
+import com.civcraft.util.ChunkCoord;
 
 public class TradeGoodPick {
 	public ChunkCoord chunkCoord;

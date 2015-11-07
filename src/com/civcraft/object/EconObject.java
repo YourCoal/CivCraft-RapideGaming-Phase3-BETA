@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.object;
+package com.civcraft.object;
 
 /* Any object with a balance that can go into debt. */
 public class EconObject {

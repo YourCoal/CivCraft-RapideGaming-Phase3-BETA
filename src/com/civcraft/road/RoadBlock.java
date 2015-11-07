@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.road;
+package com.civcraft.road;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,23 +8,23 @@ import java.util.HashMap;
 
 import org.bukkit.entity.Player;
 
-import com.avrgaming.civcraft.database.SQL;
-import com.avrgaming.civcraft.database.SQLUpdate;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.exception.InvalidNameException;
-import com.avrgaming.civcraft.exception.InvalidObjectException;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.BuildableDamageBlock;
-import com.avrgaming.civcraft.object.Civilization;
-import com.avrgaming.civcraft.object.SQLObject;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.structure.Buildable;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.threading.tasks.StructureBlockHitEvent;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.CivColor;
+import com.civcraft.database.SQL;
+import com.civcraft.database.SQLUpdate;
+import com.civcraft.exception.CivException;
+import com.civcraft.exception.InvalidNameException;
+import com.civcraft.exception.InvalidObjectException;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.BuildableDamageBlock;
+import com.civcraft.object.Civilization;
+import com.civcraft.object.SQLObject;
+import com.civcraft.object.Town;
+import com.civcraft.structure.Buildable;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.threading.tasks.StructureBlockHitEvent;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.CivColor;
 
 public class RoadBlock extends SQLObject implements BuildableDamageBlock {
 	private BlockCoord coord;

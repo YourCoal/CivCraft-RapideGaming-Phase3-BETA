@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.sync;
+package com.civcraft.threading.sync;
 
 public class SyncBonusGoodieUpdateTimer implements Runnable {
 

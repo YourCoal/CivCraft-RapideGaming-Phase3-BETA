@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.sync;
+package com.civcraft.threading.sync;
 
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -25,9 +25,9 @@ import java.util.Random;
 import org.bukkit.Effect;
 import org.bukkit.World;
 
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.structure.Structure;
-import com.avrgaming.civcraft.util.BlockCoord;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.structure.Structure;
+import com.civcraft.util.BlockCoord;
 
 public class DamagedStructureTimer implements Runnable {
 	

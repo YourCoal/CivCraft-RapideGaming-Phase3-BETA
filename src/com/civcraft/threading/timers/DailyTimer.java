@@ -16,29 +16,29 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.timers;
+package com.civcraft.threading.timers;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map.Entry;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.endgame.EndGameCheckTask;
-import com.avrgaming.civcraft.event.DailyEvent;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Civilization;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.structure.Structure;
-import com.avrgaming.civcraft.structure.wonders.NotreDame;
-import com.avrgaming.civcraft.structure.wonders.Wonder;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.global.perks.PlatinumManager;
+import com.civcraft.config.CivSettings;
+import com.civcraft.endgame.EndGameCheckTask;
+import com.civcraft.event.DailyEvent;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.Civilization;
+import com.civcraft.object.Resident;
+import com.civcraft.object.Town;
+import com.civcraft.structure.Structure;
+import com.civcraft.structure.wonders.NotreDame;
+import com.civcraft.structure.wonders.Wonder;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.CivColor;
+import com.global.perks.PlatinumManager;
 
 public class DailyTimer implements Runnable {
 

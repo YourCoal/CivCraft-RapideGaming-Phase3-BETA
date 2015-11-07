@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.structure;
+package com.civcraft.structure;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,8 +25,8 @@ import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.object.Town;
+import com.civcraft.exception.CivException;
+import com.civcraft.object.Town;
 
 public class WaterStructure extends Structure {
 

@@ -16,11 +16,11 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.timers;
+package com.civcraft.threading.timers;
 
 import java.util.Date;
 
-import com.avrgaming.civcraft.main.CivGlobal;
+import com.civcraft.main.CivGlobal;
 
 public class DateEventTimer implements Runnable {
 

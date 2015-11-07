@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.tasks;
+package com.civcraft.threading.tasks;
 
 
 import java.util.UUID;
@@ -27,14 +27,14 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.template.Template;
-import com.avrgaming.civcraft.threading.CivAsyncTask;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.ItemManager;
-import com.avrgaming.civcraft.util.SimpleBlock;
+import com.civcraft.exception.CivException;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.object.Resident;
+import com.civcraft.template.Template;
+import com.civcraft.threading.CivAsyncTask;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.ItemManager;
+import com.civcraft.util.SimpleBlock;
 
 
 public class BuildPreviewAsyncTask extends CivAsyncTask {

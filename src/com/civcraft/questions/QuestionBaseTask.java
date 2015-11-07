@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.questions;
+package com.civcraft.questions;
 
 public class QuestionBaseTask {
 

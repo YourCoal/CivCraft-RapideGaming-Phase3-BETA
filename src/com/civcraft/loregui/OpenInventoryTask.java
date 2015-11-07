@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.loregui;
+package com.civcraft.loregui;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;

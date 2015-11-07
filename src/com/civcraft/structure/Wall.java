@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.structure;
+package com.civcraft.structure;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -32,28 +32,28 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.listener.MarkerPlacementManager;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Buff;
-import com.avrgaming.civcraft.object.CultureChunk;
-import com.avrgaming.civcraft.object.StructureBlock;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.object.TownChunk;
-import com.avrgaming.civcraft.object.WallBlock;
-import com.avrgaming.civcraft.permission.PlotPermissions;
-import com.avrgaming.civcraft.template.Template;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.ChunkCoord;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.ItemManager;
-import com.avrgaming.civcraft.util.SimpleBlock;
-import com.avrgaming.civcraft.war.War;
+import com.civcraft.config.CivSettings;
+import com.civcraft.exception.CivException;
+import com.civcraft.exception.InvalidConfiguration;
+import com.civcraft.listener.MarkerPlacementManager;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.Buff;
+import com.civcraft.object.CultureChunk;
+import com.civcraft.object.StructureBlock;
+import com.civcraft.object.Town;
+import com.civcraft.object.TownChunk;
+import com.civcraft.object.WallBlock;
+import com.civcraft.permission.PlotPermissions;
+import com.civcraft.template.Template;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.ChunkCoord;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.ItemManager;
+import com.civcraft.util.SimpleBlock;
+import com.civcraft.war.War;
 
 public class Wall extends Structure {
 

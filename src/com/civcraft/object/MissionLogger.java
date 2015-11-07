@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.object;
+package com.civcraft.object;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,9 +28,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.UUID;
 
-import com.avrgaming.civcraft.database.SQL;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
+import com.civcraft.database.SQL;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
 
 public class MissionLogger {
 

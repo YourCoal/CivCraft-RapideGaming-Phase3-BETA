@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.war;
+package com.civcraft.war;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -11,15 +11,15 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.util.Vector;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.CultureChunk;
-import com.avrgaming.civcraft.siege.Cannon;
-import com.avrgaming.civcraft.util.ChunkCoord;
-import com.avrgaming.civcraft.util.ItemManager;
+import com.civcraft.config.CivSettings;
+import com.civcraft.exception.InvalidConfiguration;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.CultureChunk;
+import com.civcraft.siege.Cannon;
+import com.civcraft.util.ChunkCoord;
+import com.civcraft.util.ItemManager;
 
 public class WarListener implements Listener {
 

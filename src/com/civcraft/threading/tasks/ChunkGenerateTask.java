@@ -16,13 +16,13 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.tasks;
+package com.civcraft.threading.tasks;
 
 
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 
-import com.avrgaming.civcraft.threading.TaskMaster;
+import com.civcraft.threading.TaskMaster;
 
 public class ChunkGenerateTask implements Runnable {
 

@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.items.units;
+package com.civcraft.items.units;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -33,34 +33,34 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigMission;
-import com.avrgaming.civcraft.config.ConfigUnit;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.interactive.InteractiveSpyMission;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.CultureChunk;
-import com.avrgaming.civcraft.object.MissionLogger;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.object.TownChunk;
-import com.avrgaming.civcraft.sessiondb.SessionEntry;
-import com.avrgaming.civcraft.structure.Buildable;
-import com.avrgaming.civcraft.structure.Cottage;
-import com.avrgaming.civcraft.structure.Granary;
-import com.avrgaming.civcraft.structure.Structure;
-import com.avrgaming.civcraft.structure.TownHall;
-import com.avrgaming.civcraft.structure.TradeOutpost;
-import com.avrgaming.civcraft.structure.wonders.Wonder;
-import com.avrgaming.civcraft.util.BookUtil;
-import com.avrgaming.civcraft.util.ChunkCoord;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.ItemManager;
-import com.avrgaming.civcraft.war.War;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigMission;
+import com.civcraft.config.ConfigUnit;
+import com.civcraft.exception.CivException;
+import com.civcraft.exception.InvalidConfiguration;
+import com.civcraft.interactive.InteractiveSpyMission;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.CultureChunk;
+import com.civcraft.object.MissionLogger;
+import com.civcraft.object.Resident;
+import com.civcraft.object.Town;
+import com.civcraft.object.TownChunk;
+import com.civcraft.sessiondb.SessionEntry;
+import com.civcraft.structure.Buildable;
+import com.civcraft.structure.Cottage;
+import com.civcraft.structure.Granary;
+import com.civcraft.structure.Structure;
+import com.civcraft.structure.TownHall;
+import com.civcraft.structure.TradeOutpost;
+import com.civcraft.structure.wonders.Wonder;
+import com.civcraft.util.BookUtil;
+import com.civcraft.util.ChunkCoord;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.ItemManager;
+import com.civcraft.war.War;
 
 public class MissionBook extends UnitItemMaterial {
 	

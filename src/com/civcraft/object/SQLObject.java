@@ -16,14 +16,14 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.object;
+package com.civcraft.object;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.exception.InvalidNameException;
-import com.avrgaming.civcraft.exception.InvalidObjectException;
+import com.civcraft.exception.CivException;
+import com.civcraft.exception.InvalidNameException;
+import com.civcraft.exception.InvalidObjectException;
 
 /*
  * Any object that needs to be saved will extend this object so it can be

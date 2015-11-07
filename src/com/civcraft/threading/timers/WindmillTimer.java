@@ -1,13 +1,13 @@
-package com.avrgaming.civcraft.threading.timers;
+package com.civcraft.threading.timers;
 
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.structure.Structure;
-import com.avrgaming.civcraft.structure.Windmill;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.war.War;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.structure.Structure;
+import com.civcraft.structure.Windmill;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.war.War;
 
 public class WindmillTimer implements Runnable {
 

@@ -1,11 +1,11 @@
-package com.avrgaming.civcraft.loreenhancements;
+package com.civcraft.loreenhancements;
 
 import gpl.AttributeUtil;
 
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.avrgaming.civcraft.util.CivColor;
+import com.civcraft.util.CivColor;
 
 public class LoreEnhancementSoulBound extends LoreEnhancement {
 	

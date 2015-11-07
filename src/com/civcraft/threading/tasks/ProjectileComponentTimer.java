@@ -16,13 +16,13 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.tasks;
+package com.civcraft.threading.tasks;
 
 import java.util.ArrayList;
 
-import com.avrgaming.civcraft.components.Component;
-import com.avrgaming.civcraft.components.ProjectileComponent;
-import com.avrgaming.civcraft.main.CivGlobal;
+import com.civcraft.components.Component;
+import com.civcraft.components.ProjectileComponent;
+import com.civcraft.main.CivGlobal;
 
 public class ProjectileComponentTimer implements Runnable {
 	

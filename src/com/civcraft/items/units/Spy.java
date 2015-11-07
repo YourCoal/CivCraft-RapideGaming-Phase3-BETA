@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.items.units;
+package com.civcraft.items.units;
 
 import gpl.AttributeUtil;
 
@@ -30,14 +30,14 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 
-import com.avrgaming.civcraft.config.ConfigUnit;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.lorestorage.LoreMaterial;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.object.MissionLogger;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.util.BookUtil;
+import com.civcraft.config.ConfigUnit;
+import com.civcraft.exception.CivException;
+import com.civcraft.lorestorage.LoreMaterial;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.object.MissionLogger;
+import com.civcraft.object.Resident;
+import com.civcraft.object.Town;
+import com.civcraft.util.BookUtil;
 
 public class Spy extends UnitMaterial {
 	

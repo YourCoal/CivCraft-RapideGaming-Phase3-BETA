@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.structure;
+package com.civcraft.structure;
 
 import gpl.HorseModifier;
 import gpl.HorseModifier.HorseType;
@@ -15,24 +15,24 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.avrgaming.civcraft.components.NonMemberFeeComponent;
-import com.avrgaming.civcraft.components.SignSelectionActionInterface;
-import com.avrgaming.civcraft.components.SignSelectionComponent;
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigStableHorse;
-import com.avrgaming.civcraft.config.ConfigStableItem;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.items.BonusGoodie;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.object.StructureSign;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.ItemManager;
-import com.avrgaming.civcraft.util.SimpleBlock;
+import com.civcraft.components.NonMemberFeeComponent;
+import com.civcraft.components.SignSelectionActionInterface;
+import com.civcraft.components.SignSelectionComponent;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigStableHorse;
+import com.civcraft.config.ConfigStableItem;
+import com.civcraft.exception.CivException;
+import com.civcraft.items.BonusGoodie;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.Resident;
+import com.civcraft.object.StructureSign;
+import com.civcraft.object.Town;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.ItemManager;
+import com.civcraft.util.SimpleBlock;
 
 public class Stable extends Structure {
 

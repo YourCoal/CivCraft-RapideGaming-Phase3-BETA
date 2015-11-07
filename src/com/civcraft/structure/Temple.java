@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.structure;
+package com.civcraft.structure;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,12 +24,12 @@ import java.sql.SQLException;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigTempleSacrifice;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.util.CivColor;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigTempleSacrifice;
+import com.civcraft.exception.CivException;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.Town;
+import com.civcraft.util.CivColor;
 
 public class Temple extends Structure {
 

@@ -16,15 +16,15 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.lorestorage;
+package com.civcraft.lorestorage;
 
 import gpl.AttributeUtil;
 
 import java.lang.reflect.Constructor;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
-import com.avrgaming.civcraft.loregui.GuiAction;
-import com.avrgaming.civcraft.util.ItemManager;
+import com.civcraft.loregui.GuiAction;
+import com.civcraft.util.ItemManager;
 
 public class LoreGuiItem {
 			
@@ -87,7 +87,7 @@ public class LoreGuiItem {
 				
 		/* Get class name from reflection and perform assigned action */
 		try {
-			Class<?> clazz = Class.forName("com.avrgaming.civcraft.loregui."+action);
+			Class<?> clazz = Class.forName("com.civcraft.loregui."+action);
 			Constructor<?> constructor = clazz.getConstructor();
 			GuiAction instance = (GuiAction) constructor.newInstance();
 			instance.performAction(event, stack);

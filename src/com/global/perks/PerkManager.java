@@ -1,4 +1,4 @@
-package com.avrgaming.global.perks;
+package com.global.perks;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,13 +8,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigPerk;
-import com.avrgaming.civcraft.database.SQL;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.object.Resident;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigPerk;
+import com.civcraft.database.SQL;
+import com.civcraft.exception.CivException;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.object.Resident;
 
 public class PerkManager {
 

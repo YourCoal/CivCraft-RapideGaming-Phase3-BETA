@@ -1,4 +1,4 @@
-package com.avrgaming.sls;
+package com.sls;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -9,12 +9,12 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.util.TimeTools;
+import com.civcraft.config.CivSettings;
+import com.civcraft.exception.CivException;
+import com.civcraft.exception.InvalidConfiguration;
+import com.civcraft.main.CivLog;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.util.TimeTools;
 
 public class SLSManager implements Runnable {
 

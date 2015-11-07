@@ -16,13 +16,13 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.object;
+package com.civcraft.object;
 
 import org.bukkit.enchantments.Enchantment;
 
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.loreenhancements.LoreEnhancement;
-import com.avrgaming.civcraft.structure.Library;
+import com.civcraft.exception.CivException;
+import com.civcraft.loreenhancements.LoreEnhancement;
+import com.civcraft.structure.Library;
 
 public class LibraryEnchantment {
 	public Enchantment enchant;

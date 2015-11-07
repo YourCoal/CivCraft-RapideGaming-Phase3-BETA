@@ -1,12 +1,12 @@
-package com.avrgaming.global.perks;
+package com.global.perks;
 
 import java.util.HashMap;
 import java.util.List;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigPerk;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.global.perks.components.PerkComponent;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigPerk;
+import com.civcraft.object.Resident;
+import com.global.perks.components.PerkComponent;
 
 public class Perk {
 
@@ -43,7 +43,7 @@ public class Perk {
 		List<HashMap<String, String>> compInfoList = this.configPerk.components;
 		if (compInfoList != null) {
 			for (HashMap<String, String> compInfo : compInfoList) {
-				String className = "com.avrgaming.global.perks.components."+compInfo.get("name");
+				String className = "com.global.perks.components."+compInfo.get("name");
 				Class<?> someClass;
 				
 				try {

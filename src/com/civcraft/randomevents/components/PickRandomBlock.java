@@ -1,20 +1,20 @@
-package com.avrgaming.civcraft.randomevents.components;
+package com.civcraft.randomevents.components;
 
 import java.util.Random;
 
 import org.bukkit.block.Block;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.randomevents.RandomEvent;
-import com.avrgaming.civcraft.randomevents.RandomEventComponent;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.ChunkCoord;
-import com.avrgaming.civcraft.util.ItemManager;
+import com.civcraft.config.CivSettings;
+import com.civcraft.exception.InvalidConfiguration;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.randomevents.RandomEvent;
+import com.civcraft.randomevents.RandomEventComponent;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.ChunkCoord;
+import com.civcraft.util.ItemManager;
 
 public class PickRandomBlock extends RandomEventComponent {
 

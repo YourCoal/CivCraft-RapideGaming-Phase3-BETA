@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.tutorial;
+package com.civcraft.tutorial;
 
 import gpl.AttributeUtil;
 
@@ -11,15 +11,15 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import com.avrgaming.civcraft.config.ConfigMaterial;
-import com.avrgaming.civcraft.config.ConfigMaterialCategory;
-import com.avrgaming.civcraft.lorestorage.LoreCraftableMaterial;
-import com.avrgaming.civcraft.lorestorage.LoreGuiItem;
-import com.avrgaming.civcraft.lorestorage.LoreGuiItemListener;
-import com.avrgaming.civcraft.lorestorage.LoreMaterial;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.ItemManager;
+import com.civcraft.config.ConfigMaterial;
+import com.civcraft.config.ConfigMaterialCategory;
+import com.civcraft.lorestorage.LoreCraftableMaterial;
+import com.civcraft.lorestorage.LoreGuiItem;
+import com.civcraft.lorestorage.LoreGuiItemListener;
+import com.civcraft.lorestorage.LoreMaterial;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.ItemManager;
 
 public class CivTutorial {
 	

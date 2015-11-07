@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.util;
+package com.civcraft.util;
 
 import org.bukkit.entity.Player;
 import org.kitteh.vanish.staticaccess.VanishNoPacket;

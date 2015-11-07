@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.loregui;
+package com.civcraft.loregui;
 
 
 import gpl.AttributeUtil;

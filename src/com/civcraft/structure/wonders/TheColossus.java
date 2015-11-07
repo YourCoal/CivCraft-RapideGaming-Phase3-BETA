@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.structure.wonders;
+package com.civcraft.structure.wonders;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,10 +25,10 @@ import java.util.TreeMap;
 
 import org.bukkit.Location;
 
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.object.Civilization;
-import com.avrgaming.civcraft.object.Town;
+import com.civcraft.exception.CivException;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.object.Civilization;
+import com.civcraft.object.Town;
 
 public class TheColossus extends Wonder {
 

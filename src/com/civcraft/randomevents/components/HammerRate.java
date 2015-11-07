@@ -1,10 +1,10 @@
-package com.avrgaming.civcraft.randomevents.components;
+package com.civcraft.randomevents.components;
 
 import java.text.DecimalFormat;
 
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.randomevents.RandomEventComponent;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.object.Town;
+import com.civcraft.randomevents.RandomEventComponent;
 
 public class HammerRate extends RandomEventComponent {
 

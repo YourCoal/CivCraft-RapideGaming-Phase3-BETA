@@ -16,16 +16,16 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.util;
+package com.civcraft.util;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Location;
 
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.TownChunk;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.TownChunk;
 
 public class AsciiMap {
 

@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.util;
+package com.civcraft.util;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -8,8 +8,8 @@ import net.minecraft.server.v1_8_R3.PacketPlayOutMultiBlockChange;
 
 import org.bukkit.entity.Player;
 
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.main.CivGlobal;
+import com.civcraft.exception.CivException;
+import com.civcraft.main.CivGlobal;
 
 public class PlayerBlockChangeUtil {
 	/*

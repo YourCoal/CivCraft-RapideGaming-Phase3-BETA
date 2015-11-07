@@ -16,13 +16,13 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.main;
+package com.civcraft.main;
 
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-import com.avrgaming.civcraft.structure.Structure;
-import com.avrgaming.civcraft.util.BlockCoord;
+import com.civcraft.structure.Structure;
+import com.civcraft.util.BlockCoord;
 
 public class Handler_serverstop extends Thread {
 

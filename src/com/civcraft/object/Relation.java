@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.object;
+package com.civcraft.object;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,12 +24,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
-import com.avrgaming.civcraft.database.SQL;
-import com.avrgaming.civcraft.database.SQLUpdate;
-import com.avrgaming.civcraft.exception.InvalidNameException;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.util.CivColor;
+import com.civcraft.database.SQL;
+import com.civcraft.database.SQLUpdate;
+import com.civcraft.exception.InvalidNameException;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.util.CivColor;
 
 public class Relation extends SQLObject {
 

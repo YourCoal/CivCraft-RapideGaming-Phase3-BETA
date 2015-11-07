@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.util;
+package com.civcraft.util;
 
 public interface CallbackInterface {
 	public void execute(String playerName);

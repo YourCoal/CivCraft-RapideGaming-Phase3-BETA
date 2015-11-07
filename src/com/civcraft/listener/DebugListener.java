@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.listener;
+package com.civcraft.listener;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;

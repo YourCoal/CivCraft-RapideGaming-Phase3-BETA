@@ -54,9 +54,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.util.Vector;
 
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.util.NBTStaticHelper;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.object.Resident;
+import com.civcraft.util.NBTStaticHelper;
 import com.google.common.io.Files;
 
 /**

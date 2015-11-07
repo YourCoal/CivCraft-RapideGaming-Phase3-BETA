@@ -16,20 +16,20 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.structure;
+package com.civcraft.structure;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.bukkit.Location;
 
-import com.avrgaming.civcraft.components.ProjectileCannonComponent;
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.object.Buff;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.util.BlockCoord;
+import com.civcraft.components.ProjectileCannonComponent;
+import com.civcraft.config.CivSettings;
+import com.civcraft.exception.CivException;
+import com.civcraft.exception.InvalidConfiguration;
+import com.civcraft.object.Buff;
+import com.civcraft.object.Town;
+import com.civcraft.util.BlockCoord;
 
 public class CannonTower extends Structure {
 

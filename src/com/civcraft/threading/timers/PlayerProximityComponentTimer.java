@@ -16,13 +16,13 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.timers;
+package com.civcraft.threading.timers;
 
 import java.util.ArrayList;
 
-import com.avrgaming.civcraft.cache.PlayerLocationCache;
-import com.avrgaming.civcraft.components.Component;
-import com.avrgaming.civcraft.components.PlayerProximityComponent;
+import com.civcraft.cache.PlayerLocationCache;
+import com.civcraft.components.Component;
+import com.civcraft.components.PlayerProximityComponent;
 
 public class PlayerProximityComponentTimer implements Runnable {
 

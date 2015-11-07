@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.structure;
+package com.civcraft.structure;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,15 +29,15 @@ import org.bukkit.block.Block;
 //import org.bukkit.entity.ItemFrame;
 import org.bukkit.entity.Player;
 
-import com.avrgaming.civcraft.exception.CivException;
-//import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-//import com.avrgaming.civcraft.object.StructureBlock;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.object.TradeGood;
-//import com.avrgaming.civcraft.util.BlockCoord;
-//import com.avrgaming.civcraft.util.ItemFrameStorage;
-//import com.avrgaming.civcraft.util.ItemManager;
+import com.civcraft.exception.CivException;
+//import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+//import com.civcraft.object.StructureBlock;
+import com.civcraft.object.Town;
+import com.civcraft.object.TradeGood;
+//import com.civcraft.util.BlockCoord;
+//import com.civcraft.util.ItemFrameStorage;
+//import com.civcraft.util.ItemManager;
 
 public class FishingBoat extends TradeOutpost {
 

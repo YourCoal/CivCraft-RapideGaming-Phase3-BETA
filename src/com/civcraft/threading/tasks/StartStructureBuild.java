@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.tasks;
+package com.civcraft.threading.tasks;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -24,11 +24,11 @@ import java.sql.SQLException;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.structure.Structure;
-import com.avrgaming.civcraft.template.Template;
+import com.civcraft.exception.CivException;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivMessage;
+import com.civcraft.structure.Structure;
+import com.civcraft.template.Template;
 
 public class StartStructureBuild implements Runnable {
 

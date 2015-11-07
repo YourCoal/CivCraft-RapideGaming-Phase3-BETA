@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.loreenhancements;
+package com.civcraft.loreenhancements;
 
 import gpl.AttributeUtil;
 
@@ -6,8 +6,8 @@ import java.util.Random;
 
 import org.bukkit.inventory.ItemStack;
 
-import com.avrgaming.civcraft.object.BuildableDamageBlock;
-import com.avrgaming.civcraft.util.CivColor;
+import com.civcraft.object.BuildableDamageBlock;
+import com.civcraft.util.CivColor;
 
 public class LoreEnhancementPunchout extends LoreEnhancement {
 	

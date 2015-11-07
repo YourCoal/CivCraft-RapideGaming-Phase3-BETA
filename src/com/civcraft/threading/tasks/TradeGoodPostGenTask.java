@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.tasks;
+package com.civcraft.threading.tasks;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,18 +30,18 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 
-import com.avrgaming.civcraft.config.ConfigTradeGood;
-import com.avrgaming.civcraft.database.SQL;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.TradeGood;
-import com.avrgaming.civcraft.populators.TradeGoodPick;
-import com.avrgaming.civcraft.populators.TradeGoodPopulator;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.ChunkCoord;
-import com.avrgaming.civcraft.util.ItemManager;
+import com.civcraft.config.ConfigTradeGood;
+import com.civcraft.database.SQL;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.TradeGood;
+import com.civcraft.populators.TradeGoodPick;
+import com.civcraft.populators.TradeGoodPopulator;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.ChunkCoord;
+import com.civcraft.util.ItemManager;
 
 public class TradeGoodPostGenTask implements Runnable {
 

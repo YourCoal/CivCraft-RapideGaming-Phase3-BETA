@@ -1,9 +1,9 @@
-package com.avrgaming.civcraft.nocheat;
+package com.civcraft.nocheat;
 
 import org.bukkit.entity.Player;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
+import com.civcraft.config.CivSettings;
+import com.civcraft.exception.InvalidConfiguration;
 
 import fr.neatmonster.nocheatplus.checks.CheckType;
 import fr.neatmonster.nocheatplus.checks.access.IViolationInfo;

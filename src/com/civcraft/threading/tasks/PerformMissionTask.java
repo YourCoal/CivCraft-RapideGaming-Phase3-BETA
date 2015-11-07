@@ -16,11 +16,11 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.tasks;
+package com.civcraft.threading.tasks;
 
 
-import com.avrgaming.civcraft.config.ConfigMission;
-import com.avrgaming.civcraft.items.units.MissionBook;
+import com.civcraft.config.ConfigMission;
+import com.civcraft.items.units.MissionBook;
 
 public class PerformMissionTask implements Runnable {
 	ConfigMission mission;

@@ -1,15 +1,15 @@
-package com.avrgaming.global.perks.components;
+package com.global.perks.components;
 
 import java.io.IOException;
 
 import org.bukkit.entity.Player;
 
-import com.avrgaming.civcraft.config.ConfigBuildableInfo;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.template.Template;
-import com.avrgaming.civcraft.util.CivColor;
+import com.civcraft.config.ConfigBuildableInfo;
+import com.civcraft.exception.CivException;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.Resident;
+import com.civcraft.template.Template;
+import com.civcraft.util.CivColor;
 
 public class CustomPersonalTemplate extends PerkComponent {
 	

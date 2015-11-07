@@ -16,9 +16,9 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.permission;
+package com.civcraft.permission;
 
-import com.avrgaming.civcraft.exception.CivException;
+import com.civcraft.exception.CivException;
 
 /*
  * Modeled after Unix permissions, each node has an owner, and group. The permission node is named

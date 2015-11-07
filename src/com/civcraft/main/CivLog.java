@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.main;
+package com.civcraft.main;
 
 import java.io.IOException;
 import java.util.logging.FileHandler;
@@ -25,7 +25,7 @@ import java.util.logging.SimpleFormatter;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.avrgaming.civcraft.exception.CivException;
+import com.civcraft.exception.CivException;
 
 public class CivLog {
 

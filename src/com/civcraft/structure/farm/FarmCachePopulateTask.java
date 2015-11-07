@@ -16,11 +16,11 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.structure.farm;
+package com.civcraft.structure.farm;
 
 import java.util.LinkedList;
 
-import com.avrgaming.civcraft.main.CivGlobal;
+import com.civcraft.main.CivGlobal;
 
 
 public class FarmCachePopulateTask implements Runnable {

@@ -1,13 +1,13 @@
-package com.avrgaming.civcraft.randomevents.components;
+package com.civcraft.randomevents.components;
 
 import java.util.List;
 
-import com.avrgaming.civcraft.cache.PlayerLocationCache;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.randomevents.RandomEventComponent;
-import com.avrgaming.civcraft.util.BlockCoord;
+import com.civcraft.cache.PlayerLocationCache;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.object.Resident;
+import com.civcraft.randomevents.RandomEventComponent;
+import com.civcraft.util.BlockCoord;
 
 public class LocationCheck extends RandomEventComponent {
 

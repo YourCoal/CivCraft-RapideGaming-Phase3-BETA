@@ -1,11 +1,11 @@
-package com.avrgaming.civcraft.structurevalidation;
+package com.civcraft.structurevalidation;
 
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.structure.Structure;
-import com.avrgaming.civcraft.util.BlockCoord;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.structure.Structure;
+import com.civcraft.util.BlockCoord;
 
 public class StructureValidationPunisher implements Runnable {
 

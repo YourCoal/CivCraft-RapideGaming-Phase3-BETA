@@ -16,14 +16,14 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.timers;
+package com.civcraft.threading.timers;
 
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Civilization;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.structure.TownHall;
-import com.avrgaming.civcraft.threading.CivAsyncTask;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.Civilization;
+import com.civcraft.object.Town;
+import com.civcraft.structure.TownHall;
+import com.civcraft.threading.CivAsyncTask;
 
 public class BeakerTimer extends CivAsyncTask {
 

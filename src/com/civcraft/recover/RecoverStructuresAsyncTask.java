@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.recover;
+package com.civcraft.recover;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,17 +27,17 @@ import java.util.Map.Entry;
 import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
 
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.structure.Structure;
-import com.avrgaming.civcraft.template.Template;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.ItemManager;
-import com.avrgaming.civcraft.util.SimpleBlock.Type;
+import com.civcraft.exception.CivException;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivMessage;
+import com.civcraft.structure.Structure;
+import com.civcraft.template.Template;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.ItemManager;
+import com.civcraft.util.SimpleBlock.Type;
 
 public class RecoverStructuresAsyncTask implements Runnable {
 

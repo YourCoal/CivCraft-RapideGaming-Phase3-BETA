@@ -16,17 +16,17 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.tasks;
+package com.civcraft.threading.tasks;
 
 import java.util.ArrayList;
 
 import org.bukkit.ChunkSnapshot;
 
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.structure.Windmill;
-import com.avrgaming.civcraft.structure.farm.FarmChunk;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.util.ChunkCoord;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.structure.Windmill;
+import com.civcraft.structure.farm.FarmChunk;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.util.ChunkCoord;
 
 public class WindmillStartSyncTask implements Runnable {
 

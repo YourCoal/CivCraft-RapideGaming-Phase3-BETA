@@ -16,9 +16,9 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.tasks;
+package com.civcraft.threading.tasks;
 
-import com.avrgaming.civcraft.object.Resident;
+import com.civcraft.object.Resident;
 
 
 public class PlayerDelayedDebtWarning implements Runnable {

@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.structure;
+package com.civcraft.structure;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,11 +24,11 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import org.bukkit.Location;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.object.Buff;
-import com.avrgaming.civcraft.object.Town;
+import com.civcraft.config.CivSettings;
+import com.civcraft.exception.CivException;
+import com.civcraft.exception.InvalidConfiguration;
+import com.civcraft.object.Buff;
+import com.civcraft.object.Town;
 
 public class Trommel extends Structure {
 

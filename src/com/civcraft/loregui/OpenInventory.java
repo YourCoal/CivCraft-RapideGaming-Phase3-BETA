@@ -1,17 +1,17 @@
-package com.avrgaming.civcraft.loregui;
+package com.civcraft.loregui;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.lorestorage.LoreGuiItem;
-import com.avrgaming.civcraft.lorestorage.LoreGuiItemListener;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.tutorial.CivTutorial;
+import com.civcraft.exception.CivException;
+import com.civcraft.lorestorage.LoreGuiItem;
+import com.civcraft.lorestorage.LoreGuiItemListener;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.tutorial.CivTutorial;
 
 public class OpenInventory implements GuiAction {
 

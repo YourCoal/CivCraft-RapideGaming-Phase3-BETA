@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.listener;
+package com.civcraft.listener;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -57,29 +57,29 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigTechPotion;
-import com.avrgaming.civcraft.items.units.UnitItemMaterial;
-import com.avrgaming.civcraft.items.units.UnitMaterial;
-import com.avrgaming.civcraft.lorestorage.LoreMaterial;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.CultureChunk;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.road.Road;
-import com.avrgaming.civcraft.structure.Capitol;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.threading.tasks.PlayerChunkNotifyAsyncTask;
-import com.avrgaming.civcraft.threading.tasks.PlayerLoginAsyncTask;
-import com.avrgaming.civcraft.threading.timers.PlayerLocationCacheUpdate;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.ChunkCoord;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.ItemManager;
-import com.avrgaming.civcraft.war.War;
-import com.avrgaming.civcraft.war.WarStats;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigTechPotion;
+import com.civcraft.items.units.UnitItemMaterial;
+import com.civcraft.items.units.UnitMaterial;
+import com.civcraft.lorestorage.LoreMaterial;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.CultureChunk;
+import com.civcraft.object.Resident;
+import com.civcraft.road.Road;
+import com.civcraft.structure.Capitol;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.threading.tasks.PlayerChunkNotifyAsyncTask;
+import com.civcraft.threading.tasks.PlayerLoginAsyncTask;
+import com.civcraft.threading.timers.PlayerLocationCacheUpdate;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.ChunkCoord;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.ItemManager;
+import com.civcraft.war.War;
+import com.civcraft.war.WarStats;
 
 public class PlayerListener implements Listener {
 	@EventHandler(priority = EventPriority.MONITOR)

@@ -16,16 +16,16 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.structure.farm;
+package com.civcraft.structure.farm;
 
 import java.util.LinkedList;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.bukkit.Chunk;
 
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.threading.TaskMaster;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.threading.TaskMaster;
 
 public class FarmPreCachePopulateTimer implements Runnable {
 	

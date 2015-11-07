@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.lorestorage;
+package com.civcraft.lorestorage;
 
 import gpl.AttributeUtil;
 
@@ -33,15 +33,15 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigIngredient;
-import com.avrgaming.civcraft.config.ConfigMaterial;
-import com.avrgaming.civcraft.items.components.ItemComponent;
-import com.avrgaming.civcraft.loreenhancements.LoreEnhancement;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.object.BuildableDamageBlock;
-import com.avrgaming.civcraft.util.ItemManager;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigIngredient;
+import com.civcraft.config.ConfigMaterial;
+import com.civcraft.items.components.ItemComponent;
+import com.civcraft.loreenhancements.LoreEnhancement;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivLog;
+import com.civcraft.object.BuildableDamageBlock;
+import com.civcraft.util.ItemManager;
 import com.mysql.jdbc.StringUtils;
 
 public class LoreCraftableMaterial extends LoreMaterial {
@@ -178,7 +178,7 @@ public class LoreCraftableMaterial extends LoreMaterial {
 		List<HashMap<String, String>> compInfoList = this.configMaterial.components;
 		if (compInfoList != null) {
 			for (HashMap<String, String> compInfo : compInfoList) {
-				String className = "com.avrgaming.civcraft.items.components."+compInfo.get("name");
+				String className = "com.civcraft.items.components."+compInfo.get("name");
 				Class<?> someClass;
 				
 				try {

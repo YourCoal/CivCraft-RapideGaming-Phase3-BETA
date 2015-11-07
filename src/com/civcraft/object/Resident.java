@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.object;
+package com.civcraft.object;
 
 import gpl.InventorySerializer;
 
@@ -51,44 +51,44 @@ import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
-import com.avrgaming.civcraft.camp.Camp;
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigBuildableInfo;
-import com.avrgaming.civcraft.config.ConfigPerk;
-import com.avrgaming.civcraft.database.SQL;
-import com.avrgaming.civcraft.database.SQLUpdate;
-import com.avrgaming.civcraft.event.EventTimer;
-import com.avrgaming.civcraft.exception.AlreadyRegisteredException;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.exception.InvalidNameException;
-import com.avrgaming.civcraft.interactive.InteractiveResponse;
-import com.avrgaming.civcraft.lorestorage.LoreCraftableMaterial;
-import com.avrgaming.civcraft.lorestorage.LoreGuiItem;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.permission.PermissionGroup;
-import com.avrgaming.civcraft.road.RoadBlock;
-import com.avrgaming.civcraft.sessiondb.SessionEntry;
-import com.avrgaming.civcraft.structure.Buildable;
-import com.avrgaming.civcraft.structure.TownHall;
-import com.avrgaming.civcraft.template.Template;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.threading.tasks.BuildPreviewAsyncTask;
-import com.avrgaming.civcraft.tutorial.CivTutorial;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.CallbackInterface;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.ItemManager;
-import com.avrgaming.civcraft.util.PlayerBlockChangeUtil;
-import com.avrgaming.civcraft.util.SimpleBlock;
-import com.avrgaming.global.perks.NotVerifiedException;
-import com.avrgaming.global.perks.Perk;
-import com.avrgaming.global.perks.PlatinumManager;
-import com.avrgaming.global.perks.components.CustomPersonalTemplate;
-import com.avrgaming.global.perks.components.CustomTemplate;
+import com.civcraft.camp.Camp;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigBuildableInfo;
+import com.civcraft.config.ConfigPerk;
+import com.civcraft.database.SQL;
+import com.civcraft.database.SQLUpdate;
+import com.civcraft.event.EventTimer;
+import com.civcraft.exception.AlreadyRegisteredException;
+import com.civcraft.exception.CivException;
+import com.civcraft.exception.InvalidConfiguration;
+import com.civcraft.exception.InvalidNameException;
+import com.civcraft.interactive.InteractiveResponse;
+import com.civcraft.lorestorage.LoreCraftableMaterial;
+import com.civcraft.lorestorage.LoreGuiItem;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.main.CivMessage;
+import com.civcraft.permission.PermissionGroup;
+import com.civcraft.road.RoadBlock;
+import com.civcraft.sessiondb.SessionEntry;
+import com.civcraft.structure.Buildable;
+import com.civcraft.structure.TownHall;
+import com.civcraft.template.Template;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.threading.tasks.BuildPreviewAsyncTask;
+import com.civcraft.tutorial.CivTutorial;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.CallbackInterface;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.ItemManager;
+import com.civcraft.util.PlayerBlockChangeUtil;
+import com.civcraft.util.SimpleBlock;
+import com.global.perks.NotVerifiedException;
+import com.global.perks.Perk;
+import com.global.perks.PlatinumManager;
+import com.global.perks.components.CustomPersonalTemplate;
+import com.global.perks.components.CustomTemplate;
 
 public class Resident extends SQLObject {
 

@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.util;
+package com.civcraft.util;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,10 +9,10 @@ import java.util.HashMap;
 import org.bukkit.Chunk;
 import org.bukkit.block.Biome;
 
-import com.avrgaming.civcraft.database.SQL;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.object.CultureChunk;
-import com.avrgaming.civcraft.threading.TaskMaster;
+import com.civcraft.database.SQL;
+import com.civcraft.main.CivLog;
+import com.civcraft.object.CultureChunk;
+import com.civcraft.threading.TaskMaster;
 
 public class BiomeCache {
 	/*

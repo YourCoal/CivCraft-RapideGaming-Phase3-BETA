@@ -1,6 +1,6 @@
-package com.avrgaming.civcraft.sessiondb;
+package com.civcraft.sessiondb;
 
-import com.avrgaming.civcraft.threading.TaskMaster;
+import com.civcraft.threading.TaskMaster;
 
 public class SessionAsyncRequest {
 	String tb_prefix;

@@ -1,8 +1,8 @@
-package com.avrgaming.civcraft.util;
+package com.civcraft.util;
 
 import java.util.Date;
 
-import com.avrgaming.civcraft.main.CivGlobal;
+import com.civcraft.main.CivGlobal;
 
 public class DateUtil {
 

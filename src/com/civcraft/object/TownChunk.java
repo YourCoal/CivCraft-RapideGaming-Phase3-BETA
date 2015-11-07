@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.object;
+package com.civcraft.object;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,21 +26,21 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import com.avrgaming.civcraft.camp.Camp;
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigTownLevel;
-import com.avrgaming.civcraft.database.SQL;
-import com.avrgaming.civcraft.database.SQLUpdate;
-import com.avrgaming.civcraft.exception.AlreadyRegisteredException;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.permission.PermissionGroup;
-import com.avrgaming.civcraft.permission.PlotPermissions;
-import com.avrgaming.civcraft.util.ChunkCoord;
-import com.avrgaming.civcraft.util.CivColor;
+import com.civcraft.camp.Camp;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigTownLevel;
+import com.civcraft.database.SQL;
+import com.civcraft.database.SQLUpdate;
+import com.civcraft.exception.AlreadyRegisteredException;
+import com.civcraft.exception.CivException;
+import com.civcraft.exception.InvalidConfiguration;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.main.CivMessage;
+import com.civcraft.permission.PermissionGroup;
+import com.civcraft.permission.PlotPermissions;
+import com.civcraft.util.ChunkCoord;
+import com.civcraft.util.CivColor;
 
 public class TownChunk extends SQLObject {
 	

@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.lorestorage;
+package com.civcraft.lorestorage;
 
 import gpl.AttributeUtil;
 
@@ -14,19 +14,19 @@ import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigTech;
-import com.avrgaming.civcraft.config.ConfigTechItem;
-import com.avrgaming.civcraft.items.components.Tagged;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.sessiondb.SessionEntry;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.ItemManager;
-import com.avrgaming.global.perks.PlatinumManager;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigTech;
+import com.civcraft.config.ConfigTechItem;
+import com.civcraft.items.components.Tagged;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.Resident;
+import com.civcraft.sessiondb.SessionEntry;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.ItemManager;
+import com.global.perks.PlatinumManager;
 
 public class LoreCraftableMaterialListener implements Listener {
 

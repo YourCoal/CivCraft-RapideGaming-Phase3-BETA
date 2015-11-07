@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.sessiondb;
+package com.civcraft.sessiondb;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.avrgaming.civcraft.database.SQL;
+import com.civcraft.database.SQL;
 
 public class SessionDBAsyncTimer implements Runnable {
 

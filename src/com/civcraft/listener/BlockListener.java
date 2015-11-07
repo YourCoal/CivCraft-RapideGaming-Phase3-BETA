@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.listener;
+package com.civcraft.listener;
 
 import gpl.HorseModifier;
 
@@ -80,46 +80,46 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import com.avrgaming.civcraft.cache.ArrowFiredCache;
-import com.avrgaming.civcraft.cache.CannonFiredCache;
-import com.avrgaming.civcraft.cache.CivCache;
-import com.avrgaming.civcraft.camp.Camp;
-import com.avrgaming.civcraft.camp.CampBlock;
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigTempleSacrifice;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.ControlPoint;
-import com.avrgaming.civcraft.object.ProtectedBlock;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.object.StructureBlock;
-import com.avrgaming.civcraft.object.StructureChest;
-import com.avrgaming.civcraft.object.StructureSign;
-import com.avrgaming.civcraft.object.TownChunk;
-import com.avrgaming.civcraft.permission.PlotPermissions;
-import com.avrgaming.civcraft.road.Road;
-import com.avrgaming.civcraft.road.RoadBlock;
-import com.avrgaming.civcraft.structure.Buildable;
-import com.avrgaming.civcraft.structure.BuildableLayer;
-import com.avrgaming.civcraft.structure.Farm;
-import com.avrgaming.civcraft.structure.Pasture;
-import com.avrgaming.civcraft.structure.Temple;
-import com.avrgaming.civcraft.structure.Wall;
-import com.avrgaming.civcraft.structure.farm.FarmChunk;
-import com.avrgaming.civcraft.threading.CivAsyncTask;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.threading.tasks.FireWorkTask;
-import com.avrgaming.civcraft.threading.tasks.StructureBlockHitEvent;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.ChunkCoord;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.ItemFrameStorage;
-import com.avrgaming.civcraft.util.ItemManager;
-import com.avrgaming.civcraft.war.War;
-import com.avrgaming.civcraft.war.WarRegen;
+import com.civcraft.cache.ArrowFiredCache;
+import com.civcraft.cache.CannonFiredCache;
+import com.civcraft.cache.CivCache;
+import com.civcraft.camp.Camp;
+import com.civcraft.camp.CampBlock;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigTempleSacrifice;
+import com.civcraft.exception.CivException;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.ControlPoint;
+import com.civcraft.object.ProtectedBlock;
+import com.civcraft.object.Resident;
+import com.civcraft.object.StructureBlock;
+import com.civcraft.object.StructureChest;
+import com.civcraft.object.StructureSign;
+import com.civcraft.object.TownChunk;
+import com.civcraft.permission.PlotPermissions;
+import com.civcraft.road.Road;
+import com.civcraft.road.RoadBlock;
+import com.civcraft.structure.Buildable;
+import com.civcraft.structure.BuildableLayer;
+import com.civcraft.structure.Farm;
+import com.civcraft.structure.Pasture;
+import com.civcraft.structure.Temple;
+import com.civcraft.structure.Wall;
+import com.civcraft.structure.farm.FarmChunk;
+import com.civcraft.threading.CivAsyncTask;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.threading.tasks.FireWorkTask;
+import com.civcraft.threading.tasks.StructureBlockHitEvent;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.ChunkCoord;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.ItemFrameStorage;
+import com.civcraft.util.ItemManager;
+import com.civcraft.war.War;
+import com.civcraft.war.WarRegen;
 
 public class BlockListener implements Listener {
 

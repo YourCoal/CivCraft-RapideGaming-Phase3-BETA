@@ -16,21 +16,21 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.sync;
+package com.civcraft.threading.sync;
 
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.structure.Farm;
-import com.avrgaming.civcraft.structure.farm.FarmChunk;
-import com.avrgaming.civcraft.structure.farm.GrowBlock;
-import com.avrgaming.civcraft.threading.sync.request.GrowRequest;
-import com.avrgaming.civcraft.util.ItemManager;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.structure.Farm;
+import com.civcraft.structure.farm.FarmChunk;
+import com.civcraft.structure.farm.GrowBlock;
+import com.civcraft.threading.sync.request.GrowRequest;
+import com.civcraft.util.ItemManager;
 
 public class SyncGrowTask implements Runnable {
 	

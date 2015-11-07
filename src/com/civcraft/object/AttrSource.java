@@ -1,10 +1,10 @@
-package com.avrgaming.civcraft.object;
+package com.civcraft.object;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.avrgaming.civcraft.main.CivMessage;
+import com.civcraft.main.CivMessage;
 
 public class AttrSource {
 	/* Contains a list of sources and the total. */

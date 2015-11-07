@@ -16,9 +16,9 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.tasks;
+package com.civcraft.threading.tasks;
 
-import com.avrgaming.civcraft.main.CivGlobal;
+import com.civcraft.main.CivGlobal;
 
 public class CannonTowerTask implements Runnable {
 	@Override

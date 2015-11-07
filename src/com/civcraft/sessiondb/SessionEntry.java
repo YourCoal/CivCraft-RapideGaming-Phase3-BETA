@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.sessiondb;
+package com.civcraft.sessiondb;
 
 public class SessionEntry {
 	public int request_id;

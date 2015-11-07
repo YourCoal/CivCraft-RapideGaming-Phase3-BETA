@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.threading.tasks;
+package com.civcraft.threading.tasks;
 
 import java.util.Queue;
 import java.util.UUID;
@@ -6,13 +6,13 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.sessiondb.SessionEntry;
-import com.avrgaming.civcraft.structure.Pasture;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.util.EntityUtil;
-import com.avrgaming.civcraft.util.TimeTools;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.sessiondb.SessionEntry;
+import com.civcraft.structure.Pasture;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.util.EntityUtil;
+import com.civcraft.util.TimeTools;
 
 public class LoadPastureEntityTask implements Runnable {
 

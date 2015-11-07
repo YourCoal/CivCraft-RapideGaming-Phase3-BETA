@@ -1,11 +1,11 @@
-package com.avrgaming.civcraft.questions;
+package com.civcraft.questions;
 
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Civilization;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.threading.tasks.FoundTownSync;
-import com.avrgaming.civcraft.util.CivColor;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.Civilization;
+import com.civcraft.object.Resident;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.threading.tasks.FoundTownSync;
+import com.civcraft.util.CivColor;
 
 public class TownNewRequest implements QuestionResponseInterface {
 

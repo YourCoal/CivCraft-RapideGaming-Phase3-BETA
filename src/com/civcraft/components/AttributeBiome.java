@@ -1,9 +1,9 @@
-package com.avrgaming.civcraft.components;
+package com.civcraft.components;
 
 import java.util.HashSet;
 
-import com.avrgaming.civcraft.object.CultureChunk;
-import com.avrgaming.civcraft.structure.Buildable;
+import com.civcraft.object.CultureChunk;
+import com.civcraft.structure.Buildable;
 
 public class AttributeBiome extends AttributeBiomeBase {
 	/*

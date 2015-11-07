@@ -16,19 +16,19 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.tasks;
+package com.civcraft.threading.tasks;
 
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.structure.Structure;
-import com.avrgaming.civcraft.structure.wonders.Wonder;
-import com.avrgaming.civcraft.template.Template;
-import com.avrgaming.civcraft.util.BlockCoord;
+import com.civcraft.exception.CivException;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.structure.Structure;
+import com.civcraft.structure.wonders.Wonder;
+import com.civcraft.template.Template;
+import com.civcraft.util.BlockCoord;
 
 public class onLoadTask implements Runnable {
 	/*

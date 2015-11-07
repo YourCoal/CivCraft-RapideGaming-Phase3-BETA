@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.template;
+package com.civcraft.template;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -28,9 +28,9 @@ import java.util.List;
 
 import org.bukkit.Location;
 
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.ItemManager;
-import com.avrgaming.civcraft.util.SimpleBlock;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.ItemManager;
+import com.civcraft.util.SimpleBlock;
 
 public class TemplateStream {
 	/*

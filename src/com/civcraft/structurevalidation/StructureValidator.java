@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.structurevalidation;
+package com.civcraft.structurevalidation;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -10,21 +10,21 @@ import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.structure.Buildable;
-import com.avrgaming.civcraft.structure.BuildableLayer;
-import com.avrgaming.civcraft.template.TemplateStream;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.CallbackInterface;
-import com.avrgaming.civcraft.util.ChunkCoord;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.SimpleBlock;
+import com.civcraft.config.CivSettings;
+import com.civcraft.exception.CivException;
+import com.civcraft.exception.InvalidConfiguration;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivMessage;
+import com.civcraft.structure.Buildable;
+import com.civcraft.structure.BuildableLayer;
+import com.civcraft.template.TemplateStream;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.CallbackInterface;
+import com.civcraft.util.ChunkCoord;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.SimpleBlock;
 
 public class StructureValidator implements Runnable {
 

@@ -16,16 +16,16 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.sync;
+package com.civcraft.threading.sync;
 
 import java.util.Collection;
 
 import org.bukkit.entity.Player;
 import org.kitteh.tag.TagAPI;
 
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.object.Resident;
+import com.civcraft.exception.CivException;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.object.Resident;
 
 public class SyncUpdateTags implements Runnable {
 

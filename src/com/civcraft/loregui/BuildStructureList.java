@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.loregui;
+package com.civcraft.loregui;
 
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;

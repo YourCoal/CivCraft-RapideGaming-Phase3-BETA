@@ -17,15 +17,15 @@
  * from AVRGAMING LLC.
  */
 
-package com.avrgaming.civcraft.util;
+package com.civcraft.util;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.main.CivGlobal;
+import com.civcraft.exception.CivException;
+import com.civcraft.main.CivGlobal;
 
 /*
  * This here is an Axis Aligned Bounding Box. We use this to determine if structures

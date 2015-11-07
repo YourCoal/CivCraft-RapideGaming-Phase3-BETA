@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.loregui;
+package com.civcraft.loregui;
 
 import java.util.ArrayList;
 
@@ -9,19 +9,19 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigBuildableInfo;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.lorestorage.LoreGuiItem;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.structure.Structure;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.tutorial.CivTutorial;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.ItemManager;
-import com.avrgaming.global.perks.Perk;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigBuildableInfo;
+import com.civcraft.exception.CivException;
+import com.civcraft.lorestorage.LoreGuiItem;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.object.Resident;
+import com.civcraft.structure.Structure;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.tutorial.CivTutorial;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.ItemManager;
+import com.global.perks.Perk;
 
 public class BuildChooseTemplate implements GuiAction {
 

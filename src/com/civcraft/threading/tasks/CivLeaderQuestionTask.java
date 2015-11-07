@@ -1,14 +1,14 @@
-package com.avrgaming.civcraft.threading.tasks;
+package com.civcraft.threading.tasks;
 
 import org.bukkit.entity.Player;
 
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Civilization;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.questions.QuestionBaseTask;
-import com.avrgaming.civcraft.questions.QuestionResponseInterface;
-import com.avrgaming.civcraft.util.CivColor;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.Civilization;
+import com.civcraft.object.Resident;
+import com.civcraft.questions.QuestionBaseTask;
+import com.civcraft.questions.QuestionResponseInterface;
+import com.civcraft.util.CivColor;
 
 public class CivLeaderQuestionTask extends QuestionBaseTask implements Runnable {
 	Civilization askedCivilization; /* player who is being asked a question. */

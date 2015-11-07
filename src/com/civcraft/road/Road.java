@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.road;
+package com.civcraft.road;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -20,28 +20,28 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.listener.MarkerPlacementManager;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.BuildableDamageBlock;
-import com.avrgaming.civcraft.object.CultureChunk;
-import com.avrgaming.civcraft.object.StructureBlock;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.sessiondb.SessionEntry;
-import com.avrgaming.civcraft.structure.Structure;
-import com.avrgaming.civcraft.structure.wonders.Wonder;
-import com.avrgaming.civcraft.template.Template;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.ChunkCoord;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.FireworkEffectPlayer;
-import com.avrgaming.civcraft.util.ItemManager;
-import com.avrgaming.civcraft.util.SimpleBlock;
-import com.avrgaming.civcraft.war.War;
+import com.civcraft.config.CivSettings;
+import com.civcraft.exception.CivException;
+import com.civcraft.exception.InvalidConfiguration;
+import com.civcraft.listener.MarkerPlacementManager;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.BuildableDamageBlock;
+import com.civcraft.object.CultureChunk;
+import com.civcraft.object.StructureBlock;
+import com.civcraft.object.Town;
+import com.civcraft.sessiondb.SessionEntry;
+import com.civcraft.structure.Structure;
+import com.civcraft.structure.wonders.Wonder;
+import com.civcraft.template.Template;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.ChunkCoord;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.FireworkEffectPlayer;
+import com.civcraft.util.ItemManager;
+import com.civcraft.util.SimpleBlock;
+import com.civcraft.war.War;
 
 public class Road extends Structure {
 	private static double MAX_SEGMENT = 100;

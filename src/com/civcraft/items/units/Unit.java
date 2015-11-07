@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.items.units;
+package com.civcraft.items.units;
 
 import java.util.ArrayList;
 
@@ -7,14 +7,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigMission;
-import com.avrgaming.civcraft.config.ConfigUnit;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.lorestorage.LoreCraftableMaterial;
-import com.avrgaming.civcraft.lorestorage.LoreMaterial;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.util.ItemManager;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigMission;
+import com.civcraft.config.ConfigUnit;
+import com.civcraft.exception.CivException;
+import com.civcraft.lorestorage.LoreCraftableMaterial;
+import com.civcraft.lorestorage.LoreMaterial;
+import com.civcraft.main.CivData;
+import com.civcraft.util.ItemManager;
 
 public abstract class Unit {
 	

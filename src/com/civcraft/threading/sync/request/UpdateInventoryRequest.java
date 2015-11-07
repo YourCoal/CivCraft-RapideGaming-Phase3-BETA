@@ -16,13 +16,13 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.sync.request;
+package com.civcraft.threading.sync.request;
 
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.bukkit.inventory.ItemStack;
 
-import com.avrgaming.civcraft.util.MultiInventory;
+import com.civcraft.util.MultiInventory;
 
 public class UpdateInventoryRequest extends AsyncRequest {
 

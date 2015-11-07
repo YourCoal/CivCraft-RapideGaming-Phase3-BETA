@@ -1,6 +1,6 @@
-package com.avrgaming.civcraft.structure.farm;
+package com.civcraft.structure.farm;
 
-import com.avrgaming.civcraft.util.BlockCoord;
+import com.civcraft.util.BlockCoord;
 
 public class GrowBlock {
 	

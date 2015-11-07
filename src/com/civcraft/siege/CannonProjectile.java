@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.siege;
+package com.civcraft.siege;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -14,24 +14,24 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
-import com.avrgaming.civcraft.camp.CampBlock;
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.main.CivData;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.object.StructureBlock;
-import com.avrgaming.civcraft.structure.Buildable;
-import com.avrgaming.civcraft.structure.TownHall;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.threading.tasks.FireWorkTask;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.EntityProximity;
-import com.avrgaming.civcraft.util.ItemManager;
-import com.avrgaming.civcraft.war.WarRegen;
+import com.civcraft.camp.CampBlock;
+import com.civcraft.config.CivSettings;
+import com.civcraft.exception.CivException;
+import com.civcraft.exception.InvalidConfiguration;
+import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.Resident;
+import com.civcraft.object.StructureBlock;
+import com.civcraft.structure.Buildable;
+import com.civcraft.structure.TownHall;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.threading.tasks.FireWorkTask;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.EntityProximity;
+import com.civcraft.util.ItemManager;
+import com.civcraft.war.WarRegen;
 
 public class CannonProjectile {
 	public Cannon cannon;

@@ -16,13 +16,13 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.sync.request;
+package com.civcraft.threading.sync.request;
 
 import java.util.LinkedList;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.avrgaming.civcraft.structure.farm.FarmChunk;
-import com.avrgaming.civcraft.structure.farm.GrowBlock;
+import com.civcraft.structure.farm.FarmChunk;
+import com.civcraft.structure.farm.GrowBlock;
 
 public class GrowRequest extends AsyncRequest {
 

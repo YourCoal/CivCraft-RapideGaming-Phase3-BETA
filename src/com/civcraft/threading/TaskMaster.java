@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading;
+package com.civcraft.threading;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -26,8 +26,8 @@ import java.util.List;
 
 import org.bukkit.scheduler.BukkitTask;
 
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.util.BukkitObjects;
+import com.civcraft.main.CivMessage;
+import com.civcraft.util.BukkitObjects;
 
 public class TaskMaster {
 	

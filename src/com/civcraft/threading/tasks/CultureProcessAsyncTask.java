@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.tasks;
+package com.civcraft.threading.tasks;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -25,17 +25,17 @@ import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigCultureLevel;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.CultureChunk;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.object.TownChunk;
-import com.avrgaming.civcraft.structure.Structure;
-import com.avrgaming.civcraft.threading.CivAsyncTask;
-import com.avrgaming.civcraft.util.ChunkCoord;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigCultureLevel;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.CultureChunk;
+import com.civcraft.object.Town;
+import com.civcraft.object.TownChunk;
+import com.civcraft.structure.Structure;
+import com.civcraft.threading.CivAsyncTask;
+import com.civcraft.util.ChunkCoord;
 
 public class CultureProcessAsyncTask extends CivAsyncTask {
 

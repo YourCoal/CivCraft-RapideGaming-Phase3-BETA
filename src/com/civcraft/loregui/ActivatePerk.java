@@ -1,14 +1,14 @@
-package com.avrgaming.civcraft.loregui;
+package com.civcraft.loregui;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.avrgaming.civcraft.lorestorage.LoreGuiItem;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.global.perks.Perk;
+import com.civcraft.lorestorage.LoreGuiItem;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.object.Resident;
+import com.global.perks.Perk;
 
 public class ActivatePerk implements GuiAction {
 

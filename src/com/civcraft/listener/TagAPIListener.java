@@ -1,11 +1,11 @@
-package com.avrgaming.civcraft.listener;
+package com.civcraft.listener;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.kitteh.tag.AsyncPlayerReceiveNameTagEvent;
 
-import com.avrgaming.civcraft.main.CivGlobal;
+import com.civcraft.main.CivGlobal;
 
 public class TagAPIListener implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)

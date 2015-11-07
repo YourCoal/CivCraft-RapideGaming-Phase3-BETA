@@ -16,15 +16,15 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.timers;
+package com.civcraft.threading.timers;
 
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.structure.Barracks;
-import com.avrgaming.civcraft.structure.Structure;
-import com.avrgaming.civcraft.util.BlockCoord;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.structure.Barracks;
+import com.civcraft.structure.Structure;
+import com.civcraft.util.BlockCoord;
 
 public class UnitTrainTimer implements Runnable {
 

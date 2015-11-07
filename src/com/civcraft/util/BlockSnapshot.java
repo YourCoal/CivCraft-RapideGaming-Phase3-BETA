@@ -16,11 +16,11 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.util;
+package com.civcraft.util;
 
 import org.bukkit.ChunkSnapshot;
 
-import com.avrgaming.civcraft.exception.InvalidBlockLocation;
+import com.civcraft.exception.InvalidBlockLocation;
 
 public class BlockSnapshot {
 

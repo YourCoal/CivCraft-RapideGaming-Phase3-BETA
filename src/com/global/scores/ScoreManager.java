@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.global.scores;
+package com.global.scores;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,10 +24,10 @@ import java.sql.SQLException;
 
 import org.bukkit.Bukkit;
 
-import com.avrgaming.civcraft.database.SQL;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.object.Civilization;
-import com.avrgaming.civcraft.object.Town;
+import com.civcraft.database.SQL;
+import com.civcraft.main.CivLog;
+import com.civcraft.object.Civilization;
+import com.civcraft.object.Town;
 
 public class ScoreManager {
 	

@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.threading.tasks;
+package com.civcraft.threading.tasks;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -25,18 +25,18 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import com.avrgaming.civcraft.camp.Camp;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.CultureChunk;
-import com.avrgaming.civcraft.object.Relation;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.object.Town;
-import com.avrgaming.civcraft.object.TownChunk;
-import com.avrgaming.civcraft.util.AsciiMap;
-import com.avrgaming.civcraft.util.ChunkCoord;
-import com.avrgaming.civcraft.util.CivColor;
+import com.civcraft.camp.Camp;
+import com.civcraft.exception.CivException;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.CultureChunk;
+import com.civcraft.object.Relation;
+import com.civcraft.object.Resident;
+import com.civcraft.object.Town;
+import com.civcraft.object.TownChunk;
+import com.civcraft.util.AsciiMap;
+import com.civcraft.util.ChunkCoord;
+import com.civcraft.util.CivColor;
 
 public class PlayerChunkNotifyAsyncTask implements Runnable {
 

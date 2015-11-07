@@ -1,10 +1,10 @@
-package com.avrgaming.civcraft.threading.timers;
+package com.civcraft.threading.timers;
 
 import java.util.LinkedList;
 
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.object.Resident;
-import com.avrgaming.civcraft.threading.TaskMaster;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.object.Resident;
+import com.civcraft.threading.TaskMaster;
 
 public class ReduceExposureTimer implements Runnable {
 

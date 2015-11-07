@@ -16,7 +16,7 @@
  * is strictly forbidden unless prior written permission is obtained
  * from AVRGAMING LLC.
  */
-package com.avrgaming.civcraft.object;
+package com.civcraft.object;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -37,35 +37,35 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.avrgaming.civcraft.camp.WarCamp;
-import com.avrgaming.civcraft.config.CivSettings;
-import com.avrgaming.civcraft.config.ConfigGovernment;
-import com.avrgaming.civcraft.config.ConfigTech;
-import com.avrgaming.civcraft.database.SQL;
-import com.avrgaming.civcraft.database.SQLUpdate;
-import com.avrgaming.civcraft.endgame.EndConditionScience;
-import com.avrgaming.civcraft.endgame.EndGameCondition;
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.exception.InvalidConfiguration;
-import com.avrgaming.civcraft.exception.InvalidNameException;
-import com.avrgaming.civcraft.lorestorage.LoreCraftableMaterial;
-import com.avrgaming.civcraft.main.CivGlobal;
-import com.avrgaming.civcraft.main.CivLog;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.object.Relation.Status;
-import com.avrgaming.civcraft.permission.PermissionGroup;
-import com.avrgaming.civcraft.structure.Capitol;
-import com.avrgaming.civcraft.structure.RespawnLocationHolder;
-import com.avrgaming.civcraft.structure.Structure;
-import com.avrgaming.civcraft.structure.TownHall;
-import com.avrgaming.civcraft.threading.TaskMaster;
-import com.avrgaming.civcraft.threading.tasks.UpdateTechBar;
-import com.avrgaming.civcraft.threading.timers.BeakerTimer;
-import com.avrgaming.civcraft.util.BlockCoord;
-import com.avrgaming.civcraft.util.ChunkCoord;
-import com.avrgaming.civcraft.util.CivColor;
-import com.avrgaming.civcraft.util.DateUtil;
-import com.avrgaming.civcraft.util.ItemManager;
+import com.civcraft.camp.WarCamp;
+import com.civcraft.config.CivSettings;
+import com.civcraft.config.ConfigGovernment;
+import com.civcraft.config.ConfigTech;
+import com.civcraft.database.SQL;
+import com.civcraft.database.SQLUpdate;
+import com.civcraft.endgame.EndConditionScience;
+import com.civcraft.endgame.EndGameCondition;
+import com.civcraft.exception.CivException;
+import com.civcraft.exception.InvalidConfiguration;
+import com.civcraft.exception.InvalidNameException;
+import com.civcraft.lorestorage.LoreCraftableMaterial;
+import com.civcraft.main.CivGlobal;
+import com.civcraft.main.CivLog;
+import com.civcraft.main.CivMessage;
+import com.civcraft.object.Relation.Status;
+import com.civcraft.permission.PermissionGroup;
+import com.civcraft.structure.Capitol;
+import com.civcraft.structure.RespawnLocationHolder;
+import com.civcraft.structure.Structure;
+import com.civcraft.structure.TownHall;
+import com.civcraft.threading.TaskMaster;
+import com.civcraft.threading.tasks.UpdateTechBar;
+import com.civcraft.threading.timers.BeakerTimer;
+import com.civcraft.util.BlockCoord;
+import com.civcraft.util.ChunkCoord;
+import com.civcraft.util.CivColor;
+import com.civcraft.util.DateUtil;
+import com.civcraft.util.ItemManager;
 
 public class Civilization extends SQLObject {
 

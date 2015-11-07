@@ -1,4 +1,4 @@
-package com.avrgaming.civcraft.siege;
+package com.civcraft.siege;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -6,9 +6,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import com.avrgaming.civcraft.exception.CivException;
-import com.avrgaming.civcraft.main.CivMessage;
-import com.avrgaming.civcraft.util.BlockCoord;
+import com.civcraft.exception.CivException;
+import com.civcraft.main.CivMessage;
+import com.civcraft.util.BlockCoord;
 
 public class CannonListener implements Listener {
 	

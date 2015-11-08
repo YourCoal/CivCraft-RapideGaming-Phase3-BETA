@@ -1,4 +1,4 @@
-# This configuration file contains all of the relevent town configuration information
+# This configuration file contains all of the relevant town configuration information
 # Use this to configure global town costs/settings as well as town levels and culture 
 # levels for towns.
 town:
@@ -560,58 +560,4 @@ upgrades:
       require_tech: 'tech_global_trade'
       require_structure: 's_grocer'
       category: 'Grocer'
-# Trommel Upgrades
-    - id: 'upgrade_trommel_level_2'
-      name: 'Upgrade Trommel Level 2'
-      action: 'set_trommel_level, 2'
-      cost: 5000.0
-      require_upgrade:
-      require_tech: 'tech_trade'
-      require_structure: 's_trommel'
-      category: 'Trommel'
-#
-    - id: 'upgrade_trommel_level_3'
-      name: 'Upgrade Trommel Level 3'
-      action: 'set_trommel_level, 3'
-      cost: 10000.0
-      require_upgrade: 'upgrade_trommel_level_2'
-      require_tech: 'tech_trade'
-      require_structure: 's_trommel'
-      category: 'Trommel'
-#
-    - id: 'upgrade_trommel_level_4'
-      name: 'Upgrade Trommel Level 4'
-      action: 'set_trommel_level, 4'
-      cost: 15000.0
-      require_upgrade: 'upgrade_trommel_level_3'
-      require_tech: 'tech_trade'
-      require_structure: 's_trommel'
-      category: 'Trommel'
-# Quarry Upgrades
-    - id: 'upgrade_quarry_level_2'
-      name: 'Upgrade Quarry Level 2'
-      action: 'set_quarry_level, 2'
-      cost: 5000.0
-      require_upgrade:
-      require_tech: 'tech_trade'
-      require_structure: 's_quarry'
-      category: 'Quarry'
-#
-    - id: 'upgrade_quarry_level_3'
-      name: 'Upgrade Quarry Level 3'
-      action: 'set_quarry_level, 3'
-      cost: 10000.0
-      require_upgrade: 'upgrade_quarry_level_2'
-      require_tech: 'tech_trade'
-      require_structure: 's_quarry'
-      category: 'Quarry'
-#
-    - id: 'upgrade_quarry_level_4'
-      name: 'Upgrade Quarry Level 4'
-      action: 'set_quarry_level, 4'
-      cost: 15000.0
-      require_upgrade: 'upgrade_quarry_level_3'
-      require_tech: 'tech_trade'
-      require_structure: 's_quarry'
-      category: 'Quarry'
-#
+

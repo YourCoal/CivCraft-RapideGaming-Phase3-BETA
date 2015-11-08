@@ -1,3 +1,9 @@
+#
+# This file contains any settings relevent to culture.
+# This includes culture levels for towns.
+#
+#
+
 # culture to beaker conversion ratio.
 beakers_per_culture: 0.1
 
@@ -5,59 +11,52 @@ beakers_per_culture: 0.1
 # level: - this entries' level number
 # amount - amount of culture needed for this level
 # chunks - number of chunks(radius from each edge town block) of culture granted for this level
+
 culture_levels:
     - level: 0
       amount: 0
       chunks: 6
-#
+ 
     - level: 1
-      amount: 100
+      amount: 500
       chunks: 8
-#  
+           
     - level: 2
-      amount: 325
+      amount: 10000
       chunks: 10
-#
+    
     - level: 3
-      amount: 650
-      chunks: 12
-#
+      amount: 20000
+      chunks: 13
+    
     - level: 4
-      amount: 1500
-      chunks: 14
-#
-    - level: 5
-      amount: 4250
-      chunks: 16
-#
-    - level: 6
-      amount: 8500
-      chunks: 18
-#
-    - level: 7
-      amount: 17500
-      chunks: 20
-#
-    - level: 8
-      amount: 30000
-      chunks: 23
-#
-    - level: 9
-      amount: 65000
-      chunks: 25
-#
-    - level: 10
       amount: 100000
-      chunks: 28
-#
-    - level: 11
-      amount: 185000
-      chunks: 30
-#
-    - level: 12
-      amount: 240000
+      chunks: 15
+
+    - level: 5
+      amount: 250000
+      chunks: 17
+
+    - level: 6
+      amount: 500000
+      chunks: 19
+
+    - level: 7
+      amount: 1000000
+      chunks: 22
+
+    - level: 8
+      amount: 2000000
+      chunks: 26
+ 
+    - level: 9
+      amount: 4000000
       chunks: 32
-#
+    
+    - level: 10
+      amount: 5000000
+      chunks: 40
+
 culture_biomes:
     - name: OCEAN
       coins: 0.0
@@ -65,21 +64,28 @@ culture_biomes:
       growth: 0.25
       happiness: 0.02
       beakers: 1.0
-#
+
     - name: DEEP_OCEAN
       coins: 0.0
       hammers: 0.5
       growth: 0.25
       happiness: 0.0
       beakers: 1.5
-#
+
+    - name: SMALL_MOUNTAINS
+      coins: 0.0
+      hammers: 2.5
+      growth: 0.5
+      happiness: 0.015
+      beakers: 0.5
+
     - name: PLAINS
       coins: 0.0
       hammers: 0.25
       growth: 2.0
       happiness: 0.025
       beakers: 0.5
-#
+
     - name: SUNFLOWER_PLAINS
       coins: 0.0
       hammers: 1.0

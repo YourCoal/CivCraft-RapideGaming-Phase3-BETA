@@ -51,7 +51,10 @@ public class CivData {
 	public static final int DIRT = 3;
 	public static final int GOLD_ORE = 14;
 	public static final int IRON_ORE = 15;
+	public static final int DYE = 351;
+	public static final byte LAPIS = 4;
 	public static final int PUMPKIN_PIE = 400;
+	
 	public static final int IRON_INGOT = 265;
 	public static final int GOLD_INGOT = 266;
 	public static final int WATER = 9;
@@ -107,7 +110,6 @@ public class CivData {
 	public static final int FISH = 349;
 	public static final int BREAD = 297;
 	public static final int GLOWSTONE = 89;
-	public static final int DYE = 351;
 	public static final int REDSTONE_TORCH_OFF = 75;
 	public static final int STONE_BRICK = 98;
 

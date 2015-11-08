@@ -134,7 +134,6 @@ public class Pasture extends Structure {
 	}
 	
 	public void clearEntities() {
-		// TODO Clear entities bound to us?
 	}
 
 	public void onBreed(LivingEntity entity) {

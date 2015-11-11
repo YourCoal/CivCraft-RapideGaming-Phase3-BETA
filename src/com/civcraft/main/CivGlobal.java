@@ -1503,9 +1503,8 @@ public class CivGlobal {
 			}
 		}
 	}
-
+	
 	public static boolean willInstantBreak(Material type) {
-
 		switch (type) {
 		case BED_BLOCK:
 		case BROWN_MUSHROOM:

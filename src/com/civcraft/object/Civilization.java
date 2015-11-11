@@ -1664,10 +1664,6 @@ public class Civilization extends SQLObject {
 				return;
 			}
 		}
-		
-		for (Town town : this.towns.values()) {
-			town.addUnusedBeakers(town.getBeakers().total / BeakerTimer.BEAKER_PERIOD);
-		}
 	}
 
 	public boolean areLeadersInactive() {

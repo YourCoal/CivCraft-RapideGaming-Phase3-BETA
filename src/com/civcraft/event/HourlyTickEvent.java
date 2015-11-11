@@ -9,6 +9,7 @@ import com.civcraft.exception.InvalidConfiguration;
 import com.civcraft.main.CivLog;
 import com.civcraft.threading.TaskMaster;
 import com.civcraft.threading.tasks.CultureProcessAsyncTask;
+import com.civcraft.threading.timers.CottageEventTimer;
 import com.civcraft.threading.timers.EffectEventTimer;
 import com.civcraft.threading.timers.SyncTradeTimer;
 
@@ -18,6 +19,7 @@ public class HourlyTickEvent implements EventInterface {
 	public void process() {
 		CivLog.info("TimerEvent: Hourly -------------------------------------");
 		TaskMaster.asyncTask("cultureProcess", new CultureProcessAsyncTask(), 0);
+		TaskMaster.asyncTask("CottageEventTimer", new CottageEventTimer(), 0);
 		TaskMaster.asyncTask("EffectEventTimer", new EffectEventTimer(), 0);
 		TaskMaster.syncTask(new SyncTradeTimer(), 0);
 		TaskMaster.syncTask(new CampHourlyTick(), 0);

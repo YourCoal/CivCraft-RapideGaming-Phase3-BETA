@@ -95,6 +95,7 @@ public class CivSettings {
 	public static Map<Integer, ConfigCottageLevel> cottageLevels = new HashMap<Integer, ConfigCottageLevel>();
 	public static ArrayList<ConfigTempleSacrifice> templeSacrifices = new ArrayList<ConfigTempleSacrifice>();
 	public static Map<Integer, ConfigMineLevel> mineLevels = new HashMap<Integer, ConfigMineLevel>();
+	public static Map<Integer, ConfigLabLevel> labLevels = new HashMap<Integer, ConfigLabLevel>();
 	
 	public static FileConfiguration wonderConfig; /* wonders.yml */
 	public static Map<String, ConfigBuildableInfo> wonders = new HashMap<String, ConfigBuildableInfo>();
@@ -359,6 +360,7 @@ public class CivSettings {
 		ConfigCottageLevel.loadConfig(structureConfig, cottageLevels);
 		ConfigTempleSacrifice.loadConfig(structureConfig, templeSacrifices);
 		ConfigMineLevel.loadConfig(structureConfig, mineLevels);
+		ConfigLabLevel.loadConfig(structureConfig, labLevels);
 		ConfigGovernment.loadConfig(governmentConfig, governments);
 		ConfigEnchant.loadConfig(enchantConfig, enchants);
 		ConfigUnit.loadConfig(unitConfig, units);

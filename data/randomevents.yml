@@ -1,328 +1,213 @@
+#w
+#
+# This file allows us to configure random events on the server.
+#
+# The following limitations are being enforced to reduce complexity(for now):
+# - Random events can only have a SUCCESS or FAILURE state, not multiple options.
+# 
+
+# Here is an explaination of the various options
+# id - unquie ID for this event
+# chance - chance for event to occur, out of 1000. 100 = 10% chance.
+# name - display name for the event
+# message - message to display when event occurs.
+# length - amount of time in hours to complete the requirements
+# 
+# The following sections are lists of components. Each represent and AND relationship
+# this means all of them will be executed.
+#
+# actions - list of components that run when this event happens
+# requirements- list of requirements that ALL must be completed to count as successful.
+# success - list of components that run when this event is completed successfully
+# failure - list of components that run when this event is failed.
+#
+#
+# --- Components -----
+# Each component has its own set of properties that are important to it.
+# All component properties are strings and must have quotes around them.
+# All components have a 'name' which must be unquie.
+#
+# I'll attempt to document available components here:
+#
+# SpawnMobs - Spawns in mobs when activated. 
+#     where - location to spawn. Possibilities are TownChunk or CultureChunk
+#     what - Entity name of the mob to spawn.
+#     amount - Number of entities to spawn
+#     spread - how tightly packed they should be when spawned.
+# 
+# KillMobs - Listens on entity death. If its the right entity and the right town, it registers
+#     where: only register if entity is in this area.
+#     what: only check for this entity name;
+#     amount: total needed to be successful.
+#
+
 # World Information
-max_x: 5000
-min_x: -5000
-max_z: 5000
-min_z: -5000
+max_x: 6000
+min_x: -6000
+max_z: 6000
+min_z: -6000
 
 random_events:
-#======================================================#
-#====================> Mob Events <====================#
-#======================================================#
- - id: 'event_slime_plague'
-   name: "Slime Plague"
-   chance: 50
-   message: 
-     - "Holy moth balls! A Slime plague is threatening to destroy the town!" 
-     - "Slaughter 10 of them or suffer a happiness penalty! You got 48 hours."
-   length: 48
-   actions:
-     - name: 'SpawnMobs'
-       where: 'TownChunk'
-       what: 'SLIME'
-       amount: '50'
-       spread: '64'
-   requirements:
-     - name: 'KillMobs'
-       where: 'TownChunk'
-       what: 'SLIME'
-       amount: '8'
-   success:
-     - name: 'MessageTown'
-       message: "We've cleared enough slime. We've averted the happiness penalty and gained 2 happiness for today."
-     - name: 'Happiness'
-       value: '2'
-       duration: '24'
-   failure:
-     - name: 'MessageTown'
-       message: "Arg! Our people are terrified and scared! We suffer a loss of 4 happiness for 2 days!"
-     - name: 'Unhappiness'
-       value: '2'
-       duration: '48'
-#
- - id: 'event_poverty'
-   name: "Povery"
-   chance: 50
-   message: 
-     - "Your town has not been able to supply food to the people. You are now recognized has a poverty town!" 
-     - "There are a huge amount of cattle near by. If you kill 15 them, your people will be encouraged to farm!"
-     - "Go now, you only got 48 hours!"
-   length: 48
-   actions:
-     - name: 'SpawnMobs'
-       where: 'TownChunk'
-       what: 'COW'
-       amount: '50'
-       spread: '64'
-   requirements:
-     - name: 'KillMobs'
-       where: 'TownChunk'
-       what: 'COW'
-       amount: '12'
-   success:
-     - name: 'MessageTown'
-       message: "We have fed our people! They now are encouraged to have farm growth doubled for 3 days so they do not go into poverty again."
-     - name: 'GrowthRate'
-       value: '2.0'
-       duration: '72'
-   failure:
-     - name: 'MessageTown'
-       message: "You did not slaughter enough cattle to survive your poverty times! Residents have died and you have lost growth for the next 2 days."
-     - name: 'GrowthRate'
-       value: '0.75'
-       duration: '48'
-#
- - id: 'event_large_bed_bugs'
-   name: "Large Bed Bugs!"
-   chance: 50
-   message: 
-     - "The town has an infestation of blueish-looking bed bugs! Residents are scared and terrified." 
-     - "If you can get rid of 10 of them in 48 hours, the residents will devote more time to science on them."
-     - "If you cannot clear them, then your residents will be unhappy and you will have less hammers!"
-   length: 48
-   actions:
-     - name: 'SpawnMobs'
-       where: 'TownChunk'
-       what: 'GUARDIAN'
-       amount: '50'
-       spread: '64'
-   requirements:
-     - name: 'KillMobs'
-       where: 'TownChunk'
-       what: 'GUARDIAN'
-       amount: '8'
-   success:
-     - name: 'MessageTown'
-       message: "The people are glad these monsters are dead and began researching them, giving us a science boost."
-     - name: 'BeakerRate'
-       value: '2.0'
-       duration: '72'
-   failure:
-     - name: 'MessageTown'
-       message: "People now refuse to leave their houses because the large beg bugs were not cleared out! You lose happiness and hammers."
-     - name: 'Unhappiness'
-       value: '4'
-       duration: '48'
-     - name: 'HammerRate'
-       value: '0.75'
-       duration: '48'
-#======================================================#
-#=================> Happiness Events <=================#
-#======================================================#
- - id: 'event_truffles'
-   name: "Truffles!"
-   chance: 50
-   message: 
-     - "Our local bakery have made some of the best truffles in all of CivCraft!"
-     - "Since they're so good, our people are going to be happier for the next 3 days!"
-   length: 72
-   actions:
-     - name: 'Happiness'
-       value: '4'
-       duration: '72'
-   requirements:
-   success:
-   failure:
-     - name: 'MessageTown'
-       message: "The happiness we've been getting from our truffles has diminished. It's yesterday's jam."
-#
- - id: 'event_dispute'
-   name: 'Land Dispute'
-   chance: 50
-   message:
-     - "Two local residents are having a dispute over their property boundaries. The two have managed to"
-     - "divide the town into two seperate factions, both accusing the other of side of being land thieves."
-     - "The only way to end the in-fighting is to lay down the heavy hand of the law. Which invariably steps"
-     - "on peoples toes. Causing unhappiness for the next 3 days."
-   length: 72
-   actions:
-     - name: 'Unhappiness'
-       value: '4'
-       duration: '72'
-   requirements:
-   success:
-   failure:
-     - name: 'MessageTown'
-       message: "The locals have finally gotten over the silly land dispute and are now going back to their lives as normal."
-#
- - id: 'event_herbs'
-   name: 'Herbs'
-   chance: 10
-   message:
-     - "Our medical scientists think they might be able to cure one of the most annoying illnesses that have plauged our civlization for so long."
-     - "If we're able to retrieve the right herbs, our scientists will have a chance to cure it@"
-     - " We have 12 hours to find the herbs. They will be a super benifet to you, so get them now!"
-   length: 12
-   actions:
-     - name: 'PickRandomLocation'
-       varname: 'loc'
-   requirements:
-     - name: 'LocationCheck'
-       varname: 'loc'
-   success:
-     - name: 'MessageTown'
-       message: "We've found the herbs! You have gained 10 happiness for 5 days!"
-     - name: 'Happiness'
-       value: '10'
-       duration: '120'
-   failure:
-     - name: 'MessageTown'
-       message: "We couldn't find the herbs in time! We will never know what we missed out on..."
-#======================================================#
-#===================> Hammer Events <==================#
-#======================================================#
- - id: 'event_productivity'
-   name: 'Productivity Soars!'
-   chance: 50
-   message:
-     - "The streets are bustling with activity! Everyone in the town is doing their best and working their hardest."
-     - "Due to carefully planning and skilled management. We've managed to increase the productivity in our town."
-     - "Our town is going to expreience increased hammer rates for the next 3 days!"
-   length: 72
-   actions:
-     - name: 'HammerRate'
-       value: '1.5'
-       duration: '72'
-   requirements:
-   success:
-   failure:
-     - name: 'MessageTown'
-       message: "The locals are burnt out and we're no longer getting our hammer bonus."
-#
- - id: 'event_lazy'
-   name: 'Lazyiness'
-   chance: 50
-   message:
-     - "An air of laziness has struck the town. People just aren't working as hard as they used to."
-     - "They'd rather relax and drink iced tea in the afternoons. We'll have to crack the whip to get them back to work!"
-     - "Our town is going to experience decreasted hammer rates for the next 3 days."
-   length: 72
-   actions:
-     - name: 'HammerRate'
-       value: '0.75'
-       duration: '72'
-   requirements:
-   success:
-   failure:
-     - name: 'MessageTown'
-       message: "The locals are finally back to work. Our hammer rates have returned to normal."
-#
- - id: 'event_adventurious_miners'
-   name: 'Adventurious Miners'
-   chance: 10
-   message:
-     - "The residents in your town decided to go out on and get you some ores!"
-     - "The town's mayor said they could go out of town to the wilderness to collect ores."
-     - "One of the miners found something quite unique. You need to go mine it or else you won't ever know what it is!"
-   length: 12
-   actions:
-     - name: 'PickRandomBlock'
-       varname: 'loc'
-   requirements:
-     - name: 'BlockBreak'
-       varname: 'loc'
-       playername_var: 'player'
-   success:
-     - name: 'MessageTown'
-       message: "You found the mega hammer block! Your hammerrate is now 4x higher as normal for 5 days!"
-     - name: 'HammerRate'
-       value: '4.0'
-       duration: '120'
-   failure:
-     - name: 'MessageTown'
-       message: "You didn't find the special block in time. Looks like you missed out on some good stuff."
-#======================================================#
-#===================> Beaker Events <==================#
-#======================================================#
- - id: 'event_drilling'
-   name: 'Drilling'
-   chance: 50
-   message:
-     - "Scientists have found remains of a large animal of bones. They think they are dinosoaur bones!"
-     - "From the research they are doing, you will experience increased beaker rates for the next 3 days!"
-   length: 72
-   actions:
-     - name: 'BeakerRate'
-       value: '1.5'
-       duration: '72'
-   requirements:
-   success:
-   failure:
-     - name: 'MessageTown'
-       message: "The scientists completed their work and we are no longer getting our beaker bonus."
-#
- - id: 'event_overused'
-   name: 'Overused'
-   chance: 50
-   message:
-     - "The sciencists in our labortory have used all of our materials on a failed project."
-     - "They are not out on their way to recollect them, or at least before you notice what they did."
-     - "Our town is going to experience decreasted beaker rates for the next 3 days."
-   length: 72
-   actions:
-     - name: 'BeakerRate'
-       value: '0.75'
-       duration: '72'
-   requirements:
-   success:
-   failure:
-     - name: 'MessageTown'
-       message: "Pur scientists have recollected materials they stole and destroyed. Our beakers are back to normal."
-#
- - id: 'event_neuclear_emergancy'
-   name: 'Neuclear Emergancy!'
-   chance: 10
-   message:
-     - "Your scientists were exploring the uses of neuclear energy, when darn old Bob stole some very explosive material!"
-     - "Our allies have arrested him and are currently torchering him, but the expolive material went missing."
-     - "Suposedly, the explosive material will be very hard to find. If you can find it in 12 hours, then you get 4x beakers!"
-     - "If you cannot collect it in the 12 hours, you will suffer extreme beaker loss and unhappiness!"
-   length: 12
-   actions:
-     - name: 'PickRandomBlock'
-       varname: 'loc'
-   requirements:
-     - name: 'BlockBreak'
-       varname: 'loc'
-       playername_var: 'player'
-   success:
-     - name: 'MessageTown'
-       message: "You found the expolives! Your beakerrate is now 4x higher as normal for 5 days!"
-     - name: 'BeakerRate'
-       value: '4.0'
-       duration: '120'
-   failure:
-     - name: 'MessageTown'
-       message: "You did not find the explosives in time and Russia is now coming for you. You now have an extreme beaker loss and unhappiness!"
-     - name: 'BeakerRate'
-       value: '0.01'
-       duration: '72'
-     - name: 'Unhappiness'
-       value: '25'
-       duration: '72'
-#======================================================#
-#====================> Coin Events <===================#
-#======================================================#
- - id: 'event_gold_rush'
-   name: 'Gold Rush!'
-   chance: 10
-   message:
-     - "There is a rumor going around the town that there is a large cache of coins, hidden somewhere out in the world."
-     - "If we can find the block it's hidden in and break it, we'll be able to collect a massive reward!"
-     - "The first person to break the block recieves a reward. We have 12 hours to find the coins."
-   length: 12
-   actions:
-     - name: 'PickRandomBlock'
-       varname: 'loc'
-   requirements:
-     - name: 'BlockBreak'
-       varname: 'loc'
-       playername_var: 'player'
-   success:
-     - name: 'MessageTown'
-       message: "One of the residents found the secret gold block and got 50,000 coins!"
-     - name: 'PayPlayer'
-       playername_var: 'player'
-       amount: '50000'
-   failure:
-     - name: 'MessageTown'
-       message: "You didn't find the gold in time and got no money."
+
+# ========= Maintenence Events =========
+
+    - id: 'event_slime_plague'
+      name: "Slime Plague"
+      chance: 50
+      message: 
+        - "Holy moth balls! A Slime plague is threatening to destroy the town." 
+        - "Slaughter 20 of them or suffer a happiness penalty!"
+      length: 48
+      actions:
+        - name: 'SpawnMobs'
+          where: 'TownChunk'
+          what: 'SLIME'
+          amount: '40'
+          spread: '100'
+      requirements:
+         - name: 'KillMobs'
+           where: 'TownChunk'
+           what: 'SLIME'
+           amount: '4'
+      success:
+         - name: 'MessageTown'
+           message: "We've cleared enough slime. We've averted the happiness penalty."
+         - name: 'GivePlatinum'
+           message: 'Saving the town, earning the %d!'
+      failure:
+         - name: 'MessageTown'
+           message: "Arg! Our people are terrified and scared! We suffer a happiness penalty"
+         - name: 'Unhappiness'
+           value: '3'
+           duration: '48'
+
+# ====== Events that Just kinda happen ============
+    # Happiness Events
+    - id: 'event_truffles'
+      name: 'Truffles!'
+      chance: 50
+      message:
+        - "Our local bakery have made some of the best truffles in all of CivCraft!"
+        - "Since they're so good, our people are going to be happier for the next 3 days!"
+      length: 72
+      actions:
+        - name: 'Happiness'
+          value: '5'
+          duration: '72'
+      requirements:
+      success:
+      failure:
+         - name: 'MessageTown'
+           message: "The happiness we've been getting from our truffles has expired. It's yesterday's jam."
+    
+#    - id: 'event_dispute'
+#      name: 'Land Dispute'
+#      chance: 50
+#      message:
+#        - "Two local residents are having a dispute over their property boundaries. The two have managed to"
+#        - "divide the town into two seperate factions, both accusing the other of side of being land thieves."
+#        - "The only way to end the in-fighting is to lay down the heavy hand of the law. Which invariably steps"
+#       - "on peoples toes. Causing unhappiness for the next 3 days."
+#      length: 72
+#      actions:
+#        - name: 'Unhappiness'
+#          value: '5'
+#          duration: '72'
+#      requirements:
+#      success:
+#      failure:
+#         - name: 'MessageTown'
+#           message: "The locals have finally gotten over the silly land dispute and are now going back to their lives as normal"
+      
+    # Hammer Events
+    - id: 'event_productivity'
+      name: 'Productivity Soars!'
+      chance: 50
+      message:
+        - "The streets are bustling with activity! Everyone in the town is doing their best and working their hardest."
+        - "Due to carefully planning and skilled management. We've managed to increase the productivity in our town."
+        - "Our town is going to expreience increased hammer rates for the next 3 days!"
+      length: 72
+      actions:
+         - name: 'HammerRate'
+           value: '1.5'
+           duration: '72'
+      requirements:
+      success:
+      failure:
+         - name: 'MessageTown'
+           message: "The locals are burnt out and we're no longer getting our hammer bonus."
+      
+#    - id: 'event_lazy'
+#      name: 'Lazyiness'
+#      chance: 50
+#      message:
+#        - "An air of laziness has struck the town. People just aren't working as hard as they used to."
+#        - "They'd rather relax and drink iced tea in the afternoons. We'll have to crack the whip to get them back to work!"
+#        - "Our town is going to experience decreasted hammer rates for the next 3 days."
+#      length: 72
+#      actions:
+#         - name: 'HammerRate'
+#           value: '0.70'
+#           duration: '72'
+#      requirements:
+#      success:
+#      failure:
+#         - name: 'MessageTown'
+#           message: "The locals are finally back to work. Our hammer rates have returned to normal."
+
+# ========== Opportunities ============
+
+    - id: 'event_herbs'
+      name: 'Herbs'
+      chance: 50
+      message:
+        - "Our medical scientists think they might be able to cure one of the many annoying illnesses that have"
+        - "plauged our civlization for so long. If we're able to retrieve the right herbs our scientists will have"
+        - "a chance to cure it, giving our town a happiness boost. We have 8 hours to find the herbs."
+      length: 8
+      actions:
+        - name: 'PickRandomLocation'
+          varname: 'loc'
+      requirements:
+        - name: 'LocationCheck'
+          varname: 'loc'
+      success:
+         - name: 'MessageTown'
+           message: "We've found the herbs! The people rejoice!"
+         - name: 'Happiness'
+           value: '5'
+           duration: '120'
+         - name: 'GivePlatinum'
+           message: 'Finding the herbs has earned you %d'
+      failure:
+         - name: 'MessageTown'
+           message: "We couldn't find the herbs in time!"
+ 
+    - id: 'event_gold_rush'
+      name: 'Gold Rush!'
+      chance: 50
+      message:
+        - "There is a rumor going around the town that there is a large cache of coins, hidden somewhere out in"
+        - "the world. If we can find the block it's hidden in and break it, we'll be able to collect a massive"
+        - "reward! The first person to break the block recieves a reward. We have 12 hours to find the coins."
+      length: 12
+      actions:
+        - name: 'PickRandomBlock'
+          varname: 'loc'
+      requirements:
+        - name: 'BlockBreak'
+          varname: 'loc'
+          playername_var: 'player'
+      success:
+         - name: 'MessageTown'
+           message: "One of the town residents have found the cache of coins!"
+         - name: 'PayPlayer'
+           playername_var: 'player'
+           amount: '75000'
+         - name: 'GivePlatinum'
+           message: 'Great Success! %d for finding the coins!'
+      failure:
+         - name: 'MessageTown'
+           message: "We couldn't find the coins in time!"
+        

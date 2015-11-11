@@ -114,9 +114,6 @@ public class Town extends SQLObject {
 	private PermissionGroup mayorGroup;
 	private PermissionGroup assistantGroup;
 	
-	/* Beakers */
-	private double unusedBeakers;
-	
 	// These are used to resolve reverse references after the database loads.
 	private String defaultGroupName;
 	private String mayorGroupName;
@@ -2990,18 +2987,6 @@ public class Town extends SQLObject {
 
 	public void setActiveEvent(RandomEvent activeEvent) {
 		this.activeEvent = activeEvent;
-	}
-
-	public double getUnusedBeakers() {
-		return unusedBeakers;
-	}
-
-	public void setUnusedBeakers(double unusedBeakers) {
-		this.unusedBeakers = unusedBeakers;
-	}	
-	
-	public void addUnusedBeakers(double more) {
-		this.unusedBeakers += more;
 	}
 	
 	public void markLastBuildableRefeshAsNow() {

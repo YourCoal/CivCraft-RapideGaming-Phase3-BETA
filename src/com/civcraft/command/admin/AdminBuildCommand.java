@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.civcraft.command.admin;
 
 import java.io.IOException;
@@ -42,7 +24,6 @@ public class AdminBuildCommand extends CommandBase {
 	public void init() {
 		command = "/ad build";
 		displayName = "Admin Build";
-		
 		commands.put("demolish", "[town] [location] demolish the structure at this location.");
 		commands.put("repair", "Fixes the nearest structure, requires confirmation.");
 		commands.put("destroywonder", "[id] destroyes this wonder.");
@@ -51,10 +32,8 @@ public class AdminBuildCommand extends CommandBase {
 		commands.put("validateall", "Gets all invalid buildables in the server.");
 		commands.put("listinvalid", "lists all invalid buildables.");
 		commands.put("showbuildable", "[loc] - show this buildable's y percertages.");
-
-		//commands.put("repairwonder", "Fixes the nearest wonder, requires confirmation.");		
 	}
-
+	
 	public void showbuildable_cmd() throws CivException {
 		String locString = getNamedString(1, "Complete location.");
 		
@@ -81,7 +60,6 @@ public class AdminBuildCommand extends CommandBase {
 	
 	public void validateall_cmd() throws CivException {
 		Buildable.invalidBuildables.clear();
-		
 		for (Structure struct : CivGlobal.getStructures()) {
 			if (struct.isStrategic()) {
 				struct.validate(null);
@@ -93,7 +71,6 @@ public class AdminBuildCommand extends CommandBase {
 				wonder.validate(null);
 			}
 		}
-		
 		CivMessage.sendSuccess(sender, "Validating all structures.");
 	}
 	
@@ -106,30 +83,23 @@ public class AdminBuildCommand extends CommandBase {
 			CivMessage.send(player, CivColor.Yellow+ChatColor.BOLD+"Would validate "+buildable.getDisplayName()+" at "+buildable.getCorner()+" are you sure? use '/ad validatenearest [town] yes' to confirm.");
 			return;
 		}
-		
 		buildable.validate(player);
 	}
 	
-	
 	public void destroynearest_cmd() throws CivException {				
-		
 		Town town = getNamedTown(1);
 		Player player = getPlayer();
-		
 		Buildable struct = town.getNearestStrucutreOrWonderInprogress(player.getLocation());
-		
 		if (args.length < 3 || !args[2].equalsIgnoreCase("yes")) {
 			CivMessage.send(player, CivColor.Yellow+ChatColor.BOLD+"Would destroy "+struct.getDisplayName()+" at "+struct.getCorner()+" are you sure? use '/ad destroynearest [town] yes' to confirm.");
 			return;
 		}
-		
 		struct.onDestroy();
 		CivMessage.send(player, struct.getDisplayName()+" has been destroyed.");
 	}
 	
 	public void destroywonder_cmd() throws CivException {
 		Town town = getNamedTown(1);
-		
 		if (args.length < 2) {
 			throw new CivException("enter wonder id to destroy.");
 		}
@@ -145,7 +115,6 @@ public class AdminBuildCommand extends CommandBase {
 		if (wonder == null) {
 			throw new CivException("no wonder with id "+args[2]+" or it is not built yet");
 		}
-		
 		wonder.fancyDestroyStructureBlocks();
 		try {
 			wonder.getTown().removeWonder(wonder);
@@ -160,9 +129,7 @@ public class AdminBuildCommand extends CommandBase {
 	
 	public void repair_cmd() throws CivException {
 		Player player = getPlayer();
-		
 		Buildable nearest = CivGlobal.getNearestBuildable(player.getLocation());
-		
 		if (nearest == null) {
 			throw new CivException ("Couldn't find a structure.");
 		}
@@ -173,7 +140,6 @@ public class AdminBuildCommand extends CommandBase {
 			CivMessage.send(player, CivColor.LightGray+"If yes, use /ad repair yes");
 			return;
 		}
-		
 		try {
 			nearest.repairFromTemplate();
 		} catch (IOException e) {
@@ -181,17 +147,14 @@ public class AdminBuildCommand extends CommandBase {
 			throw new CivException("IO error. Couldn't find template file:"+nearest.getSavedTemplatePath()+" ?");
 		}
 		CivMessage.sendSuccess(player, nearest.getDisplayName()+" Repaired.");
-		
 	}
 	
 	public void demolish_cmd() throws CivException {		
-		
 		if (args.length < 2) {
 			throw new CivException ("Enter a town and structure location.");
 		}
 		
 		Town town = getNamedTown(1);
-		
 		if (args.length < 3) {
 			CivMessage.sendHeading(sender, "Demolish Structure");
 			for (Structure struct : town.getStructures()) {
@@ -207,25 +170,21 @@ public class AdminBuildCommand extends CommandBase {
 			CivMessage.send(sender, CivColor.Rose+"No structure at "+args[2]);
 			return;
 		}
-		
 		struct.getTown().demolish(struct, true);
-		
-	
 		CivMessage.sendTown(struct.getTown(), struct.getDisplayName()+" has been demolished.");
 	}
-
+	
 	@Override
 	public void doDefaultAction() throws CivException {
 		showHelp();
 	}
-
+	
 	@Override
 	public void showHelp() {
 		showBasicHelp();
 	}
-
+	
 	@Override
 	public void permissionCheck() throws CivException {
-		
 	}
 }

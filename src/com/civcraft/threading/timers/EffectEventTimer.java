@@ -1,37 +1,16 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.civcraft.threading.timers;
 
-import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.civcraft.config.CivSettings;
-import com.civcraft.exception.InvalidConfiguration;
 import com.civcraft.main.CivGlobal;
 import com.civcraft.main.CivLog;
 import com.civcraft.main.CivMessage;
 import com.civcraft.object.AttrSource;
 import com.civcraft.object.Civilization;
 import com.civcraft.object.Town;
-import com.civcraft.structure.Cottage;
+import com.civcraft.structure.Lab;
 import com.civcraft.structure.Mine;
 import com.civcraft.structure.Structure;
 import com.civcraft.structure.TownHall;
@@ -77,13 +56,6 @@ public class EffectEventTimer extends CivAsyncTask {
 			
 			String[] split = struct.getEffectEvent().toLowerCase().split(":"); 
 			switch (split[0]) {
-			case "generate_coins":
-				if (struct instanceof Cottage) {
-					Cottage cottage = (Cottage)struct;
-					//cottage.generate_coins(this);
-					cottage.generateCoins(this);
-				}
-				break;
 			case "process_mine":
 				if (struct instanceof Mine) {
 					Mine mine = (Mine)struct;
@@ -94,14 +66,21 @@ public class EffectEventTimer extends CivAsyncTask {
 					}
 				}
 				break;
+			case "process_lab":
+				if (struct instanceof Lab) {
+					Lab lab = (Lab)struct;
+					try {
+						lab.process_lab(this);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				break;
 			}
 		}
 		
-		/*
-		 * Process any hourly attributes for this town.
-		 *  - Culture
-		 *  
-		 */
+		/* Process any hourly attributes for this town.
+		 *  - Culture */
 		for (Town town : CivGlobal.getTowns()) {
 			double cultureGenerated;
 			
@@ -113,41 +92,13 @@ public class EffectEventTimer extends CivAsyncTask {
 			}
 							
 			AttrSource cultureSources = town.getCulture();
-			
 			// Get amount generated after culture rate/bonus.
 			cultureGenerated = cultureSources.total;
 			cultureGenerated = Math.round(cultureGenerated);
 			town.addAccumulatedCulture(cultureGenerated);
-			
-			// Get from unused beakers.
-			DecimalFormat df = new DecimalFormat();
-			double unusedBeakers = town.getUnusedBeakers();
-	
-			try {
-				double cultureToBeakerConversion = CivSettings.getDouble(CivSettings.cultureConfig, "beakers_per_culture");
-				if (unusedBeakers > 0) {
-					double cultureFromBeakers = unusedBeakers*cultureToBeakerConversion;
-					cultureFromBeakers = Math.round(cultureFromBeakers);
-					unusedBeakers = Math.round(unusedBeakers);
-					
-					if (cultureFromBeakers > 0) {
-						CivMessage.sendTown(town, CivColor.LightGreen+"Converted "+CivColor.LightPurple+
-								df.format(unusedBeakers)+CivColor.LightGreen+" beakers into "+CivColor.LightPurple+
-								df.format(cultureFromBeakers)+CivColor.LightGreen+" culture since no tech was being researched.");
-						cultureGenerated += cultureFromBeakers;
-						town.addAccumulatedCulture(unusedBeakers);
-						town.setUnusedBeakers(0);
-					}
-				}
-			} catch (InvalidConfiguration e) {
-				e.printStackTrace();
-				return;
-			}
-			
 			cultureGenerated = Math.round(cultureGenerated);
 			CivMessage.sendTown(town, CivColor.LightGreen+"Generated "+CivColor.LightPurple+cultureGenerated+CivColor.LightGreen+" culture.");
 		}
-		
 		/* Checking for expired vassal states. */
 		CivGlobal.checkForExpiredRelations();
 	}
@@ -163,10 +114,6 @@ public class EffectEventTimer extends CivAsyncTask {
 			}
 		} else {
 			CivLog.error("COULDN'T GET LOCK FOR HOURLY TICK. LAST TICK STILL IN PROGRESS?");
-		}
-		
-				
+		}		
 	}
-	
-
 }

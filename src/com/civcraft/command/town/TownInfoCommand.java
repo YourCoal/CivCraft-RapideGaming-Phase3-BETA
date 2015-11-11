@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.civcraft.command.town;
 
 import java.text.DecimalFormat;
@@ -48,6 +30,7 @@ import com.civcraft.object.TradeGood;
 import com.civcraft.structure.Bank;
 import com.civcraft.structure.Buildable;
 import com.civcraft.structure.Cottage;
+import com.civcraft.structure.Lab;
 import com.civcraft.structure.Mine;
 import com.civcraft.structure.Structure;
 import com.civcraft.structure.TownHall;
@@ -67,6 +50,7 @@ public class TownInfoCommand extends CommandBase {
 		commands.put("culture", "Shows culture information for town.");
 		commands.put("trade", "Shows town trade good information.");
 		commands.put("mine", "Shows mine production information.");
+		commands.put("lab", "Shows mine production information.");
 		commands.put("hammers", "Shows town hammer information.");
 		commands.put("goodies", "Shows which goodies are being used by the town.");
 		commands.put("rates", "Shows the culture,growth,trade and cottage rates of this town.");
@@ -464,6 +448,38 @@ public class TownInfoCommand extends CommandBase {
 		out.add(CivColor.Green+"----------------------------");
 		out.add(CivColor.Green+"Sub Total: "+CivColor.Yellow+total);
 		out.add(CivColor.Green+"Total: "+CivColor.Yellow+df.format(total)+" hammers (estimate).");
+		CivMessage.send(sender, out);
+	}
+	
+	public void lab_cmd() throws CivException {
+		Town town = getSelectedTown();
+		ArrayList<String> out = new ArrayList<String>();	
+		CivMessage.sendHeading(sender, town.getName()+" Lab Info");
+		double total = 0;
+		for (Structure struct : town.getStructures()) {
+			if (!struct.getConfigId().equals("ti_lab")) {
+				continue;
+			}
+			
+			Lab lab = (Lab)struct;
+			String color;
+			if (struct.isActive()) {
+				color = CivColor.LightGreen;
+			} else {
+				color = CivColor.Rose;
+			}
+			
+			out.add(color+"Lab ("+struct.getCorner()+")");
+			out.add(CivColor.Green+"    level: "+CivColor.Yellow+lab.getLevel()+
+					CivColor.Green+" count: "+CivColor.Yellow+"("+lab.getCount()+"/"+lab.getMaxCount()+")");
+			out.add(CivColor.Green+"    beakers per tile: "+CivColor.Yellow+lab.getBeakersPerTile()+
+					CivColor.Green+" Last Result: "+CivColor.Yellow+lab.getLastResult().name());
+			total += lab.getBeakersPerTile()*9; //XXX estimate based on tile radius of 1.
+			
+		}
+		out.add(CivColor.Green+"----------------------------");
+		out.add(CivColor.Green+"Sub Total: "+CivColor.Yellow+total);
+		out.add(CivColor.Green+"Total: "+CivColor.Yellow+df.format(total)+" beakers (estimate).");
 		CivMessage.send(sender, out);
 	}
 	

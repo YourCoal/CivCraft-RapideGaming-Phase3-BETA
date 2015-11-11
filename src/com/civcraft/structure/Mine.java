@@ -165,5 +165,4 @@ public class Mine extends Structure {
 	public Result getLastResult() {
 		return this.getConsumeComponent().getLastResult();
 	}
-
 }

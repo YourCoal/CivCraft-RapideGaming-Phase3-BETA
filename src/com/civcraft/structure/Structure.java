@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.civcraft.structure;
 
 import java.io.IOException;
@@ -70,16 +52,21 @@ public class Structure extends Buildable {
 		/* Override in children */
 	}
 	
-	/*
-	 * I'm being a bit lazy here, I don't want to switch on the type id in more than one place
+	/* I'm being a bit lazy here, I don't want to switch on the type id in more than one place
 	 * so I've overloaded this function to handle both new structures and loaded ones. 
 	 * Either the center,id, and town are set (new structure being created now)
-	 * or result set is not null (structure being loaded)
-	 */
+	 * or result set is not null (structure being loaded) */
 	private static Structure _newStructure(Location center, String id, Town town, ResultSet rs) throws CivException, SQLException {
 		Structure struct;
 		
 		switch (id) {
+		case "ti_lab":
+			if (rs == null) {
+				struct = (Structure) new Lab(center, id, town);
+			} else {
+				struct = (Structure) new Lab(rs);
+			}
+			break;
 		case "s_quarry":
 			if (rs == null) {
 				struct = (Structure) new Quarry(center, id, town);

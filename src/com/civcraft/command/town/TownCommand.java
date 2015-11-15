@@ -483,6 +483,7 @@ public class TownCommand extends CommandBase {
 	}
 	
 	public void evict_cmd() throws CivException {
+		Civilization civ = getSenderCiv();
 		Town town = getSelectedTown();
 		Resident resident = getResident();
 		
@@ -496,8 +497,9 @@ public class TownCommand extends CommandBase {
 			throw new CivException(args[1]+" is not a member of this town.");
 		}
 		
-		if (!town.isInGroup("mayors", resident) && !town.isInGroup("assistants", resident)) {
-			throw new CivException("Only mayors and assistants of this town can evict residents.");
+		if (!town.isInGroup("mayors", resident) && !town.isInGroup("assistants", resident)
+				&& !civ.getLeaderGroup().hasMember(resident)) {
+			throw new CivException("Only mayors, assistants, and civilization leaders of this town can evict residents.");
 		}
 		
 		if (town.isInGroup("mayors", residentToKick) || town.isInGroup("assistants", residentToKick)) {
@@ -622,12 +624,13 @@ public class TownCommand extends CommandBase {
 			throw new CivException("Enter the amount you want to withdraw.");
 		}
 		
+		Civilization civ = getSenderCiv();
 		Town town = getSelectedTown();
 		Player player = getPlayer();
 		Resident resident = getResident();
 		
-		if (!town.playerIsInGroupName("mayors", player)) {
-			throw new CivException("Only mayors can use this command.");
+		if (!town.playerIsInGroupName("mayors", player) && !civ.getLeaderGroup().hasMember(resident)) {
+			throw new CivException("Only mayors and civilization leaders can use this command.");
 		}
 		
 		try {
@@ -712,9 +715,7 @@ public class TownCommand extends CommandBase {
 		newResident.validateJoinTown(town);
 		
 		CivGlobal.questionPlayer(player, CivGlobal.getPlayer(newResident), 
-				"Would you like to join the town of "+town.getName()+"?",
-				INVITE_TIMEOUT, join);
-		
+				"Would you like to join the town of "+town.getName()+"?", INVITE_TIMEOUT, join);
 		CivMessage.sendSuccess(sender, CivColor.LightGray+"Invited to "+args[1]+" to town "+town.getName());
 	}
 	

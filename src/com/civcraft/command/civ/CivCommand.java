@@ -259,7 +259,7 @@ public class CivCommand extends CommandBase {
 //	}
 	
 	public void disbandtown_cmd() throws CivException {
-		this.validLeaderAdvisor();
+		this.validLeader();
 		Town town = this.getNamedTown(1);
 		
 		if (town.getMotherCiv() != null) {

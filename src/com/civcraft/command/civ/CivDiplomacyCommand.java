@@ -179,7 +179,7 @@ public class CivDiplomacyCommand extends CommandBase {
 	}
 	
 	public void respond_cmd() throws CivException {
-		validLeaderAdvisor();
+		validLeaderDipAdvisor();
 		if (War.isWarTime()) {
 			throw new CivException("You cannot use this diplomacy command while it is WarTime.");
 		}
@@ -211,7 +211,7 @@ public class CivDiplomacyCommand extends CommandBase {
 	}
 	
 	public void request_cmd() throws CivException {
-		validLeaderAdvisor();
+		validLeaderDipAdvisor();
 		Civilization ourCiv = getSenderCiv();
 		if (War.isWarTime()) {
 			throw new CivException("You cannot use this diplomacy command while it is WarTime.");
@@ -281,7 +281,7 @@ public class CivDiplomacyCommand extends CommandBase {
 	}
 	
 	public void declare_cmd() throws CivException {
-		validLeaderAdvisor();
+		validLeaderDipAdvisor();
 		Civilization ourCiv = getSenderCiv();
 		if (War.isWarTime()) {
 			throw new CivException("You cannot use this diplomacy command while it is WarTime.");

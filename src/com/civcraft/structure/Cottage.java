@@ -218,10 +218,10 @@ public class Cottage extends Structure {
 			total_coins *= this.getTown().getBuffManager().getEffectiveDouble("buff_pyramid_cottage_bonus");
 		}
 		
-		if (this.getCiv().hasTechnology("tech_taxation")) {
+		if (this.getCiv().hasTechnology("tech:atom_developing")) {
 			double taxation_bonus;
 			try {
-				taxation_bonus = CivSettings.getDouble(CivSettings.techsConfig, "taxation_cottage_buff");
+				taxation_bonus = CivSettings.getDouble(CivSettings.techsConfig, "atom_developing_cottage_buff");
 				total_coins *= taxation_bonus;
 			} catch (InvalidConfiguration e) {
 				e.printStackTrace();

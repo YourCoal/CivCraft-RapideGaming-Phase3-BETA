@@ -84,7 +84,6 @@ public class CivGovCommand extends CommandBase {
 
 	@Override
 	public void permissionCheck() throws CivException {
-		validLeaderAdvisor();		
+		validLeader();
 	}
-
 }

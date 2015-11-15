@@ -3,7 +3,7 @@ package com.civcraft.camp;
 import com.civcraft.util.BlockCoord;
 
 public class CampBlock {
-	//XXX TODO merge this with structure block?
+	
 	private BlockCoord coord;
 	private Camp camp;
 	private boolean friendlyBreakable = false;
@@ -18,16 +18,19 @@ public class CampBlock {
 		this.camp = camp;
 		this.friendlyBreakable = friendlyBreakable;
 	}
-
+	
 	public BlockCoord getCoord() {
 		return coord;
 	}
+	
 	public void setCoord(BlockCoord coord) {
 		this.coord = coord;
 	}
+	
 	public Camp getCamp() {
 		return camp;
 	}
+	
 	public void setCamp(Camp camp) {
 		this.camp = camp;
 	}
@@ -56,8 +59,6 @@ public class CampBlock {
 		if (camp.hasMember(playerName)) {
 			return true;
 		}
-		
 		return false;
 	}
-	
 }

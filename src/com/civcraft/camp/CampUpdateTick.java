@@ -3,7 +3,7 @@ package com.civcraft.camp;
 import com.civcraft.threading.CivAsyncTask;
 
 public class CampUpdateTick extends CivAsyncTask {
-
+	
 	private Camp camp;
 	
 	public CampUpdateTick(Camp camp) {
@@ -21,7 +21,5 @@ public class CampUpdateTick extends CivAsyncTask {
 				camp.sifterLock.unlock();
 			}
 		} 
-		
 	}
-
 }

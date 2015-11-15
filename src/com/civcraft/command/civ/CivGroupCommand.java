@@ -18,9 +18,9 @@ public class CivGroupCommand extends CommandBase {
 		command = "/civ group";
 		displayName = "Civ Group";
 		
-		commands.put("add", "[name] [leaders|advisers] - Adds a member to the leader or adviser group.");
-		commands.put("remove", "[name] [leaders|advisers] - Removes a member to the leader or adviser group.");
-		commands.put("info", "[leaders|advisers] - Lists members of the leader or adviser group.");
+		commands.put("add", "[name] [leaders|dipadvisers|econadvisers] - Adds a member to the leader or an adviser group.");
+		commands.put("remove", "[name] [leaders|dipadvisers|econadvisers] - Removes a member to the leader or an adviser group.");
+		commands.put("info", "[leaders|dipadvisers|econadvisers] - Lists members of the leader or an adviser group.");
 		
 	}
 
@@ -33,8 +33,10 @@ public class CivGroupCommand extends CommandBase {
 		PermissionGroup grp = null;
 		if (groupName.equalsIgnoreCase("leaders")) {
 			grp = civ.getLeaderGroup();
-		} else if (groupName.equalsIgnoreCase("advisers")) {
-			grp = civ.getAdviserGroup();
+		} else if (groupName.equalsIgnoreCase("dipadvisers")) {
+			grp = civ.getDipAdviserGroup();
+		} else if (groupName.equalsIgnoreCase("econadvisers")) {
+			grp = civ.getEconAdviserGroup();
 		} else {
 			throw new CivException("Could not find group "+groupName);
 		}
@@ -71,8 +73,10 @@ public class CivGroupCommand extends CommandBase {
 		PermissionGroup grp = null;
 		if (groupName.equalsIgnoreCase("leaders")) {
 			grp = civ.getLeaderGroup();
-		} else if (groupName.equalsIgnoreCase("advisers")) {
-			grp = civ.getAdviserGroup();
+		} else if (groupName.equalsIgnoreCase("dipadvisers")) {
+			grp = civ.getDipAdviserGroup();
+		} else if (groupName.equalsIgnoreCase("econadvisers")) {
+			grp = civ.getEconAdviserGroup();
 		} else {
 			throw new CivException("Could not find group "+groupName);
 		}
@@ -106,8 +110,10 @@ public class CivGroupCommand extends CommandBase {
 			PermissionGroup grp = null;
 			if (args[1].equalsIgnoreCase("leaders")) {
 				grp = civ.getLeaderGroup();
-			} else if (args[1].equalsIgnoreCase("advisers")) {
-				grp = civ.getAdviserGroup();
+			} else if (args[1].equalsIgnoreCase("dipadvisers")) {
+				grp = civ.getDipAdviserGroup();
+			} else if (args[1].equalsIgnoreCase("econadvisers")) {
+				grp = civ.getEconAdviserGroup();
 			} else {
 				throw new CivException("Could not find group "+args[1]);
 			}
@@ -122,13 +128,12 @@ public class CivGroupCommand extends CommandBase {
 			
 		} else {
 			CivMessage.sendHeading(sender, "Civ Group Information");
-
 			PermissionGroup grp = civ.getLeaderGroup();
+			CivMessage.send(sender, grp.getName()+CivColor.LightGray+" ("+grp.getMemberCount()+" members)");	
+			grp = civ.getDipAdviserGroup();
 			CivMessage.send(sender, grp.getName()+CivColor.LightGray+" ("+grp.getMemberCount()+" members)");
-					
-			grp = civ.getAdviserGroup();
+			grp = civ.getEconAdviserGroup();
 			CivMessage.send(sender, grp.getName()+CivColor.LightGray+" ("+grp.getMemberCount()+" members)");
-
 		}
 	}
 	
@@ -136,15 +141,14 @@ public class CivGroupCommand extends CommandBase {
 	public void doDefaultAction() throws CivException {
 		showHelp();
 	}
-
+	
 	@Override
 	public void showHelp() {
 		showBasicHelp();
 	}
-
+	
 	@Override
 	public void permissionCheck() throws CivException {
-		this.validLeaderAdvisor();
+		this.validLeaderDipEconAdvisor();
 	}
-
 }

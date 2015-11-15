@@ -871,8 +871,11 @@ public class CivGlobal {
 			if (civ.getLeaderGroup() != null) {
 				groups.add(civ.getLeaderGroup());
 			}
-			if (civ.getAdviserGroup() != null) {
-				groups.add(civ.getAdviserGroup());
+			if (civ.getDipAdviserGroup() != null) {
+				groups.add(civ.getDipAdviserGroup());
+			}
+			if (civ.getEconAdviserGroup() != null) {
+				groups.add(civ.getEconAdviserGroup());
 			}
 		}
 		

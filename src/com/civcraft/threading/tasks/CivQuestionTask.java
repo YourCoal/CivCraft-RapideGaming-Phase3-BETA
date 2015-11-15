@@ -70,7 +70,14 @@ public class CivQuestionTask implements Runnable {
 			}
 		}
 		
-		for (Resident res : askedCiv.getAdviserGroup().getMemberList()) {
+		for (Resident res : askedCiv.getDipAdviserGroup().getMemberList()) {
+			try {
+				askPlayer(CivGlobal.getPlayer(res));
+			} catch (CivException e) {
+			}
+		}
+		
+		for (Resident res : askedCiv.getEconAdviserGroup().getMemberList()) {
 			try {
 				askPlayer(CivGlobal.getPlayer(res));
 			} catch (CivException e) {
@@ -99,7 +106,14 @@ public class CivQuestionTask implements Runnable {
 			}
 		}
 		
-		for (Resident res : askedCiv.getAdviserGroup().getMemberList()) {
+		for (Resident res : askedCiv.getDipAdviserGroup().getMemberList()) {
+			try {
+				notifyExpired(CivGlobal.getPlayer(res));
+			} catch (CivException e) {
+			}
+		}
+		
+		for (Resident res : askedCiv.getEconAdviserGroup().getMemberList()) {
 			try {
 				notifyExpired(CivGlobal.getPlayer(res));
 			} catch (CivException e) {

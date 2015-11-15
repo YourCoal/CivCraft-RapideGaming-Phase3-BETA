@@ -50,7 +50,6 @@ public class CottageEventTimer extends CivAsyncTask {
 				break;
 			}
 		}
-		CivGlobal.checkForExpiredRelations();
 	}
 	
 	@Override
@@ -63,6 +62,6 @@ public class CottageEventTimer extends CivAsyncTask {
 			}
 		} else {
 			CivLog.error("COULDN'T GET LOCK FOR HOURLY TICK. LAST TICK STILL IN PROGRESS?");
-		}	
+		}		
 	}
 }

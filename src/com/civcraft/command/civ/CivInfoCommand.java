@@ -177,10 +177,16 @@ public class CivInfoCommand extends CommandBase {
 			CivMessage.send(sender, CivColor.Green+"Leaders: "+CivColor.LightGreen+civ.getLeaderGroup().getMembersString());
 		}
 		
-		if (civ.getAdviserGroup() == null) {
-			CivMessage.send(sender, CivColor.Green+"Advisers: "+CivColor.Rose+"NONE");
+		if (civ.getDipAdviserGroup() == null) {
+			CivMessage.send(sender, CivColor.Green+"Diplomatic Advisers: "+CivColor.Rose+"NONE");
 		} else {
-			CivMessage.send(sender, CivColor.Green+"Advisers: "+CivColor.LightGreen+civ.getAdviserGroup().getMembersString());
+			CivMessage.send(sender, CivColor.Green+"Diplomatic Advisers: "+CivColor.LightGreen+civ.getDipAdviserGroup().getMembersString());
+		}
+		
+		if (civ.getEconAdviserGroup() == null) {
+			CivMessage.send(sender, CivColor.Green+"Economic Advisers: "+CivColor.Rose+"NONE");
+		} else {
+			CivMessage.send(sender, CivColor.Green+"Economic Advisers: "+CivColor.LightGreen+civ.getEconAdviserGroup().getMembersString());
 		}
 	    
 	    if (resident == null || civ.hasResident(resident)) {
@@ -190,7 +196,8 @@ public class CivInfoCommand extends CommandBase {
 					CivColor.Green+" Online: "+CivColor.LightGreen+civ.getOnlineResidents().size());
 	    }
 		
-		if (resident == null || civ.getLeaderGroup().hasMember(resident) || civ.getAdviserGroup().hasMember(resident) || isOP) {
+		if (resident == null || civ.getLeaderGroup().hasMember(resident) || civ.getDipAdviserGroup().hasMember(resident) ||
+				 civ.getEconAdviserGroup().hasMember(resident) || isOP) {
 			CivMessage.send(sender, CivColor.Green+"Treasury: "+CivColor.LightGreen+civ.getTreasury().getBalance()+CivColor.Green+" coins.");
 		}
 		

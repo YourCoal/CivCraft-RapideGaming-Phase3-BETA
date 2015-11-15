@@ -93,8 +93,8 @@ public class TradeGoodPopulator extends BlockPopulator {
     	Block signBlock = top.getRelative(direction);
     	signBlock.setType(Material.WALL_SIGN);
     	//TODO make sign a structure sign?
-    			//          Civ.protectedBlockTable.put(Civ.locationHash(signBlock.getLocation()), 
-    	//          		new ProtectedBlock(signBlock, null, null, null, ProtectedBlock.Type.TRADE_MARKER));
+    	//          Civ.protectedBlockTable.put(Civ.locationHash(signBlock.getLocation()), 
+    	//          new ProtectedBlock(signBlock, null, null, null, ProtectedBlock.Type.TRADE_MARKER));
 
     	BlockState state = signBlock.getState();
 

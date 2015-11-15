@@ -22,8 +22,6 @@ import com.civcraft.object.AttrSource;
 import com.civcraft.object.Buff;
 import com.civcraft.object.Civilization;
 import com.civcraft.object.CultureChunk;
-import com.civcraft.object.Relation;
-import com.civcraft.object.Relation.Status;
 import com.civcraft.object.Resident;
 import com.civcraft.object.Town;
 import com.civcraft.object.TradeGood;
@@ -33,6 +31,7 @@ import com.civcraft.structure.Cottage;
 import com.civcraft.structure.Lab;
 import com.civcraft.structure.Mine;
 import com.civcraft.structure.Structure;
+import com.civcraft.structure.Temple;
 import com.civcraft.structure.TownHall;
 import com.civcraft.structure.wonders.Wonder;
 import com.civcraft.util.CivColor;
@@ -46,6 +45,7 @@ public class TownInfoCommand extends CommandBase {
 		
 		commands.put("upkeep", "Shows town upkeep information.");
 		commands.put("cottage", "Shows cottage information for town.");
+		commands.put("temple", "Shows temple information for town.");
 		commands.put("structures", "Shows upkeep information related to structures.");
 		commands.put("culture", "Shows culture information for town.");
 		commands.put("trade", "Shows town trade good information.");
@@ -262,6 +262,7 @@ public class TownInfoCommand extends CommandBase {
 		CivMessage.send(sender, 
 				CivColor.Green+"Growth: "+CivColor.LightGreen+(town.getGrowthRate().total*100)+
 				CivColor.Green+" Culture: "+CivColor.LightGreen+(town.getCulture().total*100)+
+				CivColor.Green+" Temple: "+CivColor.LightGreen+(town.getTempleRate()*100)+
 				CivColor.Green+" Cottage: "+CivColor.LightGreen+(town.getCottageRate()*100)+
 				CivColor.Green+" Trade: "+CivColor.LightGreen+(town.getTradeRate()*100)+		
 				CivColor.Green+" Beakers: "+CivColor.LightGreen+(town.getBeakerRate().total*100)			
@@ -387,10 +388,10 @@ public class TownInfoCommand extends CommandBase {
 			}
 						
 			double coins = cottage.getCoinsGenerated();
-			if (town.getCiv().hasTechnology("tech_taxation")) {
+			if (town.getCiv().hasTechnology("tech:atom_developing")) {
 				double taxation_bonus;
 				try {
-					taxation_bonus = CivSettings.getDouble(CivSettings.techsConfig, "taxation_cottage_buff");
+					taxation_bonus = CivSettings.getDouble(CivSettings.techsConfig, "atom_developing_cottage_buff");
 					coins *= taxation_bonus;
 				} catch (InvalidConfiguration e) {
 					e.printStackTrace();
@@ -416,6 +417,46 @@ public class TownInfoCommand extends CommandBase {
 		out.add(CivColor.Green+"Cottage Rate: "+CivColor.Yellow+df.format(town.getCottageRate()*100)+"%");
 		total *= town.getCottageRate();
 		out.add(CivColor.Green+"Total: "+CivColor.Yellow+df.format(total)+" coins.");
+		CivMessage.send(sender, out);
+	}
+	
+	public void temple_cmd() throws CivException {
+		Town town = getSelectedTown();
+		ArrayList<String> out = new ArrayList<String>();	
+		CivMessage.sendHeading(sender, town.getName()+" Temple Info");
+		double total = 0;
+		for (Structure struct : town.getStructures()) {
+			if (!struct.getConfigId().equals("s_temple")) {
+				continue;
+			}
+			
+			Temple temple = (Temple)struct;
+			String color;
+			if (struct.isActive()) {
+				color = CivColor.LightGreen;
+			} else {
+				color = CivColor.Rose;
+			}
+			
+			double culture = temple.getCultureGenerated();
+			
+			if (!struct.isDestroyed()) {
+				out.add(color+"Cottage ("+struct.getCorner()+")");
+				out.add(CivColor.Green+"    level: "+CivColor.Yellow+temple.getLevel()+
+						CivColor.Green+" count: "+CivColor.Yellow+"("+temple.getCount()+"/"+temple.getMaxCount()+")");
+				out.add(CivColor.Green+"    base Culture: "+CivColor.Yellow+culture+
+						CivColor.Green+" Last Result: "+CivColor.Yellow+temple.getLastResult().name());
+			} else {
+				out.add(color+"Cottage ("+struct.getCorner()+")");
+				out.add(CivColor.Rose+"    DESTROYED ");
+			}
+			total += culture;
+		}
+		out.add(CivColor.Green+"----------------------------");
+		out.add(CivColor.Green+"Sub Total: "+CivColor.Yellow+total);
+		out.add(CivColor.Green+"Temple Rate: "+CivColor.Yellow+df.format(town.getTempleRate()*100)+"%");
+		total *= town.getTempleRate();
+		out.add(CivColor.Green+"Total: "+CivColor.Yellow+df.format(total)+" Culture.");
 		CivMessage.send(sender, out);
 	}
 	
@@ -594,7 +635,7 @@ public class TownInfoCommand extends CommandBase {
 		}
 		
 		if (resident == null || town.isInGroup("mayors", resident) || town.isInGroup("assistants", resident) || 
-				civ.getLeaderGroup().hasMember(resident) || civ.getAdviserGroup().hasMember(resident) || isAdmin) {
+				civ.getLeaderGroup().hasMember(resident) || civ.getEconAdviserGroup().hasMember(resident) || isAdmin) {
 			try {
 				CivMessage.send(sender, CivColor.Green+"Treasury: "+CivColor.LightGreen+town.getBalance()+CivColor.Green+" coins. Upkeep: "+CivColor.LightGreen+town.getTotalUpkeep()*town.getGovernment().upkeep_rate);
 				Structure bank = town.getStructureByType("s_bank");
@@ -631,21 +672,8 @@ public class TownInfoCommand extends CommandBase {
 			} else {
 				CivMessage.send(sender, CivColor.LightPurple+"Location:"+townhall.getCorner());
 			}
-			
-			String wars = "";
-			for (Relation relation : town.getCiv().getDiplomacyManager().getRelations()) {
-				if (relation.getStatus() == Status.WAR) {
-					wars += relation.getOtherCiv().getName()+", ";
-				}
-			}
-			
-			CivMessage.send(sender, CivColor.LightPurple+"Wars: "+wars);
-			
 		}
-		
 	}
-	
-	
 	
 	private void show_info() throws CivException {
 		Civilization civ = getSenderCiv();	

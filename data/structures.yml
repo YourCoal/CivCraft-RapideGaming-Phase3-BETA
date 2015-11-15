@@ -177,12 +177,12 @@ monument_levels:
 #=======================================================#
 mine_levels:
     - level: 1
-      hammers: 100.0
+      hammers: 50.0
       amount: 2
       count: 24
 #
     - level: 2
-      hammers: 125.0
+      hammers: 100.0
       amount: 4
       count: 48
 #
@@ -197,32 +197,32 @@ mine_levels:
       count: 96
 #
     - level: 5
-      hammers: 225.0
+      hammers: 250.0
       amount: 11
       count: 120
 #
     - level: 6
-      hammers: 250.0
+      hammers: 300.0
       amount: 13
       count: 144
 #
     - level: 7
-      hammers: 300.0
+      hammers: 350.0
       amount: 16
       count: 168
 #
     - level: 8
-      hammers: 325.0
+      hammers: 400.0
       amount: 18
       count: 192
 #
     - level: 9
-      hammers: 350.0
+      hammers: 450.0
       amount: 20
       count: 216
 #
     - level: 10
-      hammers: 400.0
+      hammers: 500.0
       amount: 24
       count: 240
 #=======================================================#
@@ -230,12 +230,12 @@ mine_levels:
 #=======================================================#
 lab_levels:
     - level: 1
-      beakers: 100.0
+      beakers: 50.0
       amount: 2
       count: 24
 #
     - level: 2
-      beakers: 125.0
+      beakers: 100.0
       amount: 4
       count: 48
 #
@@ -250,50 +250,46 @@ lab_levels:
       count: 96
 #
     - level: 5
-      beakers: 225.0
+      beakers: 250.0
       amount: 11
       count: 120
 #
     - level: 6
-      beakers: 250.0
+      beakers: 300.0
       amount: 13
       count: 144
 #
     - level: 7
-      beakers: 300.0
+      beakers: 350.0
       amount: 16
       count: 168
 #
     - level: 8
-      beakers: 325.0
+      beakers: 400.0
       amount: 18
       count: 192
 #
     - level: 9
-      beakers: 350.0
+      beakers: 450.0
       amount: 20
       count: 216
 #
     - level: 10
-      beakers: 400.0
+      beakers: 500.0
       amount: 24
       count: 240
 #=======================================================#
-#====================> Farm Levels <====================#
+#===============> Farm/Windmill Settings <==============#
 #=======================================================#
 farm:
     # Number of crops that will grow per 100% of growth rate.
     grows_per_tick: 6
-
     # Number of seconds it takes for a growth tick to fire, cannot be less than 1.
-    grow_tick_rate: 60
+    grow_tick_rate: 90
 
-##################### Windmill Settings #####################
 windmill:
-    # Max number of crops to plant per hour
-    # 16 crops per min.
-    plant_max: 16
-
+    # Max number of crops to plant per tick
+    plant_max: 4
 #################### Pasture Settings #######################
 pasture:
     # Amount of each mob that gets spawned per hour in the pasture.

@@ -49,7 +49,7 @@ public class MarketBuyCommand extends CommandBase {
 	}
 	
 	public void towns_cmd(Relation re) throws CivException {
-		this.validLeaderAdvisor();
+		this.validLeaderDipAdvisor();
 		Civilization senderCiv = this.getSenderCiv();
 		
 		if (args.length < 2) {
@@ -91,7 +91,7 @@ public class MarketBuyCommand extends CommandBase {
 	
 	
 	public void civs_cmd(Relation re) throws CivException {
-		this.validLeaderAdvisor();
+		this.validLeaderDipAdvisor();
 		Civilization senderCiv = this.getSenderCiv();
 		
 		if (args.length < 2) {

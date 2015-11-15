@@ -94,6 +94,7 @@ public class CivSettings {
 	public static Map<Integer, ConfigGrocerLevel> grocerLevels = new HashMap<Integer, ConfigGrocerLevel>();
 	public static Map<Integer, ConfigCottageLevel> cottageLevels = new HashMap<Integer, ConfigCottageLevel>();
 	public static ArrayList<ConfigTempleSacrifice> templeSacrifices = new ArrayList<ConfigTempleSacrifice>();
+	public static Map<Integer, ConfigTempleLevel> templeLevels = new HashMap<Integer, ConfigTempleLevel>();
 	public static Map<Integer, ConfigMineLevel> mineLevels = new HashMap<Integer, ConfigMineLevel>();
 	public static Map<Integer, ConfigLabLevel> labLevels = new HashMap<Integer, ConfigLabLevel>();
 	
@@ -316,7 +317,6 @@ public class CivSettings {
 		return cfg;
 	}
 	
-		
 	private static void loadConfigFiles() throws FileNotFoundException, IOException, InvalidConfigurationException {
 		cannonConfig = loadCivConfig("cannon.yml");
 		townConfig = loadCivConfig("town.yml");
@@ -359,6 +359,7 @@ public class CivSettings {
 		ConfigGrocerLevel.loadConfig(structureConfig, grocerLevels);
 		ConfigCottageLevel.loadConfig(structureConfig, cottageLevels);
 		ConfigTempleSacrifice.loadConfig(structureConfig, templeSacrifices);
+		ConfigTempleLevel.loadConfig(structureConfig, templeLevels);
 		ConfigMineLevel.loadConfig(structureConfig, mineLevels);
 		ConfigLabLevel.loadConfig(structureConfig, labLevels);
 		ConfigGovernment.loadConfig(governmentConfig, governments);
@@ -693,6 +694,16 @@ public class CivSettings {
 	public static int getMineMaxLevel() {
 		int returnLevel = 0;
 		for (Integer level : mineLevels.keySet()) {
+			if (returnLevel < level) {
+				returnLevel = level;
+			}
+		}
+		return returnLevel;
+	}
+	
+	public static int getTempleMaxLevel() {
+		int returnLevel = 0;
+		for (Integer level : templeLevels.keySet()) {
 			if (returnLevel < level) {
 				returnLevel = level;
 			}

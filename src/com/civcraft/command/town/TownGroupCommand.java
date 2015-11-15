@@ -27,6 +27,7 @@ import com.civcraft.exception.CivException;
 import com.civcraft.exception.InvalidNameException;
 import com.civcraft.main.CivGlobal;
 import com.civcraft.main.CivMessage;
+import com.civcraft.object.Civilization;
 import com.civcraft.object.Resident;
 import com.civcraft.object.Town;
 import com.civcraft.permission.PermissionGroup;
@@ -100,15 +101,17 @@ public class TownGroupCommand extends CommandBase {
 	}
 	
 	public void remove_cmd() throws CivException {
+		Civilization civ = getSenderCiv();
 		Town town = getSelectedTown();
 		Resident commandSenderResidnet = getResident();
+		Resident resident = getResident();
 		Resident oldMember = getNamedResident(1);
 		PermissionGroup grp = getNamedPermissionGroup(town, 2);
 				
-		if (grp == town.getMayorGroup()) {
+		if (grp == town.getMayorGroup() && !civ.getLeaderGroup().hasMember(resident)) {
 			if(!grp.hasMember(commandSenderResidnet)) {
-				throw new CivException("Only Mayors can remove members to the mayors group.");
-			} 
+				throw new CivException("Only Mayors and leaders can remove members in the mayors group.");
+			}
 			
 			if (grp.getMemberCount() == 1) {
 				throw new CivException("There must be at least one member in the mayors group.");
@@ -117,7 +120,6 @@ public class TownGroupCommand extends CommandBase {
 		
 		grp.removeMember(oldMember);
 		grp.save();
-		
 		CivMessage.sendSuccess(sender, "Removed "+oldMember.getName()+" from group "+grp.getName()+" in town "+town.getName());
 		
 		try {
@@ -214,5 +216,4 @@ public class TownGroupCommand extends CommandBase {
 	public void doDefaultAction() {
 		showHelp();
 	}
-
 }

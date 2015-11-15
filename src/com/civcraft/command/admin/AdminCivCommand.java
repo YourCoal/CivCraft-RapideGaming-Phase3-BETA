@@ -30,9 +30,11 @@ public class AdminCivCommand extends CommandBase {
 		
 		commands.put("disband", "[civ] - disbands this civilization");
 		commands.put("addleader", "[civ] [player] - adds this player to the leaders group.");
-		commands.put("addadviser", "[civ] [player] - adds this player to the advisers group.");
+		commands.put("adddipadviser", "[civ] [player] - adds this player to the dip advisers group.");
+		commands.put("addeconadviser", "[civ] [player] - adds this player to the econ advisers group.");
 		commands.put("rmleader", "[civ] [player] - removes this player from the leaders group.");
-		commands.put("rmadviser", "[civ] [player] - removes this player from the advisers group.");
+		commands.put("rmdipadviser", "[civ] [player] - removes this player from the dip advisers group.");
+		commands.put("rmeconadviser", "[civ] [player] - removes this player from the econ advisers group.");
 		commands.put("givetech", "[civ] [tech_id] - gives this civilization this technology.");
 		commands.put("beakerrate", "[civ] [amount] set this towns's beaker rate to this amount.");
 		commands.put("toggleadminciv", "[civ] - sets/unsets this civilization to an admin civ. Prevents war.");
@@ -274,16 +276,29 @@ public class AdminCivCommand extends CommandBase {
 		
 	}
 	
-	public void rmadviser_cmd() throws CivException {
+	public void rmdipadviser_cmd() throws CivException {
 		Civilization civ = getNamedCiv(1);
 		Resident resident = getNamedResident(2);
 		
-		if (civ.getAdviserGroup().hasMember(resident)) {
-			civ.getAdviserGroup().removeMember(resident);
+		if (civ.getDipAdviserGroup().hasMember(resident)) {
+			civ.getDipAdviserGroup().removeMember(resident);
 			civ.save();
-			CivMessage.sendSuccess(sender, "Removed "+resident.getName()+" to advisers group in "+civ.getName());
+			CivMessage.sendSuccess(sender, "Removed "+resident.getName()+" to dip advisers group in "+civ.getName());
 		} else {
-			CivMessage.sendError(sender, resident.getName()+" is not currently in the advisers group for "+civ.getName());
+			CivMessage.sendError(sender, resident.getName()+" is not currently in the dip advisers group for "+civ.getName());
+		}
+	}
+	
+	public void rmeconadviser_cmd() throws CivException {
+		Civilization civ = getNamedCiv(1);
+		Resident resident = getNamedResident(2);
+		
+		if (civ.getEconAdviserGroup().hasMember(resident)) {
+			civ.getEconAdviserGroup().removeMember(resident);
+			civ.save();
+			CivMessage.sendSuccess(sender, "Removed "+resident.getName()+" to econ advisers group in "+civ.getName());
+		} else {
+			CivMessage.sendError(sender, resident.getName()+" is not currently in the econ advisers group for "+civ.getName());
 		}
 	}
 	
@@ -300,15 +315,26 @@ public class AdminCivCommand extends CommandBase {
 		}
 	}
 	
-	public void addadviser_cmd() throws CivException {
+	public void adddipadviser_cmd() throws CivException {
 		Civilization civ = getNamedCiv(1);
 		Resident resident = getNamedResident(2);
 		
-		civ.getAdviserGroup().addMember(resident);
-		civ.getAdviserGroup().save();
+		civ.getDipAdviserGroup().addMember(resident);
+		civ.getDipAdviserGroup().save();
 		civ.save();
 		
-		CivMessage.sendSuccess(sender, "Added "+resident.getName()+" to advisers group in "+civ.getName());
+		CivMessage.sendSuccess(sender, "Added "+resident.getName()+" to dip advisers group in "+civ.getName());
+	}
+	
+	public void addeconadviser_cmd() throws CivException {
+		Civilization civ = getNamedCiv(1);
+		Resident resident = getNamedResident(2);
+		
+		civ.getEconAdviserGroup().addMember(resident);
+		civ.getEconAdviserGroup().save();
+		civ.save();
+		
+		CivMessage.sendSuccess(sender, "Added "+resident.getName()+" to econ advisers group in "+civ.getName());
 	}
 
 	public void addleader_cmd() throws CivException {

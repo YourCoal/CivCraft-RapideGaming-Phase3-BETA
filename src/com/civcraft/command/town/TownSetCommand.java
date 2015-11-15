@@ -1,29 +1,10 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.civcraft.command.town;
-
-
-import org.bukkit.entity.Player;
 
 import com.civcraft.command.CommandBase;
 import com.civcraft.exception.CivException;
 import com.civcraft.main.CivMessage;
+import com.civcraft.object.Civilization;
+import com.civcraft.object.Resident;
 import com.civcraft.object.Town;
 import com.civcraft.structure.Bank;
 import com.civcraft.structure.Blacksmith;
@@ -40,7 +21,6 @@ public class TownSetCommand extends CommandBase {
 	public void init() {
 		command = "/town set";
 		displayName = "Town Set";
-		
 		commands.put("taxrate", "Change the town's property tax rate.");
 		commands.put("flattax", "Change the town's flat tax on membership.");
 		commands.put("bankfee", "Change the town Bank's non member fee");
@@ -49,7 +29,6 @@ public class TownSetCommand extends CommandBase {
 		commands.put("libraryfee", "Change the town Library's non member fee");
 		commands.put("blacksmithfee", "Change the town Blacksmith's non member fee");
 		commands.put("stablefee", "Change the town Stable's non member fee");
-		
 		commands.put("scoutrate", "[10/30/60] Change the rate at which scout towers report no player positions.");
 		
 	}
@@ -71,7 +50,6 @@ public class TownSetCommand extends CommandBase {
 	
 		stable.setNonResidentFee(((double)feeInt/100));
 		stable.updateSignText();
-		
 		CivMessage.sendSuccess(sender, "Set Stable fee rate to "+feeInt+"%");
 	}
 	
@@ -236,12 +214,13 @@ public class TownSetCommand extends CommandBase {
 
 	@Override
 	public void permissionCheck() throws CivException {
+		Civilization civ = getSenderCiv();
 		Town town = getSelectedTown();
-		Player player = getPlayer();
+		Resident resident = getResident();
 		
-		if (!town.playerIsInGroupName("mayors", player) && !town.playerIsInGroupName("assistants", player)) {
-			throw new CivException("Only mayors and assistants can use this command.");
+		if (!town.isInGroup("mayors", resident) && !town.isInGroup("assistants", resident)
+				&& !civ.getLeaderGroup().hasMember(resident)) {
+			throw new CivException("Only mayors, assistants, and leaders can use this command.");
 		}		
 	}
-
 }

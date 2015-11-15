@@ -118,8 +118,8 @@ public class Barracks extends Structure {
 		}
 		
 		if (unit.id.equals("u_settler")) {
-			if (!this.getCiv().getLeaderGroup().hasMember(whoClicked) && !this.getCiv().getAdviserGroup().hasMember(whoClicked)) {
-				throw new CivException("You must be an adivser to the civilization in order to build a Settler.");
+			if (!this.getCiv().getLeaderGroup().hasMember(whoClicked) && !this.getCiv().getDipAdviserGroup().hasMember(whoClicked)) {
+				throw new CivException("You must be a leader or diplomatic to the civilization in order to build a Settler.");
 			}
 		}
 		

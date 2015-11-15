@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.civcraft.structure.wonders;
 
 import java.io.IOException;
@@ -44,7 +26,7 @@ import com.civcraft.util.BlockCoord;
 import com.civcraft.util.CivColor;
 
 public abstract class Wonder extends Buildable {
-
+	
 	public static String TABLE_NAME = "WONDERS";
 	private ConfigWonderBuff wonderBuffs = null;
 	
@@ -55,9 +37,8 @@ public abstract class Wonder extends Buildable {
 			this.delete();
 		}
 	}
-
+	
 	public Wonder(Location center, String id, Town town) throws CivException {
-
 		this.info = CivSettings.wonders.get(id);
 		this.setTown(town);
 		this.setCorner(new BlockCoord(center));
@@ -69,38 +50,35 @@ public abstract class Wonder extends Buildable {
 			throw new CivException("There is a wonder already here.");
 		}
 	}
-
+	
 	public void loadSettings() {
 		wonderBuffs = CivSettings.wonderBuffs.get(this.getConfigId());
-		
 		if (this.isComplete() && this.isActive()) {
 			this.addWonderBuffsToTown();
 		}
 	}
-
+	
 	public static void init() throws SQLException {
 		if (!SQL.hasTable(TABLE_NAME)) {
 			String table_create = "CREATE TABLE " + SQL.tb_prefix + TABLE_NAME+" (" + 
-					"`id` int(11) unsigned NOT NULL auto_increment," +
-					"`type_id` mediumtext NOT NULL," + 
-					"`town_id` int(11) DEFAULT NULL," + 
-					"`complete` bool NOT NULL DEFAULT '0'," +
-					"`builtBlockCount` int(11) DEFAULT NULL, " +
-					"`cornerBlockHash` mediumtext DEFAULT NULL," +
-					"`template_name` mediumtext DEFAULT NULL, "+
-					"`template_x` int(11) DEFAULT NULL, " +
-					"`template_y` int(11) DEFAULT NULL, " +
-					"`template_z` int(11) DEFAULT NULL, " +
-					"`hitpoints` int(11) DEFAULT '100'," +
-					"PRIMARY KEY (`id`)" + ")";
-			
+				"`id` int(11) unsigned NOT NULL auto_increment," +
+				"`type_id` mediumtext NOT NULL," + 
+				"`town_id` int(11) DEFAULT NULL," + 
+				"`complete` bool NOT NULL DEFAULT '0'," +
+				"`builtBlockCount` int(11) DEFAULT NULL, " +
+				"`cornerBlockHash` mediumtext DEFAULT NULL," +
+				"`template_name` mediumtext DEFAULT NULL, "+
+				"`template_x` int(11) DEFAULT NULL, " +
+				"`template_y` int(11) DEFAULT NULL, " +
+				"`template_z` int(11) DEFAULT NULL, " +
+				"`hitpoints` int(11) DEFAULT '100'," +
+				"PRIMARY KEY (`id`)" + ")";
 			SQL.makeTable(table_create);
 			CivLog.info("Created "+TABLE_NAME+" table");
 		} else {
 			CivLog.info(TABLE_NAME+" table OK!");
 		}		
 	}
-
 	
 	@Override
 	public void load(ResultSet rs) throws SQLException, CivException {
@@ -120,11 +98,8 @@ public abstract class Wonder extends Buildable {
 		this.setTemplateZ(rs.getInt("template_z"));
 		this.setComplete(rs.getBoolean("complete"));
 		this.setBuiltBlockCount(rs.getInt("builtBlockCount"));
-		
-		
 		this.getTown().addWonder(this);
 		bindStructureBlocks();
-		
 		if (this.isComplete() == false) {
 			try {
 				this.resumeBuildFromTemplate();
@@ -133,12 +108,12 @@ public abstract class Wonder extends Buildable {
 			}
 		}
 	}
-
+	
 	@Override
 	public void save() {
 		SQLUpdate.add(this);
 	}
-
+	
 	@Override
 	public void saveNow() throws SQLException {
 		HashMap<String, Object> hashmap = new HashMap<String, Object>();
@@ -155,21 +130,18 @@ public abstract class Wonder extends Buildable {
 		SQL.updateNamedObject(this, hashmap, TABLE_NAME);
 	}
 	
-	
 	@Override
 	public void delete() throws SQLException {
 		super.delete();
-		
 		if (this.wonderBuffs != null) {
 			for (ConfigBuff buff : this.wonderBuffs.buffs) {
 				this.getTown().getBuffManager().removeBuff(buff.id);
 			}
 		}
-		
 		SQL.deleteNamedObject(this, TABLE_NAME);
 		CivGlobal.removeWonder(this);
 	}
-
+	
 	@Override
 	public void updateBuildProgess() {
 		if (this.getId() != 0) {
@@ -178,7 +150,6 @@ public abstract class Wonder extends Buildable {
 			struct_hm.put("type_id", this.getConfigId());
 			struct_hm.put("complete", this.isComplete());
 			struct_hm.put("builtBlockCount", this.savedBlockCount);
-	
 			try {
 				SQL.updateNamedObjectAsync(this, struct_hm, TABLE_NAME);
 			} catch (SQLException e) {
@@ -186,7 +157,7 @@ public abstract class Wonder extends Buildable {
 			}	
 		} 
 	}
-
+	
 	public static boolean isWonderAvailable(String configId) {
 		if (CivGlobal.isCasualMode()) {
 			return true;
@@ -194,16 +165,17 @@ public abstract class Wonder extends Buildable {
 		
 		for (Wonder wonder : CivGlobal.getWonders()) {
 			if (wonder.getConfigId().equals(configId)) {
+				if (wonder.getConfigId().equals("w_colosseum")) {
+					return true;
+				}
 				if (wonder.isComplete()) {
 					return false;
 				}
 			}
 		}
-		
 		return true;
 	}
-
-
+	
 	@Override
 	public void processUndo() throws CivException {		
 		try {
@@ -215,14 +187,11 @@ public abstract class Wonder extends Buildable {
 		}
 		
 		CivMessage.global("The "+CivColor.LightGreen+this.getDisplayName()+CivColor.White+" has been unbuilt by "+this.getTown().getName()
-				+"("+this.getTown().getCiv().getName()+") with the undo command.");
-				
+			+"("+this.getTown().getCiv().getName()+") with the undo command.");
 		double refund = this.getCost();
 		this.getTown().depositDirect(refund);
 		CivMessage.sendTown(getTown(), "Town refunded "+refund+" coins.");
-		
 		this.unbindStructureBlocks();
-		
 		try {
 			delete();
 			getTown().removeWonder(this);
@@ -231,18 +200,15 @@ public abstract class Wonder extends Buildable {
 			throw new CivException("Internal database error.");
 		}
 	}
-
+	
 	@Override
 	public void build(Player player, Location centerLoc, Template tpl) throws Exception {
-
 		// We take the player's current position and make it the 'center' by moving the center location
 		// to the 'corner' of the structure.
 		Location savedLocation = centerLoc.clone();
-
 		centerLoc = this.repositionCenter(centerLoc, tpl.dir(), (double)tpl.size_x, (double)tpl.size_z);
 		Block centerBlock = centerLoc.getBlock();
 		// Before we place the blocks, give our build function a chance to work on it
-		
 		this.setTotalBlockCount(tpl.size_x*tpl.size_y*tpl.size_z);
 		// Save the template x,y,z for later. This lets us know our own dimensions.
 		// this is saved in the db so it remains valid even if the template changes.
@@ -251,30 +217,24 @@ public abstract class Wonder extends Buildable {
 		this.setTemplateY(tpl.size_y);
 		this.setTemplateZ(tpl.size_z);
 		this.setTemplateAABB(new BlockCoord(centerLoc), tpl);
-		
 		checkBlockPermissionsAndRestrictions(player, centerBlock, tpl.size_x, tpl.size_y, tpl.size_z, savedLocation);
 		this.runOnBuild(centerLoc, tpl);
-
 		// Setup undo information
 		getTown().lastBuildableBuilt = this;
 		tpl.saveUndoTemplate(this.getCorner().toString(), this.getTown().getName(), centerLoc);
 		tpl.buildScaffolding(centerLoc);
-		
 		// Player's center was converted to this building's corner, save it as such.
 		this.startBuildTask(tpl, centerLoc);
-		
 		this.save();
 		CivGlobal.addWonder(this);
 		CivMessage.global(this.getCiv().getName()+" has started construction of "+this.getDisplayName()+" in the town of "+this.getTown().getName());
 	}
-
-
+	
 	@Override
 	public String getDynmapDescription() {
 		return null;
 	}
-
-
+	
 	@Override
 	public String getMarkerIconName() {
 		return "beer";
@@ -284,7 +244,7 @@ public abstract class Wonder extends Buildable {
 	protected void runOnBuild(Location centerLoc, Template tpl) throws CivException {
 		return;
 	}
-
+	
 	public void onDestroy() {
 		if (!CivGlobal.isCasualMode()) {
 			//can be overriden in subclasses.
@@ -299,7 +259,7 @@ public abstract class Wonder extends Buildable {
 			}
 		}
 	}
-
+	
 	public static Wonder newWonder(Location center, String id, Town town) throws CivException {
 		try {
 			return _newWonder(center, id, town, null);
@@ -309,7 +269,7 @@ public abstract class Wonder extends Buildable {
 			return null;
 		}
 	}
-
+	
 	public static Wonder _newWonder(Location center, String id, Town town, ResultSet rs) throws CivException, SQLException {
 		Wonder wonder;
 		switch (id) {
@@ -353,6 +313,13 @@ public abstract class Wonder extends Buildable {
 				wonder = new ChichenItza(center, id, town);
 			} else {
 				wonder = new ChichenItza(rs);
+			}		
+			break;
+		case "w_colosseum":
+			if (rs == null) {
+				wonder = new Colosseum(center, id, town);
+			} else {
+				wonder = new Colosseum(rs);
 			}		
 			break;
 		case "w_council_of_eight":
@@ -435,10 +402,10 @@ public abstract class Wonder extends Buildable {
 			removeBuffFromTown(t, id);
 		}
 	}
-
+	
 	protected abstract void removeBuffs();
 	protected abstract void addBuffs();
-
+	
 	public void processCoinsFromCulture() {
 		int cultureCount = 0;
 		for (Town t : this.getCiv().getTowns()) {
@@ -446,11 +413,16 @@ public abstract class Wonder extends Buildable {
 		}
 		
 		double coinsPerCulture = Double.valueOf(CivSettings.buffs.get("buff_colossus_coins_from_culture").value);
-		
 		double total = coinsPerCulture*cultureCount;
 		this.getCiv().getTreasury().deposit(total);
-		
 		CivMessage.sendCiv(this.getCiv(), CivColor.LightGreen+"The Colossus generated "+CivColor.Yellow+total+CivColor.LightGreen+" coins from culture.");
 	}
 	
+	public void processCoinsFromColosseum() {
+		int townCount = this.getCiv().getTowns().size();
+		double coinsPerTown = Double.valueOf(CivSettings.buffs.get("buff_colosseum_coins_from_towns").value);
+		double total = coinsPerTown*townCount;
+		this.getCiv().getTreasury().deposit(total);
+		CivMessage.sendCiv(this.getCiv(), CivColor.LightGreen+"The Colosseum generated "+CivColor.Yellow+total+CivColor.LightGreen+" coins from ticket sales.");
+	}
 }

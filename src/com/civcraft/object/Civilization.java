@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.civcraft.object;
 
 import java.sql.ResultSet;
@@ -80,12 +62,14 @@ public class Civilization extends SQLObject {
 		
 	private EconObject treasury;
 	private PermissionGroup leaderGroup;
-	private PermissionGroup adviserGroup;
+	private PermissionGroup dipadviserGroup;
+	private PermissionGroup econadviserGroup;
 	
 	/* Strings used for reverse lookups. */
 	private String leaderName;
 	private String leaderGroupName;
-	private String advisersGroupName;
+	private String dipadvisersGroupName;
+	private String econadvisersGroupName;
 	private String capitolName;
 	
 	private ConcurrentHashMap<String, Town> towns = new ConcurrentHashMap<String, Town>();
@@ -164,7 +148,8 @@ public class Civilization extends SQLObject {
 					"`income_tax_rate` float NOT NULL DEFAULT 0," +
 					"`science_percentage` float NOT NULL DEFAULT 0,"+
 					"`leaderGroupName` mediumtext DEFAULT NULL,"+
-					"`advisersGroupName` mediumtext DEFAULT NULL,"+
+					"`dipadvisersGroupName` mediumtext DEFAULT NULL,"+
+					"`econadvisersGroupName` mediumtext DEFAULT NULL,"+
 					"`lastUpkeepTick` mediumtext DEFAULT NULL," +
 					"`lastTaxesTick` mediumtext DEFAULT NULL," +
 					"`adminCiv` boolean DEFAULT false,"+
@@ -195,7 +180,8 @@ public class Civilization extends SQLObject {
 		
 		capitolName = rs.getString("capitolName");
 		setLeaderGroupName(rs.getString("leaderGroupName"));
-		setAdvisersGroupName(rs.getString("advisersGroupName"));
+		setDipAdvisersGroupName(rs.getString("dipadvisersGroupName"));
+		setEconAdvisersGroupName(rs.getString("econadvisersGroupName"));
 		daysInDebt = rs.getInt("daysInDebt");
 		this.color = rs.getInt("color");
 		this.setResearchTech(CivSettings.techs.get(rs.getString("researchTech")));
@@ -245,7 +231,8 @@ public class Civilization extends SQLObject {
 		hashmap.put("leaderName", this.getLeader().getUUIDString());
 		hashmap.put("capitolName", this.capitolName);
 		hashmap.put("leaderGroupName", this.getLeaderGroupName());
-		hashmap.put("advisersGroupName", this.getAdvisersGroupName());
+		hashmap.put("dipadvisersGroupName", this.getDipAdvisersGroupName());
+		hashmap.put("econadvisersGroupName", this.getEconAdvisersGroupName());
 		hashmap.put("debt", this.getTreasury().getDebt());
 		hashmap.put("coins", this.getTreasury().getBalance());
 		hashmap.put("daysInDebt", this.daysInDebt);
@@ -413,8 +400,12 @@ public class Civilization extends SQLObject {
 			this.leaderGroup.delete();
 		}
 		
-		if (this.adviserGroup != null) {
-			this.adviserGroup.delete();
+		if (this.dipadviserGroup != null) {
+			this.dipadviserGroup.delete();
+		}
+		
+		if (this.econadviserGroup != null) {
+			this.econadviserGroup.delete();
 		}
 		
 		/* Delete all of our towns. */
@@ -448,12 +439,20 @@ public class Civilization extends SQLObject {
 		this.leaderGroupName = "leaders";
 	}
 
-	public String getAdvisersGroupName() {
-		return "advisers";
+	public String getDipAdvisersGroupName() {
+		return "dipadvisers";
+	}
+	
+	public String getEconAdvisersGroupName() {
+		return "econadvisers";
 	}
 
-	public void setAdvisersGroupName(String advisersGroupName) {
-		this.advisersGroupName = "advisers";
+	public void setDipAdvisersGroupName(String advisersGroupName) {
+		this.dipadvisersGroupName = "dipadvisers";
+	}
+	
+	public void setEconAdvisersGroupName(String advisersGroupName) {
+		this.econadvisersGroupName = "econadvisers";
 	}
 
 	public double getIncomeTaxRate() {
@@ -540,9 +539,13 @@ public class Civilization extends SQLObject {
 			leadersGroup.saveNow();
 			civ.setLeaderGroup(leadersGroup);
 		
-			PermissionGroup adviserGroup = new PermissionGroup(civ, "advisers");
-			adviserGroup.saveNow();
-			civ.setAdviserGroup(adviserGroup);
+			PermissionGroup dipadviserGroup = new PermissionGroup(civ, "dipadvisers");
+			dipadviserGroup.saveNow();
+			civ.setDipAdviserGroup(dipadviserGroup);
+			
+			PermissionGroup econadviserGroup = new PermissionGroup(civ, "econadvisers");
+			econadviserGroup.saveNow();
+			civ.setEconAdviserGroup(econadviserGroup);
 			
 			/* Save this civ in the db and hashtable. */
 			try {		
@@ -551,7 +554,8 @@ public class Civilization extends SQLObject {
 				e.printStackTrace();
 				civ.delete();
 				leadersGroup.delete();
-				adviserGroup.delete();
+				dipadviserGroup.delete();
+				econadviserGroup.delete();
 				throw e;
 			}
 			
@@ -578,12 +582,13 @@ public class Civilization extends SQLObject {
 	}
 
 	public void addGroup(PermissionGroup grp) {
-		
 		if (grp.getName().equalsIgnoreCase(this.leaderGroupName)) {
 			this.setLeaderGroup(grp);
-		} else if (grp.getName().equalsIgnoreCase(this.advisersGroupName)) {
-			this.setAdviserGroup(grp);
-		}		
+		} else if (grp.getName().equalsIgnoreCase(this.dipadvisersGroupName)) {
+			this.setDipAdviserGroup(grp);
+		} else if (grp.getName().equalsIgnoreCase(this.econadvisersGroupName)) {
+		this.setEconAdviserGroup(grp);
+		}
 	}
 
 	public PermissionGroup getLeaderGroup() {
@@ -594,12 +599,20 @@ public class Civilization extends SQLObject {
 		this.leaderGroup = leaderGroup;
 	}
 
-	public PermissionGroup getAdviserGroup() {
-		return adviserGroup;
+	public PermissionGroup getDipAdviserGroup() {
+		return dipadviserGroup;
 	}
 
-	public void setAdviserGroup(PermissionGroup adviserGroup) {
-		this.adviserGroup = adviserGroup;
+	public void setDipAdviserGroup(PermissionGroup adviserGroup) {
+		this.dipadviserGroup = adviserGroup;
+	}
+	
+	public PermissionGroup getEconAdviserGroup() {
+		return econadviserGroup;
+	}
+
+	public void setEconAdviserGroup(PermissionGroup adviserGroup) {
+		this.econadviserGroup = adviserGroup;
 	}
 
 	public Collection<Town> getTowns() {

@@ -146,8 +146,8 @@ public class CivResearchCommand extends CommandBase {
 		Resident resident = getResident();
 		Civilization civ = getSenderCiv();
 		
-		if (!civ.getLeaderGroup().hasMember(resident) && !civ.getAdviserGroup().hasMember(resident)) {
-			throw new CivException("Only civ leaders and advisers can access research.");
+		if (!civ.getLeaderGroup().hasMember(resident) && !civ.getEconAdviserGroup().hasMember(resident)) {
+			throw new CivException("Only civ leaders and economic advisers can access research.");
 		}		
 	}
 

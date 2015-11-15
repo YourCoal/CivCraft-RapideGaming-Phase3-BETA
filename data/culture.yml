@@ -225,3 +225,13 @@ culture_biomes:
    beakers: 1.25
    happiness: 0.015
 #
+#====================================#
+#==========> Other Biomes <==========#
+#====================================#
+ - name: UNKNOWN
+   coins: 5.0
+   growth: 2.5
+   hammers: 2.5
+   beakers: 2.5
+   happiness: 1.0
+   happiness: 1.0

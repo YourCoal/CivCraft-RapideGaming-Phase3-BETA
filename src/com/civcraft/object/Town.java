@@ -1796,7 +1796,7 @@ public class Town extends SQLObject {
 	}
 	
 	public AttrSource getGrowthRate() {
-		double rate = 1.0;
+		double rate = 1.25;
 		HashMap<String, Double> rates = new HashMap<String, Double>();
 		
 		ConfigHappinessState state = this.getHappinessState();
@@ -1892,21 +1892,23 @@ public class Town extends SQLObject {
 	
 	public double getCottageRate() {
 		double rate = getGovernment().cottage_rate;
-
 		double additional = rate*this.getBuffManager().getEffectiveDouble(Buff.COTTAGE_RATE);
 		rate += additional;
 		
-		/* Adjust for happiness state. */
 		rate *= this.getHappinessState().coin_rate;
 		return rate;
 	}
-
+	
+	public double getTemplateRate() {
+		double rate = getGovernment().culture_rate;
+		return rate;
+	}
+	
 	public double getSpreadUpkeep() throws InvalidConfiguration {
 		double total = 0.0;
 		double grace_distance = CivSettings.getDoubleTown("town.upkeep_town_block_grace_distance");
 		double base = CivSettings.getDoubleTown("town.upkeep_town_block_base");
 		double falloff = CivSettings.getDoubleTown("town.upkeep_town_block_falloff");
-		
 		Structure townHall = this.getTownHall();
 		if (townHall == null) {
 			CivLog.error("No town hall for "+getName()+" while getting spread upkeep.");
@@ -1914,7 +1916,6 @@ public class Town extends SQLObject {
 		}
 		
 		ChunkCoord townHallChunk = new ChunkCoord(townHall.getCorner().getLocation());
-		
 		for (TownChunk tc : this.getTownChunks()) {
 			if (tc.isOutpost()) {
 				continue;
@@ -2421,7 +2422,8 @@ public class Town extends SQLObject {
 		}
 		
 		if (!this.getMayorGroup().hasMember(resident) && !this.getAssistantGroup().hasMember(resident) && !this.getDefaultGroup().hasMember(resident)
-				&& !this.getCiv().getLeaderGroup().hasMember(resident) && !this.getCiv().getAdviserGroup().hasMember(resident)) {			
+				&& !this.getCiv().getLeaderGroup().hasMember(resident) && !this.getCiv().getDipAdviserGroup().hasMember(resident)
+				&& !this.getCiv().getEconAdviserGroup().hasMember(resident)) {			
 			throw new CivException("You do not have permission to select this town.");
 		}		
 	}

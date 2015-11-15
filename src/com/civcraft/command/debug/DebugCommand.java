@@ -326,10 +326,15 @@ public class DebugCommand extends CommandBase {
 			spawnCiv.setLeaderGroup(leaders);
 			leaders.save();
 			
-			PermissionGroup advisers = new PermissionGroup(spawnCiv, "advisers");
-			spawnCiv.addGroup(advisers);
-			spawnCiv.setAdviserGroup(advisers);
-			advisers.save();
+			PermissionGroup dipadvisers = new PermissionGroup(spawnCiv, "dipadvisers");
+			spawnCiv.addGroup(dipadvisers);
+			spawnCiv.setDipAdviserGroup(dipadvisers);
+			dipadvisers.save();
+			
+			PermissionGroup econadvisers = new PermissionGroup(spawnCiv, "econadvisers");
+			spawnCiv.addGroup(econadvisers);
+			spawnCiv.setEconAdviserGroup(econadvisers);
+			econadvisers.save();
 			
 			PermissionGroup mayors = new PermissionGroup(spawnCapitol, "mayors");
 			spawnCapitol.addGroup(mayors);
@@ -1010,10 +1015,8 @@ public class DebugCommand extends CommandBase {
 	}
 	
 	public void restoresigns_cmd() {
-		
-		CivMessage.send(sender, "restoring....");
+		CivMessage.send(sender, "Restoring....");
 		for (StructureSign sign : CivGlobal.getStructureSigns()) {
-			
 			BlockCoord bcoord = sign.getCoord();
 			Block block = bcoord.getBlock();
 			ItemManager.setTypeId(block, CivData.WALL_SIGN);
@@ -1037,11 +1040,8 @@ public class DebugCommand extends CommandBase {
 				s.setLine(3, lines[3]);
 			}
 			s.update();
-			
-			
 		}
-		
-		
+		CivMessage.send(sender, "Complete.");
 	}
 	
 	public void cleartradesigns_cmd() throws CivException {

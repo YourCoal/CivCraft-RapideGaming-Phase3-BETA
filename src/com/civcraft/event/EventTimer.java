@@ -75,10 +75,42 @@ public class EventTimer {
 			e.printStackTrace();
 		}
 		
-		/* Setup Hourly tick event. */
+		/* Setup Hourly tick event 1 (Runs trades and camps). */
 		try {
-			HourlyTickEvent hourlyTickEvent = new HourlyTickEvent();
-			new EventTimer("hourly", hourlyTickEvent, hourlyTickEvent.getNextDate());
+			HourlyTickEventMinute1 hourlyTickEvent1 = new HourlyTickEventMinute1();
+			new EventTimer("hourly1", hourlyTickEvent1, hourlyTickEvent1.getNextDate());
+		} catch (InvalidConfiguration e) {
+			e.printStackTrace();
+		}
+		
+		/* Setup Hourly tick event 2 (Runs cottages). */
+		try {
+			HourlyTickEventMinute2 hourlyTickEvent2 = new HourlyTickEventMinute2();
+			new EventTimer("hourly2", hourlyTickEvent2, hourlyTickEvent2.getNextDate());
+		} catch (InvalidConfiguration e) {
+			e.printStackTrace();
+		}
+		
+		/* Setup Hourly tick event 3 (Runs mines). */
+		try {
+			HourlyTickEventMinute3 hourlyTickEvent3 = new HourlyTickEventMinute3();
+			new EventTimer("hourly3", hourlyTickEvent3, hourlyTickEvent3.getNextDate());
+		} catch (InvalidConfiguration e) {
+			e.printStackTrace();
+		}
+		
+		/* Setup Hourly tick event 4 (Runs labs). */
+		try {
+			HourlyTickEventMinute4 hourlyTickEvent4 = new HourlyTickEventMinute4();
+			new EventTimer("hourly4", hourlyTickEvent4, hourlyTickEvent4.getNextDate());
+		} catch (InvalidConfiguration e) {
+			e.printStackTrace();
+		}
+		
+		/* Setup Hourly tick event 5 (Runs culture). */
+		try {
+			HourlyTickEventMinute5 hourlyTickEvent5 = new HourlyTickEventMinute5();
+			new EventTimer("hourly5", hourlyTickEvent5, hourlyTickEvent5.getNextDate());
 		} catch (InvalidConfiguration e) {
 			e.printStackTrace();
 		}
@@ -114,9 +146,7 @@ public class EventTimer {
 		} catch (InvalidConfiguration e) {
 			e.printStackTrace();
 		}
-		
 	}
-	
 	
 	public EventTimer(String name, EventInterface eventFunction, Calendar start) {
 		try {

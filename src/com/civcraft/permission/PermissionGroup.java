@@ -220,7 +220,8 @@ public class PermissionGroup extends SQLObject {
 	private static boolean isCivProtectedGroup(String name) {
 		switch (name.toLowerCase()) {
 		case "leaders":
-		case "advisers":
+		case "dipadvisers":
+		case "econadvisers":
 			return true;
 		}
 		return false;

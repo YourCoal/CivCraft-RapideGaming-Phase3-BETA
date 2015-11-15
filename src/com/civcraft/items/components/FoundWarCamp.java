@@ -48,8 +48,8 @@ public class FoundWarCamp extends ItemComponent implements CallbackInterface {
 		}
 		
 		if (!resident.getCiv().getLeaderGroup().hasMember(resident) &&
-			!resident.getCiv().getAdviserGroup().hasMember(resident)) {
-			throw new CivException("You must be a leader or adviser of the civilization to found a war camp.");
+			!resident.getCiv().getDipAdviserGroup().hasMember(resident)) {
+			throw new CivException("You must be a leader or diplomatic adviser of the civilization to found a war camp.");
 		}
 		
 		if (!War.isWarTime()) {

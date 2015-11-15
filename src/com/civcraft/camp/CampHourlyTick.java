@@ -3,7 +3,7 @@ package com.civcraft.camp;
 import com.civcraft.main.CivGlobal;
 
 public class CampHourlyTick implements Runnable {
-
+	
 	@Override
 	public void run() {
 		for (Camp camp : CivGlobal.getCamps()) {
@@ -17,5 +17,4 @@ public class CampHourlyTick implements Runnable {
 			}
 		}
 	}
-
 }

@@ -116,7 +116,7 @@ public class CivSetCommand extends CommandBase {
 
 	@Override
 	public void permissionCheck() throws CivException {
-		this.validLeaderAdvisor();
+		this.validLeaderDipAdvisor();
 	}
 
 }

@@ -1899,11 +1899,6 @@ public class Town extends SQLObject {
 		return rate;
 	}
 	
-	public double getTemplateRate() {
-		double rate = getGovernment().culture_rate;
-		return rate;
-	}
-	
 	public double getSpreadUpkeep() throws InvalidConfiguration {
 		double total = 0.0;
 		double grace_distance = CivSettings.getDoubleTown("town.upkeep_town_block_grace_distance");

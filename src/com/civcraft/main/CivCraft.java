@@ -12,6 +12,7 @@ import pvptimer.PvPListener;
 import pvptimer.PvPTimer;
 
 import com.anticheat.ACManager;
+import com.avrgaming.moblib.MobLib;
 import com.civcraft.command.AcceptCommand;
 import com.civcraft.command.BuildCommand;
 import com.civcraft.command.DenyCommand;
@@ -49,6 +50,9 @@ import com.civcraft.listener.MarkerPlacementManager;
 import com.civcraft.listener.PlayerListener;
 import com.civcraft.lorestorage.LoreCraftableMaterialListener;
 import com.civcraft.lorestorage.LoreGuiItemListener;
+import com.civcraft.mobs.MobSpawner;
+import com.civcraft.mobs.listeners.MobListener;
+import com.civcraft.mobs.timers.MobSpawnerTimer;
 import com.civcraft.nocheat.NoCheatPlusSurvialFlyHandler;
 import com.civcraft.populators.TradeGoodPopulator;
 import com.civcraft.randomevents.RandomEventSweeper;
@@ -142,7 +146,9 @@ public final class CivCraft extends JavaPlugin {
 		TaskMaster.asyncTask(new StructureValidationChecker(), TimeTools.toTicks(120));
 		TaskMaster.asyncTimer("StructureValidationPunisher", new StructureValidationPunisher(), TimeTools.toTicks(3600));
 		TaskMaster.asyncTimer("SessionDBAsyncTimer", new SessionDBAsyncTimer(), 10);
+		
 		TaskMaster.asyncTimer("pvptimer", new PvPTimer(), TimeTools.toTicks(30));
+		TaskMaster.syncTimer("MobSpawner", new MobSpawnerTimer(), TimeTools.toTicks(15));
 	}
 	
 	private void registerEvents() {
@@ -157,6 +163,7 @@ public final class CivCraft extends JavaPlugin {
 		pluginManager.registerEvents(new LoreCraftableMaterialListener(), this);
 		pluginManager.registerEvents(new LoreGuiItemListener(), this);
 		pluginManager.registerEvents(new DisableXPListener(), this);
+		pluginManager.registerEvents(new MobListener(), this);
 		pluginManager.registerEvents(new IronCannonListener(), this);
 		pluginManager.registerEvents(new BronzeCannonListener(), this);
 		pluginManager.registerEvents(new SteelCannonListener(), this);
@@ -226,7 +233,9 @@ public final class CivCraft extends JavaPlugin {
 		} else {
 			CivLog.warning("NoCheatPlus not found, not registering NCP hooks. This is fine if you're not using NCP.");
 		}
-		startTimers();	
+		MobLib.registerAllEntities();
+		startTimers();
+		MobSpawner.register();
 	}
 	
 	public boolean hasPlugin(String name) {
@@ -237,6 +246,7 @@ public final class CivCraft extends JavaPlugin {
 	
 	@Override
 	public void onDisable() {
+		MobSpawner.despawnAll();
 	}
 	
 	public boolean isError() {

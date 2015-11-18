@@ -38,6 +38,7 @@ import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
+import com.avrgaming.moblib.MobLib;
 import com.civcraft.cache.ArrowFiredCache;
 import com.civcraft.cache.CivCache;
 import com.civcraft.config.CivSettings;
@@ -55,6 +56,7 @@ import com.civcraft.main.CivData;
 import com.civcraft.main.CivGlobal;
 import com.civcraft.main.CivLog;
 import com.civcraft.main.CivMessage;
+import com.civcraft.mobs.components.MobComponent;
 import com.civcraft.object.Resident;
 import com.civcraft.threading.TaskMaster;
 import com.civcraft.util.CivColor;
@@ -285,11 +287,11 @@ public class CustomItemManager implements Listener {
 		}
 		
 		if (defendingPlayer == null) {
-//			if (event.getEntity() instanceof LivingEntity) {
-//				if (MobLib.isMobLibEntity((LivingEntity) event.getEntity())) {
-//					MobComponent.onDefense(event.getEntity(), event);
-//				}	
-//			}
+			if (event.getEntity() instanceof LivingEntity) {
+				if (MobLib.isMobLibEntity((LivingEntity) event.getEntity())) {
+					MobComponent.onDefense(event.getEntity(), event);
+				}	
+			}
 			return;
 		} else {
 			/* Search equipt items for defense event. */

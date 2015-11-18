@@ -66,6 +66,7 @@ import com.civcraft.main.CivData;
 import com.civcraft.main.CivGlobal;
 import com.civcraft.main.CivLog;
 import com.civcraft.main.CivMessage;
+import com.civcraft.mobs.timers.MobSpawnerTimer;
 import com.civcraft.object.CultureChunk;
 import com.civcraft.object.Resident;
 import com.civcraft.road.Road;
@@ -110,6 +111,7 @@ public class PlayerListener implements Listener {
 		
 		CivGlobal.playerFirstLoginMap.put(event.getPlayer().getName(), new Date());
 		PlayerLocationCacheUpdate.playerQueue.add(event.getPlayer().getName());
+		MobSpawnerTimer.playerQueue.add((event.getPlayer().getName()));
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)
@@ -120,11 +122,10 @@ public class PlayerListener implements Listener {
 					" from:"+event.getFrom().getBlockX()+","+event.getFrom().getBlockY()+","+event.getFrom().getBlockZ());
 		}
 	}
-		
+	
 	private void setModifiedMovementSpeed(Player player) {
 		/* Change move speed based on armor. */
 		double speed = CivSettings.normal_speed;
-		
 		Resident resident = CivGlobal.getResident(player);
 		if (resident != null && resident.isOnRoad()) {	
 			if (player.getVehicle() != null && player.getVehicle().getType().equals(EntityType.HORSE)) {
@@ -205,7 +206,8 @@ public class PlayerListener implements Listener {
 				resident.previewUndo.clear();
 			}
 			resident.clearInteractiveMode();
-		}		
+		}
+		MobSpawnerTimer.playerQueue.remove((event.getPlayer().getName()));
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR)

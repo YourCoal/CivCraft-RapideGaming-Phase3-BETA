@@ -57,6 +57,9 @@ import com.civcraft.main.CivData;
 import com.civcraft.main.CivGlobal;
 import com.civcraft.main.CivLog;
 import com.civcraft.main.CivMessage;
+import com.civcraft.mobs.MobSpawner;
+import com.civcraft.mobs.MobSpawner.CustomMobLevel;
+import com.civcraft.mobs.MobSpawner.CustomMobType;
 import com.civcraft.object.Civilization;
 import com.civcraft.object.CultureChunk;
 import com.civcraft.object.Resident;
@@ -189,6 +192,26 @@ public class DebugCommand extends CommandBase {
 		commands.put("titaniumcannon", "builds a titanium cannon.");
 		commands.put("saveinv", "save an inventory");
 		commands.put("restoreinv", "restore your inventory.");
+		commands.put("spawn", "spawns a mob.");
+	}
+	
+	public void spawn_cmd() throws CivException {
+		Player player = getPlayer();		
+		String mob = getNamedString(1, "name");
+		String lvl = getNamedString(2, "level");
+		
+		MobSpawner.CustomMobType type = CustomMobType.valueOf(mob.toUpperCase());
+		MobSpawner.CustomMobLevel level = CustomMobLevel.valueOf(lvl.toUpperCase());
+		
+		if (type == null) {
+			throw new CivException("no mob named:"+mob);
+		}
+		
+		if (level == null) {
+			throw new CivException("no level named:"+lvl);
+		}
+		
+		MobSpawner.spawnCustomMob(type, level, player.getLocation());
 	}
 	
 	public void saveinv_cmd() throws CivException {

@@ -61,6 +61,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import com.avrgaming.moblib.MobLib;
 import com.civcraft.cache.ArrowFiredCache;
 import com.civcraft.cache.CannonFiredCache;
 import com.civcraft.cache.CivCache;
@@ -1290,6 +1291,10 @@ public class BlockListener implements Listener {
 			event.getSpawnReason().equals(SpawnReason.BUILD_IRONGOLEM)) {
 				event.setCancelled(true);
 				return;
+		}
+		
+		if (MobLib.isMobLibEntity(event.getEntity())) {
+			return;
 		}
 		
 		if (event.getEntity().getType().equals(EntityType.ZOMBIE) ||

@@ -70,7 +70,7 @@ public class Behemoth extends CommonCustomMob implements ICustomMob {
 			break;
 		case BRUTAL:
 		    defense = new MobComponentDefense(17);
-		    setMaxHealth(60);
+		    setMaxHealth(75);
 		    modifySpeed(1.5);
 		    this.setAttack(16.0);
 		    this.addDrop("civ:catalyst_4", 0.05);

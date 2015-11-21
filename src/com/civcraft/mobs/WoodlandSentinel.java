@@ -59,7 +59,7 @@ public class WoodlandSentinel extends CommonCustomMob implements ICustomMob {
 			break;
 		case ELITE:
 		    defense = new MobComponentDefense(13);
-		    setMaxHealth(60);
+		    setMaxHealth(75);
 		    modifySpeed(1.4);
 		    this.setAttack(12.0);
 		    this.addDrop("civ:catalyst_3", 0.05);

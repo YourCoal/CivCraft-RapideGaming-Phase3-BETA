@@ -15,6 +15,7 @@ valid_mods:
     - name: 'Forge Mod Loader'
       checksums: 
         - '1998989615'
+        - '3917628473'
 
     - name: 'net.minecraft.client.main.Main'
       checksums: 
@@ -23,6 +24,7 @@ valid_mods:
     - name: 'Minecraft Forge'
       checksums: 
         - '1998989615'
+        - '3917628473'
 
     - name: 'Optifine'
       checksums: 

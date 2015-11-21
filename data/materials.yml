@@ -395,7 +395,7 @@ materials:
    category: '<lightgreen>Gear Tier 0'
    components:
      - name: 'Attack'
-       value: '4'
+       value: '6.5'
      - name: 'NoVanillaDurability'
      - name: 'DurabilityOnDeath'
        value: '0.05'
@@ -412,15 +412,15 @@ materials:
      - " s "
 #Updated 7/31/15
  - id: 'civ:stone_sword'
-   item_id: 268
+   item_id: 272
    item_data: 0
-   name: 'Stone Katana'
+   name: 'Stone Shank'
    craftable: true
    shaped: true
    category: '<lightgreen>Gear Tier 0'
    components:
      - name: 'Attack'
-       value: '6'
+       value: '10'
      - name: 'NoVanillaDurability'
      - name: 'DurabilityOnDeath'
        value: '0.05'
@@ -532,14 +532,14 @@ materials:
    item_data: 0
    name: 'Iron Katana'
    craftable: true
-   required_techs: 'tech_metal_casting'
+   required_techs: 'tech_welding'
    shaped: true
-   category: '<lightgreen>Gear Tier 1'
+   category: '<green>Gear Tier 1'
    components:
      - name: 'MoveSpeed'
        value: '-0.001'
      - name: 'Attack'
-       value: '10'
+       value: '14'
      - name: 'NoVanillaDurability'
      - name: 'DurabilityOnDeath'
        value: '0.05'
@@ -560,9 +560,9 @@ materials:
    item_data: 0
    name: 'Iron Helmet'
    craftable: true
-   required_techs: 'tech_blacksmithing'
+   required_techs: 'tech_welding'
    shaped: true
-   category: '<lightgreen>Gear Tier 1'
+   category: '<green>Gear Tier 1'
    components:
      - name: 'MoveSpeed'
        value: '-0.001'
@@ -585,9 +585,9 @@ materials:
    item_data: 0
    name: 'Iron Chestplate'
    craftable: true
-   required_techs: 'tech_blacksmithing'
+   required_techs: 'tech_welding'
    shaped: true
-   category: '<lightgreen>Gear Tier 1'
+   category: '<green>Gear Tier 1'
    components:
      - name: 'MoveSpeed'
        value: '-0.001'
@@ -610,9 +610,9 @@ materials:
    item_data: 0
    name: 'Iron Leggings'
    craftable: true
-   required_techs: 'tech_blacksmithing'
+   required_techs: 'tech_welding'
    shaped: true
-   category: '<lightgreen>Gear Tier 1'
+   category: '<green>Gear Tier 1'
    components:
      - name: 'MoveSpeed'
        value: '-0.001'
@@ -636,9 +636,9 @@ materials:
    item_data: 0
    name: 'Iron Boots'
    craftable: true
-   required_techs: 'tech_blacksmithing'
+   required_techs: 'tech_welding'
    shaped: true
-   category: '<lightgreen>Gear Tier 1'
+   category: '<green>Gear Tier 1'
    components:
      - name: 'MoveSpeed'
        value: '-0.001'
@@ -660,18 +660,154 @@ materials:
 #====================================#
 #Updated 7/31/15
  - id: 'civ:bronze_sword0'
-   item_id: 267
+   item_id: 283
    item_data: 0
    name: 'Bronze Shortsword'
    craftable: true
-   required_techs: 'tech_metal_casting'
+   required_techs: 'tech_smithing'
    shaped: true
-   category: '<yellow>Gear Tier 2'
+   category: '<gold>Gear Tier 2'
    components:
      - name: 'MoveSpeed'
        value: '-0.002'
      - name: 'Attack'
-       value: '14'
+       value: '18'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.05'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:bronze_ingot'
+       data: 0
+       letter: 'i'
+     - type_id: 280
+       data: 0
+       letter: 's'
+   shape:
+     - " i "
+     - " i "
+     - " s "
+#Updated 7/31/15
+ - id: 'civ:bronze_helmet0'
+   item_id: 314
+   item_data: 0
+   name: 'Bronze Helmet'
+   craftable: true
+   required_techs: 'tech_smithing'
+   shaped: true
+   category: '<gold>Gear Tier 2'
+   components:
+     - name: 'MoveSpeed'
+       value: '-0.002'
+     - name: 'Defense'
+       value: '3.5'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.05'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:bronze_ingot'
+       data: 0
+       letter: 'i'
+   shape:
+     - "iii"
+     - "i i"
+     - "   "
+#Updated 7/31/15
+ - id: 'civ:bronze_chestplate0'
+   item_id: 315
+   item_data: 0
+   name: 'Bronze Chestplate'
+   craftable: true
+   required_techs: 'tech_smithing'
+   shaped: true
+   category: '<gold>Gear Tier 2'
+   components:
+     - name: 'MoveSpeed'
+       value: '-0.002'
+     - name: 'Defense'
+       value: '4.5'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.05'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:bronze_ingot'
+       data: 0
+       letter: 'i'
+   shape:
+     - "i i"
+     - "iii"
+     - "iii"
+#Updated 7/31/15
+ - id: 'civ:bronze_leggings0'
+   item_id: 316
+   item_data: 0
+   name: 'Bronze Leggings'
+   craftable: true
+   required_techs: 'tech_smithing'
+   shaped: true
+   category: '<gold>Gear Tier 2'
+   components:
+     - name: 'MoveSpeed'
+       value: '-0.002'
+     - name: 'Defense'
+       value: '3.5'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.05'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:bronze_ingot'
+       data: 0
+       letter: 'i'
+   shape:
+     - "iii"
+     - "i i"
+     - "i i"
+#Updated 7/31/15
+ - id: 'civ:bronze_boots0'
+   item_id: 317
+   item_data: 0
+   name: 'Bronze Boots'
+   craftable: true
+   required_techs: 'tech_smithing'
+   shaped: true
+   category: '<gold>Gear Tier 2'
+   components:
+     - name: 'MoveSpeed'
+       value: '-0.002'
+     - name: 'Defense'
+       value: '2.5'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.05'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:bronze_ingot'
+       data: 0
+       letter: 'i'
+   shape:
+     - "   "
+     - "i i"
+     - "i i"
+#====================================#
+#==========> Tier 3 Gear <===========#
+#====================================#
+#Updated 7/31/15
+ - id: 'civ:steel_sword0'
+   item_id: 267
+   item_data: 0
+   name: 'Steel Longsword'
+   craftable: true
+   required_techs: 'tech_smithing'
+   shaped: true
+   category: '<red>Gear Tier 3'
+   components:
+     - name: 'MoveSpeed'
+       value: '-0.004'
+     - name: 'Attack'
+       value: '22'
      - name: 'NoVanillaDurability'
      - name: 'DurabilityOnDeath'
        value: '0.05'
@@ -688,43 +824,17 @@ materials:
      - " i "
      - " s "
 #Updated 7/31/15
- - id: 'civ:bronze_helmet0'
-   item_id: 306
+ - id: 'civ:steel_helmet0'
+   item_id: 302
    item_data: 0
-   name: 'Bronze Helmet'
+   name: 'Steel Helmet'
    craftable: true
-   required_techs: 'tech_blacksmithing'
+   required_techs: 'tech_smithing'
    shaped: true
-   category: '<yellow>Gear Tier 2'
+   category: '<red>Gear Tier 3'
    components:
      - name: 'MoveSpeed'
-       value: '-0.002'
-     - name: 'Defense'
-       value: '3.5'
-     - name: 'NoVanillaDurability'
-     - name: 'DurabilityOnDeath'
-       value: '0.05'
-   ingredients:
-     - type_id: 0
-       custom_id: 'civ:steel_ingot'
-       data: 0
-       letter: 'i'
-   shape:
-     - "iii"
-     - "i i"
-     - "   "
-#Updated 7/31/15
- - id: 'civ:bronze_chestplate0'
-   item_id: 307
-   item_data: 0
-   name: 'Bronze Chestplate'
-   craftable: true
-   required_techs: 'tech_blacksmithing'
-   shaped: true
-   category: '<yellow>Gear Tier 2'
-   components:
-     - name: 'MoveSpeed'
-       value: '-0.002'
+       value: '-0.004'
      - name: 'Defense'
        value: '4.5'
      - name: 'NoVanillaDurability'
@@ -736,23 +846,49 @@ materials:
        data: 0
        letter: 'i'
    shape:
+     - "iii"
+     - "i i"
+     - "   "
+#Updated 7/31/15
+ - id: 'civ:steel_chestplate0'
+   item_id: 303
+   item_data: 0
+   name: 'Steel Chestplate'
+   craftable: true
+   required_techs: 'tech_smithing'
+   shaped: true
+   category: '<red>Gear Tier 3'
+   components:
+     - name: 'MoveSpeed'
+       value: '-0.004'
+     - name: 'Defense'
+       value: '5.5'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.05'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:steel_ingot'
+       data: 0
+       letter: 'i'
+   shape:
      - "i i"
      - "iii"
      - "iii"
 #Updated 7/31/15
- - id: 'civ:bronze_leggings0'
-   item_id: 308
+ - id: 'civ:steel_leggings0'
+   item_id: 304
    item_data: 0
-   name: 'Bronze Leggings'
+   name: 'Steel Leggings'
    craftable: true
-   required_techs: 'tech_blacksmithing'
+   required_techs: 'tech_smithing'
    shaped: true
-   category: '<yellow>Gear Tier 2'
+   category: '<red>Gear Tier 3'
    components:
      - name: 'MoveSpeed'
-       value: '-0.002'
+       value: '-0.004'
      - name: 'Defense'
-       value: '3.5'
+       value: '4.5'
      - name: 'NoVanillaDurability'
      - name: 'DurabilityOnDeath'
        value: '0.05'
@@ -766,19 +902,19 @@ materials:
      - "i i"
      - "i i"
 #Updated 7/31/15
- - id: 'civ:bronze_boots0'
-   item_id: 309
+ - id: 'civ:steel_boots0'
+   item_id: 305
    item_data: 0
-   name: 'Bronze Boots'
+   name: 'Steel Boots'
    craftable: true
-   required_techs: 'tech_blacksmithing'
+   required_techs: 'tech_smithing'
    shaped: true
-   category: '<yellow>Gear Tier 2'
+   category: '<red>Gear Tier 3'
    components:
      - name: 'MoveSpeed'
-       value: '-0.002'
+       value: '-0.004'
      - name: 'Defense'
-       value: '2.5'
+       value: '3.5'
      - name: 'NoVanillaDurability'
      - name: 'DurabilityOnDeath'
        value: '0.05'
@@ -792,11 +928,141 @@ materials:
      - "i i"
      - "i i"
 #====================================#
-#==========> Tier 3 Gear <===========#
-#====================================#
-#====================================#
 #==========> Tier 4 Gear <===========#
 #====================================#
+#Updated 7/31/15
+ - id: 'civ:titanium_sword0'
+   item_id: 276
+   item_data: 0
+   name: 'Titanium Broadsword'
+   craftable: true
+   required_techs: 'tech_magic'
+   shaped: true
+   category: '<blue>Gear Tier 4'
+   components:
+     - name: 'MoveSpeed'
+       value: '-0.007'
+     - name: 'Attack'
+       value: '26'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.05'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:titanium_ingot'
+       data: 0
+       letter: 'i'
+     - type_id: 280
+       data: 0
+       letter: 's'
+   shape:
+     - " i "
+     - " i "
+     - " s "
+#Updated 7/31/15
+ - id: 'civ:titanium_helmet0'
+   item_id: 310
+   item_data: 0
+   name: 'Titanium Helmet'
+   craftable: true
+   required_techs: 'tech_magic'
+   shaped: true
+   category: '<blue>Gear Tier 4'
+   components:
+     - name: 'MoveSpeed'
+       value: '-0.007'
+     - name: 'Defense'
+       value: '5.5'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.05'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:titanium_ingot'
+       data: 0
+       letter: 'i'
+   shape:
+     - "iii"
+     - "i i"
+     - "   "
+#Updated 7/31/15
+ - id: 'civ:titanium_chestplate0'
+   item_id: 311
+   item_data: 0
+   name: 'Titanium Chestplate'
+   craftable: true
+   required_techs: 'tech_magic'
+   shaped: true
+   category: '<blue>Gear Tier 4'
+   components:
+     - name: 'MoveSpeed'
+       value: '-0.007'
+     - name: 'Defense'
+       value: '6.5'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.05'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:titanium_ingot'
+       data: 0
+       letter: 'i'
+   shape:
+     - "i i"
+     - "iii"
+     - "iii"
+#Updated 7/31/15
+ - id: 'civ:titanium_leggings0'
+   item_id: 312
+   item_data: 0
+   name: 'titanium Leggings'
+   craftable: true
+   required_techs: 'tech_magic'
+   shaped: true
+   category: '<blue>Gear Tier 4'
+   components:
+     - name: 'MoveSpeed'
+       value: '-0.007'
+     - name: 'Defense'
+       value: '5.5'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.05'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:titanium_ingot'
+       data: 0
+       letter: 'i'
+   shape:
+     - "iii"
+     - "i i"
+     - "i i"
+#Updated 7/31/15
+ - id: 'civ:titanium_boots0'
+   item_id: 313
+   item_data: 0
+   name: 'Titanium Boots'
+   craftable: true
+   required_techs: 'tech_magic'
+   shaped: true
+   category: '<blue>Gear Tier 4'
+   components:
+     - name: 'MoveSpeed'
+       value: '-0.007'
+     - name: 'Defense'
+       value: '4.5'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.05'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:titanium_ingot'
+       data: 0
+       letter: 'i'
+   shape:
+     - "   "
+     - "i i"
+     - "i i"
 #====================================#
 #=> Elements of the Periodic Table <=#
 #====================================#

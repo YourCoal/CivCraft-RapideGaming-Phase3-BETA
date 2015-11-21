@@ -1,5 +1,7 @@
 package com.civcraft.mobs.listeners;
 
+import moblib.moblib.MobLib;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.IronGolem;
@@ -16,7 +18,6 @@ import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.entity.PlayerLeashEntityEvent;
 import org.bukkit.event.world.ChunkLoadEvent;
 
-import com.avrgaming.moblib.MobLib;
 import com.civcraft.main.CivMessage;
 import com.civcraft.mobs.CommonCustomMob;
 

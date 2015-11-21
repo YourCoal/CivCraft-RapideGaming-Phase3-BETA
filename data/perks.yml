@@ -23,13 +23,9 @@ system:
     store_url: 'EDIT perks.yml to change'
 
 perks:
-    - id: 'template_test'
-      display_name: 'Test Template'
-      item_id: 7
-      data: 0
-      components:
-         - name: 'CustomTemplate'
-########### Personal Perks
+#==========================================#
+#============> Personal Perks <============#
+#==========================================#
     - id: 'perk_rename_civ_town'
       display_name: 'Rename Civ or Town'
       item_id: 386
@@ -43,271 +39,93 @@ perks:
       data: 0
       components:
          - name: 'ChangeWeather'
-#######################
-# ==== MODERN TEMPLATES
-#######################
-    - id: 'tplte_modern_barracks'
-      display_name: 'Modern Barracks Template'
-      item_id: 168
-      data: 1
+#==========================================#
+#===========> Template Options <===========#
+#==========================================#
+    - id: 'template_winter'
+      display_name: 'Winter Theme'
+      item_id: 80
+      data: 0
       components:
-          - name: 'CustomTemplate'
-            theme: 'modern'
-            template: 'barracks'
+         - name: 'CustomTemplate'
 #
-    - id: 'tplte_modern_fishingboats'
-      display_name: 'Modern Fishing Boat Template'
-      item_id: 168
-      data: 1
+    - id: 'template_hell'
+      display_name: 'Hell Theme'
+      item_id: 112
+      data: 0
       components:
-          - name: 'CustomTemplate'
-            theme: 'modern'
-            template: 'fishingboats'
+         - name: 'CustomTemplate'
 #
-    - id: 'tplte_modern_pasture'
-      display_name: 'Modern Pasture Template'
-      item_id: 168
-      data: 1
+    - id: 'template_egyptian'
+      display_name: 'Egyptian Theme'
+      item_id: 12
+      data: 0
       components:
-          - name: 'CustomTemplate'
-            theme: 'modern'
-            template: 'pasture'
+         - name: 'CustomTemplate'
 #
-    - id: 'tplte_modern_town_hall'
-      display_name: 'Modern Town Hall Template'
+    - id: 'template_atlantean'
+      display_name: 'Atlantean Theme'
       item_id: 168
       data: 1
       components:
-          - name: 'CustomTemplate'
-            theme: 'modern'
-            template: 'town_hall'
+         - name: 'CustomTemplate'
 #
-    - id: 'tplte_modern_trade_outpost'
-      display_name: 'Modern Trade Outpost Template'
-      item_id: 168
-      data: 1
+    - id: 'template_rain_forest'
+      display_name: 'Rain Forest Theme'
+      item_id: 12
+      data: 0
       components:
-          - name: 'CustomTemplate'
-            theme: 'modern'
-            template: 'trade_outpost'
+         - name: 'CustomTemplate'
 #
-    - id: 'tplte_modern_trommel'
-      display_name: 'Modern Trommel Template'
-      item_id: 168
+    - id: 'template_villager'
+      display_name: 'Villager Theme'
+      item_id: 5
+      data: 0
+      components:
+         - name: 'CustomTemplate'
+#
+    - id: 'template_ghetto'
+      display_name: 'Ghetto Theme'
+      item_id: 3
       data: 1
       components:
-          - name: 'CustomTemplate'
-            theme: 'modern'
-            template: 'trommel'
-######################
-# ===== HELL TEMPLATES
-######################
-    - id: 'tpl_hell_camp'
-      display_name: 'Hell Camp'
-      item_id: 387
+         - name: 'CustomTemplate'
+#
+    - id: 'template_end'
+      display_name: 'End Theme'
+      item_id: 121
+      data: 1
+      components:
+         - name: 'CustomTemplate'
+#==========================================#
+#===========> Winter Templates <===========#
+#==========================================#
+    - id: 'tpl_winter_camp'
+      display_name: 'Winter Camp'
+      item_id: 80
       data: 0
       components:
           - name: 'CustomPersonalTemplate'
-            theme: 'hell'
+            theme: 'winter'
             template: 'camp'
             id: 'camp'
-
-    - id: 'tpl_hell_arrow_tower'
-      display_name: 'Hell Arrow Tower Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'arrow_tower'
-    
-    - id: 'tpl_hell_bank'
-      display_name: 'Hell Bank Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'bank'
-
-    - id: 'tpl_hell_barracks'
-      display_name: 'Hell Barracks Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'barracks'
-
-    - id: 'tpl_hell_cannon_tower'
-      display_name: 'Hell Cannon Tower Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'cannon_tower'
-   
-    - id: 'tpl_hell_capitol'
-      display_name: 'Hell Capitol Template'
-      item_id: 387
+#
+    - id: 'tpl_winter_capitol'
+      display_name: 'Winter Capitol'
+      item_id: 80
       data: 0
       components:
           - name: 'CustomPersonalTemplate'
-            theme: 'hell'
-            template: 'capital' #misspelt on purpose, easier to leave as is.
-            id: 's_capitol'
-    
-    - id: 'tpl_hell_cottage'
-      display_name: 'Hell Cottage Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'cottage'
-    
-    - id: 'tpl_hell_granary'
-      display_name: 'Hell Granary Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'granary'
-
-    - id: 'tpl_hell_grocer'
-      display_name: 'Hell Grocer Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'grocer'
-
-    - id: 'tpl_hell_library'
-      display_name: 'Hell Library Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'library'
-    
-    - id: 'tpl_hell_market'
-      display_name: 'Hell Market Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'market'
-    
-    - id: 'tpl_hell_mine'
-      display_name: 'Hell Mine Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'mine'
-
-    - id: 'tpl_hell_monument'
-      display_name: 'Hell Monument Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'monument'
-
-    - id: 'tpl_hell_pasture'
-      display_name: 'Hell Pasture Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'pasture'
-
-    - id: 'tpl_hell_scout_tower'
-      display_name: 'Hell Scout Tower Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'scout_tower'
-    
-    - id: 'tpl_hell_shipyard'
-      display_name: 'Hell Shipyard Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'shipyard'
-    
-    - id: 'tpl_hell_stable'
-      display_name: 'Hell Stable Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'stable'
-    
-    - id: 'tpl_hell_temple'
-      display_name: 'Hell Temple Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'temple'
-
-    - id: 'tpl_hell_trommel'
-      display_name: 'Hell Trommel Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'trommel'
-    
-    - id: 'tpl_hell_town_hall'
-      display_name: 'Hell Town Hall Template'
-      item_id: 387
+            theme: 'winter'
+            template: 'capitol'
+            id: 'capitol'
+#
+    - id: 'tpl_winter_town_hall'
+      display_name: 'Winter Town Hall'
+      item_id: 80
       data: 0
       components:
           - name: 'CustomPersonalTemplate'
-            theme: 'hell'
+            theme: 'winter'
             template: 'town_hall'
-            id: 's_townhall'
-    
-    - id: 'tpl_hell_windmill'
-      display_name: 'Hell Windmill Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'windmill'
-
-    - id: 'tpl_hell_blacksmith'
-      display_name: 'Hell Blacksmith Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'blacksmith'
-
-    - id: 'tpl_hell_store'
-      display_name: 'Hell Store Template'
-      item_id: 387
-      data: 0
-      components:
-          - name: 'CustomTemplate'
-            theme: 'hell'
-            template: 'store'
+            id: 'town_hall'

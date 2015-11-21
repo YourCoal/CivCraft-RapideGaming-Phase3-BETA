@@ -1,7 +1,7 @@
 package com.civcraft.mobs;
 
-import com.avrgaming.mob.ICustomMob;
-import com.avrgaming.mob.MobBaseWither;
+import moblib.mob.ICustomMob;
+import moblib.mob.MobBaseWither;
 
 import net.minecraft.server.v1_8_R3.DamageSource;
 import net.minecraft.server.v1_8_R3.Entity;

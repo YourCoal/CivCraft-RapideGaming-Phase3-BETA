@@ -3,6 +3,8 @@ package com.civcraft.main;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import moblib.moblib.MobLib;
+
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
@@ -11,8 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import pvptimer.PvPListener;
 import pvptimer.PvPTimer;
 
-import com.anticheat.ACManager;
-import com.avrgaming.moblib.MobLib;
+import com.civcraft.anticheat.ACManager;
 import com.civcraft.command.AcceptCommand;
 import com.civcraft.command.BuildCommand;
 import com.civcraft.command.DenyCommand;

@@ -1,9 +1,3 @@
-#
-# This files contains defines for buffs which can be applied to bonus goodies.
-# Eventually these buffs may also apply to governments and/or wonders
-#
-#
-
 buffs:
     - id: 'buff_construction'
       name: 'Construction'
@@ -41,9 +35,16 @@ buffs:
       stackable: false
       parent:
 
-    - id: 'buff_advanced_tooling'
-      name: 'Advanced Tooling'
-      description: 'Increases the mine improvement production by a <lightgreen>50%<r> <gold>Stackable<r>'
+    - id: 'buff_advanced_mining'
+      name: 'Advanced Mining'
+      description: 'Increases the mine improvement production by <lightgreen>50%<r> <gold>Stackable<r>'
+      value: '0.5'
+      stackable: true
+      parent:
+
+    - id: 'buff_advanced_testing'
+      name: 'Advanced Testing'
+      description: 'Increases the lab improvement production by <lightgreen>50%<r> <gold>Stackable<r>'
       value: '0.5'
       stackable: true
       parent:

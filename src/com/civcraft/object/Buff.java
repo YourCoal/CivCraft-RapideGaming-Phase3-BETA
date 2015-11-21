@@ -34,7 +34,8 @@ public class Buff {
 	public static final String SCIENCE_RATE = "buff_innovation";
 	public static final String EXTRA_CULTURE = "buff_doesnotexist";
 	public static final String COTTAGE_RATE = "buff_doesnotexist";
-	public static final String ADVANCED_TOOLING = "buff_advanced_tooling";
+	public static final String ADVANCED_MINING = "buff_advanced_mining";
+	public static final String ADVANCED_TESTING = "buff_advanced_testing";
 	public static final String BARRICADE = "buff_barricade";
 	public static final String BARTER = "buff_barter";
 	public static final String EXTRACTION = "buff_extraction";

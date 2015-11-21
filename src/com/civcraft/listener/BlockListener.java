@@ -5,6 +5,7 @@ import gpl.HorseModifier;
 import java.util.HashSet;
 import java.util.Random;
 
+import moblib.moblib.MobLib;
 import net.minecraft.server.v1_8_R3.NBTTagCompound;
 
 import org.bukkit.Chunk;
@@ -61,7 +62,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import com.avrgaming.moblib.MobLib;
 import com.civcraft.cache.ArrowFiredCache;
 import com.civcraft.cache.CannonFiredCache;
 import com.civcraft.cache.CivCache;

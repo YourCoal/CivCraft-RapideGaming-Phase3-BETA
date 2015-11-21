@@ -2,7 +2,7 @@ iron_cannon:
  # Template for deployable cannon
  template: cannon
  # amount of blocks to destroy per shot
- yield: 10.0
+ yield: 5.0
  # TNT cost, number of TNT blocks it costs per shot.
  tnt_cost: 4
  # Number of seconds between shots.
@@ -10,29 +10,29 @@ iron_cannon:
  # Amount of HP each cannon has
  hitpoints: 15
  # Amount of damage done to PLAYERS when hit by a blast
- player_damage: 200
+ player_damage: 30
  # Amount of damage d one to STRUCTURES when hit by a blast
- structure_damage: 100
+ structure_damage: 50
  # Maximum range a cannon shot will travel.
- max_range: 200.0
+ max_range: 64.0
 #
 bronze_cannon:
  # Template for deployable cannon
  template: cannon
  # amount of blocks to destroy per shot
- yield: 10.0
+ yield: 7.0
  # TNT cost, number of TNT blocks it costs per shot.
  tnt_cost: 4
  # Number of seconds between shots.
- cooldown: 20
+ cooldown: 15
  # Amount of HP each cannon has
- hitpoints: 15
+ hitpoints: 30
  # Amount of damage done to PLAYERS when hit by a blast
- player_damage: 200
+ player_damage: 50
  # Amount of damage d one to STRUCTURES when hit by a blast
- structure_damage: 100
+ structure_damage: 75
  # Maximum range a cannon shot will travel.
- max_range: 200.0
+ max_range: 128.0
 #
 steel_cannon:
  # Template for deployable cannon
@@ -40,32 +40,32 @@ steel_cannon:
  # amount of blocks to destroy per shot
  yield: 10.0
  # TNT cost, number of TNT blocks it costs per shot.
- tnt_cost: 4
+ tnt_cost: 6
  # Number of seconds between shots.
- cooldown: 20
+ cooldown: 10
  # Amount of HP each cannon has
- hitpoints: 15
+ hitpoints: 40
  # Amount of damage done to PLAYERS when hit by a blast
- player_damage: 200
+ player_damage: 75
  # Amount of damage d one to STRUCTURES when hit by a blast
  structure_damage: 100
  # Maximum range a cannon shot will travel.
- max_range: 200.0
+ max_range: 192.0
 #
 titanium_cannon:
  # Template for deployable cannon
  template: cannon
  # amount of blocks to destroy per shot
- yield: 10.0
+ yield: 12.0
  # TNT cost, number of TNT blocks it costs per shot.
- tnt_cost: 4
+ tnt_cost: 8
  # Number of seconds between shots.
- cooldown: 20
+ cooldown: 10
  # Amount of HP each cannon has
- hitpoints: 15
+ hitpoints: 50
  # Amount of damage done to PLAYERS when hit by a blast
- player_damage: 200
+ player_damage: 100
  # Amount of damage d one to STRUCTURES when hit by a blast
- structure_damage: 100
+ structure_damage: 125
  # Maximum range a cannon shot will travel.
- max_range: 200.0
+ max_range: 256.0

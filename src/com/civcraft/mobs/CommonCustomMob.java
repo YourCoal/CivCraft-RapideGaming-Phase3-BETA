@@ -29,8 +29,8 @@ import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.entity.EntityTargetEvent.TargetReason;
 import org.bukkit.inventory.ItemStack;
 
-import com.avrgaming.mob.ICustomMob;
-import com.avrgaming.mob.ISpawnable;
+import moblib.mob.ICustomMob;
+import moblib.mob.ISpawnable;
 import com.civcraft.camp.Camp;
 import com.civcraft.exception.CivException;
 import com.civcraft.lorestorage.LoreCraftableMaterial;

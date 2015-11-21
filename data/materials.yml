@@ -266,7 +266,7 @@ materials:
    category: '<yellow>Tier 2 Material'
    ingredients:
      - type_id: 0
-       custom_id: 'civ:steel_ore'
+       custom_id: 'civ:bronze_ore'
        data: 0
        count: 9
 #Updated 7/31/15
@@ -389,7 +389,7 @@ materials:
  - id: 'civ:wood_sword'
    item_id: 268
    item_data: 0
-   name: 'Training Sword'
+   name: 'Training Stick'
    craftable: true
    shaped: true
    category: '<lightgreen>Gear Tier 0'
@@ -409,6 +409,31 @@ materials:
    shape:
      - " p "
      - " p "
+     - " s "
+#Updated 7/31/15
+ - id: 'civ:stone_sword'
+   item_id: 268
+   item_data: 0
+   name: 'Stone Katana'
+   craftable: true
+   shaped: true
+   category: '<lightgreen>Gear Tier 0'
+   components:
+     - name: 'Attack'
+       value: '6'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.05'
+   ingredients:
+     - type_id: 4
+       data: 0
+       letter: 'c'
+     - type_id: 280
+       data: 0
+       letter: 's'
+   shape:
+     - " c "
+     - " c "
      - " s "
 #Updated 7/31/15
  - id: 'civ:leather_helmet0'
@@ -442,7 +467,7 @@ materials:
    category: '<lightgreen>Gear Tier 0'
    components:
      - name: 'Defense'
-       value: '3'
+       value: '2.5'
      - name: 'NoVanillaDurability'
      - name: 'DurabilityOnDeath'
        value: '0.05'
@@ -464,7 +489,7 @@ materials:
    category: '<lightgreen>Gear Tier 0'
    components:
      - name: 'Defense'
-       value: '2.5'
+       value: '1.5'
      - name: 'NoVanillaDurability'
      - name: 'DurabilityOnDeath'
        value: '0.05'
@@ -486,7 +511,7 @@ materials:
    category: '<lightgreen>Gear Tier 0'
    components:
      - name: 'Defense'
-       value: '1'
+       value: '0.5'
      - name: 'NoVanillaDurability'
      - name: 'DurabilityOnDeath'
        value: '0.05'
@@ -498,291 +523,6 @@ materials:
      - "   "
      - "l l"
      - "l l"
-#====================================#
-#======> Tier 0 Gear w/ Speed<=======#
-#====================================#
-#Updated 7/31/15
- - id: 'civ:wood_sword_s1'
-   item_id: 268
-   item_data: 0
-   name: 'Training Sword [S]'
-   craftable: true
-   shaped: true
-   category: '<lightgreen>Gear Tier 0 (Upgraded)'
-   components:
-     - name: 'MoveSpeed'
-       value: '0.001'
-     - name: 'MaxHealth'
-       value: '-2'
-     - name: 'Attack'
-       value: '4'
-     - name: 'NoVanillaDurability'
-     - name: 'DurabilityOnDeath'
-       value: '0.05'
-   ingredients:
-     - type_id: 0
-       custom_id: 'civ:speed_upgrade1'
-       data: 0
-       letter: 'u'
-     - type_id: 0
-       custom_id: 'civ:wood_sword'
-       data: 0
-       letter: 'w'
-   shape:
-     - "   "
-     - "   "
-     - "wuw"
-#Updated 7/31/15
- - id: 'civ:leather_helmet0_s1'
-   item_id: 298
-   item_data: 0
-   name: 'Leather Helmet [S]'
-   craftable: true
-   shaped: true
-   category: '<lightgreen>Gear Tier 0 (Upgraded)'
-   components:
-     - name: 'MoveSpeed'
-       value: '0.001'
-     - name: 'MaxHealth'
-       value: '-2'
-     - name: 'Defense'
-       value: '1.5'
-     - name: 'NoVanillaDurability'
-     - name: 'DurabilityOnDeath'
-       value: '0.05'
-   ingredients:
-     - type_id: 0
-       custom_id: 'civ:speed_upgrade1'
-       data: 0
-       letter: 'u'
-     - type_id: 0
-       custom_id: 'civ:leather_helmet0'
-       data: 0
-       letter: 'l'
-   shape:
-     - "   "
-     - "   "
-     - "lul"
-#Updated 7/31/15
- - id: 'civ:leather_chestplate0_s1'
-   item_id: 299
-   item_data: 0
-   name: 'Leather Jacket [S]'
-   craftable: true
-   shaped: true
-   category: '<lightgreen>Gear Tier 0 (Upgraded)'
-   components:
-     - name: 'MoveSpeed'
-       value: '0.001'
-     - name: 'MaxHealth'
-       value: '-2'
-     - name: 'Defense'
-       value: '3'
-     - name: 'NoVanillaDurability'
-     - name: 'DurabilityOnDeath'
-       value: '0.05'
-   ingredients:
-     - type_id: 0
-       custom_id: 'civ:speed_upgrade1'
-       data: 0
-       letter: 'u'
-     - type_id: 0
-       custom_id: 'civ:leather_chestplate0'
-       data: 0
-       letter: 'l'
-   shape:
-     - "   "
-     - "   "
-     - "lul"
-#Updated 7/31/15
- - id: 'civ:leather_leggings0_s1'
-   item_id: 300
-   item_data: 0
-   name: 'Leather Pants [S]'
-   craftable: true
-   shaped: true
-   category: '<lightgreen>Gear Tier 0 (Upgraded)'
-   components:
-     - name: 'MoveSpeed'
-       value: '0.001'
-     - name: 'MaxHealth'
-       value: '-2'
-     - name: 'Defense'
-       value: '2.5'
-     - name: 'NoVanillaDurability'
-     - name: 'DurabilityOnDeath'
-       value: '0.05'
-   ingredients:
-     - type_id: 0
-       custom_id: 'civ:speed_upgrade1'
-       data: 0
-       letter: 'u'
-     - type_id: 0
-       custom_id: 'civ:leather_leggings0'
-       data: 0
-       letter: 'l'
-   shape:
-     - "   "
-     - "   "
-     - "lul"
-#Updated 7/31/15
- - id: 'civ:leather_boots0_s1'
-   item_id: 301
-   item_data: 0
-   name: 'Leather Moccasins [S]'
-   craftable: true
-   shaped: true
-   category: '<lightgreen>Gear Tier 0 (Upgraded)'
-   components:
-     - name: 'MoveSpeed'
-       value: '0.001'
-     - name: 'MaxHealth'
-       value: '-2'
-     - name: 'Defense'
-       value: '1'
-     - name: 'NoVanillaDurability'
-     - name: 'DurabilityOnDeath'
-       value: '0.05'
-   ingredients:
-     - type_id: 0
-       custom_id: 'civ:speed_upgrade1'
-       data: 0
-       letter: 'u'
-     - type_id: 0
-       custom_id: 'civ:leather_boots0'
-       data: 0
-       letter: 'l'
-   shape:
-     - "   "
-     - "   "
-     - "lul"
-#====================================#
-#======> Tier 0 Gear w/ Health<======#
-#====================================#
-#Updated 7/31/15
- - id: 'civ:leather_helmet0_h1'
-   item_id: 298
-   item_data: 0
-   name: 'Leather Helmet [H]'
-   craftable: true
-   shaped: true
-   category: '<lightgreen>Gear Tier 0 (Upgraded)'
-   components:
-     - name: 'MoveSpeed'
-       value: '-0.001'
-     - name: 'MaxHealth'
-       value: '2'
-     - name: 'Defense'
-       value: '1.5'
-     - name: 'NoVanillaDurability'
-     - name: 'DurabilityOnDeath'
-       value: '0.05'
-   ingredients:
-     - type_id: 0
-       custom_id: 'civ:health_upgrade1'
-       data: 0
-       letter: 'u'
-     - type_id: 0
-       custom_id: 'civ:leather_helmet0'
-       data: 0
-       letter: 'l'
-   shape:
-     - "   "
-     - "   "
-     - "lul"
-#Updated 7/31/15
- - id: 'civ:leather_chestplate0_h1'
-   item_id: 299
-   item_data: 0
-   name: 'Leather Jacket [H]'
-   craftable: true
-   shaped: true
-   category: '<lightgreen>Gear Tier 0 (Upgraded)'
-   components:
-     - name: 'MoveSpeed'
-       value: '-0.001'
-     - name: 'MaxHealth'
-       value: '2'
-     - name: 'Defense'
-       value: '3'
-     - name: 'NoVanillaDurability'
-     - name: 'DurabilityOnDeath'
-       value: '0.05'
-   ingredients:
-     - type_id: 0
-       custom_id: 'civ:health_upgrade1'
-       data: 0
-       letter: 'u'
-     - type_id: 0
-       custom_id: 'civ:leather_chestplate0'
-       data: 0
-       letter: 'l'
-   shape:
-     - "   "
-     - "   "
-     - "lul"
-#Updated 7/31/15
- - id: 'civ:leather_leggings0_h1'
-   item_id: 300
-   item_data: 0
-   name: 'Leather Pants [H]'
-   craftable: true
-   shaped: true
-   category: '<lightgreen>Gear Tier 0 (Upgraded)'
-   components:
-     - name: 'MoveSpeed'
-       value: '-0.001'
-     - name: 'MaxHealth'
-       value: '2'
-     - name: 'Defense'
-       value: '2.5'
-     - name: 'NoVanillaDurability'
-     - name: 'DurabilityOnDeath'
-       value: '0.05'
-   ingredients:
-     - type_id: 0
-       custom_id: 'civ:health_upgrade1'
-       data: 0
-       letter: 'u'
-     - type_id: 0
-       custom_id: 'civ:leather_leggings0'
-       data: 0
-       letter: 'l'
-   shape:
-     - "   "
-     - "   "
-     - "lul"
-#Updated 7/31/15
- - id: 'civ:leather_boots0_h1'
-   item_id: 301
-   item_data: 0
-   name: 'Leather Moccasins [H]'
-   craftable: true
-   shaped: true
-   category: '<lightgreen>Gear Tier 0 (Upgraded)'
-   components:
-     - name: 'MoveSpeed'
-       value: '-0.001'
-     - name: 'MaxHealth'
-       value: '2'
-     - name: 'Defense'
-       value: '1'
-     - name: 'NoVanillaDurability'
-     - name: 'DurabilityOnDeath'
-       value: '0.05'
-   ingredients:
-     - type_id: 0
-       custom_id: 'civ:health_upgrade1'
-       data: 0
-       letter: 'u'
-     - type_id: 0
-       custom_id: 'civ:leather_boots0'
-       data: 0
-       letter: 'l'
-   shape:
-     - "   "
-     - "   "
-     - "lul"
 #====================================#
 #==========> Tier 1 Gear <===========#
 #====================================#
@@ -852,7 +592,7 @@ materials:
      - name: 'MoveSpeed'
        value: '-0.001'
      - name: 'Defense'
-       value: '4'
+       value: '3.5'
      - name: 'NoVanillaDurability'
      - name: 'DurabilityOnDeath'
        value: '0.05'
@@ -877,7 +617,7 @@ materials:
      - name: 'MoveSpeed'
        value: '-0.001'
      - name: 'Defense'
-       value: '3.5'
+       value: '2.5'
      - name: 'NoVanillaDurability'
      - name: 'DurabilityOnDeath'
        value: '0.05'
@@ -903,7 +643,7 @@ materials:
      - name: 'MoveSpeed'
        value: '-0.001'
      - name: 'Defense'
-       value: '2'
+       value: '1.5'
      - name: 'NoVanillaDurability'
      - name: 'DurabilityOnDeath'
        value: '0.05'
@@ -918,6 +658,139 @@ materials:
 #====================================#
 #==========> Tier 2 Gear <===========#
 #====================================#
+#Updated 7/31/15
+ - id: 'civ:bronze_sword0'
+   item_id: 267
+   item_data: 0
+   name: 'Bronze Shortsword'
+   craftable: true
+   required_techs: 'tech_metal_casting'
+   shaped: true
+   category: '<yellow>Gear Tier 2'
+   components:
+     - name: 'MoveSpeed'
+       value: '-0.002'
+     - name: 'Attack'
+       value: '14'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.05'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:steel_ingot'
+       data: 0
+       letter: 'i'
+     - type_id: 280
+       data: 0
+       letter: 's'
+   shape:
+     - " i "
+     - " i "
+     - " s "
+#Updated 7/31/15
+ - id: 'civ:bronze_helmet0'
+   item_id: 306
+   item_data: 0
+   name: 'Bronze Helmet'
+   craftable: true
+   required_techs: 'tech_blacksmithing'
+   shaped: true
+   category: '<yellow>Gear Tier 2'
+   components:
+     - name: 'MoveSpeed'
+       value: '-0.002'
+     - name: 'Defense'
+       value: '3.5'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.05'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:steel_ingot'
+       data: 0
+       letter: 'i'
+   shape:
+     - "iii"
+     - "i i"
+     - "   "
+#Updated 7/31/15
+ - id: 'civ:bronze_chestplate0'
+   item_id: 307
+   item_data: 0
+   name: 'Bronze Chestplate'
+   craftable: true
+   required_techs: 'tech_blacksmithing'
+   shaped: true
+   category: '<yellow>Gear Tier 2'
+   components:
+     - name: 'MoveSpeed'
+       value: '-0.002'
+     - name: 'Defense'
+       value: '4.5'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.05'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:steel_ingot'
+       data: 0
+       letter: 'i'
+   shape:
+     - "i i"
+     - "iii"
+     - "iii"
+#Updated 7/31/15
+ - id: 'civ:bronze_leggings0'
+   item_id: 308
+   item_data: 0
+   name: 'Bronze Leggings'
+   craftable: true
+   required_techs: 'tech_blacksmithing'
+   shaped: true
+   category: '<yellow>Gear Tier 2'
+   components:
+     - name: 'MoveSpeed'
+       value: '-0.002'
+     - name: 'Defense'
+       value: '3.5'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.05'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:steel_ingot'
+       data: 0
+       letter: 'i'
+   shape:
+     - "iii"
+     - "i i"
+     - "i i"
+#Updated 7/31/15
+ - id: 'civ:bronze_boots0'
+   item_id: 309
+   item_data: 0
+   name: 'Bronze Boots'
+   craftable: true
+   required_techs: 'tech_blacksmithing'
+   shaped: true
+   category: '<yellow>Gear Tier 2'
+   components:
+     - name: 'MoveSpeed'
+       value: '-0.002'
+     - name: 'Defense'
+       value: '2.5'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.05'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:steel_ingot'
+       data: 0
+       letter: 'i'
+   shape:
+     - "   "
+     - "i i"
+     - "i i"
 #====================================#
 #==========> Tier 3 Gear <===========#
 #====================================#

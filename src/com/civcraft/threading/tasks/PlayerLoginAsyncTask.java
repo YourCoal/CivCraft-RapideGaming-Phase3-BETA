@@ -24,7 +24,7 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import com.anticheat.ACManager;
+import com.civcraft.anticheat.ACManager;
 import com.civcraft.config.CivSettings;
 import com.civcraft.endgame.EndConditionDiplomacy;
 import com.civcraft.exception.CivException;

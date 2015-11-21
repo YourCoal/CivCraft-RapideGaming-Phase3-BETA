@@ -3,7 +3,7 @@ package com.civcraft.war;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import com.anticheat.ACManager;
+import com.civcraft.anticheat.ACManager;
 import com.civcraft.exception.CivException;
 import com.civcraft.main.CivGlobal;
 import com.civcraft.main.CivMessage;
@@ -13,7 +13,6 @@ import com.civcraft.threading.tasks.PlayerKickBan;
 import com.civcraft.util.CivColor;
 
 public class WarAntiCheat {
-
 	
 	public static void kickUnvalidatedPlayers() {
 		if (CivGlobal.isCasualMode()) {
@@ -32,11 +31,9 @@ public class WarAntiCheat {
 			if (player.hasPermission("civ.ac_exempt")) {
 				continue;
 			}
-			
 			Resident resident = CivGlobal.getResident(player);
 			onWarTimePlayerCheck(resident);
 		}
-		
 		CivMessage.global(CivColor.LightGray+"All 'at war' players not using CivCraft's Anti-Cheat have been expelled during WarTime.");
 	}
 	
@@ -48,7 +45,6 @@ public class WarAntiCheat {
 		if (!resident.getCiv().getDiplomacyManager().isAtWar()) {
 			return;
 		}
-		
 		try {
 			if (!resident.isUsesAntiCheat()) {
 				TaskMaster.syncTask(new PlayerKickBan(resident.getName(), true, false, 
@@ -58,5 +54,4 @@ public class WarAntiCheat {
 		} catch (CivException e) {
 		}
 	}
-	
 }

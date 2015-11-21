@@ -147,7 +147,7 @@ public class Mine extends Structure {
 		double base = attrBiome.getBaseValue();
 		
 		double rate = 1;
-		rate += this.getTown().getBuffManager().getEffectiveDouble(Buff.ADVANCED_TOOLING);
+		rate += this.getTown().getBuffManager().getEffectiveDouble(Buff.ADVANCED_MINING);
 		return (rate*base);
 	}
 

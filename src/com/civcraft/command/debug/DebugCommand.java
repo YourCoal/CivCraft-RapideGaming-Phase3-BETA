@@ -69,10 +69,7 @@ import com.civcraft.object.TownChunk;
 import com.civcraft.permission.PermissionGroup;
 import com.civcraft.populators.TradeGoodPopulator;
 import com.civcraft.road.Road;
-import com.civcraft.siege.bronze.BronzeCannon;
-import com.civcraft.siege.iron.IronCannon;
-import com.civcraft.siege.steel.SteelCannon;
-import com.civcraft.siege.titanium.TitaniumCannon;
+import com.civcraft.siege.Cannon;
 import com.civcraft.structure.ArrowTower;
 import com.civcraft.structure.Buildable;
 import com.civcraft.structure.Capitol;
@@ -180,38 +177,16 @@ public class DebugCommand extends CommandBase {
 		commands.put("matmap", "prints the material map.");
 		commands.put("ping", "print something.");
 		commands.put("datebypass", "Bypasses certain date restrictions");
+		commands.put("spawn", "remote entities test");
 		commands.put("heal", "heals you....");
 		commands.put("skull", "[player] [title]");
 		commands.put("giveperk", "<id> gives yourself this perk id.");
 		commands.put("packet", "sends custom auth packet.");	
 		commands.put("disablemap", "disables zan's minimap");
 		commands.put("world", "Show world debug options");
-		commands.put("ironcannon", "builds an iron cannon.");
-		commands.put("bronzecannon", "builds an bronze cannon.");
-		commands.put("steelcannon", "builds a steel cannon.");
-		commands.put("titaniumcannon", "builds a titanium cannon.");
+		commands.put("cannon", "builds a war cannon.");
 		commands.put("saveinv", "save an inventory");
 		commands.put("restoreinv", "restore your inventory.");
-		commands.put("spawn", "spawns a mob.");
-	}
-	
-	public void spawn_cmd() throws CivException {
-		Player player = getPlayer();		
-		String mob = getNamedString(1, "name");
-		String lvl = getNamedString(2, "level");
-		
-		MobSpawner.CustomMobType type = CustomMobType.valueOf(mob.toUpperCase());
-		MobSpawner.CustomMobLevel level = CustomMobLevel.valueOf(lvl.toUpperCase());
-		
-		if (type == null) {
-			throw new CivException("no mob named:"+mob);
-		}
-		
-		if (level == null) {
-			throw new CivException("no level named:"+lvl);
-		}
-		
-		MobSpawner.spawnCustomMob(type, level, player.getLocation());
 	}
 	
 	public void saveinv_cmd() throws CivException {
@@ -226,32 +201,11 @@ public class DebugCommand extends CommandBase {
 		CivMessage.sendSuccess(resident, "restore inventory.");
 	}
 	
-	public void ironcannon_cmd() throws CivException {
+	public void cannon_cmd() throws CivException {
 		Resident resident = getResident();
-		IronCannon.newCannon(resident);
+		Cannon.newCannon(resident);
 		
-		CivMessage.sendSuccess(resident, "built iron cannon.");
-	}
-	
-	public void steelcannon_cmd() throws CivException {
-		Resident resident = getResident();
-		SteelCannon.newCannon(resident);
-		
-		CivMessage.sendSuccess(resident, "built steel cannon.");
-	}
-	
-	public void bronzecannon_cmd() throws CivException {
-		Resident resident = getResident();
-		BronzeCannon.newCannon(resident);
-		
-		CivMessage.sendSuccess(resident, "built bronze cannon.");
-	}
-	
-	public void titaniumcannon_cmd() throws CivException {
-		Resident resident = getResident();
-		TitaniumCannon.newCannon(resident);
-		
-		CivMessage.sendSuccess(resident, "built titanium cannon.");
+		CivMessage.sendSuccess(resident, "built cannon.");
 	}
 	
 	public void world_cmd() {
@@ -305,6 +259,25 @@ public class DebugCommand extends CommandBase {
 		player.setHealth(player.getMaxHealth());
 		player.setFoodLevel(50);
 		CivMessage.send(player, "Healed....");
+	}
+	
+	public void spawn_cmd() throws CivException {
+		Player player = getPlayer();		
+		String mob = getNamedString(1, "name");
+		String lvl = getNamedString(2, "level");
+		
+		MobSpawner.CustomMobType type = CustomMobType.valueOf(mob.toUpperCase());
+		MobSpawner.CustomMobLevel level = CustomMobLevel.valueOf(lvl.toUpperCase());
+		
+		if (type == null) {
+			throw new CivException("no mob named:"+mob);
+		}
+		
+		if (level == null) {
+			throw new CivException("no level named:"+lvl);
+		}
+		
+		MobSpawner.spawnCustomMob(type, level, player.getLocation());
 	}
 	
 	public void datebypass_cmd() {
@@ -1038,8 +1011,10 @@ public class DebugCommand extends CommandBase {
 	}
 	
 	public void restoresigns_cmd() {
-		CivMessage.send(sender, "Restoring....");
+		
+		CivMessage.send(sender, "restoring....");
 		for (StructureSign sign : CivGlobal.getStructureSigns()) {
+			
 			BlockCoord bcoord = sign.getCoord();
 			Block block = bcoord.getBlock();
 			ItemManager.setTypeId(block, CivData.WALL_SIGN);
@@ -1063,8 +1038,11 @@ public class DebugCommand extends CommandBase {
 				s.setLine(3, lines[3]);
 			}
 			s.update();
+			
+			
 		}
-		CivMessage.send(sender, "Complete.");
+		
+		
 	}
 	
 	public void cleartradesigns_cmd() throws CivException {

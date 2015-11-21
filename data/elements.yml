@@ -1,0 +1,104 @@
+#Updated 10/31/15
+ - id: 'civ:element_hydrogen'
+   item_id: 374
+   item_data: 0
+   name: '[1] Hydrogen'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 10/31/15
+ - id: 'civ:element_helium'
+   item_id: 374
+   item_data: 0
+   name: '[2] Helium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 10/31/15
+ - id: 'civ:element_lithium'
+   item_id: 147
+   item_data: 0
+   name: '[3] Lithium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 10/31/15
+ - id: 'civ:element_beryllium'
+   item_id: 147
+   item_data: 0
+   name: '[4] Beryllium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 10/31/15
+ - id: 'civ:element_boron'
+   item_id: 374
+   item_data: 0
+   name: '[6] Boron'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 10/31/15
+ - id: 'civ:element_carbon'
+   item_id: 374
+   item_data: 0
+   name: '[6] Carbon'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 10/31/15
+ - id: 'civ:element_nitrogen'
+   item_id: 374
+   item_data: 0
+   name: '[7] Nitrogen'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 10/31/15
+ - id: 'civ:element_oxygen'
+   item_id: 374
+   item_data: 0
+   name: '[8] Oxygen'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 10/31/15
+ - id: 'civ:element_fluorine'
+   item_id: 374
+   item_data: 0
+   name: '[9] Fluroine'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 10/31/15
+ - id: 'civ:element_neon'
+   item_id: 374
+   item_data: 0
+   name: '[10] Neon'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 10/31/15
+ - id: 'civ:element_sodium'
+   item_id: 147
+   item_data: 0
+   name: '[11] Sodium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 10/31/15
+ - id: 'civ:element_magnesium'
+   item_id: 147
+   item_data: 0
+   name: '[12] Magnesium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 10/31/15
+ - id: 'civ:element_aluminum'
+   item_id: 147
+   item_data: 0
+   name: '[13] Aluminum'
+   craftable: false
+   shaped: false
+   category: '<b>Element'

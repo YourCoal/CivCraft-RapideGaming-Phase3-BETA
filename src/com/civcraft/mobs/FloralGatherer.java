@@ -13,13 +13,13 @@ import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.entity.EntityTargetEvent.TargetReason;
 
 import moblib.mob.ICustomMob;
-import moblib.mob.MobBaseSnowman;
+import moblib.mob.MobBaseZombie;
 
 import com.civcraft.mobs.MobSpawner.CustomMobLevel;
 import com.civcraft.mobs.MobSpawner.CustomMobType;
 import com.civcraft.mobs.components.MobComponentDefense;
 
-public class Behemoth extends CommonCustomMob implements ICustomMob {
+public class FloralGatherer extends CommonCustomMob implements ICustomMob {
 	
 	public void onCreate() {
 	    initLevelAndType();
@@ -38,7 +38,7 @@ public class Behemoth extends CommonCustomMob implements ICustomMob {
 		case LESSER:
 		    defense = new MobComponentDefense(3);
 		    setMaxHealth(30);
-		    modifySpeed(1.2);
+		    modifySpeed(1.0);
 		    this.setAttack(4.0);
 		    this.addDrop("civ:catalyst_1", 0.05);
 		    this.addDrop("civ:material_1", 0.25);
@@ -88,27 +88,27 @@ public class Behemoth extends CommonCustomMob implements ICustomMob {
 	
 	@Override
 	public String getBaseEntity() {
-		return MobBaseSnowman.class.getName();
+		return MobBaseZombie.class.getName();
 	}
 	
 	@Override
 	public String getClassName() {
-		return Behemoth.class.getName();
+		return FloralGatherer.class.getName();
 	}
 	
 	public static void register() {
-		    setValidBiome(CustomMobType.BEHEMOTH, CustomMobLevel.LESSER, Biome.FROZEN_RIVER);
-		    setValidBiome(CustomMobType.BEHEMOTH, CustomMobLevel.LESSER, Biome.FROZEN_OCEAN);
-		    setValidBiome(CustomMobType.BEHEMOTH, CustomMobLevel.LESSER, Biome.COLD_BEACH);
-		    setValidBiome(CustomMobType.BEHEMOTH, CustomMobLevel.LESSER, Biome.COLD_TAIGA);
+		    setValidBiome(CustomMobType.FLORAL_GATHERER, CustomMobLevel.LESSER, Biome.FROZEN_RIVER);
+		    setValidBiome(CustomMobType.FLORAL_GATHERER, CustomMobLevel.LESSER, Biome.FROZEN_OCEAN);
+		    setValidBiome(CustomMobType.FLORAL_GATHERER, CustomMobLevel.LESSER, Biome.COLD_BEACH);
+		    setValidBiome(CustomMobType.FLORAL_GATHERER, CustomMobLevel.LESSER, Biome.COLD_TAIGA);
 		    
-		    setValidBiome(CustomMobType.BEHEMOTH, CustomMobLevel.GREATER, Biome.COLD_TAIGA_HILLS);
-		    setValidBiome(CustomMobType.BEHEMOTH, CustomMobLevel.GREATER, Biome.COLD_TAIGA_MOUNTAINS);
+		    setValidBiome(CustomMobType.FLORAL_GATHERER, CustomMobLevel.GREATER, Biome.COLD_TAIGA_HILLS);
+		    setValidBiome(CustomMobType.FLORAL_GATHERER, CustomMobLevel.GREATER, Biome.COLD_TAIGA_MOUNTAINS);
 		    
-		    setValidBiome(CustomMobType.BEHEMOTH, CustomMobLevel.ELITE, Biome.ICE_PLAINS);
-		    setValidBiome(CustomMobType.BEHEMOTH, CustomMobLevel.GREATER, Biome.ICE_MOUNTAINS);
+		    setValidBiome(CustomMobType.FLORAL_GATHERER, CustomMobLevel.ELITE, Biome.ICE_PLAINS);
+		    setValidBiome(CustomMobType.FLORAL_GATHERER, CustomMobLevel.GREATER, Biome.ICE_MOUNTAINS);
 		    
-		    setValidBiome(CustomMobType.BEHEMOTH, CustomMobLevel.BRUTAL, Biome.ICE_PLAINS_SPIKES);
+		    setValidBiome(CustomMobType.FLORAL_GATHERER, CustomMobLevel.BRUTAL, Biome.ICE_PLAINS_SPIKES);
 	}
 	
 	@SuppressWarnings("static-access")

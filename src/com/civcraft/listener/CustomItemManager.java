@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Random;
 
+import moblib.moblib.MobLib;
+
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
@@ -38,7 +40,6 @@ import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import com.avrgaming.moblib.MobLib;
 import com.civcraft.cache.ArrowFiredCache;
 import com.civcraft.cache.CivCache;
 import com.civcraft.config.CivSettings;

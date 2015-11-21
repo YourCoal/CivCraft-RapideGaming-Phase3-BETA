@@ -128,7 +128,7 @@ public class Lab extends Structure {
 		AttributeBiomeRadiusPerLevel attrBiome = (AttributeBiomeRadiusPerLevel)this.getComponent("AttributeBiomeRadiusPerLevel");
 		double base = attrBiome.getBaseValue();
 		double rate = 1;
-		rate += this.getTown().getBuffManager().getEffectiveDouble(Buff.ADVANCED_TOOLING);
+		rate += this.getTown().getBuffManager().getEffectiveDouble(Buff.ADVANCED_TESTING);
 		return (rate*base);
 	}
 	

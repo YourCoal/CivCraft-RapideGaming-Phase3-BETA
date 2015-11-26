@@ -5,13 +5,13 @@ trade_goodie_repo_days: 7
 #=====> Trade Good Generation Options <=====#
 generation:
 #Min and Max trade goods generate apart
- chunks_min: 8
- chunks_max: 32
+ chunks_min: 12
+ chunks_max: 36
 #World Size
  chunks_x: 750
  chunks_z: 750
 #Seed, used to generate trade goods more randomly
- seed: 12345
+ seed: -692626304
 #=====> Trade Good Hemispheres Options <=====#
 hemispheres:
  - id: 'hemi_north'

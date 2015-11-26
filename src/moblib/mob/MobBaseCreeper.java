@@ -176,7 +176,7 @@ public class MobBaseCreeper extends EntityCreeper implements ISpawnable {
 		iCustom.setEntity(creeper);
 		
 		creeper.setPosition(loc.getX(), loc.getY(), loc.getZ());
-		mcWorld.addEntity(creeper, SpawnReason.CUSTOM);
+		mcWorld.addEntity(creeper, SpawnReason.NATURAL);
 		
 		return creeper;
 	}

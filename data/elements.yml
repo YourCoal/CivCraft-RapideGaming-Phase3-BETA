@@ -34,7 +34,7 @@
  - id: 'civ:element_boron'
    item_id: 374
    item_data: 0
-   name: '[6] Boron'
+   name: '[5] Boron'
    craftable: false
    shaped: false
    category: '<b>Element'
@@ -94,11 +94,858 @@
    craftable: false
    shaped: false
    category: '<b>Element'
-#Updated 10/31/15
+#Updated 11/21/15
  - id: 'civ:element_aluminum'
    item_id: 147
    item_data: 0
    name: '[13] Aluminum'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 11/21/15
+ - id: 'civ:element_silicon'
+   item_id: 147
+   item_data: 0
+   name: '[14] Silicon'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 11/21/15
+ - id: 'civ:element_phosphorus'
+   item_id: 147
+   item_data: 0
+   name: '[15] Phosphorus'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 11/21/15
+ - id: 'civ:element_sulfur'
+   item_id: 147
+   item_data: 0
+   name: '[16] Sulfur'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 11/21/15
+ - id: 'civ:element_chlorine'
+   item_id: 147
+   item_data: 0
+   name: '[17] Chlorine'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 11/21/15
+ - id: 'civ:element_argon'
+   item_id: 147
+   item_data: 0
+   name: '[18] Argon'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 11/21/15
+ - id: 'civ:element_potassium'
+   item_id: 147
+   item_data: 0
+   name: '[19] Potassium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 11/21/15
+ - id: 'civ:element_calcium'
+   item_id: 147
+   item_data: 0
+   name: '[20] Calcium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 11/21/15
+ - id: 'civ:element_scandium'
+   item_id: 147
+   item_data: 0
+   name: '[21] Scandium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_titanium'
+   item_id: 147
+   item_data: 0
+   name: '[22] Titanium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_vanadium'
+   item_id: 147
+   item_data: 0
+   name: '[23] Vanadium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_Chromium'
+   item_id: 147
+   item_data: 0
+   name: '[24] Chromium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_maganese'
+   item_id: 147
+   item_data: 0
+   name: '[25] Maganese'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+    - id: 'civ:element_iron'
+   item_id: 147
+   item_data: 0
+   name: '[26] Iron'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_cobalt'
+   item_id: 147
+   item_data: 0
+   name: '[27] Cobalt'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+      #Updated 11/21/15
+ - id: 'civ:element_nickel'
+   item_id: 147
+   item_data: 0
+   name: '[28] Nickel'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+      #Updated 11/21/15
+ - id: 'civ:element_copper'
+   item_id: 147
+   item_data: 0
+   name: '[29] Copper'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+      #Updated 11/21/15
+ - id: 'civ:element_zinc'
+   item_id: 147
+   item_data: 0
+   name: '[30] Zinc'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+      #Updated 11/21/15
+ - id: 'civ:element_gallium'
+   item_id: 147
+   item_data: 0
+   name: '[31] Gallium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+      #Updated 11/21/15
+ - id: 'civ:element_germanium'
+   item_id: 147
+   item_data: 0
+   name: '[32] Germanium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+      #Updated 11/21/15
+ - id: 'civ:element_arsenic'
+   item_id: 147
+   item_data: 0
+   name: '[33] Arsenic'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+      #Updated 11/21/15
+ - id: 'civ:element_selenium'
+   item_id: 147
+   item_data: 0
+   name: '[34] Selenium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+      #Updated 11/21/15
+ - id: 'civ:element_bromine'
+   item_id: 147
+   item_data: 0
+   name: '[35] Bromine'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+      #Updated 11/21/15
+ - id: 'civ:element_krypton'
+   item_id: 147
+   item_data: 0
+   name: '[36] Krypton'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+      #Updated 11/21/15
+ - id: 'civ:element_rubidium'
+   item_id: 147
+   item_data: 0
+   name: '[37] Rubidium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+      #Updated 11/21/15
+ - id: 'civ:element_strontitum'
+   item_id: 147
+   item_data: 0
+   name: '[38] Strontitum'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+      #Updated 11/21/15
+ - id: 'civ:element_yttrium'
+   item_id: 147
+   item_data: 0
+   name: '[39] Yttrium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+      #Updated 11/21/15
+ - id: 'civ:element_zirconium'
+   item_id: 147
+   item_data: 0
+   name: '[40] Zirconium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+         #Updated 11/21/15
+ - id: 'civ:element_niobium'
+   item_id: 147
+   item_data: 0
+   name: '[41] Niobium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 11/21/15
+ - id: 'civ:element_molybdenum'
+   item_id: 147
+   item_data: 0
+   name: '[42] Molybdenum'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_technetium'
+   item_id: 147
+   item_data: 0
+   name: '[43] Technetium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 11/21/15
+ - id: 'civ:element_ruthenium'
+   item_id: 147
+   item_data: 0
+   name: '[44] Ruthenium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 11/21/15
+ - id: 'civ:element_rhodium'
+   item_id: 147
+   item_data: 0
+   name: '[45] Rhodium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_palladium'
+   item_id: 147
+   item_data: 0
+   name: '[46] Palladium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_silver'
+   item_id: 147
+   item_data: 0
+   name: '[47] Silver'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_cadmium'
+   item_id: 147
+   item_data: 0
+   name: '[48] Cadmium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_indium'
+   item_id: 147
+   item_data: 0
+   name: '[49] Indium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_tin'
+   item_id: 147
+   item_data: 0
+   name: '[50] Tin'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_Antimony'
+   item_id: 147
+   item_data: 0
+   name: '[51] Antimony'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_tellurium'
+   item_id: 147
+   item_data: 0
+   name: '[52] Tellurium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_Iodine'
+   item_id: 147
+   item_data: 0
+   name: '[53] Iodine'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_xenon'
+   item_id: 147
+   item_data: 0
+   name: '[54] Xenon'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_caesium'
+   item_id: 147
+   item_data: 0
+   name: '[55] Caesium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_barium'
+   item_id: 147
+   item_data: 0
+   name: '[56] Barium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_lanthanum'
+   item_id: 147
+   item_data: 0
+   name: '[57] Lanthanum'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_cerium'
+   item_id: 147
+   item_data: 0
+   name: '[58] Cerium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_praseodymium'
+   item_id: 147
+   item_data: 0
+   name: '[59] Praseodymium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_Neodymium'
+   item_id: 147
+   item_data: 0
+   name: '[60] Neodymium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_promethium'
+   item_id: 147
+   item_data: 0
+   name: '[61] Promethium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_promethium'
+   item_id: 147
+   item_data: 0
+   name: '[63] Promethium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_Samarium'
+   item_id: 147
+   item_data: 0
+   name: '[62] Samarium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_europium'
+   item_id: 147
+   item_data: 0
+   name: '[63] Europium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_gadolinium'
+   item_id: 147
+   item_data: 0
+   name: '[64] Gadolinium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_terbium'
+   item_id: 147
+   item_data: 0
+   name: '[65] Terbium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_dysprosium'
+   item_id: 147
+   item_data: 0
+   name: '[66] Dysprosium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_holmium'
+   item_id: 147
+   item_data: 0
+   name: '[67] Holmium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_erbium'
+   item_id: 147
+   item_data: 0
+   name: '[68] Erbium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+#Updated 11/21/15
+ - id: 'civ:element_thulium'
+   item_id: 147
+   item_data: 0
+   name: '[69] Thulium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_Ytterbium'
+   item_id: 147
+   item_data: 0
+   name: '[70] Ytterbium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_lutetium'
+   item_id: 147
+   item_data: 0
+   name: '[71] Lutetium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_hafnium'
+   item_id: 147
+   item_data: 0
+   name: '[72] Hafnium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_tantalum'
+   item_id: 147
+   item_data: 0
+   name: '[73] Tantalum'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_tungsten'
+   item_id: 147
+   item_data: 0
+   name: '[74] Tungsten'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_rhenium'
+   item_id: 147
+   item_data: 0
+   name: '[75] Rhenium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_osmium'
+   item_id: 147
+   item_data: 0
+   name: '[76] Osmium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_iridium'
+   item_id: 147
+   item_data: 0
+   name: '[77] Iridium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_platinum'
+   item_id: 147
+   item_data: 0
+   name: '[78] Platinum'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_gold'
+   item_id: 147
+   item_data: 0
+   name: '[79] Gold'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_mercury'
+   item_id: 147
+   item_data: 0
+   name: '[80] Element'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_thallium'
+   item_id: 147
+   item_data: 0
+   name: '[81] Thallium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_lead'
+   item_id: 147
+   item_data: 0
+   name: '[82] Lead'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_bismuth'
+   item_id: 147
+   item_data: 0
+   name: '[83] Bismuth'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_polonium'
+   item_id: 147
+   item_data: 0
+   name: '[84] Polonium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_astatine'
+   item_id: 147
+   item_data: 0
+   name: '[85] Astatine'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_radon'
+   item_id: 147
+   item_data: 0
+   name: '[86] Radon'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_francium'
+   item_id: 147
+   item_data: 0
+   name: '[87] Francium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_radium'
+   item_id: 147
+   item_data: 0
+   name: '[88] Radium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_actinium'
+   item_id: 147
+   item_data: 0
+   name: '[89] Actinium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_thorium'
+   item_id: 147
+   item_data: 0
+   name: '[90] Thorium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_protactinium'
+   item_id: 147
+   item_data: 0
+   name: '[91] Protactinium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+   - id: 'civ:element_uranium'
+   item_id: 147
+   item_data: 0
+   name: '[92] Uranium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_neptunium'
+   item_id: 147
+   item_data: 0
+   name: '[93] Neptunium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_plutonium'
+   item_id: 147
+   item_data: 0
+   name: '[94] Plutonium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_americium'
+   item_id: 147
+   item_data: 0
+   name: '[95] Americium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_curium'
+   item_id: 147
+   item_data: 0
+   name: '[96] Curium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_berkelium'
+   item_id: 147
+   item_data: 0
+   name: '[97] Berkelium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_californium'
+   item_id: 147
+   item_data: 0
+   name: '[98] Californium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_einsteinium'
+   item_id: 147
+   item_data: 0
+   name: '[99] Einsteinium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_fermium'
+   item_id: 147
+   item_data: 0
+   name: '[100] Fermium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_mendelevium'
+   item_id: 147
+   item_data: 0
+   name: '[101] Mendelevium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_nobelium'
+   item_id: 147
+   item_data: 0
+   name: '102] Nobelium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+ - id: 'civ:element_lawrencium'
+   item_id: 147
+   item_data: 0
+   name: '[103] Lawrencium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+    - id: 'civ:element_rutherfordium'
+   item_id: 147
+   item_data: 0
+   name: '[104] Rutherfordium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+    - id: 'civ:element_Dubnium'
+   item_id: 147
+   item_data: 0
+   name: '[105] Dubnium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+    - id: 'civ:element_Seaborgium'
+   item_id: 147
+   item_data: 0
+   name: '[106] Seaborgium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+    - id: 'civ:element_bohrium'
+   item_id: 147
+   item_data: 0
+   name: '[107] Bohrium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+    - id: 'civ:element_hassium'
+   item_id: 147
+   item_data: 0
+   name: '[108] Hassium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+    - id: 'civ:element_meitnerium'
+   item_id: 147
+   item_data: 0
+   name: '[109] Meitnerium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+    - id: 'civ:element_darmstadtium'
+   item_id: 147
+   item_data: 0
+   name: '[110] Darmstadtium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+    - id: 'civ:element_roentgenium'
+   item_id: 147
+   item_data: 0
+   name: '[111] Roentgenium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+    - id: 'civ:element_copernicium'
+   item_id: 147
+   item_data: 0
+   name: '[112] Copernicium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+    - id: 'civ:element_ununtrium
+   item_id: 147
+   item_data: 0
+   name: '[113] Ununtrium
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+    - id: 'civ:element_ununquandium'
+   item_id: 147
+   item_data: 0
+   name: '[114] Ununquandium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+    - id: 'civ:element_Ununpentium'
+   item_id: 147
+   item_data: 0
+   name: '[115] Ununpentium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+   - id: 'civ:element_ununhexium'
+   item_id: 147
+   item_data: 0
+   name: '[116] Ununhexium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+   - id: 'civ:element_ununseptium'
+   item_id: 147
+   item_data: 0
+   name: '[117] Ununseptium'
+   craftable: false
+   shaped: false
+   category: '<b>Element'
+   #Updated 11/21/15
+   - id: 'civ:element_ununnoctium'
+   item_id: 147
+   item_data: 0
+   name: '[118] Ununnoctium'
    craftable: false
    shaped: false
    category: '<b>Element'

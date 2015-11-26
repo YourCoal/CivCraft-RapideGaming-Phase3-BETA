@@ -2,144 +2,150 @@ buffs:
     - id: 'buff_construction'
       name: 'Construction'
       description: 'Increases hammer production by <lightgreen>100<r> hammers. <gold>Stackable<r>'
-#      value: '0.25'
       value: '100'
       stackable: true
       parent:
-   
+#
     - id: 'buff_year_of_plenty'
       name: 'Year Of Plenty'
       description: 'Increases growth rate of farms by <lightgreen>20%<r>. <gold>Stackable<r>'
       value: '0.2'
       stackable: true
       parent:
-
+#
     - id: 'buff_innovation'
       name: 'Innovation'
       description: 'Increases Science rate for civilization by <lightgreen>10%<r> <gold>Stackable<r>'
       value: '0.1'
       stackable: true
       parent:
-
+#
     - id: 'buff_monopoly'
       name: 'Monopoly'
       description: 'Increases coin output from all trade goods in use by <lightgreen>3%<r> <gold>Stackable<r>'
       value: '0.3'
       stackable: true
       parent:
-    
+#
     - id: 'buff_preservative'
       name: 'Preservative'
       description: 'Reduces consumption of cottages by <lightgreen>50%<r>'
       value: '0.5'
       stackable: false
       parent:
-
+#
     - id: 'buff_advanced_mining'
       name: 'Advanced Mining'
       description: 'Increases the mine improvement production by <lightgreen>50%<r> <gold>Stackable<r>'
       value: '0.5'
       stackable: true
       parent:
-
+#
     - id: 'buff_advanced_testing'
       name: 'Advanced Testing'
       description: 'Increases the lab improvement production by <lightgreen>50%<r> <gold>Stackable<r>'
       value: '0.5'
       stackable: true
       parent:
-
+#
     - id: 'buff_barricade'
       name: 'Barricade'
       description: 'Increases HP of defensive structures by <lightgreen>50%<r>'
       value: '0.5'
       stackable: false
       parent:
-
+#
     - id: 'buff_barter'
       name: 'Barter'
       description: 'Increases the exchange rate of minerals exchanged at the bank by <lightgreen>5%<r> <gold>Stackable<r>'
       value: '0.05'
       stackable: true
       parent:
-
+#
     - id: 'buff_fine_art'
       name: 'Fine Art'
       description: 'Increases culture output of a town by <lightgreen>25%<r>'
       value: '0.25'
       stackable: false
       parent:
-
+#
     - id: 'buff_extraction'
       name: 'Extraction'
       description: 'Increases the Trommel chance of producing precious minerals by <lightgreen>50%<r> <gold>Stackable<r>'
       value: '0.5'
       stackable: false
       parent:
-
+#
+    - id: 'buff_fusion'
+      name: 'Fusion'
+      description: 'Increases the NuclearPlant rate by <lightgreen>50%<r> <gold>Stackable<r>'
+      value: '0.5'
+      stackable: false
+      parent:
+#
     - id: 'buff_fire_bomb'
       name: 'Fire Bomb'
       description: 'Increases damage of arrow/cannon towers by a <lightgreen>10%<r> Also makes arrow towers shoot flaming arrows <gold>Stackable<r>'
       value: '1.0'
       stackable: false
       parent:
-
+#
     - id: 'buff_fishing'
       name: 'Fishing'
       description: 'Allows uncooked fish to replace the need for bread. <lightgreen>1 fish = 2 bread<r>'
       value: '2'
       stackable: false
       parent:
-    
+#
     - id: 'buff_greed'
       name: 'Greed'
       description: 'Increases interest rates by <lightgreen>3%<r>'
       value: '0.03'
       stackable: false
       parent:
-
+#
     - id: 'buff_medicine'
       name: 'Medicine'
       description: 'Decreases friendly respawn time during war by <lightgreen>50<r> seconds.'
       value: '50'
       stackable: false
       parent:
-    
+#
     - id: 'buff_dirty_money'
       name: 'Dirty Money'
       description: 'Increases the chances of Steal Treasury by <lightgreen>50%<r>'
       value: '0.5'
       stackable: false
       parent:
-
+#
     - id: 'buff_espionage'
       name: 'Espionage'
       description: 'Increases the chances of poison granary and incite revolt by <lightgreen>50%<r>'
       value: '0.5'
       stackable: false
       parent:
-    
+#
     - id: 'buff_rush'
       name: 'Rush'
       description: 'Reduces the hammer cost of all structures, wonders and improvements by <lightgreen>15%<r>'
       value: '0.15'
       stackable: false
       parent:
-    
+#
     - id: 'buff_sabotage'
       name: 'Sabotage'
       description: 'Greatly increases the effectivenes of sabotage missions by <lightgreen>50%<r>'
       value: '0.5'
       stackable: false
       parent:
-
+#
     - id: 'buff_hedonism'
       name: 'Hedonism'
       description: 'Grants an extra <lightgreen>3<r> happiness'
       value: '3.0'
       stackable: true
       parent:
-
+#
     - id: 'buff_noanarchy'
       name: 'No Anarchy'
       description: 'Civilization does not experience anarchy when switching governments.'

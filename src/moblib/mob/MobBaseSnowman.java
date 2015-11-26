@@ -70,7 +70,7 @@ public class MobBaseSnowman extends EntitySnowman implements ISpawnable {
 		iCustom.setEntity(snowman);
 		
 		snowman.setPosition(loc.getX(), loc.getY(), loc.getZ());
-		mcWorld.addEntity(snowman, SpawnReason.CUSTOM);
+		mcWorld.addEntity(snowman, SpawnReason.NATURAL);
 		
 		return snowman;
 	}

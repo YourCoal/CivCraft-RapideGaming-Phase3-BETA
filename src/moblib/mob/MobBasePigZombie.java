@@ -175,7 +175,7 @@ public class MobBasePigZombie extends EntityPigZombie implements ISpawnable {
 		iCustom.setEntity(pigzombie);
 		
 		pigzombie.setPosition(loc.getX(), loc.getY(), loc.getZ());
-		mcWorld.addEntity(pigzombie, SpawnReason.CUSTOM);
+		mcWorld.addEntity(pigzombie, SpawnReason.NATURAL);
 		
 		return pigzombie;
 	}

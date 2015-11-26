@@ -195,8 +195,8 @@ public class Trommel extends Structure {
 		double increase = chance*this.getTown().getBuffManager().getEffectiveDouble(Buff.EXTRACTION);
 		chance += increase;
 		try {
-			if (this.getTown().getGovernment().id.equals("gov_despotism")) {
-				chance *= CivSettings.getDouble(CivSettings.structureConfig, "trommel.despotism_rate");
+			if (this.getTown().getGovernment().id.equals("gov_technocracy")) {
+				chance *= CivSettings.getDouble(CivSettings.structureConfig, "trommel.technocracy_rate");
 			} else if (this.getTown().getGovernment().id.equals("gov_anarchy")){
 				chance *= CivSettings.getDouble(CivSettings.structureConfig, "trommel.penalty_rate");
 			}

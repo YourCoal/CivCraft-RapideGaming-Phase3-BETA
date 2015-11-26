@@ -176,7 +176,7 @@ public class MobBaseWitherBoss extends EntityWither implements ISpawnable {
 		iCustom.setEntity(witherboss);
 		
 		witherboss.setPosition(loc.getX(), loc.getY(), loc.getZ());
-		mcWorld.addEntity(witherboss, SpawnReason.CUSTOM);
+		mcWorld.addEntity(witherboss, SpawnReason.NATURAL);
 		
 		return witherboss;
 	}

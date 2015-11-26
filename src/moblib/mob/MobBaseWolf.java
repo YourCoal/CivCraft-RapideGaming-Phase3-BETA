@@ -176,7 +176,7 @@ public class MobBaseWolf extends EntityWolf implements ISpawnable {
 		iCustom.setEntity(wolf);
 		
 		wolf.setPosition(loc.getX(), loc.getY(), loc.getZ());
-		mcWorld.addEntity(wolf, SpawnReason.CUSTOM);
+		mcWorld.addEntity(wolf, SpawnReason.NATURAL);
 		
 		return wolf;
 	}

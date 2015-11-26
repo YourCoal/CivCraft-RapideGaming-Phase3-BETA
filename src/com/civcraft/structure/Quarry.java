@@ -89,8 +89,8 @@ public class Quarry extends Structure {
 		double increase = chance*this.getTown().getBuffManager().getEffectiveDouble(Buff.EXTRACTION);
 		chance += increase;
 		try {
-			if (this.getTown().getGovernment().id.equals("gov_despotism")) {
-				chance *= CivSettings.getDouble(CivSettings.structureConfig, "quarry.despotism_rate");
+			if (this.getTown().getGovernment().id.equals("gov_technocracy")) {
+				chance *= CivSettings.getDouble(CivSettings.structureConfig, "quarry.technocracy_rate");
 			} else if (this.getTown().getGovernment().id.equals("gov_theocracy") || this.getTown().getGovernment().id.equals("gov_monarchy")){
 				chance *= CivSettings.getDouble(CivSettings.structureConfig, "quarry.penalty_rate");
 			}

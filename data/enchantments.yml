@@ -21,4 +21,4 @@ enchants:
    name: 'Punchout'
    cost: 40000.0
    description: '% chance to do extra damage to a structure.'
-   enchant_id: 'LoreEnhancementPunchout'
+   enchant_id: 'LoreEnhancementPunchoutI'

@@ -11,6 +11,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import com.civcraft.components.NonMemberFeeComponent;
 import com.civcraft.config.CivSettings;
 import com.civcraft.exception.CivException;
+import com.civcraft.exception.InvalidConfiguration;
 import com.civcraft.lorestorage.LoreMaterial;
 import com.civcraft.main.CivData;
 import com.civcraft.main.CivGlobal;
@@ -84,6 +85,15 @@ public class Bank extends Structure {
 		double rate = 1;
 		double addtional = rate*this.getTown().getBuffManager().getEffectiveDouble(Buff.BARTER);
 		rate += addtional;
+		try {
+			if (this.getTown().getGovernment().id.equals("gov_bankocracy")) {
+				rate *= CivSettings.getDouble(CivSettings.structureConfig, "bank.bankocracy_rate");
+			} else if (this.getTown().getGovernment().id.equals("gov_monarchy")){
+				rate *= CivSettings.getDouble(CivSettings.structureConfig, "bank.penalty_rate");
+			}
+		} catch (InvalidConfiguration e) {
+			e.printStackTrace();
+		}
 		if (rate > 1) {
 			exchange_rate *= rate;
 		}

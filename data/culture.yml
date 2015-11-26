@@ -1,59 +1,59 @@
 culture_levels:
  - level: 0
    amount: 0
-   chunks: 6
+   chunks: 5
 #
  - level: 1
    amount: 175
-   chunks: 8
+   chunks: 7
 #  
  - level: 2
    amount: 400
-   chunks: 10
+   chunks: 9
 #
  - level: 3
    amount: 825
-   chunks: 12
+   chunks: 11
 #
  - level: 4
    amount: 1500
-   chunks: 15
+   chunks: 13
 #
  - level: 5
    amount: 4250
-   chunks: 17
+   chunks: 15
 #
  - level: 6
    amount: 10000
-   chunks: 19
+   chunks: 17
 #
  - level: 7
    amount: 22500
-   chunks: 22
+   chunks: 20
 #
  - level: 8
    amount: 47500
-   chunks: 24
+   chunks: 22
 #
  - level: 9
    amount: 75000
-   chunks: 26
+   chunks: 24
 #
  - level: 10
    amount: 135000
-   chunks: 29
+   chunks: 26
 #
  - level: 11
    amount: 215000
-   chunks: 31
+   chunks: 28
 #
  - level: 12
    amount: 285000
-   chunks: 33
+   chunks: 30
 #
  - level: 13
    amount: 400000
-   chunks: 36
+   chunks: 32
 #
 culture_biomes:
 #====================================#

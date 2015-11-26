@@ -176,7 +176,7 @@ public class MobBaseBlaze extends EntityBlaze implements ISpawnable {
 		iCustom.setEntity(blaze);
 		
 		blaze.setPosition(loc.getX(), loc.getY(), loc.getZ());
-		mcWorld.addEntity(blaze, SpawnReason.CUSTOM);
+		mcWorld.addEntity(blaze, SpawnReason.NATURAL);
 		
 		return blaze;
 	}

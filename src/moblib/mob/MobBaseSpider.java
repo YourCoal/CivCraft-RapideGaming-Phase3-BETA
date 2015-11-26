@@ -176,7 +176,7 @@ public class MobBaseSpider extends EntitySpider implements ISpawnable {
 		iCustom.setEntity(spider);
 		
 		spider.setPosition(loc.getX(), loc.getY(), loc.getZ());
-		mcWorld.addEntity(spider, SpawnReason.CUSTOM);
+		mcWorld.addEntity(spider, SpawnReason.NATURAL);
 		
 		return spider;
 	}

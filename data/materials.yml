@@ -3,7 +3,7 @@ materials:
 #==> OLD Mats, Remove Eventually <===#
 #====================================#
 #Updated 7/31/15
- - id: 'mat_token_of_leadership'
+ - id: 'civ:token_of_leadership'
    item_id: 370
    item_data: 0
    name: 'Token Of Leadership'
@@ -13,7 +13,7 @@ materials:
    components:
      - name: 'Tagged'       
 #Updated 7/31/15
- - id: 'mat_tungsten_ore'
+ - id: 'civ:tungsten_ore'
    item_id: 385
    item_data: 0
    name: 'Tungsten Ore'
@@ -23,7 +23,7 @@ materials:
    shaped: true
    category: 'OLD'
 #Updated 7/31/15
- - id: 'mat_chromium_ore'
+ - id: 'civ:chromium_ore'
    item_id: 370
    item_data: 0
    name: 'Chromium Ore'
@@ -142,6 +142,54 @@ materials:
 #========> Tier 1 Materials <========#
 #====================================#
 #Updated 7/31/15
+ - id: 'civ:crafted_string'
+   item_id: 288
+   item_data: 0
+   name: 'Crafted String'
+   craftable: true
+   shaped: false
+   category: '<lightgreen>Tier 1 Material'
+   ingredients:
+     - type_id: 287
+       data: 0
+       count: 7
+#Updated 7/31/15
+ - id: 'civ:crafted_sticks'
+   item_id: 5
+   item_data: 1
+   name: 'Crafted Sticks'
+   craftable: true
+   shaped: false
+   category: '<lightgreen>Tier 1 Material'
+   ingredients:
+     - type_id: 280
+       data: 0
+       count: 9
+#Updated 7/31/15
+ - id: 'civ:crafted_reeds'
+   item_id: 338
+   item_data: 0
+   name: 'Crafted Reeds'
+   craftable: true
+   shaped: false
+   category: '<lightgreen>Tier 1 Material'
+   ingredients:
+     - type_id: 338
+       data: 0
+       count: 9
+#Updated 7/31/15
+ - id: 'civ:refined_cobblestone'
+   item_id: 1
+   item_data: 0
+   name: 'Refined Cobblestone'
+   craftable: true
+   shaped: false
+   category: '<lightgreen>Tier 1 Material'
+   ingredients:
+     - type_id: 4
+       data: 0
+       count: 9
+#Updated 7/31/15
  - id: 'civ:crushed_granite'
    item_id: 1
    item_data: 1
@@ -233,6 +281,71 @@ materials:
 #========> Tier 2 Materials <========#
 #====================================#
 #Updated 7/31/15
+ - id: 'civ:refined_string'
+   item_id: 339
+   item_data: 0
+   name: 'Refined String'
+   craftable: true
+   shaped: false
+   category: '<yellow>Tier 2 Material'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:crafted_string'
+       data: 0
+       count: 7
+#Updated 7/31/15
+ - id: 'civ:refined_sticks'
+   item_id: 72
+   item_data: 0
+   name: 'Refined Sticks'
+   craftable: true
+   shaped: false
+   category: '<yellow>Tier 2 Material'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:crafted_sticks'
+       data: 0
+       count: 9
+#Updated 7/31/15
+ - id: 'civ:polished_stone'
+   item_id: 98
+   item_data: 0
+   name: 'Polihed Stone'
+   craftable: true
+   shaped: false
+   category: '<yellow>Tier 2 Material'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:refined_cobblestone'
+       data: 0
+       count: 9
+#Updated 7/31/15
+ - id: 'civ:compressed_sugar'
+   item_id: 406
+   item_data: 0
+   name: 'Compressed Sugar'
+   craftable: true
+   shaped: false
+   category: '<yellow>Tier 2 Material'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:refined_sugar'
+       data: 0
+       count: 9
+#Updated 7/31/15
+ - id: 'civ:refined_leather'
+   item_id: 415
+   item_data: 0
+   name: 'Refined Leather'
+   craftable: true
+   shaped: false
+   category: '<yellow>Tier 2 Material'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:carved_leather'
+       data: 0
+       count: 9
+#Updated 7/31/15
  - id: 'civ:lowend_varnish'
    item_id: 369
    item_data: 0
@@ -257,6 +370,19 @@ materials:
        data: 0
        count: 1
 #Updated 7/31/15
+ - id: 'civ:bronze_block'
+   item_id: 179
+   item_data: 2
+   name: 'Bronze Block'
+   craftable: true
+   shaped: false
+   category: '<yellow>Tier 2 Material'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:bronze_ingot'
+       data: 0
+       count: 9
+#Updated 7/31/15
  - id: 'civ:bronze_ingot'
    item_id: 126
    item_data: 4
@@ -271,8 +397,8 @@ materials:
        count: 9
 #Updated 7/31/15
  - id: 'civ:bronze_ore'
-   item_id: 159
-   item_data: 1
+   item_id: 351
+   item_data: 14
    name: 'Bronze Ore'
    components:
      - name: 'NoRightClick'
@@ -282,6 +408,74 @@ materials:
 #====================================#
 #========> Tier 3 Materials <========#
 #====================================#
+#Updated 7/31/15
+ - id: 'civ:wolven_threading'
+   item_id: 35
+   item_data: 0
+   name: 'Wolven Threading'
+   craftable: true
+   shaped: false
+   category: '<rose>Tier 3 Material'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:refined_string'
+       data: 0
+       count: 7
+#Updated 7/31/15
+ - id: 'civ:compacted_sticks'
+   item_id: 143
+   item_data: 0
+   name: 'Compacted Sticks'
+   craftable: true
+   shaped: false
+   category: '<rose>Tier 3 Material'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:refined_sticks'
+       data: 0
+       count: 9
+#Updated 7/31/15
+ - id: 'civ:concrete'
+   item_id: 82
+   item_data: 0
+   name: 'Concrete'
+   craftable: true
+   shaped: false
+   category: '<rose>Tier 3 Material'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:compressed_sugar'
+       data: 0
+       count: 3
+     - type_id: 0
+       custom_id: 'civ:crafted_reeds'
+       data: 0
+       count: 3
+     - type_id: 0
+       custom_id: 'civ:crushed_granite'
+       data: 0
+       count: 1
+     - type_id: 0
+       custom_id: 'civ:crushed_diorite'
+       data: 0
+       count: 1
+     - type_id: 0
+       custom_id: 'civ:crushed_andesite'
+       data: 0
+       count: 1
+#Updated 7/31/15
+ - id: 'civ:compacted_stone'
+   item_id: 44
+   item_data: 5
+   name: 'Refined Stone'
+   craftable: true
+   shaped: false
+   category: '<rose>Tier 3 Material'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:polished_stone'
+       data: 0
+       count: 9
 #Updated 7/31/15
  - id: 'civ:medend_varnish'
    item_id: 406
@@ -325,6 +519,32 @@ materials:
 #====================================#
 #========> Tier 4 Materials <========#
 #====================================#
+#Updated 7/31/15
+ - id: 'civ:refined_wolven_threading'
+   item_id: 171
+   item_data: 0
+   name: 'Refined Wolven Threading'
+   craftable: true
+   shaped: false
+   category: '<lightblue>Tier 4 Material'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:wolven_threading'
+       data: 0
+       count: 7
+#Updated 7/31/15
+ - id: 'civ:refined_compacted_sticks'
+   item_id: 65
+   item_data: 0
+   name: 'Refined Compacted Sticks'
+   craftable: true
+   shaped: false
+   category: '<lightblue>Tier 4 Material'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:compacted_sticks'
+       data: 0
+       count: 9
 #Updated 7/31/15
  - id: 'civ:highend_varnish'
    item_id: 399
@@ -527,6 +747,37 @@ materials:
 #==========> Tier 1 Gear <===========#
 #====================================#
 #Updated 7/31/15
+ - id: 'civ:iron_reinforced_bow'
+   item_id: 261
+   item_data: 0
+   name: 'Iron-Reinforced Bow'
+   craftable: true
+   required_techs: 'tech_welding'
+   shaped: true
+   category: '<green>Gear Tier 1'
+   components:
+     - name: 'RangedAttack'
+       value: '16.5'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.1'
+   ingredients:
+     - type_id: 265
+       data: 0
+       letter: 'i'
+     - type_id: 0
+       data: 0
+       custom_id: 'civ:crafted_sticks'
+       letter: 'w'
+     - type_id: 0
+       data: 0
+       custom_id: 'civ:crafted_string'
+       letter: 's'
+   shape:
+     - "sw "
+     - "s i"
+     - "sw "
+#Updated 7/31/15
  - id: 'civ:iron_sword0'
    item_id: 267
    item_data: 0
@@ -658,6 +909,38 @@ materials:
 #====================================#
 #==========> Tier 2 Gear <===========#
 #====================================#
+#Updated 7/31/15
+ - id: 'civ:bronze_reinforced_bow'
+   item_id: 261
+   item_data: 0
+   name: 'Bronze-Reinforced Bow'
+   craftable: true
+   required_techs: 'tech_smithing'
+   shaped: true
+   category: '<gold>Gear Tier 2'
+   components:
+     - name: 'RangedAttack'
+       value: '20.5'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.1'
+   ingredients:
+     - type_id: 0
+       data: 0
+       custom_id: 'civ:bronze_ingot'
+       letter: 'i'
+     - type_id: 0
+       data: 0
+       custom_id: 'civ:refined_sticks'
+       letter: 'w'
+     - type_id: 0
+       data: 0
+       custom_id: 'civ:refined_string'
+       letter: 's'
+   shape:
+     - "sw "
+     - "s i"
+     - "sw "
 #Updated 7/31/15
  - id: 'civ:bronze_sword0'
    item_id: 283
@@ -795,12 +1078,44 @@ materials:
 #==========> Tier 3 Gear <===========#
 #====================================#
 #Updated 7/31/15
+ - id: 'civ:steel_reinforced_bow'
+   item_id: 261
+   item_data: 0
+   name: 'Steel-Reinforced Bow'
+   craftable: true
+   required_techs: 'tech_crafting'
+   shaped: true
+   category: '<red>Gear Tier 3'
+   components:
+     - name: 'RangedAttack'
+       value: '24.5'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.1'
+   ingredients:
+     - type_id: 0
+       data: 0
+       custom_id: 'civ:steel_ingot'
+       letter: 'i'
+     - type_id: 0
+       data: 0
+       custom_id: 'civ:compacted_sticks'
+       letter: 'w'
+     - type_id: 0
+       data: 0
+       custom_id: 'civ:wolven_threading'
+       letter: 's'
+   shape:
+     - "sw "
+     - "s i"
+     - "sw "
+#Updated 7/31/15
  - id: 'civ:steel_sword0'
    item_id: 267
    item_data: 0
    name: 'Steel Longsword'
    craftable: true
-   required_techs: 'tech_smithing'
+   required_techs: 'tech_crafting'
    shaped: true
    category: '<red>Gear Tier 3'
    components:
@@ -829,7 +1144,7 @@ materials:
    item_data: 0
    name: 'Steel Helmet'
    craftable: true
-   required_techs: 'tech_smithing'
+   required_techs: 'tech_crafting'
    shaped: true
    category: '<red>Gear Tier 3'
    components:
@@ -855,7 +1170,7 @@ materials:
    item_data: 0
    name: 'Steel Chestplate'
    craftable: true
-   required_techs: 'tech_smithing'
+   required_techs: 'tech_crafting'
    shaped: true
    category: '<red>Gear Tier 3'
    components:
@@ -881,7 +1196,7 @@ materials:
    item_data: 0
    name: 'Steel Leggings'
    craftable: true
-   required_techs: 'tech_smithing'
+   required_techs: 'tech_crafting'
    shaped: true
    category: '<red>Gear Tier 3'
    components:
@@ -907,7 +1222,7 @@ materials:
    item_data: 0
    name: 'Steel Boots'
    craftable: true
-   required_techs: 'tech_smithing'
+   required_techs: 'tech_crafting'
    shaped: true
    category: '<red>Gear Tier 3'
    components:
@@ -930,6 +1245,38 @@ materials:
 #====================================#
 #==========> Tier 4 Gear <===========#
 #====================================#
+#Updated 7/31/15
+ - id: 'civ:titanium_reinforced_bow'
+   item_id: 261
+   item_data: 0
+   name: 'Titanium-Reinforced Bow'
+   craftable: true
+   required_techs: 'tech_magic'
+   shaped: true
+   category: '<blue>Gear Tier 4'
+   components:
+     - name: 'RangedAttack'
+       value: '28.5'
+     - name: 'NoVanillaDurability'
+     - name: 'DurabilityOnDeath'
+       value: '0.1'
+   ingredients:
+     - type_id: 0
+       data: 0
+       custom_id: 'civ:titanium_ingot'
+       letter: 'i'
+     - type_id: 0
+       data: 0
+       custom_id: 'civ:refined_compacted_sticks'
+       letter: 'w'
+     - type_id: 0
+       data: 0
+       custom_id: 'civ:refined_wolven_threading'
+       letter: 's'
+   shape:
+     - "sw "
+     - "s i"
+     - "sw "
 #Updated 7/31/15
  - id: 'civ:titanium_sword0'
    item_id: 276
@@ -1317,76 +1664,42 @@ materials:
    craftable: false
    shaped: false
    category: 'Dyes'
-#Updated 10/31/15
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Special Recipes  ===========================================            
+#====================================#
+#=============> Special <============#
+#====================================#      
 #Updated 7/31/15
- - id: 'mat_found_civ'
-   item_id: 369
+ - id: 'civ:found_civ'
+   item_id: 386
    item_data: 0
-   name: 'Founding Civilization Flag'
+   name: 'Founding Civilization Constitution'
    craftable: true
    shaped: true
    category: 'Special'
    components:
      - name: 'FoundCivilization'
    ingredients:
-     - type_id: 56
-       data: 0
-       letter: 'o'
      - type_id: 0
        data: 0
-       custom_id: 'civ:titanium_ingot'
-       letter: 't'
+       custom_id: 'civ:concrete'
+       letter: 'c'
+     - type_id: 0
+       data: 0
+       custom_id: 'civ:bronze_block'
+       letter: 'b'
+     - type_id: 0
+       data: 0
+       custom_id: 'civ:compacted_stone'
+       letter: 's'
    shape:
-     - "ttt"
-     - "ooo"
-     - "ooo"
+     - "cbc"
+     - "bsb"
+     - "sbs"
 
        
           # XXX mat ID hard coded for camp refund. with /camp undo 
 #Updated 7/31/15
- - id: 'mat_found_camp'
+ - id: 'civ:found_camp'
    item_id: 324
    item_data: 0
    name: 'Camp'
@@ -1407,7 +1720,7 @@ materials:
      - "ccc"
      - "coc"
 
- - id: 'mat_found_warcamp'
+ - id: 'civ:found_warcamp'
    item_id: 7
    item_data: 0
    name: 'War Camp'
@@ -1417,7 +1730,7 @@ materials:
    components:
      - name: 'FoundWarCamp'
         
- - id: 'mat_build_cannon'
+ - id: 'civ:build_cannon'
    item_id: 154
    item_data: 0
    name: 'War Cannon'
@@ -1430,7 +1743,7 @@ materials:
 
 #  Special Item Recipes -------------------------------------------------
         
- - id: 'mat_tutorial_book'
+ - id: 'civ:tutorial_book'
    item_id: 340
    item_data: 0
    name: 'CivCraft Info'
@@ -1567,9 +1880,15 @@ removed_recipes:
     # Ender Chest
     - type_id: 130
       data: 0
-
-      
-# Amount of tungston to drop
-tungsten_min_drop: 0
-tungsten_max_drop: 1
-tungsten_max_drop_with_fortune: 3
+#Ore Drops
+bronze_min: 1
+bronze_max: 2
+bronze_max_fortune: 4
+#
+steel_min: 0
+steel_max: 2
+steel_max_fortune: 4
+#
+titanium_min: 0
+titanium_max: 2
+titanium_max_fortune: 5

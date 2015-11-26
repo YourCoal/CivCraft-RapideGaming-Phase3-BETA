@@ -176,7 +176,7 @@ public class MobBaseCaveSpider extends EntityCaveSpider implements ISpawnable {
 		iCustom.setEntity(cavespider);
 		
 		cavespider.setPosition(loc.getX(), loc.getY(), loc.getZ());
-		mcWorld.addEntity(cavespider, SpawnReason.CUSTOM);
+		mcWorld.addEntity(cavespider, SpawnReason.NATURAL);
 		
 		return cavespider;
 	}

@@ -176,7 +176,7 @@ public class MobBaseSkeleton extends EntitySkeleton implements ISpawnable {
 		iCustom.setEntity(skeleton);
 		
 		skeleton.setPosition(loc.getX(), loc.getY(), loc.getZ());
-		mcWorld.addEntity(skeleton, SpawnReason.CUSTOM);
+		mcWorld.addEntity(skeleton, SpawnReason.NATURAL);
 		
 		return skeleton;
 	}

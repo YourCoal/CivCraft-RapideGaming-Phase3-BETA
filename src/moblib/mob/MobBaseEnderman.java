@@ -176,7 +176,7 @@ public class MobBaseEnderman extends EntityEnderman implements ISpawnable {
 		iCustom.setEntity(enderman);
 		
 		enderman.setPosition(loc.getX(), loc.getY(), loc.getZ());
-		mcWorld.addEntity(enderman, SpawnReason.CUSTOM);
+		mcWorld.addEntity(enderman, SpawnReason.NATURAL);
 		
 		return enderman;
 	}

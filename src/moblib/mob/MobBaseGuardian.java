@@ -176,7 +176,7 @@ public class MobBaseGuardian extends EntityGuardian implements ISpawnable {
 		iCustom.setEntity(guardian);
 		
 		guardian.setPosition(loc.getX(), loc.getY(), loc.getZ());
-		mcWorld.addEntity(guardian, SpawnReason.CUSTOM);
+		mcWorld.addEntity(guardian, SpawnReason.NATURAL);
 		
 		return guardian;
 	}

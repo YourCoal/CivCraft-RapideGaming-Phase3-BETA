@@ -47,28 +47,24 @@ public class ConfigGovernment {
 		List<Map<?, ?>> techs = cfg.getMapList("governments");
 		for (Map<?, ?> level : techs) {
 			ConfigGovernment gov = new ConfigGovernment();
-			
 			gov.id = (String)level.get("id");
 			gov.displayName = (String)level.get("displayName");
 			gov.require_tech = (String)level.get("require_tech");
-
 			gov.trade_rate = (Double)level.get("trade_rate");
-			gov.upkeep_rate = (Double)level.get("upkeep_rate");
 			gov.cottage_rate = (Double)level.get("cottage_rate");
-			gov.growth_rate = (Double)level.get("growth_rate");
-			gov.culture_rate = (Double)level.get("culture_rate");
+			gov.upkeep_rate = (Double)level.get("upkeep_rate");
 			gov.hammer_rate = (Double)level.get("hammer_rate");
 			gov.beaker_rate = (Double)level.get("beaker_rate");
+			gov.growth_rate = (Double)level.get("growth_rate");
+			gov.culture_rate = (Double)level.get("culture_rate");
 			gov.maximum_tax_rate = (Double)level.get("maximum_tax_rate");
-
 			government_map.put(gov.id, gov);
 		}
 		CivLog.info("Loaded "+government_map.size()+" governments.");		
 	}
-
+	
 	public static ArrayList<ConfigGovernment> getAvailableGovernments(Civilization civ) {
 		ArrayList<ConfigGovernment> govs = new ArrayList<ConfigGovernment>();
-		
 		for (ConfigGovernment gov : CivSettings.governments.values()) {
 			if (gov.id.equalsIgnoreCase("gov_anarchy")) {
 				continue;
@@ -77,12 +73,10 @@ public class ConfigGovernment {
 				govs.add(gov);
 			}
 		}
-		
 		return govs;
 	}
-
+	
 	public static ConfigGovernment getGovernmentFromName(String string) {
-		
 		for (ConfigGovernment gov : CivSettings.governments.values()) {
 			if (gov.id.equalsIgnoreCase("gov_anarchy")) {
 				continue;
@@ -91,15 +85,13 @@ public class ConfigGovernment {
 				return gov;
 			}
 		}
-		
 		return null;
 	}
-
+	
 	public boolean isAvailable(Civilization civ) {
 		if (civ.hasTechnology(this.require_tech)) {
 			return true;
 		}
 		return false;
 	}
-	
 }

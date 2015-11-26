@@ -12,12 +12,14 @@ import org.bukkit.inventory.ItemStack;
 
 import com.civcraft.command.CommandBase;
 import com.civcraft.config.CivSettings;
+import com.civcraft.exception.AlreadyRegisteredException;
 import com.civcraft.exception.CivException;
 import com.civcraft.exception.InvalidConfiguration;
 import com.civcraft.lorestorage.LoreCraftableMaterial;
 import com.civcraft.main.CivData;
 import com.civcraft.main.CivMessage;
 import com.civcraft.object.Resident;
+import com.civcraft.object.Town;
 import com.civcraft.util.CivColor;
 import com.civcraft.util.ItemManager;
 
@@ -56,9 +58,7 @@ public class ResidentCommand extends CommandBase {
 	
 	public void timezone_cmd() throws CivException {
 		Resident resident = getResident();
-		
 		if (args.length < 2) {
-;
 			CivMessage.sendSuccess(sender, "Your current timezone is set to "+resident.getTimezone());
 			return;
 		}
@@ -74,12 +74,10 @@ public class ResidentCommand extends CommandBase {
 		}
 		
 		TimeZone timezone = TimeZone.getTimeZone(args[1]);
-		
 		if (timezone.getID().equals("GMT") && !args[1].equalsIgnoreCase("GMT")) {
 			CivMessage.send(sender, CivColor.LightGray+"We may not have recognized your timezone \""+args[1]+"\" if so, we'll set it to GMT.");
 			CivMessage.send(sender, CivColor.LightGray+"Type \"/resident timezone list\" to get a list of all available timezones.");
 		}
-		
 		resident.setTimezone(timezone.getID());
 		resident.save();
 		CivMessage.sendSuccess(sender, "TimeZone has been set to "+timezone.getID());
@@ -94,17 +92,11 @@ public class ResidentCommand extends CommandBase {
 	
 	public void perks_cmd() throws CivException {
 		Resident resident = getResident();
-		
-		//CivMessage.sendHeading(sender, "Your Perks");
-		//for (Perk p : resident.perks.values()) {
-		//	CivMessage.send(sender, "Perk:"+p.getIdent());
-		//}
 		resident.showPerkPage(0);
 	}
 	
 	public void book_cmd() throws CivException {
 		Player player = getPlayer();
-		
 		/* Determine if he already has the book. */
 		for (ItemStack stack : player.getInventory().getContents()) {
 			if (stack == null) {
@@ -116,55 +108,50 @@ public class ResidentCommand extends CommandBase {
 				continue;
 			}
 			
-			if (craftMat.getConfigId().equals("mat_tutorial_book")) {
+			if (craftMat.getConfigId().equals("civ:tutorial_book")) {
 				throw new CivException("You already have a help book.");
 			}
 		}
 		
-		LoreCraftableMaterial craftMat = LoreCraftableMaterial.getCraftMaterialFromId("mat_tutorial_book");
+		LoreCraftableMaterial craftMat = LoreCraftableMaterial.getCraftMaterialFromId("civ:tutorial_book");
 		ItemStack helpBook = LoreCraftableMaterial.spawn(craftMat);
-		
 		HashMap<Integer, ItemStack> leftovers = player.getInventory().addItem(helpBook);
 		if (leftovers != null && leftovers.size() >= 1) {
 			throw new CivException("You cannot hold anything else. Get some space open in your inventory first.");
 		}
-		
 		CivMessage.sendSuccess(player, "Added a help book to your inventory!");
 	}
 	
-	/*
-	 * We need to figure out how to handle debt for the resident when he switches towns.
-	 * Should we even allow this? idk. Maybe war respawn points is enough?
-	 */
-//	public void switchtown_cmd() throws CivException {
-//		Town town = getNamedTown(1);
-//		Resident resident = getResident();
-//		
-//		if (resident.getTown() == town) {
-//			throw new CivException("You cannot switch to your own town.");
-//		}
-//		
-//		if (resident.getTown().getMotherCiv() != town.getMotherCiv()) {
-//			throw new CivException("You cannot place yourself into a conquered civ's town.");
-//		}
-//		
-//		if (town.getCiv() != resident.getCiv()) {
-//			throw new CivException("You cannot switch to a town not in your civ.");
-//		}
-//		
-//		if (town.getMayorGroup().hasMember(resident) && town.getMayorGroup().getMemberCount() <= 1) {
-//			throw new CivException("You are the last mayor of the town and cannot leave it.");
-//		}
-//		
-//		resident.getTown().removeResident(resident);
-//		try {
-//			town.addResident(resident);
-//		} catch (AlreadyRegisteredException e) {
-//			e.printStackTrace();
-//			throw new CivException("You already belong to this town.");
-//		}
-//		
-//	}
+	/* We need to figure out how to handle debt for the resident when he switches towns.
+	 * Should we even allow this? idk. Maybe war respawn points is enough? */
+	public void switchtown_cmd() throws CivException {
+		Town town = getNamedTown(1);
+		Resident resident = getResident();
+		
+		if (resident.getTown() == town) {
+			throw new CivException("You cannot switch to your own town.");
+		}
+		
+		if (resident.getTown().getMotherCiv() != town.getMotherCiv()) {
+			throw new CivException("You cannot place yourself into a conquered civ's town.");
+		}
+		
+		if (town.getCiv() != resident.getCiv()) {
+			throw new CivException("You cannot switch to a town not in your civ.");
+		}
+		
+		if (town.getMayorGroup().hasMember(resident) && town.getMayorGroup().getMemberCount() <= 1) {
+			throw new CivException("You are the last mayor of the town and cannot leave it.");
+		}
+		
+		resident.getTown().removeResident(resident);
+		try {
+			town.addResident(resident);
+		} catch (AlreadyRegisteredException e) {
+			e.printStackTrace();
+			throw new CivException("You already belong to this town.");
+		}
+	}
 	
 	public void exchange_cmd() throws CivException {
 		Player player = getPlayer();

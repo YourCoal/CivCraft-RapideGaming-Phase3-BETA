@@ -64,6 +64,8 @@ import com.civcraft.permission.PermissionGroup;
 import com.civcraft.randomevents.RandomEvent;
 import com.civcraft.road.Road;
 import com.civcraft.structure.Buildable;
+import com.civcraft.structure.Lab;
+import com.civcraft.structure.Mine;
 import com.civcraft.structure.Structure;
 import com.civcraft.structure.TownHall;
 import com.civcraft.structure.TradeOutpost;
@@ -145,6 +147,7 @@ public class Town extends SQLObject {
 	public LinkedList<Buildable> invalidStructures = new LinkedList<Buildable>();
 	
 	/* XXX kind of a hacky way to save the bank's level information between build undo calls */
+	public int saved_nuclear_plant_level = 1;
 	public int saved_quarry_level = 1;
 	public int saved_trommel_level = 1;
 	public int saved_bank_level = 1;
@@ -736,6 +739,10 @@ public class Town extends SQLObject {
 		/* Grab happiness generated from structures with components. */
 		double structures = 0;
 		for (Structure struct : this.structures.values()) {
+			if (struct instanceof Mine) {
+				Mine mine = (Mine)struct;
+				structures += mine.getBonusHammers(); 
+			}
 			for (Component comp : struct.attachedComponents) {
 				if (comp instanceof AttributeBase) {
 					AttributeBase as = (AttributeBase)comp;
@@ -1351,10 +1358,9 @@ public class Town extends SQLObject {
 			this.getTreasury().withdraw(this.getTreasury().getBalance());
 			
 		}
-		
 		return upkeep;
 	}
-
+	
 	public double getBaseUpkeep() {
 		ConfigTownLevel level = CivSettings.townLevels.get(this.level);
 		return level.upkeep;
@@ -2634,6 +2640,11 @@ public class Town extends SQLObject {
 		/* Grab beakers generated from structures with components. */
 		double fromStructures = 0;
 		for (Structure struct : this.structures.values()) {
+			//TODO Fix
+			if (struct instanceof Lab) {
+				Lab lab = (Lab)struct;
+				fromStructures += lab.getBonusBeakers();
+			}
 			for (Component comp : struct.attachedComponents) {
 				if (comp instanceof AttributeBase) {
 					AttributeBase as = (AttributeBase)comp;

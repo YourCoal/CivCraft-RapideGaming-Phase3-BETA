@@ -210,8 +210,6 @@ public class GreatLibrary extends Wonder {
 		default:
 			return;
 		}
-		
 		CivMessage.sendSuccess(player, "Enchant Success!");
 	}
-
 }

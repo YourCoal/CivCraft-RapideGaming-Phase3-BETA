@@ -81,24 +81,21 @@ public class CustomItemManager implements Listener {
 	
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onBlockBreakSpawnItems(BlockBreakEvent event) {
-		if (event.getBlock().getType().equals(Material.LAPIS_ORE)) {
+		if (event.getBlock().getType().equals(Material.GOLD_ORE)) {
 			if (event.getPlayer().getItemInHand().containsEnchantment(Enchantment.SILK_TOUCH)) {
 				return;
 			}
 			
 			event.setCancelled(true);
-			
 			ItemManager.setTypeIdAndData(event.getBlock(), CivData.AIR, (byte)0, true);
-			
 			try {
 				Random rand = new Random();
-
-				int min = CivSettings.getInteger(CivSettings.materialsConfig, "tungsten_min_drop");
+				int min = CivSettings.getInteger(CivSettings.materialsConfig, "bronze_min");
 				int max;
 				if (event.getPlayer().getItemInHand().containsEnchantment(Enchantment.LOOT_BONUS_BLOCKS)) {
-					max = CivSettings.getInteger(CivSettings.materialsConfig, "tungsten_max_drop_with_fortune");
+					max = CivSettings.getInteger(CivSettings.materialsConfig, "bronze_max_fortune");
 				} else {
-					max = CivSettings.getInteger(CivSettings.materialsConfig, "tungsten_max_drop");
+					max = CivSettings.getInteger(CivSettings.materialsConfig, "bronze_max");
 				}
 				
 				int randAmount = rand.nextInt(min + max);
@@ -108,10 +105,75 @@ public class CustomItemManager implements Listener {
 				}
 				
 				for (int i = 0; i < randAmount; i++) {
-					ItemStack stack = LoreMaterial.spawn(LoreMaterial.materialMap.get("mat_tungsten_ore"));
+					ItemStack stack = LoreMaterial.spawn(LoreMaterial.materialMap.get("civ:bronze_ore"));
 					event.getPlayer().getWorld().dropItemNaturally(event.getBlock().getLocation(), stack);
 				}
+			} catch (InvalidConfiguration e) {
+				e.printStackTrace();
+				return;
+			}
+		}
+		
+		if (event.getBlock().getType().equals(Material.LAPIS_ORE)) {
+			if (event.getPlayer().getItemInHand().containsEnchantment(Enchantment.SILK_TOUCH)) {
+				return;
+			}
+			
+			event.setCancelled(true);
+			ItemManager.setTypeIdAndData(event.getBlock(), CivData.AIR, (byte)0, true);
+			try {
+				Random rand = new Random();
+				int min = CivSettings.getInteger(CivSettings.materialsConfig, "steel_min");
+				int max;
+				if (event.getPlayer().getItemInHand().containsEnchantment(Enchantment.LOOT_BONUS_BLOCKS)) {
+					max = CivSettings.getInteger(CivSettings.materialsConfig, "steel_max_fortune");
+				} else {
+					max = CivSettings.getInteger(CivSettings.materialsConfig, "steel_max");
+				}
 				
+				int randAmount = rand.nextInt(min + max);
+				randAmount -= min;
+				if (randAmount <= 0) {
+					randAmount = 1;
+				}
+				
+				for (int i = 0; i < randAmount; i++) {
+					ItemStack stack = LoreMaterial.spawn(LoreMaterial.materialMap.get("civ:bronze_ore"));
+					event.getPlayer().getWorld().dropItemNaturally(event.getBlock().getLocation(), stack);
+				}
+			} catch (InvalidConfiguration e) {
+				e.printStackTrace();
+				return;
+			}
+		}
+		
+		if (event.getBlock().getType().equals(Material.DIAMOND_ORE)) {
+			if (event.getPlayer().getItemInHand().containsEnchantment(Enchantment.SILK_TOUCH)) {
+				return;
+			}
+			
+			event.setCancelled(true);
+			ItemManager.setTypeIdAndData(event.getBlock(), CivData.AIR, (byte)0, true);
+			try {
+				Random rand = new Random();
+				int min = CivSettings.getInteger(CivSettings.materialsConfig, "titanium_min");
+				int max;
+				if (event.getPlayer().getItemInHand().containsEnchantment(Enchantment.LOOT_BONUS_BLOCKS)) {
+					max = CivSettings.getInteger(CivSettings.materialsConfig, "titanium_max_fortune");
+				} else {
+					max = CivSettings.getInteger(CivSettings.materialsConfig, "titanium_max");
+				}
+				
+				int randAmount = rand.nextInt(min + max);
+				randAmount -= min;
+				if (randAmount <= 0) {
+					randAmount = 1;
+				}
+				
+				for (int i = 0; i < randAmount; i++) {
+					ItemStack stack = LoreMaterial.spawn(LoreMaterial.materialMap.get("civ:bronze_ore"));
+					event.getPlayer().getWorld().dropItemNaturally(event.getBlock().getLocation(), stack);
+				}
 			} catch (InvalidConfiguration e) {
 				e.printStackTrace();
 				return;

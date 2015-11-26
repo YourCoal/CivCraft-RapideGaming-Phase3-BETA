@@ -82,6 +82,7 @@ import com.civcraft.threading.timers.BeakerTimer;
 import com.civcraft.threading.timers.ChangeGovernmentTimer;
 import com.civcraft.threading.timers.PlayerLocationCacheUpdate;
 import com.civcraft.threading.timers.PlayerProximityComponentTimer;
+import com.civcraft.threading.timers.RandomStructureTimer;
 import com.civcraft.threading.timers.ReduceExposureTimer;
 import com.civcraft.threading.timers.RegenTimer;
 import com.civcraft.threading.timers.UnitTrainTimer;
@@ -91,7 +92,6 @@ import com.civcraft.util.BukkitObjects;
 import com.civcraft.util.ChunkCoord;
 import com.civcraft.util.TimeTools;
 import com.civcraft.war.WarListener;
-import com.global.perks.PlatinumManager;
 import com.global.scores.CalculateScoreTimer;
 import com.sls.SLSManager;
 
@@ -121,13 +121,11 @@ public final class CivCraft extends JavaPlugin {
 			double arrow_firerate = CivSettings.getDouble(CivSettings.warConfig, "arrow_tower.fire_rate");
 			TaskMaster.syncTimer("arrowTower", new ProjectileComponentTimer(), (int)(arrow_firerate*20));	
 			TaskMaster.asyncTimer("ScoutTowerTask", new ScoutTowerTask(), TimeTools.toTicks(1));
-			
 		} catch (InvalidConfiguration e) {
 			e.printStackTrace();
 			return;
 		}
 		TaskMaster.syncTimer("arrowhomingtask", new ArrowProjectileTask(), 5);
-		
 		TaskMaster.syncTimer("FarmCropCache", new FarmPreCachePopulateTimer(), TimeTools.toTicks(30));
 		TaskMaster.asyncTimer("FarmGrowthTimer", new FarmGrowthSyncTask(), TimeTools.toTicks(Farm.GROW_RATE));
 		TaskMaster.asyncTimer("announcer", new AnnouncementTimer("tips.txt"), 0, TimeTools.toTicks(60*60));
@@ -138,10 +136,11 @@ public final class CivCraft extends JavaPlugin {
 		
 		TaskMaster.asyncTimer(EventTimerTask.class.getName(), new EventTimerTask(), TimeTools.toTicks(5));
 		
-		if (PlatinumManager.isEnabled()) {
-			TaskMaster.asyncTimer(PlatinumManager.class.getName(), new PlatinumManager(), TimeTools.toTicks(5));
-		}
+//		if (PlatinumManager.isEnabled()) {
+//			TaskMaster.asyncTimer(PlatinumManager.class.getName(), new PlatinumManager(), TimeTools.toTicks(5));
+//		}
 		
+		TaskMaster.asyncTimer("RandomStructureTimer", new RandomStructureTimer(), TimeTools.toTicks(15));
 		TaskMaster.syncTimer("WindmillTimer", new WindmillTimer(), TimeTools.toTicks(15));
 		TaskMaster.asyncTimer("EndGameNotification", new EndConditionNotificationTask(), TimeTools.toTicks(3600));
 		TaskMaster.asyncTask(new StructureValidationChecker(), TimeTools.toTicks(120));

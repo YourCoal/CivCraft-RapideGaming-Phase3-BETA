@@ -46,7 +46,7 @@ public class CivTutorial {
 			));
 			
 			serverInfoInventory.setItem(6, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"Wiki", ItemManager.getId(Material.ENDER_PORTAL_FRAME), 0, 
-				ChatColor.RESET+"Coming soon!"
+				ChatColor.RESET+"https://github.com/YourCoal/wiki/wiki"
 			));
 			
 			serverInfoInventory.setItem(8, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"YourCoal's YouTube", ItemManager.getId(Material.REDSTONE_BLOCK), 0, 
@@ -256,7 +256,7 @@ public class CivTutorial {
 	
 	public static void spawnGuiBook(Player player) {
 		if (guiInventory == null) {
-			guiInventory = Bukkit.getServer().createInventory(player, 2*9, "CivCraft Information");
+			guiInventory = Bukkit.getServer().createInventory(player, 1*9, "CivCraft Information");
 
 			ItemStack infoRec = LoreGuiItem.build("CivCraft Information", ItemManager.getId(Material.FEATHER), 
 					0, CivColor.Gold+"<Click To View>");
@@ -303,23 +303,12 @@ public class CivTutorial {
 					0, CivColor.Gold+"    ");
 			guiInventory.addItem(filler4);
 			LoreGuiItemListener.guiInventories.put(guiInventory.getName(), guiInventory);
-			//XXX Filler
-			ItemStack filler5 = LoreGuiItem.build("", ItemManager.getId(Material.WOOD_BUTTON), 
-					0, CivColor.Gold+"     ");
-			guiInventory.addItem(filler5);
-			LoreGuiItemListener.guiInventories.put(guiInventory.getName(), guiInventory);
 			
 			ItemStack dynmapRec = LoreGuiItem.build("Collecting Elements", ItemManager.getId(Material.EXP_BOTTLE), 
 					0, CivColor.Gold+"<Click To View>");
 			dynmapRec = LoreGuiItem.setAction(dynmapRec, "OpenInventory");
 			dynmapRec = LoreGuiItem.setActionData(dynmapRec, "invType", "showElementInfo");
 			guiInventory.addItem(dynmapRec);
-			LoreGuiItemListener.guiInventories.put(guiInventory.getName(), guiInventory);
-			
-			//XXX Filler
-			ItemStack filler6 = LoreGuiItem.build("", ItemManager.getId(Material.WOOD_BUTTON),
-					0, CivColor.Gold+"      ");
-			guiInventory.addItem(filler6);
 			LoreGuiItemListener.guiInventories.put(guiInventory.getName(), guiInventory);
 		}
 		player.openInventory(guiInventory);

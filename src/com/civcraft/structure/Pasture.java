@@ -29,7 +29,7 @@ import com.civcraft.util.BlockCoord;
 import com.civcraft.util.ChunkCoord;
 
 public class Pasture extends Structure {
-
+	
 	/* Global pasture chunks */
 	public static Map<ChunkCoord, Pasture> pastureChunks = new ConcurrentHashMap<ChunkCoord, Pasture>();
 	public static Map<UUID, Pasture> pastureEntities = new ConcurrentHashMap<UUID, Pasture>();
@@ -45,15 +45,15 @@ public class Pasture extends Structure {
 			throws CivException {
 		super(center, id, town);
 	}
-
+	
 	public Pasture(ResultSet rs) throws SQLException, CivException {
 		super(rs);
 	}
-
+	
 	public int getMobCount() {
 		return entities.size();
 	}
-
+	
 	public int getMobMax() {
 		int max;
 		try {
@@ -64,9 +64,8 @@ public class Pasture extends Structure {
 		}
 		return max;
 	}
-
-	public boolean processMobBreed(Player player, EntityType type) {
-				
+	
+	public boolean processMobBreed(Player player, EntityType type) {	
 		if (!this.isActive()) {
 			CivMessage.sendError(player, "Pasture is destroyed or currently building. Cannot breed yet.");
 			return false;
@@ -81,7 +80,6 @@ public class Pasture extends Structure {
 			CivMessage.sendError(player, "Pasture has too many breed events pending. Pasture is probably at the maximum number of mobs it can support. Slaughter some before you breed.");
 			return false;
 		}
-		
 		return true;
 	}
 	
@@ -100,7 +98,6 @@ public class Pasture extends Structure {
 		
 		this.entities.clear();
 		this.chunks.clear();
-		
 		LinkedList<UUID> removeUs = new LinkedList<UUID>();
 		for (UUID id : pastureEntities.keySet()) {
 			Pasture pasture = pastureEntities.get(id);
@@ -112,7 +109,6 @@ public class Pasture extends Structure {
 		for (UUID id : removeUs) {
 			pastureEntities.remove(id);
 		}
-		
 	}
 	
 	@Override
@@ -135,7 +131,7 @@ public class Pasture extends Structure {
 	
 	public void clearEntities() {
 	}
-
+	
 	public void onBreed(LivingEntity entity) {
 		saveEntity(entity.getWorld().getName(), entity.getUniqueId());
 		setPendingBreeds(getPendingBreeds() - 1);
@@ -173,7 +169,6 @@ public class Pasture extends Structure {
 				}
 			}
 		}
-		
 		TaskMaster.asyncTask(new AsyncTask(this, id, worldName), 0);
 	}
 	
@@ -192,7 +187,6 @@ public class Pasture extends Structure {
 				this.entity = entity;
 			}
 			
-			
 			@Override
 			public void run() {
 				lock.lock();
@@ -205,16 +199,14 @@ public class Pasture extends Structure {
 			}
 			
 		}
-		
 		TaskMaster.asyncTask(new AsyncTask(entity), 0);
 	}
-
+	
 	public int getPendingBreeds() {
 		return pendingBreeds;
 	}
-
+	
 	public void setPendingBreeds(int pendingBreeds) {
 		this.pendingBreeds = pendingBreeds;
 	}
-	
 }

@@ -14,7 +14,6 @@ import com.civcraft.config.CivSettings;
 import com.civcraft.config.ConfigLabLevel;
 import com.civcraft.exception.CivException;
 import com.civcraft.exception.CivTaskAbortException;
-import com.civcraft.exception.InvalidConfiguration;
 import com.civcraft.main.CivMessage;
 import com.civcraft.object.Buff;
 import com.civcraft.object.StructureChest;
@@ -23,15 +22,15 @@ import com.civcraft.threading.CivAsyncTask;
 import com.civcraft.util.CivColor;
 import com.civcraft.util.MultiInventory;
 
-public class Lab extends Structure {
+public class WaterMill extends Structure {
 
 	private ConsumeLevelComponent consumeComp = null;
 	
-	protected Lab(Location center, String id, Town town) throws CivException {
+	protected WaterMill(Location center, String id, Town town) throws CivException {
 		super(center, id, town);
 	}
 
-	public Lab(ResultSet rs) throws SQLException, CivException {
+	public WaterMill(ResultSet rs) throws SQLException, CivException {
 		super(rs);
 	}
 	
@@ -125,27 +124,11 @@ public class Lab extends Structure {
 		return this.getConsumeComponent().getLevel();
 	}
 	
-	public double getBonusBeakers() {
-		int level = getLevel();
-		ConfigLabLevel lvl = CivSettings.labLevels.get(level);
-		return lvl.beakers;	
-	}
-	
 	public double getBeakersPerTile() {
 		AttributeBiomeRadiusPerLevel attrBiome = (AttributeBiomeRadiusPerLevel)this.getComponent("AttributeBiomeRadiusPerLevel");
 		double base = attrBiome.getBaseValue();
 		double rate = 1;
 		rate += this.getTown().getBuffManager().getEffectiveDouble(Buff.ADVANCED_TESTING);
-		
-		if (this.getCiv().hasTechnology("tech_atom_developing")) {
-			double bonus;
-			try {
-				bonus = CivSettings.getDouble(CivSettings.techsConfig, "atom_developing_lab_buff");
-				rate *= bonus;
-			} catch (InvalidConfiguration e) {
-				e.printStackTrace();
-			}
-		}
 		return (rate*base);
 	}
 	

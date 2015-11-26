@@ -39,6 +39,7 @@ public class Buff {
 	public static final String BARRICADE = "buff_barricade";
 	public static final String BARTER = "buff_barter";
 	public static final String EXTRACTION = "buff_extraction";
+	public static final String FUSION = "buff_fusion";
 	public static final String FIRE_BOMB = "buff_fire_bomb";
 	public static final String FISHING = "buff_fishing";
 	public static final String MEDICINE = "buff_medicine";

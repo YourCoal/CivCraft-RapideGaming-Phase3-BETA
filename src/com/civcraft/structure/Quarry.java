@@ -88,7 +88,6 @@ public class Quarry extends Structure {
 	private double modifyChance(Double chance) {
 		double increase = chance*this.getTown().getBuffManager().getEffectiveDouble(Buff.EXTRACTION);
 		chance += increase;
-		
 		try {
 			if (this.getTown().getGovernment().id.equals("gov_despotism")) {
 				chance *= CivSettings.getDouble(CivSettings.structureConfig, "quarry.despotism_rate");

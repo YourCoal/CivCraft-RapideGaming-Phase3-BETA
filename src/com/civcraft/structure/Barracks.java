@@ -63,17 +63,15 @@ public class Barracks extends Structure {
 
 	private String getUnitSignText(int index) throws IndexOutOfBoundsException {
 		ArrayList<ConfigUnit> unitList = getTown().getAvailableUnits();
-		
 		if (unitList.size() == 0) {
 			return "\n"+CivColor.LightGray+"None\n"+CivColor.LightGray+"Available";			
 		}
 		
 		ConfigUnit unit = unitList.get(index);
 		String out = "\n";
-		out += CivColor.LightPurple+unit.name+"\n";
-		out += CivColor.Yellow+unit.cost+"\n";
-		out += CivColor.Yellow+"coins";
-		
+		out += CivColor.Purple+unit.name+"\n";
+		out += CivColor.Gold+unit.cost+"\n";
+		out += CivColor.Gold+"coins";
 		return out;
 	}
 	
@@ -92,10 +90,8 @@ public class Barracks extends Structure {
 		}
 	}
 	
-	
 	private void train(Resident whoClicked) throws CivException {
 		ArrayList<ConfigUnit> unitList = getTown().getAvailableUnits();
-
 		ConfigUnit unit = unitList.get(index);
 		if (unit == null) {
 			throw new CivException("Unknown unit type.");
@@ -123,10 +119,7 @@ public class Barracks extends Structure {
 			}
 		}
 		
-		
 		getTown().getTreasury().withdraw(unit.cost);
-		
-		
 		this.setCurrentHammers(0.0);
 		this.setTrainingUnit(unit);
 		CivMessage.sendTown(getTown(), "We've begun training a "+unit.name+"!");

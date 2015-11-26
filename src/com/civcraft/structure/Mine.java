@@ -32,6 +32,7 @@ import com.civcraft.config.CivSettings;
 import com.civcraft.config.ConfigMineLevel;
 import com.civcraft.exception.CivException;
 import com.civcraft.exception.CivTaskAbortException;
+import com.civcraft.exception.InvalidConfiguration;
 import com.civcraft.main.CivMessage;
 import com.civcraft.object.Buff;
 import com.civcraft.object.StructureChest;
@@ -142,12 +143,27 @@ public class Mine extends Structure {
 		return this.getConsumeComponent().getLevel();
 	}
 	
+	public double getBonusHammers() {
+		int level = getLevel();
+		ConfigMineLevel lvl = CivSettings.mineLevels.get(level);
+		return lvl.hammers;	
+	}
+	
 	public double getHammersPerTile() {
 		AttributeBiomeRadiusPerLevel attrBiome = (AttributeBiomeRadiusPerLevel)this.getComponent("AttributeBiomeRadiusPerLevel");
 		double base = attrBiome.getBaseValue();
-		
 		double rate = 1;
 		rate += this.getTown().getBuffManager().getEffectiveDouble(Buff.ADVANCED_MINING);
+		
+		if (this.getCiv().hasTechnology("tech_atom_developing")) {
+			double bonus;
+			try {
+				bonus = CivSettings.getDouble(CivSettings.techsConfig, "atom_developing_mine_buff");
+				rate *= bonus;
+			} catch (InvalidConfiguration e) {
+				e.printStackTrace();
+			}
+		}
 		return (rate*base);
 	}
 

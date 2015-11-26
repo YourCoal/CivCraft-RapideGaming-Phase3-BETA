@@ -23,7 +23,8 @@ public abstract class LoreEnhancement {
 		enhancements.put("LoreEnhancementSoulBound", new LoreEnhancementSoulBound());
 		enhancements.put("LoreEnhancementAttack", new LoreEnhancementAttack());
 		enhancements.put("LoreEnhancementDefense", new LoreEnhancementDefense());
-		enhancements.put("LoreEnhancementPunchout", new LoreEnhancementPunchout());
+		enhancements.put("LoreEnhancementPunchoutI", new LoreEnhancementPunchoutI());
+		enhancements.put("LoreEnhancementPunchoutII", new LoreEnhancementPunchoutII());
 	}
 	
 	public boolean onDeath(PlayerDeathEvent event, ItemStack stack) { return false; }
@@ -93,6 +94,4 @@ public abstract class LoreEnhancement {
 	public double getLevel(AttributeUtil attrs) {	return 0; }
 	public abstract String serialize(ItemStack stack);
 	public abstract ItemStack deserialize(ItemStack stack, String data);
-	
-	
 }

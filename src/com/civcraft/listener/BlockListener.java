@@ -1011,10 +1011,9 @@ public class BlockListener implements Listener {
 				return;
 			}
 		}
-
+		
 		ItemStack inHand = event.getPlayer().getItemInHand();
 			if (inHand != null) {
-
 				boolean denyBreeding = false;
 				switch (event.getRightClicked().getType()) {
 				case COW:
@@ -1026,12 +1025,23 @@ public class BlockListener implements Listener {
 					break;
 				case PIG:
 					if (inHand.getType().equals(Material.CARROT_ITEM)) {
+					//XXX For 1.9
+					//if (inHand.getType().equals(Material.CARROT_ITEM) ||
+						//inHand.getType().equals(Material.POTATO) ||
+						//inHand.getType().equals(Material.BEETROOT)) {
+						denyBreeding = true;
+					}
+					break;
+				case RABBIT:
+					if (inHand.getType().equals(Material.CARROT_ITEM) ||
+						inHand.getType().equals(Material.GOLDEN_CARROT) ||
+						inHand.getType().equals(Material.YELLOW_FLOWER)) {
 						denyBreeding = true;
 					}
 					break;
 				case HORSE:
 					if (inHand.getType().equals(Material.GOLDEN_APPLE) ||
-							inHand.getType().equals(Material.GOLDEN_CARROT)) {
+						inHand.getType().equals(Material.GOLDEN_CARROT)) {
 						CivMessage.sendError(event.getPlayer(), "You cannot breed horses, buy them from the stable.");
 						event.setCancelled(true);
 						return;
@@ -1041,17 +1051,41 @@ public class BlockListener implements Listener {
 					if (inHand.getType().equals(Material.SEEDS) ||
 						inHand.getType().equals(Material.MELON_SEEDS) ||
 						inHand.getType().equals(Material.PUMPKIN_SEEDS)) {
+					//XXX For 1.9
+						//inHand.getType().equals(Material.PUMPKIN_SEEDS) ||
+						//inHand.getType().equals(Material.BEETROOT_SEEDS)) {
+						denyBreeding = true;
+					}
+					break;
+					//XXX Added Wolf and Ocelot since they shouldn't be in the game normally.
+				case WOLF:
+					if (inHand.getType().equals(Material.PORK) ||
+						inHand.getType().equals(Material.GRILLED_PORK) ||
+						inHand.getType().equals(Material.RAW_BEEF) ||
+						inHand.getType().equals(Material.COOKED_BEEF) ||
+						inHand.getType().equals(Material.RAW_CHICKEN) ||
+						inHand.getType().equals(Material.COOKED_CHICKEN) ||
+						inHand.getType().equals(Material.MUTTON) ||
+						inHand.getType().equals(Material.COOKED_MUTTON) ||
+						inHand.getType().equals(Material.RABBIT) ||
+						inHand.getType().equals(Material.COOKED_RABBIT) ||
+						inHand.getType().equals(Material.ROTTEN_FLESH)) {
+						denyBreeding = true;
+					}
+					break;
+				case OCELOT:
+					if (inHand.getType().equals(Material.RAW_FISH) ||
+						inHand.getType().equals(Material.COOKED_FISH)) {
 						denyBreeding = true;
 					}
 					break;
 				default:
 					break;
 				}
-
+				
 				if (denyBreeding) {
 					ChunkCoord coord = new ChunkCoord(event.getPlayer().getLocation());
 					Pasture pasture = Pasture.pastureChunks.get(coord);
-
 					if (pasture == null) {
 						CivMessage.sendError(event.getPlayer(), "You cannot breed mobs in the wild, take them to a pasture.");
 						event.setCancelled(true);
@@ -1069,7 +1103,6 @@ public class BlockListener implements Listener {
 								event.setCancelled(true);
 							}
 					}
-
 					return;			
 				}
 			}

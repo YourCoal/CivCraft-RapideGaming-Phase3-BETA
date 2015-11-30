@@ -12,9 +12,9 @@ public class HourlyTickEventMinute5 implements EventInterface {
 	
 	@Override
 	public void process() {
-		CivLog.info("TimerEvent: Hourly -------------------------------------");
+		CivLog.info("TimerEvent: Hourly Culture -------------------------------------");
 		TaskMaster.asyncTask("CultureEventTimer", new CultureEventTimer(), 0);
-		CivLog.info("TimerEvent: Hourly Finished -----------------------------");
+		CivLog.info("TimerEvent: Hourly Culture Finished -----------------------------");
 	}
 	
 	@Override

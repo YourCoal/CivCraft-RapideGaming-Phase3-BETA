@@ -13,18 +13,18 @@ global:
      - 'mat_tutorial_book:1'
 
    # Amount of mins PvP timer remains active after first login.
-   pvp_timer: 120
+   pvp_timer: 150
    # Regen spawn at midnight every day.
    regen_spawn_hour: 0
 
    # Exchange rate you get using /resident exchange instead of using a bank.
    exchange_rate: 0.4
 
-   starting_coins: 250.0
-   join_civ_cooldown: 4
+   starting_coins: 325.0
+   join_civ_cooldown: 2
 
    # Distance things must be built away from spawn.
-   distance_from_spawn: 1000.0
+   distance_from_spawn: 625.0
 
    # max distance players can be apart for trading
    max_trade_distance: 10.0
@@ -114,7 +114,7 @@ civ:
     coins_per_beaker: 10
 
     # must be this many chunks away from the nearest culture block to start a new civilization.
-    min_distance: 15
+    min_distance: 24
 
     # Number of days after a civilization is conquered that it must wait before declaring revolution
     revolution_cooldown: 7
@@ -126,10 +126,10 @@ civ:
     min_gift_age: 14
 
     # Amount of coins to charge per town gifted.
-    gift_cost_per_town: 150000
+    gift_cost_per_town: 25000
 
     # Amount of hours civs have to wait until a town is gifted or merged.
-    gift_cooldown_hours: 48
+    gift_cooldown_hours: 12
 
 ore_rates:
     iron: 20.0

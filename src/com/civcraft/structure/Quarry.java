@@ -52,12 +52,14 @@ public class Quarry extends Structure {
 
 	@Override
 	public String getDynmapDescription() {
-		return null;
+		String out = "<u><b>"+this.getDisplayName()+"</u></b><br/>";
+		out += "Level: "+this.level;
+		return out;
 	}
 	
 	@Override
 	public String getMarkerIconName() {
-		return "minecart";
+		return "construction";
 	}
 
 	public double getChance(Ores ore) {

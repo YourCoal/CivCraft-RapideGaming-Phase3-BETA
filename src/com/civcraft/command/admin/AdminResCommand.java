@@ -33,19 +33,6 @@ public class AdminResCommand extends CommandBase {
 		commands.put("giveplat", "[player] [amount] - Gives this player the specified amount of platinum.");
 		commands.put("givereward", "[player] [rewardID] - Gives player this achievement with its plat rewards.");
 		commands.put("rename", "[old_name] [new_name] - Rename this resident. Useful if players change their name.");
-		commands.put("removeres", "Remove the resident from MySQL Database.");
-	}
-	
-	public void removeres_cmd() throws CivException {
-		Resident resident = getNamedResident(1);
-		try {
-			resident.delete();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new CivException(e.getMessage());
-		}
-		CivGlobal.removeResident(resident);
-		CivMessage.sendSuccess(sender, "Resident Removed");
 	}
 	
 	public void rename_cmd() throws CivException {

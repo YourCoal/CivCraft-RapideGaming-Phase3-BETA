@@ -1,12 +1,12 @@
 package com.civcraft.mobs;
 
-import moblib.mob.ICustomMob;
-import moblib.mob.MobBaseZombie;
-
 import net.minecraft.server.v1_8_R3.DamageSource;
 import net.minecraft.server.v1_8_R3.Entity;
 import net.minecraft.server.v1_8_R3.EntityCreature;
 import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
+
+import moblib.mob.ICustomMob;
+import moblib.mob.MobBaseZombie;
 
 public class LoboZombie extends CommonCustomMob implements ICustomMob {
 

@@ -15,6 +15,10 @@ import com.civcraft.util.BlockCoord;
 import com.civcraft.util.SimpleBlock;
 
 public class Trommel extends Structure {
+	public static final int BRONZE = CivSettings.getIntegerStructure("trommel_global.bronze");
+	public static final int STEEL = CivSettings.getIntegerStructure("trommel_global.steel");
+	public static final int TITANIUM = CivSettings.getIntegerStructure("trommel_global.titanium");
+	
 	public static final int GRAVEL_MAX_RATE = CivSettings.getIntegerStructure("trommel_gravel.max");
 	private static final double GRAVEL_IRON = CivSettings.getDoubleStructure("trommel_gravel.iron");
 	private static final double GRAVEL_GOLD = CivSettings.getDoubleStructure("trommel_gravel.gold");
@@ -55,6 +59,9 @@ public class Trommel extends Structure {
 	public ReentrantLock lock = new ReentrantLock();
 	
 	public enum Mineral {
+		TITANIUM_ORE,
+		BRONZE_ORE,
+		STEEL_ORE,
 		REDSTONE,
 		EMERALD,
 		DIAMOND,
@@ -72,12 +79,14 @@ public class Trommel extends Structure {
 	
 	@Override
 	public String getDynmapDescription() {
-		return null;
+		String out = "<u><b>"+this.getDisplayName()+"</u></b><br/>";
+		out += "Level: "+this.level;
+		return out;
 	}
 	
 	@Override
 	public String getMarkerIconName() {
-		return null;
+		return "minecart";
 	}
 	
 	public double getGravelChance(Mineral mineral) {
@@ -97,6 +106,15 @@ public class Trommel extends Structure {
 			break;
 		case REDSTONE:
 			chance = GRAVEL_REDSTONE;
+		case BRONZE_ORE:
+			chance = BRONZE;
+			break;
+		case STEEL_ORE:
+			chance = STEEL;
+			break;
+		case TITANIUM_ORE:
+			chance = TITANIUM;
+			break;
 		default:
 			break;
 		}
@@ -121,6 +139,15 @@ public class Trommel extends Structure {
 		case REDSTONE:
 			chance = DIRT_REDSTONE;
 			break;
+		case BRONZE_ORE:
+			chance = BRONZE;
+			break;
+		case STEEL_ORE:
+			chance = STEEL;
+			break;
+		case TITANIUM_ORE:
+			chance = TITANIUM;
+			break;
 		}
 		return this.modifyChance(chance);
 	}
@@ -142,6 +169,15 @@ public class Trommel extends Structure {
 			break;
 		case REDSTONE:
 			chance = GRANITE_REDSTONE;
+			break;
+		case BRONZE_ORE:
+			chance = BRONZE;
+			break;
+		case STEEL_ORE:
+			chance = STEEL;
+			break;
+		case TITANIUM_ORE:
+			chance = TITANIUM;
 			break;
 		}
 		return this.modifyChance(chance);
@@ -165,6 +201,15 @@ public class Trommel extends Structure {
 		case REDSTONE:
 			chance = DIORITE_REDSTONE;
 			break;
+		case BRONZE_ORE:
+			chance = BRONZE;
+			break;
+		case STEEL_ORE:
+			chance = STEEL;
+			break;
+		case TITANIUM_ORE:
+			chance = TITANIUM;
+			break;
 		}
 		return this.modifyChance(chance);
 	}
@@ -186,6 +231,15 @@ public class Trommel extends Structure {
 			break;
 		case REDSTONE:
 			chance = ANDESITE_REDSTONE;
+			break;
+		case BRONZE_ORE:
+			chance = BRONZE;
+			break;
+		case STEEL_ORE:
+			chance = STEEL;
+			break;
+		case TITANIUM_ORE:
+			chance = TITANIUM;
 			break;
 		}
 		return this.modifyChance(chance);

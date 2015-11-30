@@ -6,12 +6,14 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.TimeZone;
 import java.util.UUID;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -42,7 +44,6 @@ import com.civcraft.exception.CivException;
 import com.civcraft.exception.InvalidConfiguration;
 import com.civcraft.exception.InvalidNameException;
 import com.civcraft.exception.InvalidObjectException;
-import com.civcraft.items.components.Tagged;
 import com.civcraft.lorestorage.LoreCraftableMaterial;
 import com.civcraft.main.CivData;
 import com.civcraft.main.CivGlobal;
@@ -648,12 +649,12 @@ public class Camp extends Buildable {
 		
 		double total_coins = lvl.coins;
 		this.getOwner().getTreasury().deposit(total_coins);
-		LoreCraftableMaterial craftMat =  LoreCraftableMaterial.getCraftMaterialFromId("mat_token_of_leadership");
+		LoreCraftableMaterial craftMat =  LoreCraftableMaterial.getCraftMaterialFromId("civ:camp_faith");
 		if (craftMat != null) {
 			ItemStack token = LoreCraftableMaterial.spawn(craftMat);
-			Tagged tag = (Tagged) craftMat.getComponent("Tagged");
+			//Tagged tag = (Tagged) craftMat.getComponent("Tagged");
 			Resident res = CivGlobal.getResident(this.getOwnerName());
-			token = tag.addTag(token, res.getName());
+			//token = tag.addTag(token, res.getName());
 			AttributeUtil attrs = new AttributeUtil(token);
 			attrs.addLore(CivColor.LightGray+res.getName());
 			token = attrs.getStack();
@@ -1133,8 +1134,11 @@ public class Camp extends Buildable {
 					CivMessage.send(player, CivColor.Rose+"Control Block already destroyed.");
 				}
 			} else {
-				SimpleDateFormat sdf = new SimpleDateFormat("M/dd h:mm:ss a z");
-				CivMessage.send(player, CivColor.Rose+"Cannot damage control blocks for this camp until "+sdf.format(getNextRaidDate()));
+				SimpleDateFormat sdf = new SimpleDateFormat("M/dd/yy h:mm:ss a z");
+				Calendar cal = Calendar.getInstance();
+				cal.setTimeZone(TimeZone.getTimeZone(resident.getTimezone()));
+				sdf.setTimeZone(cal.getTimeZone());
+				CivMessage.send(player, CivColor.Rose+"Cannot damage control blocks for this camp until "+sdf.format(cal.getTime()));
 			}
 		}
 	}

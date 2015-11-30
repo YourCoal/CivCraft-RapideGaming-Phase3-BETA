@@ -32,14 +32,14 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.util.Vector;
 
-import com.avrgaming.mob.ICustomMob;
-import com.avrgaming.mob.MobBaseWitch;
 import com.civcraft.mobs.MobSpawner.CustomMobLevel;
 import com.civcraft.mobs.MobSpawner.CustomMobType;
 import com.civcraft.mobs.components.MobComponentDefense;
 import com.civcraft.threading.TaskMaster;
 import com.civcraft.threading.tasks.FireWorkTask;
 import com.civcraft.util.ItemManager;
+import moblib.mob.ICustomMob;
+import moblib.mob.MobBaseWitch;
 
 public class Ruffian extends CommonCustomMob implements ICustomMob {
 	
@@ -59,69 +59,57 @@ public class Ruffian extends CommonCustomMob implements ICustomMob {
 	
 	public void onCreateAttributes() {
 		MobComponentDefense defense;
-	    this.setKnockbackResistance(0.5D);
-	    this.setMovementSpeed(0.2);
+	    this.setKnockbackResistance(0.85);
 		switch (this.getLevel()) {
 		case LESSER:
-		    defense = new MobComponentDefense(3.5);
-		    setMaxHealth(10.0);
-		    modifySpeed(1.4);
-		    damage = 10.0;
-		    this.addDrop("mat_ionic_crystal_fragment_1", 0.05);
-		    this.addDrop("mat_forged_clay", 0.1);
-		    this.addDrop("mat_crafted_reeds", 0.1);
-		    this.addDrop("mat_crafted_sticks", 0.1);
-		    this.addVanillaDrop(ItemManager.getId(Material.LEATHER), (short)0, 0.4);
-			this.addDrop("mat_refined_sulphur", 0.15);
-		    this.coinDrop(1, 25);
+		    defense = new MobComponentDefense(6);
+		    setMaxHealth(12.0);
+		    this.setAttack(4.0);
+		    this.addDrop("civ:refined_sugar", 0.1);
+		    this.addDrop("civ:crafted_sticks", 0.1);
+		    this.addDrop("civ:crafted_string", 0.1);
+			this.addVanillaDrop(ItemManager.getId(Material.IRON_INGOT), (short)0, 0.05);
+		    this.coinDrop(1, 20);
 			break;
 			
 		case GREATER:
-		    defense = new MobComponentDefense(10);
-		    setMaxHealth(15.0);
-		    modifySpeed(1.5);
-		    damage = 15.0;
-		    this.addDrop("mat_ionic_crystal_fragment_2", 0.05);
-		    this.addDrop("mat_carved_leather", 0.1);
-		    this.addDrop("mat_crafted_string", 0.03);
-		    this.addDrop("mat_refined_slime", 0.05);
-		    this.addDrop("mat_varnish", 0.01);
-		    this.addDrop("mat_sticky_resin", 0.01);
-			this.addDrop("mat_refined_sulphur", 0.25);
-		    this.coinDrop(10, 50);
+		    defense = new MobComponentDefense(13.5);
+		    setMaxHealth(17.0);
+		    this.setAttack(8.5);
+			this.addVanillaDrop(ItemManager.getId(Material.IRON_INGOT), (short)0, 0.1);
+			this.addVanillaDrop(ItemManager.getId(Material.GOLD_INGOT), (short)0, 0.05);
+		    this.addDrop("civ:bronze_ore", 0.05);
+		    this.addDrop("civ:compressed_sugar", 0.1);
+		    this.addDrop("civ:refined_sticks", 0.1);
+		    this.addDrop("civ:refined_string", 0.1);
+		    this.coinDrop(5, 45);
 		    break;
 		    
 		case ELITE:
-		    defense = new MobComponentDefense(16);
-		    setMaxHealth(20.0);
-		    modifySpeed(1.6);
-		    damage = 20.0;
-		    this.addDrop("mat_ionic_crystal_fragment_3", 0.05);
-		    this.addDrop("mat_leather_straps", 0.1);
-		    this.addDrop("mat_crafted_string", 0.05);
-		    this.addDrop("mat_refined_slime", 0.05);
-		    this.addDrop("mat_varnish", 0.01);
-		    this.addDrop("mat_sticky_resin", 0.01);
-			this.addDrop("mat_refined_sulphur", 0.35);
-		    this.coinDrop(20, 80);
+		    defense = new MobComponentDefense(17.5);
+		    setMaxHealth(22.0);
+		    this.setAttack(13.0);
+			this.addVanillaDrop(ItemManager.getId(Material.GOLD_INGOT), (short)0, 0.1);
+			this.addVanillaDrop(ItemManager.getId(Material.INK_SACK), (short)4, 0.2);
+		    this.addDrop("civ:steel_ore", 0.05);
+		    this.addDrop("civ:compacted_sticks", 0.1);
+		    this.addDrop("civ:wolven_threading", 0.1);
+		    this.coinDrop(20, 60);
 			break;
 			
 		case BRUTAL:
-		    defense = new MobComponentDefense(20);
-		    setMaxHealth(30.0);
-		    modifySpeed(1.6);
-		    damage = 27.0;
-		    this.addDrop("mat_ionic_crystal_fragment_4", 0.05);
-		    this.addDrop("mat_artisan_leather", 0.1);
-		    this.addDrop("mat_crafted_string", 0.1);
-		    this.addDrop("mat_refined_slime", 0.05);
-		    this.addDrop("mat_varnish", 0.01);
-		    this.addDrop("mat_sticky_resin", 0.01);
-			this.addDrop("mat_refined_sulphur", 0.50);
-		    this.coinDrop(20, 150);
+		    defense = new MobComponentDefense(21.5);
+		    setMaxHealth(27.0);
+		    this.setAttack(17.5);
+			this.addVanillaDrop(ItemManager.getId(Material.INK_SACK), (short)4, 0.4);
+			this.addVanillaDrop(ItemManager.getId(Material.DIAMOND), (short)0, 0.05);
+		    this.addDrop("civ:titanium_ore", 0.05);
+		    this.addDrop("civ:refined_compacted_sticks", 0.1);
+		    this.addDrop("civ:refined_wolven_threading", 0.1);
+		    this.coinDrop(35, 100);
 			break;
 		default:
-		    defense = new MobComponentDefense(2);
+		    defense = new MobComponentDefense(1);
 			break;
 		}
 	    this.addComponent(defense);

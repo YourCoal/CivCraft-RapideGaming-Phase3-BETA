@@ -117,7 +117,7 @@ random_events:
    length: 72
    actions:
      - name: 'Happiness'
-       value: '4'
+       value: '3'
        duration: '72'
    requirements:
    success:
@@ -136,7 +136,7 @@ random_events:
    length: 72
    actions:
      - name: 'Unhappiness'
-       value: '4'
+       value: '3'
        duration: '72'
    requirements:
    success:
@@ -198,7 +198,7 @@ random_events:
    length: 72
    actions:
      - name: 'HammerRate'
-       value: '0.75'
+       value: '0.5'
        duration: '72'
    requirements:
    success:
@@ -225,7 +225,7 @@ random_events:
      - name: 'MessageTown'
        message: "You found the mega hammer block! Your hammerrate is now 4x higher as normal for 5 days!"
      - name: 'HammerRate'
-       value: '4.0'
+       value: '3.0'
        duration: '120'
    failure:
      - name: 'MessageTown'
@@ -260,7 +260,7 @@ random_events:
    length: 72
    actions:
      - name: 'BeakerRate'
-       value: '0.75'
+       value: '0.5'
        duration: '72'
    requirements:
    success:
@@ -288,23 +288,23 @@ random_events:
      - name: 'MessageTown'
        message: "You found the expolives! Your beakerrate is now 4x higher as normal for 5 days!"
      - name: 'BeakerRate'
-       value: '4.0'
+       value: '3.0'
        duration: '120'
    failure:
      - name: 'MessageTown'
        message: "You did not find the explosives in time and Russia is now coming for you. You now have an extreme beaker loss and unhappiness!"
      - name: 'BeakerRate'
-       value: '0.01'
+       value: '0.25'
        duration: '72'
      - name: 'Unhappiness'
-       value: '25'
+       value: '10'
        duration: '72'
 #======================================================#
 #====================> Coin Events <===================#
 #======================================================#
  - id: 'event_gold_rush'
    name: 'Gold Rush!'
-   chance: 10
+   chance: 15
    message:
      - "There is a rumor going around the town that there is a large cache of coins, hidden somewhere out in the world."
      - "If we can find the block it's hidden in and break it, we'll be able to collect a massive reward!"
@@ -326,3 +326,28 @@ random_events:
    failure:
      - name: 'MessageTown'
        message: "You didn't find the gold in time and got no money."
+#
+ - id: 'event_silver_rush'
+   name: 'Silver Rush!'
+   chance: 5
+   message:
+     - "There is a rumor going around the town that there is a large cache of coins, hidden somewhere out in the world."
+     - "If we can find the block it's hidden in and break it, we'll be able to collect a massive reward!"
+     - "The first person to break the block recieves a reward. We have 12 hours to find the coins."
+   length: 12
+   actions:
+     - name: 'PickRandomBlock'
+       varname: 'loc'
+   requirements:
+     - name: 'BlockBreak'
+       varname: 'loc'
+       playername_var: 'player'
+   success:
+     - name: 'MessageTown'
+       message: "One of the residents found the secret gold block and got 100,000 coins!"
+     - name: 'PayPlayer'
+       playername_var: 'player'
+       amount: '100000'
+   failure:
+     - name: 'MessageTown'
+       message: "You didn't find the silver in time and got no money."

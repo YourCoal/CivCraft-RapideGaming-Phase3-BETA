@@ -676,7 +676,7 @@ public class Town extends SQLObject {
 	}
 	
 	public AttrSource getHammerRate() {
-		double rate = 1.0;
+		double rate = 1.5;
 		HashMap<String, Double> rates = new HashMap<String, Double>();
 		ConfigHappinessState state = CivSettings.getHappinessState(this.getHappinessPercentage());
 
@@ -1802,7 +1802,7 @@ public class Town extends SQLObject {
 	}
 	
 	public AttrSource getGrowthRate() {
-		double rate = 1.25;
+		double rate = 3.0;
 		HashMap<String, Double> rates = new HashMap<String, Double>();
 		
 		ConfigHappinessState state = this.getHappinessState();
@@ -2585,7 +2585,7 @@ public class Town extends SQLObject {
 	
 	
 	public AttrSource getBeakerRate() {
-		double rate = 1.0;
+		double rate = 1.5;
 		HashMap<String, Double> rates = new HashMap<String, Double>();
 		
 		ConfigHappinessState state = this.getHappinessState();

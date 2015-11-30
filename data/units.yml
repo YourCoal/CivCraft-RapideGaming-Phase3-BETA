@@ -34,7 +34,7 @@ units:
  - id: 'u_spy'
    name: "Spy"
    class_name: 'com.civcraft.items.units.Spy'
-   require_tech: 'tech_nationalism'
+   require_tech: 'tech_steel'
    require_struct:
    require_upgrade:
    cost: 10000.0
@@ -46,10 +46,10 @@ units:
  - id: 'u_settler'
    name: "Settler"
    class_name: 'com.civcraft.items.units.Settler'
-   require_tech:
+   require_tech: 'tech_bronze'
    require_struct:
    require_upgrade:
-   cost: 20000.0
+   cost: 30000.0
    hammer_cost: 500.0
    limit: 0
    item_id: 330

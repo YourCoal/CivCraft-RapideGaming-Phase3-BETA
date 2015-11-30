@@ -1158,8 +1158,13 @@ public class CivGlobal {
 		}
 	}
 
-	public static Date getNextHourlyTickDate() {
-		EventTimer hourly = EventTimer.timers.get("hourly");
+	public static Date getNextFirstHourlyTickDate() {
+		EventTimer hourly = EventTimer.timers.get("hourly1");
+		return hourly.getNext().getTime();
+	}
+	
+	public static Date getNextLastHourlyTickDate() {
+		EventTimer hourly = EventTimer.timers.get("hourly5");
 		return hourly.getNext().getTime();
 	}
 

@@ -1,7 +1,7 @@
 package com.civcraft.command.resident;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.TimeZone;
 
@@ -276,9 +276,12 @@ public class ResidentCommand extends CommandBase {
 	
 	public static void show(CommandSender sender, Resident resident) {
 		CivMessage.sendHeading(sender, "Resident "+resident.getName());
-		Date lastOnline = new Date(resident.getLastOnline());
+//		Date lastOnline = new Date(resident.getLastOnline());
 		SimpleDateFormat sdf = new SimpleDateFormat("M/dd/yy h:mm:ss a z");
-		CivMessage.send(sender, CivColor.Green+"Last Online:"+CivColor.LightGreen+sdf.format(lastOnline));
+		Calendar cal = Calendar.getInstance();
+		cal.setTimeZone(TimeZone.getTimeZone(resident.getTimezone()));
+		sdf.setTimeZone(cal.getTimeZone());
+		CivMessage.send(sender, CivColor.Green+"Last Online:"+CivColor.LightGreen+sdf.format(cal.getTime()));
 		CivMessage.send(sender, CivColor.Green+"Town: "+CivColor.LightGreen+resident.getTownString());
 		CivMessage.send(sender, CivColor.Green+"Camp: "+CivColor.LightGreen+resident.getCampString());
 		

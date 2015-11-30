@@ -237,7 +237,7 @@ techs:
      beaker_cost: 17500.0
      cost: 70000.0
      points: 1750
-     require_techs: 'tech_iron:tech_welding:tech_newbie_mechanics'
+     require_techs: 'tech_iron:tech_welding'
 #==============================#
 #==========> Tier 5 <==========#
 #==============================#
@@ -318,7 +318,7 @@ techs:
      beaker_cost: 62500.0
      cost: 400000.0
      points: 6250
-     require_techs: 'tech_bronze:tech_smithing:tech_improved_mechanics'
+     require_techs: 'tech_bronze:tech_smithing'
 #==============================#
 #==========> Tier 7 <==========#
 #==============================#
@@ -335,6 +335,13 @@ techs:
      cost: 750000.0
      points: 8000
      require_techs: 'tech_steel:tech_smithing'
+#
+   - id: 'tech_elemental_science'
+     name: 'Elemental Science'
+     beaker_cost: 80000.0
+     cost: 750000.0
+     points: 8000
+     require_techs: 'tech_innovation:tech_gunpowder:tech_steel'
 #==============================#
 #==========> Tier 8 <==========#
 #==============================#
@@ -380,7 +387,7 @@ techs:
      beaker_cost: 375000.0
      cost: 2500000.0
      points: 37500
-     require_techs: 'tech_steel:tech_crafting:tech_mega_mechanics'
+     require_techs: 'tech_steel:tech_crafting'
 #==============================#
 #=========> Tier  10 <=========#
 #==============================#

@@ -1,5 +1,5 @@
 # Number of hours to remain in anarchy while switching governments.
-anarchy_duration: 24
+anarchy_duration: 16
 #
 governments:
  - id: gov_anarchy
@@ -111,7 +111,7 @@ governments:
    require_tech:
    trade_rate: 0.8
    cottage_rate: 0.8
-   upkeep_rate: 1.35
+   upkeep_rate: 1.5
    hammer_rate: 1.25
    beaker_rate: 1.25
    growth_rate: 0.75
@@ -135,8 +135,8 @@ governments:
  - id: gov_capitalism
    displayName: Capitalism
    require_tech:
-   trade_rate: 1.0
-   cottage_rate: 1.0
+   trade_rate: 1.15
+   cottage_rate: 1.15
    upkeep_rate: 0.75
    hammer_rate: 0.65
    beaker_rate: 0.65
@@ -161,9 +161,9 @@ governments:
  - id: gov_communism
    displayName: Communism
    require_tech:
-   trade_rate: 0.65
-   cottage_rate: 0.65
-   upkeep_rate: 1.15
+   trade_rate: 0.5
+   cottage_rate: 0.5
+   upkeep_rate: 1.25
    hammer_rate: 1.75
    beaker_rate: 1.75
    growth_rate: 1.15

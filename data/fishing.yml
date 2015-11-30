@@ -1,40 +1,52 @@
-# This controls the drops from fishing
-#
-#Here is an explaination of the options
-#craftMatId - Custom item_id
-#type_id - Vanilla item_id
-#drop_chance - Probability to drop.
-#
-
 fishing_drops:
-    - craftMatId: 'mat_mercury'
+    - craftMatId: 'civ:refined_sugar'
       type_id: 0
-      drop_chance: 0.05
-
-    - craftMatId: 'mat_mercury_bath'
+      drop_chance: 0.075
+#
+    - craftMatId: 'civ:seasoned_golden_carrot'
+      type_id: 0
+      drop_chance: 0.075
+#
+    - craftMatId: 'civ:bronze_ore'
+      type_id: 0
+      drop_chance: 0.01
+#
+    - craftMatId: 'civ:steel_ore'
       type_id: 0
       drop_chance: 0.005
-
-    - craftMatId: 'mat_crafted_reeds'
+#
+    - craftMatId: 'civ:titanium_ore'
       type_id: 0
-      drop_chance: 0.06
-
-    - craftMatId: 'mat_vanilla_slime'
+      drop_chance: 0.001
+#
+    - craftMatId: 'civ:bronze_ingot'
       type_id: 0
-      drop_chance: 0.03
-
-    - craftMatId: 'mat_vanilla_lead'
+      drop_chance: 0.005
+#
+    - craftMatId: 'civ:steel_ingot'
       type_id: 0
-      drop_chance: 0.07
-
+      drop_chance: 0.0001
+#
+    - craftMatId: 'civ:titanium_ingot'
+      type_id: 0
+      drop_chance: 0.00005
+#
     - craftMatId: ''
       type_id: 334
-      drop_chance: 0.04
-
+      drop_chance: 0.05
+#
     - craftMatId: ''
-      type_id: 280
-      drop_chance: 0.03
-
+      type_id: 287
+      drop_chance: 0.05
+#
     - craftMatId: ''
-      type_id: 349:3
+      type_id: 349:1
+      drop_chance: 0.025
+#
+    - craftMatId: ''
+      type_id: 333
       drop_chance: 0.01
+#
+    - craftMatId: ''
+      type_id: 341
+      drop_chance: 0.025

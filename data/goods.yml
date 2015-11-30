@@ -71,258 +71,240 @@ hemispheres:
 land_goods:
  - id: 'good:aluminum'
    name: Aluminum
-   value: 0.0
+   value: 100.0
    buffs: 'buff_advanced_mining, buff_construction'
    material: 167
    material_data: 0
 #
  - id: 'good:bananas'
    name: Bananas
-   value: 0.0
+   value: 100.0
    buffs: 'buff_year_of_plenty'
    material: 351
    material_data: 11
 #
  - id: 'good:cocoa'
    name: Cocoa
-   value: 0.0
+   value: 100.0
    buffs: 'buff_rush, buff_noanarchy'
    material: 351
    material_data: 3
 #
  - id: 'good:copper'
    name: Copper
-   value: 0.0
+   value: 100.0
    buffs: 'buff_construction, buff_advanced_mining'
    material: 369
    material_data: 0
 #
  - id: 'good:corn'
    name: Corn
-   value: 0.0
+   value: 100.0
    buffs: 'buff_year_of_plenty'
    material: 425
    material_data: 11
 #
  - id: 'good:cotton'
    name: Cotton
-   value: 0.0
+   value: 100.0
    buffs: 'buff_monopoly, buff_dirty_money'
    material: 351
    material_data: 15
 #
  - id: 'good:fossils'
    name: Fossils
-   value: 0.0
+   value: 100.0
    buffs: 'buff_rush, buff_extraction, buff_advanced_testing'
    material: 88
    material_data: 0
 #
  - id: 'good:gems'
    name: Gems
-   value: 0.0
+   value: 100.0
    buffs: 'buff_monopoly, buff_year_of_plenty, buff_barter'
    material: 388
    material_data: 0
-#   hemispheres: 'hemi_southeast'
 #
  - id: 'good:grapes'
    name: Grapes
-   value: 0.0
+   value: 100.0
    buffs: 'buff_hedonism, buff_noanarchy'
    material: 351
    material_data: 2
 #
  - id: 'good:guarana'
    name: Guarana
-   value: 0.0
+   value: 100.0
    buffs: 'buff_medecine, buff_year_of_plenty'
    material: 351
    material_data: 1
 #
  - id: 'good:herbs'
    name: Herbs
-   value: 0.0
+   value: 100.0
    buffs: 'buff_medecine, buff_innovation, buff_advanced_testing'
    material: 175
    material_data: 3
 #
  - id: 'good:horses'
    name: Horses
-   value: 0.0
+   value: 100.0
    buffs: 'buff_barter, buff_dirty_money'
    material: 329
    material_data: 0
 #
  - id: 'good:incense'
    name: Incense
-   value: 0.0
+   value: 100.0
    buffs: 'buff_noanarchy, buff_medecine'
    material: 362
    material_data: 0
 #
  - id: 'good:ivory'
    name: Ivory
-   value: 0.0
+   value: 100.0
    buffs: 'buff_hedonism, buff_dirty_money, buff_medecine'
    material: 406
    material_data: 0
 #
  - id: 'good:limestone'
    name: Limestone
-   value: 0.0
+   value: 100.0
    buffs: 'buff_advanced_mining buff_extraction'
    material: 24
    material_data: 0
 #
  - id: 'good:marble'
    name: Marble
-   value: 0.0
+   value: 100.0
    buffs: 'buff_barricade, buff_construction'
    material: 155
    material_data: 0
 #
  - id: 'good:oil'
    name: Oil
-   value: 0.0
+   value: 100.0
    buffs: 'buff_innovation, buff_advanced_mining, buff_extraction, buff_fire_bomb'
    material: 351
    material_data: 0
-#   hemispheres: 'hemi_north'
 #
  - id: 'good:pelts'
    name: Pelts
-   value: 0.0
+   value: 100.0
    buffs: 'buff_fine_art, buff_barter'
    material: 415
    material_data: 0
 #
  - id: 'good:poultry'
    name: Poultry
-   value: 0.0
+   value: 100.0
    buffs: 'buff_year_of_plenty'
    material: 365
    material_data: 0
 #
  - id: 'good:silk'
    name: Silk
-   value: 0.0
+   value: 100.0
    buffs: 'buff_hedonism, buff_fine_art'
    material: 287
    material_data: 0
 #
  - id: 'good:silver'
    name: Silver
-   value: 0.0
+   value: 100.0
    buffs: 'buff_monopoly, buff_extraction'
    material: 265
    material_data: 0
 #
  - id: 'good:soapstone'
    name: Soapstone
-   value: 0.0
+   value: 100.0
    buffs: 'buff_advanced_testing, buff_construction'
    material: 159
    material_data: 9
 #
  - id: 'good:spice'
    name: Spice
-   value: 0.0
+   value: 100.0
    buffs: 'buff_year_of_plenty, buff_preservative'
    material: 295
    material_data: 0
 #
  - id: 'good:tobacco'
    name: Tobacco
-   value: 0.0
+   value: 100.0
    buffs: 'buff_dirty_money, buff_espionage, buff_hedonism'
    material: 338
    material_data: 0
-   hemispheres: 'hemi_south'
 #
-# - id: 'good_poison_ivy'
-#   name: "Poison Ivy"
-#   value: 375.0
-#   buffs: 'buff:espionage, buff:sabotage, buff:dirty_money'
-#   material: 106 # vines
-#   material_data: 0
-#   hemispheres: 'hemi_northeast'
-#
-# - id: 'good_hemlock'
-#   name: Hemlock
-#   value: 375.0
-#   buffs: 'buff:espionage, buff:sabotage, buff:dirty_money'
-#   material: 31 # tall grass
-#   material_data: 0
-#   hemispheres: 'hemi_southwest'
 #=====> Spawnable Water Trade Goods <=====#
 water_goods:
  - id: 'good:calamari'
    name: Calamari
-   value: 0.0
+   value: 100.0
    buffs: 'buff_hedonism, buff_fishing'
    material: 350
    material_data: 1
 #
  - id: 'good:crabs'
    name: Crabs
-   value: 0.0
+   value: 100.0
    buffs: 'buff_fishing, buff_sabotage'
    material: 376
    material_data: 0
 #
  - id: 'good:dyes'
    name: Dyes
-   value: 0.0
+   value: 100.0
    buffs: 'buff_fine_art'
    material: 281
    material_data: 0
 #
  - id: 'good:pearls'
    name: Pearls
-   value: 0.0
+   value: 100.0
    buffs: 'buff_greed, buff_monopoly'
    material: 332
    material_data: 0
 #
  - id: 'good:salmon'
    name: Salmon
-   value: 0.0
+   value: 100.0
    buffs: 'buff_fishing'
    material: 349
    material_data: 1
 #
  - id: 'good:salt'
    name: Salt
-   value: 0.0
+   value: 100.0
    buffs: 'buff_preservative, buff_sabotage'
    material: 353
    material_data: 0
 #
  - id: 'good:shrimp'
    name: Shrimp
-   value: 0.0
+   value: 100.0
    buffs: 'buff_fishing'
    material: 375
    material_data: 0
 #
  - id: 'good:soap'
    name: Soap
-   value: 0.0
-   buffs: 'buff_noanarchy'
+   value: 100.0
+   buffs: 'buff_innovation'
    material: 44
    material_data: 7
 #
  - id: 'good:tuna'
    name: Tuna
-   value: 0.0
-   buffs: 'buff_fishing,'
+   value: 100.0
+   buffs: 'buff_fishing'
    material: 349
    material_data: 0
 #
  - id: 'good:whales'
    name: Whales
-   value: 0.0
+   value: 100.0
    buffs: 'buff_advanced_testing, buff_barricade'
    material: 423
    material_data: 0

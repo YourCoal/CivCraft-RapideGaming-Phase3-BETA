@@ -21,6 +21,15 @@ public class AdminCampCommand extends CommandBase {
 		commands.put("destroy", "[name] - destroyes this camp.");
 		commands.put("setraidtime", "[name] - d:M:y:H:m sets the raid time.");
 		commands.put("rebuild", "rebuilds this camp template");
+		commands.put("setowner", "[camp] [res] set owner of a camp");
+	}
+	
+	public void setowner_cmd() throws CivException {
+		Camp camp = getNamedCamp(1);
+		Resident resident = getNamedResident(2);
+		camp.setOwner(resident);
+		camp.save();
+		CivMessage.sendSuccess(sender, "Added "+resident.getName()+" to camp owner in "+camp.getName());
 	}
 	
 	public void rebuild_cmd() throws CivException {

@@ -71,7 +71,7 @@ public class MobBaseIronGolem extends EntityIronGolem implements ISpawnable {
 		iCustom.setEntity(pigzombie);
 		
 		pigzombie.setPosition(loc.getX(), loc.getY(), loc.getZ());
-		mcWorld.addEntity(pigzombie, SpawnReason.NATURAL);
+		mcWorld.addEntity(pigzombie, SpawnReason.CUSTOM);
 		
 		return pigzombie;
 	}

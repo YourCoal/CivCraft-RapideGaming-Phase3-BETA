@@ -26,7 +26,7 @@ public class MobBaseVillager extends EntityVillager {
 //		}
 		
 		zombie.setPosition(loc.getX(), loc.getY(), loc.getZ());
-		mcWorld.addEntity(zombie, SpawnReason.NATURAL);
+		mcWorld.addEntity(zombie, SpawnReason.CUSTOM);
 		
 		return zombie;
 	}

@@ -36,7 +36,6 @@ public class AdminTownCommand extends CommandBase {
 		command = "/ad town";
 		displayName = "Admin town";
 		
-		commands.put("disband", "[town] - disbands this town");
 		commands.put("claim", "[town] - forcibly claims the plot you stand on for this named town.");
 		commands.put("unclaim", "forcibly unclaims the plot you stand on.");
 		commands.put("hammerrate", "[town] [amount] set this town's hammer rate to this amount.");
@@ -378,23 +377,6 @@ public class AdminTownCommand extends CommandBase {
 		
 		CivMessage.sendSuccess(sender, "Added "+resident.getName()+" to mayors group in "+town.getName());
 		
-	}
-	
-	public void disband_cmd() throws CivException {
-		Town town = getNamedTown(1);
-		
-		if (town.isCapitol()) {
-			throw new CivException("Cannot disband the capitol town, disband the civilization instead.");
-		}
-		
-		CivMessage.sendTown(town, "Your town is has disbanded by an admin!");
-		try {
-			town.delete();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		CivMessage.sendSuccess(sender, "Town disbanded");
 	}
 	
 	public void hammerrate_cmd() throws CivException {

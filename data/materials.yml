@@ -11,25 +11,7 @@ materials:
    shaped: false
    category: 'OLD'
    components:
-     - name: 'Tagged'       
-#Updated 7/31/15
- - id: 'civ:tungsten_ore'
-   item_id: 385
-   item_data: 0
-   name: 'Tungsten Ore'
-   components:
-     - name: 'NoRightClick'
-   craftable: false
-   shaped: true
-   category: 'OLD'
-#Updated 7/31/15
- - id: 'civ:chromium_ore'
-   item_id: 370
-   item_data: 0
-   name: 'Chromium Ore'
-   craftable: false
-   shaped: true
-   category: 'OLD'
+     - name: 'Tagged'
 #====================================#
 #========> Tier 1 Upgraders <========#
 #====================================#
@@ -188,7 +170,7 @@ materials:
    ingredients:
      - type_id: 4
        data: 0
-       count: 9
+       count: 8
 #Updated 7/31/15
  - id: 'civ:crushed_granite'
    item_id: 1
@@ -200,7 +182,10 @@ materials:
    ingredients:
      - type_id: 1
        data: 2
-       count: 9
+       count: 8
+     - type_id: 3
+       data: 0
+       count: 1
 #Updated 7/31/15
  - id: 'civ:crushed_diorite'
    item_id: 1
@@ -212,7 +197,10 @@ materials:
    ingredients:
      - type_id: 1
        data: 4
-       count: 9
+       count: 8
+     - type_id: 295
+       data: 0
+       count: 1
 #Updated 7/31/15
  - id: 'civ:crushed_andesite'
    item_id: 1
@@ -224,7 +212,10 @@ materials:
    ingredients:
      - type_id: 1
        data: 6
-       count: 9
+       count: 8
+     - type_id: 4
+       data: 0
+       count: 1
 #Updated 7/31/15
  - id: 'civ:carved_leather'
    item_id: 334
@@ -310,7 +301,7 @@ materials:
  - id: 'civ:polished_stone'
    item_id: 98
    item_data: 0
-   name: 'Polihed Stone'
+   name: 'Polished Stone'
    craftable: true
    shaped: false
    category: '<yellow>Tier 2 Material'
@@ -318,7 +309,7 @@ materials:
      - type_id: 0
        custom_id: 'civ:refined_cobblestone'
        data: 0
-       count: 9
+       count: 8
 #Updated 7/31/15
  - id: 'civ:compressed_sugar'
    item_id: 406
@@ -383,6 +374,23 @@ materials:
        data: 0
        count: 9
 #Updated 7/31/15
+ - id: 'civ:bronze_armor_plate'
+   item_id: 171
+   item_data: 1
+   name: 'Bronze Armor Plate'
+   craftable: true
+   shaped: false
+   category: '<yellow>Tier 2 Material'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:bronze_ingot'
+       data: 0
+       count: 2
+     - type_id: 0
+       custom_id: 'civ:refined_sugar'
+       data: 0
+       count: 7
+#Updated 7/31/15
  - id: 'civ:bronze_ingot'
    item_id: 126
    item_data: 4
@@ -446,11 +454,11 @@ materials:
      - type_id: 0
        custom_id: 'civ:compressed_sugar'
        data: 0
-       count: 3
+       count: 4
      - type_id: 0
        custom_id: 'civ:crafted_reeds'
        data: 0
-       count: 3
+       count: 2
      - type_id: 0
        custom_id: 'civ:crushed_granite'
        data: 0
@@ -475,7 +483,7 @@ materials:
      - type_id: 0
        custom_id: 'civ:polished_stone'
        data: 0
-       count: 9
+       count: 8
 #Updated 7/31/15
  - id: 'civ:medend_varnish'
    item_id: 406
@@ -493,6 +501,23 @@ materials:
        custom_id: 'civ:steel_ingot'
        data: 0
        count: 1
+#Updated 7/31/15
+ - id: 'civ:steel_armor_plate'
+   item_id: 171
+   item_data: 8
+   name: 'Steel Armor Plate'
+   craftable: true
+   shaped: false
+   category: '<rose>Tier 3 Material'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:steel_ingot'
+       data: 0
+       count: 2
+     - type_id: 0
+       custom_id: 'civ:refined_sugar'
+       data: 0
+       count: 7
 #Updated 7/31/15
  - id: 'civ:steel_ingot'
    item_id: 339
@@ -519,6 +544,19 @@ materials:
 #====================================#
 #========> Tier 4 Materials <========#
 #====================================#
+#Updated 7/31/15
+ - id: 'civ:mega_compacted_stone'
+   item_id: 98
+   item_data: 3
+   name: 'Mega Compacted Stone'
+   craftable: true
+   shaped: false
+   category: '<lightblue>Tier 4 Material'
+   ingredients:
+     - type_id: 0
+       custom_id: 'civ:compacted_stone'
+       data: 0
+       count: 8
 #Updated 7/31/15
  - id: 'civ:refined_wolven_threading'
    item_id: 171
@@ -563,10 +601,10 @@ materials:
        data: 0
        count: 1
 #Updated 7/31/15
- - id: 'civ:titanium_blade'
-   item_id: 409
-   item_data: 0
-   name: 'Titanium Blade'
+ - id: 'civ:titanium_armor_plate'
+   item_id: 171
+   item_data: 9
+   name: 'Titanium Armor Plate'
    craftable: true
    shaped: false
    category: '<lightblue>Tier 4 Material'
@@ -574,15 +612,15 @@ materials:
      - type_id: 0
        custom_id: 'civ:titanium_ingot'
        data: 0
-       count: 3
+       count: 2
      - type_id: 0
-       custom_id: 'civ:highend_varnish'
+       custom_id: 'civ:refined_sugar'
        data: 0
-       count: 1
+       count: 7
 #Updated 7/31/15
  - id: 'civ:titanium_ingot'
-   item_id: 171
-   item_data: 9
+   item_id: 409
+   item_data: 0
    name: 'Titanium Ingot'
    craftable: true
    shaped: false
@@ -798,7 +836,8 @@ materials:
      - type_id: 265
        data: 0
        letter: 'i'
-     - type_id: 280
+     - type_id: 0
+       custom_id: 'civ:crafted_sticks'
        data: 0
        letter: 's'
    shape:
@@ -963,7 +1002,8 @@ materials:
        custom_id: 'civ:bronze_ingot'
        data: 0
        letter: 'i'
-     - type_id: 280
+     - type_id: 0
+       custom_id: 'civ:refined_sticks'
        data: 0
        letter: 's'
    shape:
@@ -989,7 +1029,7 @@ materials:
        value: '0.05'
    ingredients:
      - type_id: 0
-       custom_id: 'civ:bronze_ingot'
+       custom_id: 'civ:bronze_armor_plate'
        data: 0
        letter: 'i'
    shape:
@@ -1015,7 +1055,7 @@ materials:
        value: '0.05'
    ingredients:
      - type_id: 0
-       custom_id: 'civ:bronze_ingot'
+       custom_id: 'civ:bronze_armor_plate'
        data: 0
        letter: 'i'
    shape:
@@ -1041,7 +1081,7 @@ materials:
        value: '0.05'
    ingredients:
      - type_id: 0
-       custom_id: 'civ:bronze_ingot'
+       custom_id: 'civ:bronze_armor_plate'
        data: 0
        letter: 'i'
    shape:
@@ -1067,7 +1107,7 @@ materials:
        value: '0.05'
    ingredients:
      - type_id: 0
-       custom_id: 'civ:bronze_ingot'
+       custom_id: 'civ:bronze_armor_plate'
        data: 0
        letter: 'i'
    shape:
@@ -1131,7 +1171,8 @@ materials:
        custom_id: 'civ:steel_ingot'
        data: 0
        letter: 'i'
-     - type_id: 280
+     - type_id: 0
+       custom_id: 'civ:compacted_sticks'
        data: 0
        letter: 's'
    shape:
@@ -1157,7 +1198,7 @@ materials:
        value: '0.05'
    ingredients:
      - type_id: 0
-       custom_id: 'civ:steel_ingot'
+       custom_id: 'civ:steel_armor_plate'
        data: 0
        letter: 'i'
    shape:
@@ -1183,7 +1224,7 @@ materials:
        value: '0.05'
    ingredients:
      - type_id: 0
-       custom_id: 'civ:steel_ingot'
+       custom_id: 'civ:steel_armor_plate'
        data: 0
        letter: 'i'
    shape:
@@ -1209,7 +1250,7 @@ materials:
        value: '0.05'
    ingredients:
      - type_id: 0
-       custom_id: 'civ:steel_ingot'
+       custom_id: 'civ:steel_armor_plate'
        data: 0
        letter: 'i'
    shape:
@@ -1235,7 +1276,7 @@ materials:
        value: '0.05'
    ingredients:
      - type_id: 0
-       custom_id: 'civ:steel_ingot'
+       custom_id: 'civ:steel_armor_plate'
        data: 0
        letter: 'i'
    shape:
@@ -1299,7 +1340,8 @@ materials:
        custom_id: 'civ:titanium_ingot'
        data: 0
        letter: 'i'
-     - type_id: 280
+     - type_id: 0
+       custom_id: 'civ:refined_compacted_sticks'
        data: 0
        letter: 's'
    shape:
@@ -1325,7 +1367,7 @@ materials:
        value: '0.05'
    ingredients:
      - type_id: 0
-       custom_id: 'civ:titanium_ingot'
+       custom_id: 'civ:titanium_armor_plate'
        data: 0
        letter: 'i'
    shape:
@@ -1351,7 +1393,7 @@ materials:
        value: '0.05'
    ingredients:
      - type_id: 0
-       custom_id: 'civ:titanium_ingot'
+       custom_id: 'civ:titanium_armor_plate'
        data: 0
        letter: 'i'
    shape:
@@ -1377,7 +1419,7 @@ materials:
        value: '0.05'
    ingredients:
      - type_id: 0
-       custom_id: 'civ:titanium_ingot'
+       custom_id: 'civ:titanium_armor_plate'
        data: 0
        letter: 'i'
    shape:
@@ -1403,120 +1445,13 @@ materials:
        value: '0.05'
    ingredients:
      - type_id: 0
-       custom_id: 'civ:titanium_ingot'
+       custom_id: 'civ:titanium_armor_plate'
        data: 0
        letter: 'i'
    shape:
      - "   "
      - "i i"
      - "i i"
-#====================================#
-#=> Elements of the Periodic Table <=#
-#====================================#
-#Updated 10/31/15
- - id: 'civ:element_hydrogen'
-   item_id: 374
-   item_data: 0
-   name: '[1] Hydrogen'
-   craftable: false
-   shaped: false
-   category: '<b>Element'
-#Updated 10/31/15
- - id: 'civ:element_helium'
-   item_id: 374
-   item_data: 0
-   name: '[2] Helium'
-   craftable: false
-   shaped: false
-   category: '<b>Element'
-#Updated 10/31/15
- - id: 'civ:element_lithium'
-   item_id: 147
-   item_data: 0
-   name: '[3] Lithium'
-   craftable: false
-   shaped: false
-   category: '<b>Element'
-#Updated 10/31/15
- - id: 'civ:element_beryllium'
-   item_id: 147
-   item_data: 0
-   name: '[4] Beryllium'
-   craftable: false
-   shaped: false
-   category: '<b>Element'
-#Updated 10/31/15
- - id: 'civ:element_boron'
-   item_id: 374
-   item_data: 0
-   name: '[6] Boron'
-   craftable: false
-   shaped: false
-   category: '<b>Element'
-#Updated 10/31/15
- - id: 'civ:element_carbon'
-   item_id: 374
-   item_data: 0
-   name: '[6] Carbon'
-   craftable: false
-   shaped: false
-   category: '<b>Element'
-#Updated 10/31/15
- - id: 'civ:element_nitrogen'
-   item_id: 374
-   item_data: 0
-   name: '[7] Nitrogen'
-   craftable: false
-   shaped: false
-   category: '<b>Element'
-#Updated 10/31/15
- - id: 'civ:element_oxygen'
-   item_id: 374
-   item_data: 0
-   name: '[8] Oxygen'
-   craftable: false
-   shaped: false
-   category: '<b>Element'
-#Updated 10/31/15
- - id: 'civ:element_fluorine'
-   item_id: 374
-   item_data: 0
-   name: '[9] Fluroine'
-   craftable: false
-   shaped: false
-   category: '<b>Element'
-#Updated 10/31/15
- - id: 'civ:element_neon'
-   item_id: 374
-   item_data: 0
-   name: '[10] Neon'
-   craftable: false
-   shaped: false
-   category: '<b>Element'
-#Updated 10/31/15
- - id: 'civ:element_sodium'
-   item_id: 147
-   item_data: 0
-   name: '[11] Sodium'
-   craftable: false
-   shaped: false
-   category: '<b>Element'
-#Updated 10/31/15
- - id: 'civ:element_magnesium'
-   item_id: 147
-   item_data: 0
-   name: '[12] Magnesium'
-   craftable: false
-   shaped: false
-   category: '<b>Element'
-#Updated 10/31/15
- - id: 'civ:element_aluminum'
-   item_id: 147
-   item_data: 0
-   name: '[13] Aluminum'
-   craftable: false
-   shaped: false
-   category: '<b>Element'
 #====================================#
 #==============> Dyes <==============#
 #====================================#
@@ -1664,10 +1599,9 @@ materials:
    craftable: false
    shaped: false
    category: 'Dyes'
-
 #====================================#
 #=============> Special <============#
-#====================================#      
+#====================================#
 #Updated 7/31/15
  - id: 'civ:found_civ'
    item_id: 386
@@ -1689,15 +1623,43 @@ materials:
        letter: 'b'
      - type_id: 0
        data: 0
-       custom_id: 'civ:compacted_stone'
+       custom_id: 'civ:mega_compacted_stone'
        letter: 's'
+     - type_id: 0
+       data: 0
+       custom_id: 'civ:super_faith'
+       letter: 't'
    shape:
-     - "cbc"
-     - "bsb"
-     - "sbs"
-
-       
-          # XXX mat ID hard coded for camp refund. with /camp undo 
+     - "ccc"
+     - "btb"
+     - "sts"
+#Updated 7/31/15
+ - id: 'civ:camp_faith'
+   item_id: 399
+   item_data: 0
+   name: 'Camp Faith'
+   craftable: false
+   shaped: false
+   category: 'Special'
+#Updated 7/31/15
+ - id: 'civ:super_faith'
+   item_id: 148
+   item_data: 0
+   name: 'Super Faith'
+   craftable: true
+   shaped: false
+   category: 'Special'
+   ingredients:
+     - type_id: 0
+       data: 0
+       custom_id: 'civ:camp_faith'
+       count: 4
+#
+#
+#
+#
+#
+# XXX mat ID hard coded for camp refund. with /camp undo 
 #Updated 7/31/15
  - id: 'civ:found_camp'
    item_id: 324
@@ -1712,14 +1674,11 @@ materials:
      - type_id: 173
        data: 0
        letter: 'c'
-     - type_id: 56
-       data: 0
-       letter: 'o'
    shape:
      - "   "
+     - "c c"
      - "ccc"
-     - "coc"
-
+#
  - id: 'civ:found_warcamp'
    item_id: 7
    item_data: 0
@@ -1729,7 +1688,7 @@ materials:
    category: 'Special'
    components:
      - name: 'FoundWarCamp'
-        
+#
  - id: 'civ:build_cannon'
    item_id: 154
    item_data: 0
@@ -1740,9 +1699,7 @@ materials:
    components:
      - name: 'BuildCannon'
      - name: 'NoRightClick'
-
-#  Special Item Recipes -------------------------------------------------
-        
+#
  - id: 'civ:tutorial_book'
    item_id: 340
    item_data: 0
@@ -1751,7 +1708,129 @@ materials:
    shaped: false
    components:
      - name: 'TutorialBook'
-
+#====================================#
+#=============> Special <============#
+#====================================#
+#Updated 7/31/15
+ - id: 'civ:diamond_shovel'
+   item_id: 277
+   item_data: 0
+   name: 'Diamond Shovel'
+   craftable: true
+   shaped: true
+   category: '<lightgray>Tools'
+   components:
+     - name: 'Attack'
+       value: '2.0'
+     - name: 'RepairCost'
+       value: '500.0'
+   ingredients:
+     - type_id: 280
+       data: 0
+       letter: 's'
+     - type_id: 264
+       data: 0
+       letter: 'i' 
+   shape:
+     - " i "
+     - " s "
+     - " s "
+#Updated 7/31/15
+ - id: 'civ:diamond_pickaxe'
+   item_id: 278
+   item_data: 0
+   name: 'Diamond Pickaxe'
+   craftable: true
+   shaped: true
+   category: '<lightgray>Tools'
+   components:
+     - name: 'Attack'
+       value: '2.0'
+     - name: 'RepairCost'
+       value: '1500.0'
+   ingredients:
+     - type_id: 280
+       data: 0
+       letter: 's'
+     - type_id: 264
+       data: 0
+       letter: 'i' 
+   shape:
+     - "iii"
+     - " s "
+     - " s "
+#Updated 7/31/15
+ - id: 'civ:diamond_axe'
+   item_id: 279
+   item_data: 0
+   name: 'Diamond Axe'
+   craftable: true
+   shaped: true
+   category: '<lightgray>Tools'
+   components:
+     - name: 'Attack'
+       value: '2.0'
+     - name: 'RepairCost'
+       value: '1500.0'
+   ingredients:
+     - type_id: 280
+       data: 0
+       letter: 's'
+     - type_id: 264
+       data: 0
+       letter: 'i' 
+   shape:
+     - "ii "
+     - "is "
+     - " s "
+#Updated 7/31/15
+ - id: 'civ:diamond_hoe'
+   item_id: 293
+   item_data: 0
+   name: 'Diamond Hoe'
+   craftable: true
+   shaped: true
+   category: '<lightgray>Tools'
+   components:
+     - name: 'Attack'
+       value: '2.0'
+     - name: 'RepairCost'
+       value: '1000.0'
+   ingredients:
+     - type_id: 280
+       data: 0
+       letter: 's'
+     - type_id: 264
+       data: 0
+       letter: 'i' 
+   shape:
+     - "ii "
+     - " s "
+     - " s "
+#Updated 7/31/15
+ - id: 'civ:fishing_rod'
+   item_id: 346
+   item_data: 0
+   name: 'Fishing Rod'
+   craftable: true
+   shaped: true
+   category: '<lightgray>Tools'
+   components:
+     - name: 'Attack'
+       value: '1.5'
+     - name: 'RepairCost'
+       value: '250.0'
+   ingredients:
+     - type_id: 280
+       data: 0
+       letter: 'w'
+     - type_id: 287
+       data: 0
+       letter: 's' 
+   shape:
+     - "  w"
+     - " ws"
+     - "w s"
 #
 # This is a list of removed recpies based on the typeID and 
 # data value of the vanilla item.
@@ -1843,43 +1922,20 @@ removed_recipes:
     - type_id: 322
       data: 0
 
-#    # Pickaxes
-#    - type_id: 257
-#      data: 0
-#    - type_id: 274
-#      data: 0
-#    - type_id: 278
-#      data: 0
-#    - type_id: 285
-#      data: 0
-#    
-#    # Shovels
-#    - type_id: 256
-#      data: 0
-#    - type_id: 284
-#      data: 0
-#    - type_id: 277
-#      data: 0
-#
-#    # Axes
-#    - type_id: 258
-#      data: 0
-#    - type_id: 286
-#      data: 0
-#    - type_id: 279
-#      data: 0
-#      
-#    # Hoe
-#    - type_id: 292
-#      data: 0
-#    - type_id: 294
-#      data: 0
-#    - type_id: 293
-#      data: 0
+    # Diamond Tools
+    - type_id: 277
+      data: 0
+    - type_id: 278
+      data: 0
+    - type_id: 279
+      data: 0
+    - type_id: 293
+      data: 0
 
     # Ender Chest
     - type_id: 130
       data: 0
+#
 #Ore Drops
 bronze_min: 1
 bronze_max: 2

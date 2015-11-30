@@ -12,9 +12,9 @@ public class HourlyTickEventMinute3 implements EventInterface {
 	
 	@Override
 	public void process() {
-		CivLog.info("TimerEvent: Hourly -------------------------------------");
+		CivLog.info("TimerEvent: Hourly Mine -------------------------------------");
 		TaskMaster.asyncTask("MineEventTimer", new MineEventTimer(), 0);
-		CivLog.info("TimerEvent: Hourly Finished -----------------------------");
+		CivLog.info("TimerEvent: Hourly Mine Finished -----------------------------");
 	}
 	
 	@Override

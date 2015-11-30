@@ -88,7 +88,7 @@ public class MobBaseWitch extends EntityWitch implements ISpawnable {
 		iCustom.setEntity(witch);
 		
 		witch.setPosition(loc.getX(), loc.getY(), loc.getZ());
-		mcWorld.addEntity(witch, SpawnReason.NATURAL);
+		mcWorld.addEntity(witch, SpawnReason.CUSTOM);
 		
 		return witch;
 	}

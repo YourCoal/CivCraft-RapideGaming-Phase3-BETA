@@ -8,6 +8,8 @@ import java.util.LinkedList;
 import java.util.Random;
 import java.util.UUID;
 
+import moblib.mob.ICustomMob;
+import moblib.mob.ISpawnable;
 import net.minecraft.server.v1_8_R3.DamageSource;
 import net.minecraft.server.v1_8_R3.Entity;
 import net.minecraft.server.v1_8_R3.EntityCreature;
@@ -29,8 +31,6 @@ import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.entity.EntityTargetEvent.TargetReason;
 import org.bukkit.inventory.ItemStack;
 
-import moblib.mob.ICustomMob;
-import moblib.mob.ISpawnable;
 import com.civcraft.camp.Camp;
 import com.civcraft.exception.CivException;
 import com.civcraft.lorestorage.LoreCraftableMaterial;
@@ -116,15 +116,12 @@ public abstract class CommonCustomMob implements ICustomMob {
 		this.setLevel(MobSpawner.CustomMobLevel.valueOf(getData("level")));
 		
 		/* common drops. */
-		this.addVanillaDrop(ItemManager.getId(Material.BONE), (short)0, 0.1);
-		this.addVanillaDrop(ItemManager.getId(Material.SUGAR), (short)0, 0.1);
-		this.addVanillaDrop(ItemManager.getId(Material.SULPHUR), (short)0, 0.25);
-		this.addVanillaDrop(ItemManager.getId(Material.POTATO_ITEM), (short)0, 0.1);
-		this.addVanillaDrop(ItemManager.getId(Material.CARROT_ITEM), (short)0, 0.1);
+		this.addVanillaDrop(ItemManager.getId(Material.SUGAR), (short)0, 0.05);
+		this.addVanillaDrop(ItemManager.getId(Material.SULPHUR), (short)0, 0.15);
+		this.addVanillaDrop(ItemManager.getId(Material.POTATO_ITEM), (short)0, 0.5);
+		this.addVanillaDrop(ItemManager.getId(Material.CARROT_ITEM), (short)0, 0.5);
 		this.addVanillaDrop(ItemManager.getId(Material.COAL), (short)0, 0.1);
 		this.addVanillaDrop(ItemManager.getId(Material.STRING), (short)0, 0.1);
-		this.addVanillaDrop(ItemManager.getId(Material.SLIME_BALL), (short)0, 0.02);
-
 	}
 	
 	public Location getLocation(EntityLiving entity2) {
@@ -223,6 +220,7 @@ public abstract class CommonCustomMob implements ICustomMob {
 	}
 	
 	private int tickCount = 0;
+	@SuppressWarnings("static-access")
 	@Override
 	public void onTick() {
 		if (entity == null) {
@@ -235,6 +233,7 @@ public abstract class CommonCustomMob implements ICustomMob {
 			checkForTownBorders();
 			checkForisWarTime();
 			tickCount = 0;
+			this.customMobs.remove(this.entity.getUniqueID());
 		}
 	}
 	

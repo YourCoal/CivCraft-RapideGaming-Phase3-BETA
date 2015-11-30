@@ -42,11 +42,11 @@ public class CivTutorial {
 			));
 			
 			serverInfoInventory.setItem(4, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"Dynmap", ItemManager.getId(Material.MAP), 0, 
-				ChatColor.RESET+"http://mc.rapidegaming.com:8521/"
+				ChatColor.RESET+"http://mc.rapidegaming.com:8123/"
 			));
 			
 			serverInfoInventory.setItem(6, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"Wiki", ItemManager.getId(Material.ENDER_PORTAL_FRAME), 0, 
-				ChatColor.RESET+"https://github.com/YourCoal/wiki/wiki"
+				ChatColor.RESET+"https://github.com/YourCoal/Wiki/wiki"
 			));
 			
 			serverInfoInventory.setItem(8, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"YourCoal's YouTube", ItemManager.getId(Material.REDSTONE_BLOCK), 0, 
@@ -62,56 +62,36 @@ public class CivTutorial {
 	
 	public static void showTutorialInventory(Player player) {	
 		if (tutorialInventory == null) {
-			tutorialInventory = Bukkit.getServer().createInventory(player, 9*3, "CivCraft Tutorial");
+			tutorialInventory = Bukkit.getServer().createInventory(player, 9*2, "Custom CivCraft Tutorial");
 			
-			tutorialInventory.addItem(LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"What is CivCraft?", ItemManager.getId(Material.WORKBENCH), 0, 
-				ChatColor.RESET+"CivCraft is a game about building civilizations set in a large,",
-				ChatColor.RESET+"persistent world filled with players.",
-				ChatColor.RESET+"Players start out as nomads, gathering",
-				ChatColor.RESET+"resources and making allies until they can build a camp.",
-				ChatColor.RESET+"Gather more resources and allies and found a civilization!",
-				ChatColor.RESET+CivColor.LightGreen+"Research technology! Build structures! Conquer the world!"
+			tutorialInventory.setItem(0, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"What is CivCraft?", ItemManager.getId(Material.WORKBENCH), 0, 
+				ChatColor.RESET+"CivCraft requires those of many skills; the",
+				ChatColor.RESET+"skills of gathering, fighting, and most of all,",
+				ChatColor.RESET+"knowledge. You must remember the basics for you",
+				ChatColor.RESET+"to actually have success. You will need to also",
+				ChatColor.RESET+"gether allies, create friendships, and prepare to",
+				ChatColor.RESET+"do things you don't like. "+CivColor.LightGreen+"Are you ready?"
 			));
 			
-			tutorialInventory.addItem(LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"Explore", ItemManager.getId(Material.COMPASS), 0, 
-				ChatColor.RESET+"Venture outward from spawn into the wild",
-				ChatColor.RESET+"and find a spot to settle. You may encounter",
-				ChatColor.RESET+"trade resources, and other player towns which",
-				ChatColor.RESET+"will infulence your decision on where to settle.",
-				ChatColor.RESET+"Different biomes generate different resources."
+			tutorialInventory.setItem(3, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"Explore!", ItemManager.getId(Material.COMPASS), 0, 
+				ChatColor.RESET+"You will need to venture out of spawn, into the",
+				ChatColor.RESET+"wildnerness in order to find the resources you",
+				ChatColor.RESET+"will need. These resources include tradeposts,",
+				ChatColor.RESET+"ruins, and, the most common, other player's",
+				ChatColor.RESET+"civilizations. Each biome will bring you different",
+				ChatColor.RESET+"options. Find the ones that suit you."
 			));
 			
-			tutorialInventory.addItem(LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"Resources and Materials", ItemManager.getId(Material.DIAMOND_ORE), 0, 
-				ChatColor.RESET+"CivCraft contains many new custom items.",
-				ChatColor.RESET+"These items are crafted using a crafting bench",
-				ChatColor.RESET+"and combining many more normal Minecraft items",
-				ChatColor.RESET+"into higher tier items. Certain items like iron, gold,",
-				ChatColor.RESET+"diamonds and emeralds can be exchanged for coins at "+CivColor.Yellow+"Bank",
-				ChatColor.RESET+"structures. Coins can be traded for materials at the "+CivColor.Yellow+"Market"
-			));
-			
-			tutorialInventory.addItem(LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"Towns", ItemManager.getId(Material.FENCE), 0, 
-				ChatColor.RESET+"Towns can be created by players to protect",
-				ChatColor.RESET+"areas from outsiders. Inside a town the owners are",
-				ChatColor.RESET+"free to build creatively without interference from griefers",
-				ChatColor.RESET+"Towns cost materials to create and coins to maintain.",
-				ChatColor.RESET+"Towns can build functional structures which allow it's",
-				ChatColor.RESET+"residents access to more features. Towns can only be built",
-				ChatColor.RESET+"inside of a civilization."
-			));
-			
-			tutorialInventory.addItem(LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"Civilizations", ItemManager.getId(Material.GOLD_HELMET), 0, 
-				ChatColor.RESET+"Civilizations are collections of towns",
-				ChatColor.RESET+"All towns inside of the civilization share technology",
-				ChatColor.RESET+"which is researched by the civ. Many items and structures",
-				ChatColor.RESET+"in CivCraft are only obtainable through the use of technology",
-				ChatColor.RESET+"Founding your own civ is a lot of work, you must be a natural",
-				ChatColor.RESET+"leader and bring people together in order for your civ to survive",
-				ChatColor.RESET+"and flourish."
+			tutorialInventory.setItem(4, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"Resources and Materials", ItemManager.getId(Material.DIAMOND_ORE), 0, 
+				ChatColor.RESET+"There are many different custom items you can craft.",
+				ChatColor.RESET+"These items are crafted like regular items in a",
+				ChatColor.RESET+"workbench, and can be used to make other items.",
+				ChatColor.RESET+"When caving, ingots can be sold at a "+CivColor.Yellow+"Bank.",
+				ChatColor.RESET+"Some items can be bought/sold at the "+CivColor.Yellow+"Market."
 			));
 			
 			if (CivGlobal.isCasualMode()) {
-				tutorialInventory.addItem(LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"Casual War!", ItemManager.getId(Material.FIREWORK), 0, 
+				tutorialInventory.setItem(7, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"Casual War!", ItemManager.getId(Material.FIREWORK), 0, 
 					ChatColor.RESET+"War allows civilizations to settle their differences.",
 					ChatColor.RESET+"In casual mode, Civs have to the option to request war from",
 					ChatColor.RESET+"each other. The winner of a war is awarded a trophy which can be",
@@ -119,7 +99,7 @@ public class CivTutorial {
 					ChatColor.RESET+"After a civilization is defeated in war, war must be requested again."
 					));
 			} else {
-				tutorialInventory.addItem(LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"War!", ItemManager.getId(Material.IRON_SWORD), 0, 
+				tutorialInventory.setItem(7, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"War!", ItemManager.getId(Material.IRON_SWORD), 0, 
 					ChatColor.RESET+"War allows civilizations to settle their differences.",
 					ChatColor.RESET+"Normally, all structures inside a civilization are protected",
 					ChatColor.RESET+"from damage. However civs have to the option to declare war on",
@@ -129,23 +109,21 @@ public class CivTutorial {
 				));
 			}
 			
-			tutorialInventory.setItem(8, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"More Info?", ItemManager.getId(Material.BOOK_AND_QUILL), 0, 
+			tutorialInventory.setItem(9, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"More Info?", ItemManager.getId(Material.BOOK_AND_QUILL), 0, 
 				ChatColor.RESET+"There is much more information you will require for your",
 				ChatColor.RESET+"journey into CivCraft. Please visit the wiki at ",
 				ChatColor.RESET+CivColor.LightGreen+ChatColor.BOLD+"http://civcraft.net/wiki",
 				ChatColor.RESET+"For more detailed information about CivCraft and it's features."
 			));
 			
-			tutorialInventory.setItem(9, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"QUEST: Build a Camp", ItemManager.getId(Material.BOOK_AND_QUILL), 0, 
+			tutorialInventory.setItem(13, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"QUEST: Build a Camp", ItemManager.getId(Material.BOOK_AND_QUILL), 0, 
 				ChatColor.RESET+"First things first, in order to start your journey",
 				ChatColor.RESET+"you must first build a camp. Camps allow you to store",
 				ChatColor.RESET+"your materials safely, and allow you to obtain leadership",
 				ChatColor.RESET+"tokens which can be crafted into a civ. The recipe for a camp is below."
 				));
 			
-			tutorialInventory.setItem(18,getInfoBookForItem("mat_found_camp"));
-			
-			tutorialInventory.setItem(10, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"QUEST: Found a Civ", ItemManager.getId(Material.BOOK_AND_QUILL), 0, 
+			tutorialInventory.setItem(14, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"QUEST: Found a Civ", ItemManager.getId(Material.BOOK_AND_QUILL), 0, 
 				ChatColor.RESET+"Next, you'll want to start a civilization.",
 				ChatColor.RESET+"To do this, you must first obtain leadership tokens",
 				ChatColor.RESET+"by feeding bread to your camp's longhouse.",
@@ -153,9 +131,7 @@ public class CivTutorial {
 				ChatColor.RESET+"You can craft the founding flag item below."
 			));
 			
-			tutorialInventory.setItem(19,getInfoBookForItem("mat_found_civ"));
-			
-			tutorialInventory.setItem(11, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"Need to know a recipe?", ItemManager.getId(Material.WORKBENCH), 0, 
+			tutorialInventory.setItem(17, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"Need to know a recipe?", ItemManager.getId(Material.WORKBENCH), 0, 
 				ChatColor.RESET+"Type /res book to obtain the tutorial book",
 				ChatColor.RESET+"and then click on 'Crafting Recipies'",
 				ChatColor.RESET+"Every new item in CivCraft is listed here",

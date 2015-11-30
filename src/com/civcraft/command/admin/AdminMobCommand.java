@@ -85,29 +85,20 @@ public class AdminMobCommand extends CommandBase {
 		String name = getNamedString(1, "Enter a mob name");
 		
 		switch (name.toLowerCase()) {
+		case "yobo":
+			CommonCustomMob.disabledMobs.add(CustomMobType.YOBO.toString());
+			break;
+		case "angryyobo":
+			CommonCustomMob.disabledMobs.add(CustomMobType.ANGRYYOBO.toString());
+			break;
+		case "savage":
+			CommonCustomMob.disabledMobs.add(CustomMobType.SAVAGE.toString());
+			break;
+		case "ruffian":
+			CommonCustomMob.disabledMobs.add(CustomMobType.RUFFIAN.toString());
+			break;
 		case "behemoth":
 			CommonCustomMob.disabledMobs.add(CustomMobType.BEHEMOTH.toString());
-			break;
-		case "ferosse":
-			CommonCustomMob.disabledMobs.add(CustomMobType.FEROSSE.toString());
-			break;
-		case "glacial brute":
-			CommonCustomMob.disabledMobs.add(CustomMobType.GLACIAL_BRUTE.toString());
-			break;
-		case "woodland sentinel":
-			CommonCustomMob.disabledMobs.add(CustomMobType.WOODLAND_SENTINEL.toString());
-			break;
-		case "timberland ranger":
-			CommonCustomMob.disabledMobs.add(CustomMobType.TIMBERLAND_RANGER.toString());
-			break;
-		case "floral_gatherer":
-			CommonCustomMob.disabledMobs.add(CustomMobType.FLORAL_GATHERER.toString());
-			break;
-		case "inferi":
-			CommonCustomMob.disabledMobs.add(CustomMobType.INFERI.toString());
-			break;
-		case "torrid ogre":
-			CommonCustomMob.disabledMobs.add(CustomMobType.TORRID_OGRE.toString());
 			break;
 		default:
 			throw new CivException("Invalid mob. Make sure it is spelled right!");
@@ -120,29 +111,20 @@ public class AdminMobCommand extends CommandBase {
 		String name = getNamedString(1, "Enter a mob name");
 		
 		switch (name.toLowerCase()) {
+		case "yobo":
+			CommonCustomMob.disabledMobs.add(CustomMobType.YOBO.toString());
+			break;
+		case "angryyobo":
+			CommonCustomMob.disabledMobs.add(CustomMobType.ANGRYYOBO.toString());
+			break;
+		case "savage":
+			CommonCustomMob.disabledMobs.add(CustomMobType.SAVAGE.toString());
+			break;
+		case "ruffian":
+			CommonCustomMob.disabledMobs.add(CustomMobType.RUFFIAN.toString());
+			break;
 		case "behemoth":
 			CommonCustomMob.disabledMobs.add(CustomMobType.BEHEMOTH.toString());
-			break;
-		case "ferosse":
-			CommonCustomMob.disabledMobs.add(CustomMobType.FEROSSE.toString());
-			break;
-		case "glacial brute":
-			CommonCustomMob.disabledMobs.add(CustomMobType.GLACIAL_BRUTE.toString());
-			break;
-		case "woodland sentinel":
-			CommonCustomMob.disabledMobs.add(CustomMobType.WOODLAND_SENTINEL.toString());
-			break;
-		case "timberland ranger":
-			CommonCustomMob.disabledMobs.add(CustomMobType.TIMBERLAND_RANGER.toString());
-			break;
-		case "floral_gatherer":
-			CommonCustomMob.disabledMobs.add(CustomMobType.FLORAL_GATHERER.toString());
-			break;
-		case "inferi":
-			CommonCustomMob.disabledMobs.add(CustomMobType.INFERI.toString());
-			break;
-		case "torrid ogre":
-			CommonCustomMob.disabledMobs.add(CustomMobType.TORRID_OGRE.toString());
 			break;
 		default:
 			throw new CivException("Invalid mob. Make sure it is spelled right!");

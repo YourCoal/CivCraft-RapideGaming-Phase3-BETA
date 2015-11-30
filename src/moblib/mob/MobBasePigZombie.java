@@ -1,5 +1,6 @@
 package moblib.mob;
 
+
 import java.util.ArrayList;
 
 import org.bukkit.Location;
@@ -21,7 +22,7 @@ public class MobBasePigZombie extends EntityPigZombie implements ISpawnable {
 	public ICustomMob customMob = null;
 	 
 	// private static final UUID bq = UUID.fromString("49455A49-7EC5-45BA-B886-3B90B23A1718");
- // private static final UUID bq = UUID.fromString("B9766B59-9566-4402-BC1F-2EE2A276D836");
+	 // private static final UUID bq = UUID.fromString("B9766B59-9566-4402-BC1F-2EE2A276D836");
 
 	public MobBasePigZombie(World world) {
 		super(world);
@@ -175,7 +176,7 @@ public class MobBasePigZombie extends EntityPigZombie implements ISpawnable {
 		iCustom.setEntity(pigzombie);
 		
 		pigzombie.setPosition(loc.getX(), loc.getY(), loc.getZ());
-		mcWorld.addEntity(pigzombie, SpawnReason.NATURAL);
+		mcWorld.addEntity(pigzombie, SpawnReason.CUSTOM);
 		
 		return pigzombie;
 	}

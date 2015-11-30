@@ -203,9 +203,6 @@ public class Barracks extends Structure {
 				e.printStackTrace();
 				throw new CivException("Internal configuration error");
 			}
-			
-			
-			
 		} catch (CivException e) {
 			CivMessage.sendError(player, e.getMessage());
 			event.setCancelled(true);

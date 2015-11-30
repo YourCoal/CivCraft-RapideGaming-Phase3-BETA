@@ -1,5 +1,7 @@
 package com.civcraft.mobs;
 
+import moblib.mob.ICustomMob;
+import moblib.mob.MobBaseIronGolem;
 import net.minecraft.server.v1_8_R3.EntityCreature;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
@@ -8,16 +10,13 @@ import net.minecraft.server.v1_8_R3.PathfinderGoalMeleeAttack;
 import net.minecraft.server.v1_8_R3.PathfinderGoalNearestAttackableTarget;
 import net.minecraft.server.v1_8_R3.PathfinderGoalRandomStroll;
 
+import org.bukkit.Material;
 import org.bukkit.block.Biome;
-import org.bukkit.event.entity.EntityTargetEvent;
-import org.bukkit.event.entity.EntityTargetEvent.TargetReason;
-
-import moblib.mob.ICustomMob;
-import moblib.mob.MobBaseSnowman;
 
 import com.civcraft.mobs.MobSpawner.CustomMobLevel;
 import com.civcraft.mobs.MobSpawner.CustomMobType;
 import com.civcraft.mobs.components.MobComponentDefense;
+import com.civcraft.util.ItemManager;
 
 public class Behemoth extends CommonCustomMob implements ICustomMob {
 	
@@ -32,52 +31,54 @@ public class Behemoth extends CommonCustomMob implements ICustomMob {
 	
 	public void onCreateAttributes() {
 		MobComponentDefense defense;
-	    this.setKnockbackResistance(0.85D);
-	    this.setMovementSpeed(0.15);
+	    this.setKnockbackResistance(0.85);
 		switch (this.getLevel()) {
 		case LESSER:
-		    defense = new MobComponentDefense(3);
-		    setMaxHealth(30);
-		    modifySpeed(1.2);
+		    defense = new MobComponentDefense(6);
+		    setMaxHealth(12.0);
 		    this.setAttack(4.0);
-		    this.addDrop("civ:catalyst_1", 0.05);
-		    this.addDrop("civ:material_1", 0.25);
-		    this.addDrop("civ:material_2", 0.25);
-		    this.addDrop("civ:material_3", 0.25);
-		    this.coinDrop(5, 20);
+		    this.addDrop("civ:refined_sugar", 0.1);
+		    this.addDrop("civ:crafted_sticks", 0.1);
+		    this.addDrop("civ:crafted_string", 0.1);
+			this.addVanillaDrop(ItemManager.getId(Material.IRON_INGOT), (short)0, 0.05);
+		    this.coinDrop(1, 20);
 			break;
+			
 		case GREATER:
-		    defense = new MobComponentDefense(9);
-		    setMaxHealth(45);
-		    modifySpeed(1.3);
-		    this.setAttack(8.0);
-		    this.addDrop("civ:catalyst_2", 0.05);
-		    this.addDrop("civ:material_1", 0.25);
-		    this.addDrop("civ:material_2", 0.25);
-		    this.addDrop("civ:material_3", 0.25);
-		    this.coinDrop(10, 40);
-			break;
+		    defense = new MobComponentDefense(13.5);
+		    setMaxHealth(17.0);
+		    this.setAttack(8.5);
+			this.addVanillaDrop(ItemManager.getId(Material.IRON_INGOT), (short)0, 0.1);
+			this.addVanillaDrop(ItemManager.getId(Material.GOLD_INGOT), (short)0, 0.05);
+		    this.addDrop("civ:bronze_ore", 0.05);
+		    this.addDrop("civ:compressed_sugar", 0.1);
+		    this.addDrop("civ:refined_sticks", 0.1);
+		    this.addDrop("civ:refined_string", 0.1);
+		    this.coinDrop(5, 45);
+		    break;
+		    
 		case ELITE:
-		    defense = new MobComponentDefense(13);
-		    setMaxHealth(60);
-		    modifySpeed(1.4);
-		    this.setAttack(12.0);
-		    this.addDrop("civ:catalyst_3", 0.05);
-		    this.addDrop("civ:material_1", 0.25);
-		    this.addDrop("civ:material_2", 0.25);
-		    this.addDrop("civ:material_3", 0.25);
-		    this.coinDrop(25, 65);
+		    defense = new MobComponentDefense(17.5);
+		    setMaxHealth(22.0);
+		    this.setAttack(13.0);
+			this.addVanillaDrop(ItemManager.getId(Material.GOLD_INGOT), (short)0, 0.1);
+			this.addVanillaDrop(ItemManager.getId(Material.INK_SACK), (short)4, 0.2);
+		    this.addDrop("civ:steel_ore", 0.05);
+		    this.addDrop("civ:compacted_sticks", 0.1);
+		    this.addDrop("civ:wolven_threading", 0.1);
+		    this.coinDrop(20, 60);
 			break;
+			
 		case BRUTAL:
-		    defense = new MobComponentDefense(17);
-		    setMaxHealth(75);
-		    modifySpeed(1.5);
-		    this.setAttack(16.0);
-		    this.addDrop("civ:catalyst_4", 0.05);
-		    this.addDrop("civ:material_1", 0.25);
-		    this.addDrop("civ:material_2", 0.25);
-		    this.addDrop("civ:material_3", 0.25);
-		    this.coinDrop(40, 80);
+		    defense = new MobComponentDefense(21.5);
+		    setMaxHealth(27.0);
+		    this.setAttack(17.5);
+			this.addVanillaDrop(ItemManager.getId(Material.INK_SACK), (short)4, 0.4);
+			this.addVanillaDrop(ItemManager.getId(Material.DIAMOND), (short)0, 0.05);
+		    this.addDrop("civ:titanium_ore", 0.05);
+		    this.addDrop("civ:refined_compacted_sticks", 0.1);
+		    this.addDrop("civ:refined_wolven_threading", 0.1);
+		    this.coinDrop(35, 100);
 			break;
 		default:
 		    defense = new MobComponentDefense(1);
@@ -88,7 +89,7 @@ public class Behemoth extends CommonCustomMob implements ICustomMob {
 	
 	@Override
 	public String getBaseEntity() {
-		return MobBaseSnowman.class.getName();
+		return MobBaseIronGolem.class.getName();
 	}
 	
 	@Override
@@ -101,23 +102,13 @@ public class Behemoth extends CommonCustomMob implements ICustomMob {
 		    setValidBiome(CustomMobType.BEHEMOTH, CustomMobLevel.LESSER, Biome.FROZEN_OCEAN);
 		    setValidBiome(CustomMobType.BEHEMOTH, CustomMobLevel.LESSER, Biome.COLD_BEACH);
 		    setValidBiome(CustomMobType.BEHEMOTH, CustomMobLevel.LESSER, Biome.COLD_TAIGA);
-		    
+	
 		    setValidBiome(CustomMobType.BEHEMOTH, CustomMobLevel.GREATER, Biome.COLD_TAIGA_HILLS);
 		    setValidBiome(CustomMobType.BEHEMOTH, CustomMobLevel.GREATER, Biome.COLD_TAIGA_MOUNTAINS);
-		    
+		
 		    setValidBiome(CustomMobType.BEHEMOTH, CustomMobLevel.ELITE, Biome.ICE_PLAINS);
 		    setValidBiome(CustomMobType.BEHEMOTH, CustomMobLevel.GREATER, Biome.ICE_MOUNTAINS);
-		    
+
 		    setValidBiome(CustomMobType.BEHEMOTH, CustomMobLevel.BRUTAL, Biome.ICE_PLAINS_SPIKES);
-	}
-	
-	@SuppressWarnings("static-access")
-	@Override
-	public void onTarget(EntityTargetEvent event) {
-		super.onTarget(event);
-		if (event.getReason().equals(TargetReason.FORGOT_TARGET) ||
-		    event.getReason().equals(TargetReason.TARGET_DIED)) {
-			this.customMobs.remove(this.entity.getUniqueID());
-		}
 	}
 }

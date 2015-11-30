@@ -337,8 +337,11 @@ public class CivCommand extends CommandBase {
 		cal.setTime(CivGlobal.getNextUpkeepDate());
 		out.add(CivColor.Green+"Next Upkeep: "+CivColor.LightGreen+sdf.format(cal.getTime()));
 		
-		cal.setTime(CivGlobal.getNextHourlyTickDate());
-		out.add(CivColor.Green+"Next Hourly Tick: "+CivColor.LightGreen+sdf.format(cal.getTime()));
+		cal.setTime(CivGlobal.getNextFirstHourlyTickDate());
+		out.add(CivColor.Green+"Hourly Tick Begins: "+CivColor.LightGreen+sdf.format(cal.getTime()));
+		
+		cal.setTime(CivGlobal.getNextLastHourlyTickDate());
+		out.add(CivColor.Green+"Hourly Tick Ends: "+CivColor.LightGreen+sdf.format(cal.getTime()));
 		
 		cal.setTime(CivGlobal.getNextRepoTime());
 		out.add(CivColor.Green+"Next Trade Good Repo: "+CivColor.LightGreen+sdf.format(cal.getTime()));

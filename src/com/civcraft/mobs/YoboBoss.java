@@ -11,10 +11,10 @@ import net.minecraft.server.v1_8_R3.PathfinderGoalNearestAttackableTarget;
 import net.minecraft.server.v1_8_R3.PathfinderGoalRandomStroll;
 import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
 
-import com.avrgaming.mob.ICustomMob;
-import com.avrgaming.mob.MobBaseZombieGiant;
 import com.civcraft.exception.CivException;
 import com.civcraft.mobs.components.MobComponentDefense;
+import moblib.mob.ICustomMob;
+import moblib.mob.MobBaseZombieGiant;
 
 public class YoboBoss extends CommonCustomMob implements ICustomMob {
 	

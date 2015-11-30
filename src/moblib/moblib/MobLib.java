@@ -8,23 +8,14 @@ import java.util.Map;
 import java.util.UUID;
 
 import net.minecraft.server.v1_8_R3.Entity;
-import net.minecraft.server.v1_8_R3.EntityBlaze;
-import net.minecraft.server.v1_8_R3.EntityCaveSpider;
-import net.minecraft.server.v1_8_R3.EntityCreeper;
-import net.minecraft.server.v1_8_R3.EntityEnderman;
 import net.minecraft.server.v1_8_R3.EntityGiantZombie;
-import net.minecraft.server.v1_8_R3.EntityGuardian;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityIronGolem;
 import net.minecraft.server.v1_8_R3.EntityLiving;
 import net.minecraft.server.v1_8_R3.EntityPigZombie;
-import net.minecraft.server.v1_8_R3.EntitySkeleton;
-import net.minecraft.server.v1_8_R3.EntitySnowman;
-import net.minecraft.server.v1_8_R3.EntitySpider;
 import net.minecraft.server.v1_8_R3.EntityTypes;
 import net.minecraft.server.v1_8_R3.EntityWitch;
 import net.minecraft.server.v1_8_R3.EntityWither;
-import net.minecraft.server.v1_8_R3.EntityWolf;
 import net.minecraft.server.v1_8_R3.EntityZombie;
 
 import org.bukkit.Location;
@@ -36,19 +27,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import moblib.mob.ICustomMob;
 import moblib.mob.ISpawnable;
-import moblib.mob.MobBaseCaveSpider;
-import moblib.mob.MobBaseCreeper;
-import moblib.mob.MobBaseEnderman;
-import moblib.mob.MobBaseGuardian;
 import moblib.mob.MobBaseIronGolem;
 import moblib.mob.MobBasePigZombie;
-import moblib.mob.MobBaseSkeleton;
-import moblib.mob.MobBaseSnowman;
-import moblib.mob.MobBaseSpider;
 import moblib.mob.MobBaseWitch;
 import moblib.mob.MobBaseWither;
-import moblib.mob.MobBaseWitherBoss;
-import moblib.mob.MobBaseWolf;
 import moblib.mob.MobBaseZombie;
 import moblib.mob.MobBaseZombieGiant;
 
@@ -151,19 +133,7 @@ public class MobLib extends JavaPlugin {
 	    ZOMBIE_GIANT("Giant", 53, EntityType.GIANT, EntityGiantZombie.class, MobBaseZombieGiant.class),
 	    WITCH("Witch", 66, EntityType.WITCH, EntityWitch.class, MobBaseWitch.class),
 	    IRON_GOLEM("VillagerGolem", 99, EntityType.IRON_GOLEM, EntityIronGolem.class, MobBaseIronGolem.class),
-		WITHER("WitherBoss", 64, EntityType.WITHER, EntityWither.class, MobBaseWither.class),
-/////Ferovesa added this these\\\\\ 		
-		BLAZE("Blaze", 61, EntityType.BLAZE, EntityBlaze.class, MobBaseWither.class),
-		CAVE_SPIDER("CaveSpider", 59, EntityType.CAVE_SPIDER, EntityCaveSpider.class, MobBaseCaveSpider.class),
-		CREEPER("Creeper", 50, EntityType.CREEPER, EntityCreeper.class, MobBaseCreeper.class),
-		GUARDIAN("Guardian", 68, EntityType.GUARDIAN, EntityGuardian.class, MobBaseGuardian.class),
-		SPIDER("Spider", 52, EntityType.SPIDER, EntitySpider.class, MobBaseSpider.class),
-		WITHER_BOSS("WitherBoss", 64, EntityType.WITHER, EntityWither.class, MobBaseWitherBoss.class),
-		WOLF("Wolf", 95, EntityType.WOLF, EntityWolf.class, MobBaseWolf.class),
-		ENDERMAN("Enderman", 58, EntityType.ENDERMAN, EntityEnderman.class, MobBaseEnderman.class),
-////COAL ADDED THESE\\\\\
-		SKELETON("Skeleton", 51, EntityType.SKELETON, EntitySkeleton.class, MobBaseSkeleton.class),
-		SNOWMAN("Snowman", 97, EntityType.SNOWMAN, EntitySnowman.class, MobBaseSnowman.class);
+		WITHER("WitherBoss", 64, EntityType.WITHER, EntityWither.class, MobBaseWither.class);
 		//WITHER_HEAD("WitherSkull", 19, EntityType.WITHER_SKULL, EntityWitherSkull.class, MobBaseWitherSkull.class);
 	    //BAT("Bat", 65, EntityType.BAT, EntityBat.class, MobBaseZombie.class);
 	    

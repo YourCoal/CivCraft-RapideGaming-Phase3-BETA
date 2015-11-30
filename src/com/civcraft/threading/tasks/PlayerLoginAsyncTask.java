@@ -69,7 +69,8 @@ public class PlayerLoginAsyncTask implements Runnable {
 				if (resident != null && !resident.getName().toLowerCase().equals(getPlayer().getName().toLowerCase()))
 				{
 					CivGlobal.removeResident(resident);
-					resident.setName(getPlayer().getName().toLowerCase());
+					resident.save();
+					resident.setName(getPlayer().getName());
 					resident.save();
 					CivGlobal.addResident(resident);
 				}

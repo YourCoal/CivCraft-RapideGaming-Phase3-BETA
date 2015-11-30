@@ -1195,10 +1195,8 @@ public class BlockListener implements Listener {
 				CivMessage.sendErrorNoRepeat(player, "You do not have permission to destroy here.");
 			}
 		}
-
-
 	}
-
+	
 	@EventHandler(priority = EventPriority.HIGH)
 	public void onChunkUnloadEvent(ChunkUnloadEvent event) {
 		Boolean persist = CivGlobal.isPersistChunk(event.getChunk());		

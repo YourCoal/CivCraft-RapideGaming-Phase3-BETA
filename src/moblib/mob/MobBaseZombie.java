@@ -123,7 +123,7 @@ public class MobBaseZombie extends EntityZombie implements ISpawnable {
 		iCustom.setEntity(zombie);
 
 		zombie.setPosition(loc.getX(), loc.getY(), loc.getZ());
-		mcWorld.addEntity(zombie, SpawnReason.NATURAL);
+		mcWorld.addEntity(zombie, SpawnReason.CUSTOM);
 		
 		return zombie;
 	}
@@ -140,7 +140,7 @@ public class MobBaseZombie extends EntityZombie implements ISpawnable {
 		iCustom.setEntity(zombie);
 		
 		zombie.setPosition(loc.getX(), loc.getY(), loc.getZ());
-		mcWorld.addEntity(zombie, SpawnReason.NATURAL);
+		mcWorld.addEntity(zombie, SpawnReason.CUSTOM);
 		
 		return zombie;
 	}

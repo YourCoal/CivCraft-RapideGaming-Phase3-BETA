@@ -13,10 +13,10 @@ public class HourlyTickEventMinute1 implements EventInterface {
 	
 	@Override
 	public void process() {
-		CivLog.info("TimerEvent: Hourly -------------------------------------");
+		CivLog.info("TimerEvent: Hourly Trade & Camp -------------------------------------");
 		TaskMaster.syncTask(new SyncTradeTimer(), 0);
 		TaskMaster.syncTask(new CampHourlyTick(), 0);
-		CivLog.info("TimerEvent: Hourly Finished -----------------------------");
+		CivLog.info("TimerEvent: Hourly Trade & Camp Finished -----------------------------");
 	}
 	
 	@Override

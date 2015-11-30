@@ -3,10 +3,11 @@ package com.civcraft.mobs;
 import java.util.LinkedList;
 import java.util.Random;
 
-import org.bukkit.Location;
-
 import moblib.mob.ICustomMob;
 import moblib.moblib.MobLib;
+
+import org.bukkit.Location;
+
 import com.civcraft.exception.CivException;
 import com.civcraft.util.CivColor;
 
@@ -31,15 +32,12 @@ public class MobSpawner {
 	} 
 		
 	public static enum CustomMobType {
+		YOBO("Yobo", "com.civcraft.mobs.Yobo"),
+		YOBOBOSS("Yobo Boss", "com.civcraft.mobs.YoboBoss"),
+		RUFFIAN("Ruffian", "com.civcraft.mobs.Ruffian"),
 		BEHEMOTH("Behemoth", "com.civcraft.mobs.Behemoth"),
-		FEROSSE("Ferosse", "com.civcraft.mobs.Ferosse"),
-		GLACIAL_BRUTE("Glacial Brute", "com.civcraft.mobs.GlacialBrute"),
-		WOODLAND_SENTINEL("Woodland Sentinel", "com.civcraft.mobs.WoodlandSentinel"),
-		TIMBERLAND_RANGER("Woodland Sentinel", "com.civcraft.mobs.TimberlandRanger"),
-		FLORAL_GATHERER("Floral Gatherer", "com.civcraft.mobs.FloralGatherer"),
-		INFERI("Inferi", "com.civcraft.mobs.Inferi"),
-		TORRID_OGRE("Torrid Ogre", "com.civcraft.mobs.TorridOgre");
-		//SCORIA("Scoria", "com.civcraft.mobs.Scoria");
+		SAVAGE("Cannibal", "com.civcraft.mobs.Savage"),
+		ANGRYYOBO("Angry Yobo", "com.civcraft.mobs.AngryYobo");
 		
 		private String name;
 		private String className; 
@@ -63,14 +61,10 @@ public class MobSpawner {
 	}
 	
 	public static void register() {
+		Yobo.register();
 		Behemoth.register();
-		Ferosse.register();
-		GlacialBrute.register();
-		WoodlandSentinel.register();
-		TimberlandRanger.register();
-		FloralGatherer.register();
-		Inferi.register();
-		TorridOgre.register();
+		Savage.register();
+		Ruffian.register();
 	}
 	
 	public static void despawnAll() {

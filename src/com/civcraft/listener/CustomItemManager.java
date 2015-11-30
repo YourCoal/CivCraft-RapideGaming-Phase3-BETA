@@ -105,8 +105,10 @@ public class CustomItemManager implements Listener {
 				}
 				
 				for (int i = 0; i < randAmount; i++) {
-					ItemStack stack = LoreMaterial.spawn(LoreMaterial.materialMap.get("civ:bronze_ore"));
-					event.getPlayer().getWorld().dropItemNaturally(event.getBlock().getLocation(), stack);
+					ItemStack stack1 = LoreMaterial.spawn(LoreMaterial.materialMap.get("civ:bronze_ore"));
+					ItemStack stack2 = ItemManager.createItemStack(CivData.GOLD_INGOT, 1);
+					event.getPlayer().getWorld().dropItemNaturally(event.getBlock().getLocation(), stack1);
+					event.getPlayer().getWorld().dropItem(event.getBlock().getLocation(), stack2);
 				}
 			} catch (InvalidConfiguration e) {
 				e.printStackTrace();
@@ -138,8 +140,8 @@ public class CustomItemManager implements Listener {
 				}
 				
 				for (int i = 0; i < randAmount; i++) {
-					ItemStack stack = LoreMaterial.spawn(LoreMaterial.materialMap.get("civ:bronze_ore"));
-					event.getPlayer().getWorld().dropItemNaturally(event.getBlock().getLocation(), stack);
+					ItemStack stack1 = LoreMaterial.spawn(LoreMaterial.materialMap.get("civ:steel_ore"));
+					event.getPlayer().getWorld().dropItemNaturally(event.getBlock().getLocation(), stack1);
 				}
 			} catch (InvalidConfiguration e) {
 				e.printStackTrace();
@@ -171,8 +173,10 @@ public class CustomItemManager implements Listener {
 				}
 				
 				for (int i = 0; i < randAmount; i++) {
-					ItemStack stack = LoreMaterial.spawn(LoreMaterial.materialMap.get("civ:bronze_ore"));
-					event.getPlayer().getWorld().dropItemNaturally(event.getBlock().getLocation(), stack);
+					ItemStack stack1 = LoreMaterial.spawn(LoreMaterial.materialMap.get("civ:titanium_ore"));
+					ItemStack stack2 = ItemManager.createItemStack(CivData.DIAMOND, 1);
+					event.getPlayer().getWorld().dropItemNaturally(event.getBlock().getLocation(), stack1);
+					event.getPlayer().getWorld().dropItem(event.getBlock().getLocation(), stack2);
 				}
 			} catch (InvalidConfiguration e) {
 				e.printStackTrace();

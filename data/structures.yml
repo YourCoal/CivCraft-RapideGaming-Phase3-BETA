@@ -15,15 +15,15 @@ quarry:
     gold_rate: 0.03
     redstone_rate: 0.015
     diamond_rate: 0.009
-    technocracy_rate: 1.85
-    penalty_rate: 0.9
+    technocracy_rate: 1.75
+    penalty_rate: 0.85
 #=======================================================#
 #==================> Trommel Settings <=================#
 #=======================================================#
 #Basic Information
 trommel:
-    technocracy_rate: 1.85
-    penalty_rate: 0.9
+    technocracy_rate: 1.75
+    penalty_rate: 0.85
 #Every Output (All Levels)
 trommel_global:
     bronze: 0.01
@@ -87,7 +87,7 @@ temple:
               - 'sheep'
               - 'rabbit'
               - 'chicken'
-          reward: 1
+          reward: 0
 #=======================================================#
 #================> Blacksmith Settings <================#
 #=======================================================#
@@ -330,7 +330,7 @@ lab_levels:
 #=======================================================#
 farm:
     # Number of crops that will grow per 100% of growth rate.
-    grows_per_tick: 2
+    grows_per_tick: 3
     # Number of seconds it takes for a growth tick to fire, cannot be less than 1.
     grow_tick_rate: 30
 
@@ -612,8 +612,8 @@ structures:
     ignore_floating: true
     destroyable: true
     limit: 0
-    cost: 2500.0
-    upkeep: 50.0
+    cost: 3500.0
+    upkeep: 100.0
     hammer_cost: 375.0
     max_hitpoints: 50
     points: 3000
@@ -671,7 +671,7 @@ structures:
     require_tech: 'tech_fermentation'
     effect_event: process_lab
     tile_improvement: true
-    limit: 0
+    limit: 3
     cost: 25000.0
     upkeep: 1000.0
     hammer_cost: 1000.0
@@ -686,7 +686,7 @@ structures:
         - name: 'AttributeStatic'
           type: 'direct'
           attribute: 'CULTURE'
-          value: '2.0'
+          value: '1.0'
 #
   - id: s_library
     template: library
@@ -756,7 +756,7 @@ structures:
     require_tech: 'tech_religion'
     limit: 1
     cost: 25000.0
-    upkeep: 1000.0
+    upkeep: 750.0
     hammer_cost: 1000.0
     points: 1500
     max_hitpoints: 200
@@ -791,8 +791,8 @@ structures:
     update_event: quarry_process
     limit: 1
     cost: 25000.0
-    upkeep: 1250.0
-    hammer_cost: 4000.0
+    upkeep: 1000.0
+    hammer_cost: 4500.0
     points: 10000
     max_hitpoints: 375
 #

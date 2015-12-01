@@ -242,7 +242,7 @@ techs:
 #==========> Tier 5 <==========#
 #==============================#
    - id: 'tech_writing'
-     name: 'Bronze'
+     name: 'Writing'
      beaker_cost: 30000.0
      cost: 125000.0
      points: 3000

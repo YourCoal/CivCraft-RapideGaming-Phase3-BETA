@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.civcraft.threading.tasks;
 
 import java.util.Date;
@@ -44,7 +26,7 @@ public class PlayerChunkNotifyAsyncTask implements Runnable {
 	Location to;
 	String playerName;
 	
-	public static int BORDER_SPAM_TIMEOUT = 30000; //30 second border spam protection.
+	public static int BORDER_SPAM_TIMEOUT = 10000; //10 second border spam protection.
 	public static HashMap<String, Date> cultureEnterTimes = new HashMap<String, Date>();
 	
 	public PlayerChunkNotifyAsyncTask(Location from, Location to, String playerName) {
@@ -68,21 +50,18 @@ public class PlayerChunkNotifyAsyncTask implements Runnable {
 			break;
 		case WAR:
 			color = CivColor.Rose;
-
 			break;
 		case PEACE:
 			color = CivColor.LightBlue;
-
 			break;
 		case ALLY:
 			color = CivColor.Green;
 		}
-		
 		return color;
 	}
 	
 	private String getToWildMessage() {
-		return CivColor.LightGray+"Entering Wilderness "+CivColor.Rose+"[PvP]";
+		return CivColor.LightGray+CivColor.ITALIC+"Entering Wilderness "+CivColor.Rose+"[PvP]";
 	}
 	
 	private String getToTownMessage(Town town, TownChunk tc) {
@@ -101,21 +80,19 @@ public class PlayerChunkNotifyAsyncTask implements Runnable {
 		}
 		
 		if (!tc.isOutpost()) {
-			return CivColor.LightGray+"Entering "+CivColor.White+town.getName()+" "+town.getPvpString()+" ";
+			return CivColor.LightGray+CivColor.ITALIC+"Entering Town of "+CivColor.White+town.getName()+" "+town.getPvpString()+" ";
 		} else {
-			return CivColor.LightGray+"Entering Outpost of "+CivColor.White+town.getName()+" "+town.getPvpString()+" ";
+			return CivColor.LightGray+CivColor.ITALIC+"Entering Town Outpost of "+CivColor.White+town.getName()+" "+town.getPvpString()+" ";
 		}
 	}
 	
 	private void showPlotMoveMessage() {
-		
 		TownChunk fromTc = CivGlobal.getTownChunk(from);
 		TownChunk toTc = CivGlobal.getTownChunk(to);
 		CultureChunk fromCc = CivGlobal.getCultureChunk(from);
 		CultureChunk toCc = CivGlobal.getCultureChunk(to);
 		Camp toCamp = CivGlobal.getCampFromChunk(new ChunkCoord(to));
 		Camp fromCamp = CivGlobal.getCampFromChunk(new ChunkCoord(from));
-
 		Player player;
 		Resident resident;
 		try {
@@ -129,7 +106,7 @@ public class PlayerChunkNotifyAsyncTask implements Runnable {
 		
 		//We've entered a camp.
 		if (toCamp != null && toCamp != fromCamp) {
-			out += CivColor.Gold+"Camp "+toCamp.getName()+" "+CivColor.Rose+"[PvP]";
+			out += CivColor.Gold+CivColor.ITALIC+"Camp "+CivColor.ITALIC+toCamp.getName()+" "+CivColor.Rose+"[PvP]";
 		}
 		
 		if (toCamp == null && fromCamp != null) {
@@ -217,19 +194,16 @@ public class PlayerChunkNotifyAsyncTask implements Runnable {
 			return;
 		}
 		lastMessageTime = now;
-
 		cultureEnterTimes.put(borderSpamKey, lastMessageTime);
 		CivMessage.sendCiv(toCc.getCiv(), color+player.getDisplayName()+"("+relationName+") has entered our borders.");
 	}
-
-
+	
 	@Override
 	public void run() {		
 		showPlotMoveMessage();
 		showResidentMap();
 	}
-
-
+	
 	private void showResidentMap() {
 		Player player;
 		try {
@@ -247,7 +221,4 @@ public class PlayerChunkNotifyAsyncTask implements Runnable {
 			CivMessage.send(player, AsciiMap.getMapAsString(player.getLocation()));
 		}	
 	}
-	
-	
-
 }

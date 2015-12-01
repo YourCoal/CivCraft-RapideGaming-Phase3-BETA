@@ -84,11 +84,11 @@ public class CultureChunk {
 	}
 	
 	public String getOnLeaveString() {
-		return CivColor.LightPurple+"Leaving "+town.getCiv().getName()+" Borders";
+		return CivColor.LightPurple+CivColor.ITALIC+"Leaving the Civilization of "+CivColor.ITALIC+town.getCiv().getName()+"'s Borders";
 	}
 	
 	public String getOnEnterString() {
-		return CivColor.LightPurple+"Entering "+town.getCiv().getName()+" Borders";
+		return CivColor.LightPurple+CivColor.ITALIC+"Entering the Civilization of "+CivColor.ITALIC+town.getCiv().getName()+"'s Borders";
 	}
 	public double getPower() {
 		// power = max/(distance^2).

@@ -36,7 +36,6 @@ public class Behemoth extends CommonCustomMob implements ICustomMob {
 		case LESSER:
 		    defense = new MobComponentDefense(6);
 		    setMaxHealth(12.0);
-		    this.setAttack(4.0);
 		    this.addDrop("civ:refined_sugar", 0.1);
 		    this.addDrop("civ:crafted_sticks", 0.1);
 		    this.addDrop("civ:crafted_string", 0.1);
@@ -47,7 +46,6 @@ public class Behemoth extends CommonCustomMob implements ICustomMob {
 		case GREATER:
 		    defense = new MobComponentDefense(13.5);
 		    setMaxHealth(17.0);
-		    this.setAttack(8.5);
 			this.addVanillaDrop(ItemManager.getId(Material.IRON_INGOT), (short)0, 0.1);
 			this.addVanillaDrop(ItemManager.getId(Material.GOLD_INGOT), (short)0, 0.05);
 		    this.addDrop("civ:bronze_ore", 0.05);
@@ -60,7 +58,6 @@ public class Behemoth extends CommonCustomMob implements ICustomMob {
 		case ELITE:
 		    defense = new MobComponentDefense(17.5);
 		    setMaxHealth(22.0);
-		    this.setAttack(13.0);
 			this.addVanillaDrop(ItemManager.getId(Material.GOLD_INGOT), (short)0, 0.1);
 			this.addVanillaDrop(ItemManager.getId(Material.INK_SACK), (short)4, 0.2);
 		    this.addDrop("civ:steel_ore", 0.05);
@@ -72,7 +69,6 @@ public class Behemoth extends CommonCustomMob implements ICustomMob {
 		case BRUTAL:
 		    defense = new MobComponentDefense(21.5);
 		    setMaxHealth(27.0);
-		    this.setAttack(17.5);
 			this.addVanillaDrop(ItemManager.getId(Material.INK_SACK), (short)4, 0.4);
 			this.addVanillaDrop(ItemManager.getId(Material.DIAMOND), (short)0, 0.05);
 		    this.addDrop("civ:titanium_ore", 0.05);

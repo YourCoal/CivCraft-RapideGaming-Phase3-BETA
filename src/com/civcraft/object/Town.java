@@ -1207,7 +1207,7 @@ public class Town extends SQLObject {
 				return CivColor.Green+"[No PvP]";
 			}
 		} else {
-			return CivColor.Red+"[WAR-PvP]";
+			return CivColor.Gold+"[WAR-PvP]";
 		}
 	}
 	

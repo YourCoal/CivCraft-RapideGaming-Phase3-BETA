@@ -35,7 +35,7 @@ public class WindmillPreProcessTask extends CivAsyncTask {
 		int tech_increase;
 		try {
 			plant_max = CivSettings.getInteger(CivSettings.structureConfig, "windmill.plant_max");
-			tech_increase = CivSettings.getInteger(CivSettings.structureConfig, "atom_developing_windmill_buff");
+			tech_increase = CivSettings.getInteger(CivSettings.techsConfig, "atom_developing_windmill_buff");
 			
 			if (windmill.getCiv().hasTechnology("tech_atom_developing")) {
 				plant_max *= tech_increase;

@@ -10,7 +10,7 @@ random_events:
 #======================================================#
  - id: 'event_slime_plague'
    name: "Slime Plague"
-   chance: 50
+   chance: 40
    message: 
      - "Holy moth balls! A Slime plague is threatening to destroy the town!" 
      - "Slaughter 10 of them or suffer a happiness penalty! You got 48 hours."
@@ -41,7 +41,7 @@ random_events:
 #
  - id: 'event_poverty'
    name: "Povery"
-   chance: 50
+   chance: 40
    message: 
      - "Your town has not been able to supply food to the people. You are now recognized has a poverty town!" 
      - "There are a huge amount of cattle near by. If you kill 15 them, your people will be encouraged to farm!"
@@ -73,7 +73,7 @@ random_events:
 #
  - id: 'event_large_bed_bugs'
    name: "Large Bed Bugs!"
-   chance: 50
+   chance: 40
    message: 
      - "The town has an infestation of blueish-looking bed bugs! Residents are scared and terrified." 
      - "If you can get rid of 10 of them in 48 hours, the residents will devote more time to science on them."

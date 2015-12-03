@@ -118,7 +118,7 @@ public class TownCommand extends CommandBase {
 		}
 		
 		if (!resident.getCiv().getLeaderGroup().hasMember(resident)) {
-			throw new CivException("You must be the civ's leader in order to do this.");
+			throw new CivException("You must be a civilization leader in order to do this.");
 		}
 		
 		if (!town.isStructureAddable(struct)) {

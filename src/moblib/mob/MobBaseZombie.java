@@ -6,13 +6,14 @@ import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 import org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+
 import moblib.nms.NMSUtil;
+
 import net.minecraft.server.v1_8_R3.DamageSource;
 import net.minecraft.server.v1_8_R3.Entity;
 import net.minecraft.server.v1_8_R3.EntityZombie;
 import net.minecraft.server.v1_8_R3.Item;
 import net.minecraft.server.v1_8_R3.NBTTagCompound;
-
 import net.minecraft.server.v1_8_R3.World;
 
 public class MobBaseZombie extends EntityZombie implements ISpawnable {
@@ -104,7 +105,7 @@ public class MobBaseZombie extends EntityZombie implements ISpawnable {
 	/* Try to prevent fire ticks.. */
 	public void e() {
 		try {
-		super.E();
+		super.aE();
 		if (customMob != null) {
 			customMob.onTick();	
 		} else {

@@ -99,6 +99,10 @@ public class Library extends Structure {
 		if (name.equalsIgnoreCase("infinity")) {
 			return Enchantment.ARROW_INFINITE;
 		}
+		
+		if (name.equalsIgnoreCase("lure")) {
+			return Enchantment.LURE;
+		}
 		return null;
 	}
 	

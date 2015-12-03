@@ -54,7 +54,7 @@ potions:
      data: 8229
      require_tech: 'tech_alchemy'
 #When the atom developing tech is researched, make these double.
-atom_developing_windmill_buff: 2
+atom_developing_windmill_buff: 2.0
 atom_developing_cottage_buff: 2.0
 atom_developing_mine_buff: 2.0
 atom_developing_lab_buff: 2.0

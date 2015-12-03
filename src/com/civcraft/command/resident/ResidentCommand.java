@@ -18,10 +18,13 @@ import com.civcraft.exception.InvalidConfiguration;
 import com.civcraft.lorestorage.LoreCraftableMaterial;
 import com.civcraft.main.CivData;
 import com.civcraft.main.CivMessage;
+import com.civcraft.object.Relation;
 import com.civcraft.object.Resident;
 import com.civcraft.object.Town;
+import com.civcraft.object.Relation.Status;
 import com.civcraft.util.CivColor;
 import com.civcraft.util.ItemManager;
+import com.civcraft.war.War;
 
 public class ResidentCommand extends CommandBase {
 
@@ -124,12 +127,24 @@ public class ResidentCommand extends CommandBase {
 	
 	/* We need to figure out how to handle debt for the resident when he switches towns.
 	 * Should we even allow this? idk. Maybe war respawn points is enough? */
-	public void switchtown_cmd() throws CivException {
+	public void switchtown_cmd(Relation re) throws CivException {
 		Town town = getNamedTown(1);
 		Resident resident = getResident();
+		if (War.isWarTime()) {
+			throw new CivException("Cannot switch towns during WarTime.");
+		}
 		
 		if (resident.getTown() == town) {
 			throw new CivException("You cannot switch to your own town.");
+		}
+		
+		
+		if (War.isWithinWarDeclareDays() && re.getStatus() == Status.WAR) {
+			throw new CivException("Cannot switch to other towns if you are at war.");
+		}
+		
+		if (!resident.getCiv().getLeaderGroup().hasMember(resident)) {
+			throw new CivException("You must be a civilization leader in order to do this.");
 		}
 		
 		if (resident.getTown().getMotherCiv() != town.getMotherCiv()) {

@@ -224,106 +224,106 @@ cottage_levels:
 #=======================================================#
 mine_levels:
     - level: 1
-      hammers: 40.0
-      amount: 2
+      hammers: 30.0
+      amount: 3
       count: 24
 #
     - level: 2
-      hammers: 80.0
-      amount: 4
+      hammers: 50.0
+      amount: 5
       count: 48
 #
     - level: 3
-      hammers: 120.0
-      amount: 6
+      hammers: 80.0
+      amount: 7
       count: 72
 #
     - level: 4
-      hammers: 160.0
+      hammers: 100.0
       amount: 9
       count: 96
 #
     - level: 5
-      hammers: 200.0
-      amount: 11
+      hammers: 230.0
+      amount: 12
       count: 120
 #
     - level: 6
-      hammers: 240.0
-      amount: 13
+      hammers: 250.0
+      amount: 15
       count: 144
 #
     - level: 7
       hammers: 280.0
-      amount: 16
+      amount: 17
       count: 168
 #
     - level: 8
-      hammers: 320.0
-      amount: 18
+      hammers: 300.0
+      amount: 20
       count: 192
 #
     - level: 9
-      hammers: 360.0
-      amount: 20
+      hammers: 330.0
+      amount: 22
       count: 216
 #
     - level: 10
-      hammers: 400.0
-      amount: 24
+      hammers: 350.0
+      amount: 25
       count: 240
 #=======================================================#
 #=====================> Lab Levels <====================#
 #=======================================================#
 lab_levels:
     - level: 1
-      beakers: 40.0
-      amount: 2
+      beakers: 30.0
+      amount: 3
       count: 24
 #
     - level: 2
-      beakers: 80.0
-      amount: 4
+      beakers: 50.0
+      amount: 5
       count: 48
 #
     - level: 3
-      beakers: 120.0
-      amount: 6
+      beakers: 80.0
+      amount: 7
       count: 72
 #
     - level: 4
-      beakers: 160.0
+      beakers: 100.0
       amount: 9
       count: 96
 #
     - level: 5
-      beakers: 200.0
-      amount: 11
+      beakers: 230.0
+      amount: 12
       count: 120
 #
     - level: 6
-      beakers: 240.0
-      amount: 13
+      beakers: 250.0
+      amount: 15
       count: 144
 #
     - level: 7
       beakers: 280.0
-      amount: 16
+      amount: 17
       count: 168
 #
     - level: 8
-      beakers: 320.0
-      amount: 18
+      beakers: 300.0
+      amount: 20
       count: 192
 #
     - level: 9
-      beakers: 360.0
-      amount: 20
+      beakers: 330.0
+      amount: 22
       count: 216
 #
     - level: 10
-      beakers: 400.0
-      amount: 24
+      beakers: 350.0
+      amount: 25
       count: 240
 #=======================================================#
 #===============> Farm/Windmill Settings <==============#

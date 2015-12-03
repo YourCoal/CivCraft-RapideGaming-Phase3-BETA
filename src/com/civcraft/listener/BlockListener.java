@@ -236,9 +236,9 @@ public class BlockListener implements Listener {
 		}
 	}
 	
-	@EventHandler(priority = EventPriority.LOWEST)
+	@EventHandler(priority = EventPriority.LOW)
 	public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent event) {
-		Player defender = (Player)event.getEntity();
+		/* Protect the Protected Item Frames! */
 		if (event.getEntity() instanceof ItemFrame) {
 			ItemFrameStorage iFrameStorage = CivGlobal.getProtectedItemFrame(event.getEntity().getUniqueId());
 			if (iFrameStorage != null) {
@@ -249,8 +249,10 @@ public class BlockListener implements Listener {
 		
 		if (!(event.getEntity() instanceof Player)) {			
 			return;
-		}
+		}	
 		
+		Player defender = (Player)event.getEntity();
+		/* Only protect agaisnt players and entities that players can throw. */
 		if (!CivSettings.playerEntityWeapons.contains(event.getDamager().getType())) {
 			return;
 		}
@@ -266,12 +268,13 @@ public class BlockListener implements Listener {
 				event.setDamage((double)cfc.getFromTower().getDamage());
 			}
 		}
+		
 		coord.setFromLocation(event.getEntity().getLocation());
 		TownChunk tc = CivGlobal.getTownChunk(coord);
 		boolean allowPVP = false;
 		String denyMessage = "";
-		
 		if (tc == null) {
+			/* In the wilderness, anything goes. */
 			allowPVP = true;
 		} else {	
 			Player attacker = null;
@@ -282,9 +285,10 @@ public class BlockListener implements Listener {
 				if (shooter instanceof Player) {
 					attacker = (Player) shooter;
 				}
-			}
+			} 
 			
 			if (attacker == null) {
+				/* Attacker wasnt a player or known projectile, allow it. */
 				allowPVP = true;
 			} else {
 				switch(playersCanPVPHere(attacker, defender, tc)) {
@@ -313,7 +317,6 @@ public class BlockListener implements Listener {
 
 			}
 		}
-		
 		return;
 	}
 	

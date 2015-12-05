@@ -15,15 +15,15 @@ quarry:
     gold_rate: 0.03
     redstone_rate: 0.015
     diamond_rate: 0.009
-    technocracy_rate: 1.75
-    penalty_rate: 0.85
+    technocracy_rate: 1.85
+    penalty_rate: 0.9
 #=======================================================#
 #==================> Trommel Settings <=================#
 #=======================================================#
 #Basic Information
 trommel:
-    technocracy_rate: 1.75
-    penalty_rate: 0.85
+    technocracy_rate: 1.85
+    penalty_rate: 0.9
 #Every Output (All Levels)
 trommel_global:
     bronze: 0.01
@@ -87,7 +87,7 @@ temple:
               - 'sheep'
               - 'rabbit'
               - 'chicken'
-          reward: 0
+          reward: 1
 #=======================================================#
 #================> Blacksmith Settings <================#
 #=======================================================#
@@ -224,113 +224,113 @@ cottage_levels:
 #=======================================================#
 mine_levels:
     - level: 1
-      hammers: 30.0
-      amount: 3
+      hammers: 40.0
+      amount: 2
       count: 24
 #
     - level: 2
-      hammers: 50.0
-      amount: 5
+      hammers: 80.0
+      amount: 4
       count: 48
 #
     - level: 3
-      hammers: 80.0
-      amount: 7
+      hammers: 120.0
+      amount: 6
       count: 72
 #
     - level: 4
-      hammers: 100.0
+      hammers: 160.0
       amount: 9
       count: 96
 #
     - level: 5
-      hammers: 230.0
-      amount: 12
+      hammers: 200.0
+      amount: 11
       count: 120
 #
     - level: 6
-      hammers: 250.0
-      amount: 15
+      hammers: 240.0
+      amount: 13
       count: 144
 #
     - level: 7
       hammers: 280.0
-      amount: 17
+      amount: 16
       count: 168
 #
     - level: 8
-      hammers: 300.0
-      amount: 20
+      hammers: 320.0
+      amount: 18
       count: 192
 #
     - level: 9
-      hammers: 330.0
-      amount: 22
+      hammers: 360.0
+      amount: 20
       count: 216
 #
     - level: 10
-      hammers: 350.0
-      amount: 25
+      hammers: 400.0
+      amount: 24
       count: 240
 #=======================================================#
 #=====================> Lab Levels <====================#
 #=======================================================#
 lab_levels:
     - level: 1
-      beakers: 30.0
-      amount: 3
+      beakers: 40.0
+      amount: 2
       count: 24
 #
     - level: 2
-      beakers: 50.0
-      amount: 5
+      beakers: 80.0
+      amount: 4
       count: 48
 #
     - level: 3
-      beakers: 80.0
-      amount: 7
+      beakers: 120.0
+      amount: 6
       count: 72
 #
     - level: 4
-      beakers: 100.0
+      beakers: 160.0
       amount: 9
       count: 96
 #
     - level: 5
-      beakers: 230.0
-      amount: 12
+      beakers: 200.0
+      amount: 11
       count: 120
 #
     - level: 6
-      beakers: 250.0
-      amount: 15
+      beakers: 240.0
+      amount: 13
       count: 144
 #
     - level: 7
       beakers: 280.0
-      amount: 17
+      amount: 16
       count: 168
 #
     - level: 8
-      beakers: 300.0
-      amount: 20
+      beakers: 320.0
+      amount: 18
       count: 192
 #
     - level: 9
-      beakers: 330.0
-      amount: 22
+      beakers: 360.0
+      amount: 20
       count: 216
 #
     - level: 10
-      beakers: 350.0
-      amount: 25
+      beakers: 400.0
+      amount: 24
       count: 240
 #=======================================================#
 #===============> Farm/Windmill Settings <==============#
 #=======================================================#
 farm:
     # Number of crops that will grow per 100% of growth rate.
-    grows_per_tick: 3
+    grows_per_tick: 2
     # Number of seconds it takes for a growth tick to fire, cannot be less than 1.
     grow_tick_rate: 30
 
@@ -612,8 +612,8 @@ structures:
     ignore_floating: true
     destroyable: true
     limit: 0
-    cost: 3500.0
-    upkeep: 100.0
+    cost: 2500.0
+    upkeep: 50.0
     hammer_cost: 375.0
     max_hitpoints: 50
     points: 3000
@@ -671,7 +671,7 @@ structures:
     require_tech: 'tech_fermentation'
     effect_event: process_lab
     tile_improvement: true
-    limit: 3
+    limit: 0
     cost: 25000.0
     upkeep: 1000.0
     hammer_cost: 1000.0
@@ -686,7 +686,7 @@ structures:
         - name: 'AttributeStatic'
           type: 'direct'
           attribute: 'CULTURE'
-          value: '1.0'
+          value: '2.0'
 #
   - id: s_library
     template: library
@@ -756,7 +756,7 @@ structures:
     require_tech: 'tech_religion'
     limit: 1
     cost: 25000.0
-    upkeep: 750.0
+    upkeep: 1000.0
     hammer_cost: 1000.0
     points: 1500
     max_hitpoints: 200
@@ -791,8 +791,8 @@ structures:
     update_event: quarry_process
     limit: 1
     cost: 25000.0
-    upkeep: 1000.0
-    hammer_cost: 4500.0
+    upkeep: 1250.0
+    hammer_cost: 4000.0
     points: 10000
     max_hitpoints: 375
 #

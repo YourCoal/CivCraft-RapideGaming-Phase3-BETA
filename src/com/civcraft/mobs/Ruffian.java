@@ -266,7 +266,6 @@ public class Ruffian extends CommonCustomMob implements ICustomMob {
 	    setValidBiome(CustomMobType.RUFFIAN, CustomMobLevel.LESSER, Biome.SWAMPLAND);
 	    
 	    setValidBiome(CustomMobType.RUFFIAN, CustomMobLevel.GREATER, Biome.MEGA_SPRUCE_TAIGA_HILLS);
-	    setValidBiome(CustomMobType.RUFFIAN, CustomMobLevel.GREATER, Biome.MEGA_SPRUCE_TAIGA_HILLS);
 	    setValidBiome(CustomMobType.RUFFIAN, CustomMobLevel.GREATER, Biome.JUNGLE_HILLS);
 	    
 	    setValidBiome(CustomMobType.RUFFIAN, CustomMobLevel.ELITE, Biome.BIRCH_FOREST_HILLS_MOUNTAINS);

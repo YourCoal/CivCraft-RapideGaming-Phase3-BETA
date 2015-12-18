@@ -46,6 +46,9 @@ public class OpenInventory implements GuiAction {
 				case "showServerInfoInventory":
 					CivTutorial.showServerInfoInventory(player);
 					break;
+				case "showElementInfo":
+					CivTutorial.showElementInventory(player);
+					break;
 				case "showCraftingHelp":
 					CivTutorial.showCraftingHelp(player);
 					break;
@@ -63,8 +66,6 @@ public class OpenInventory implements GuiAction {
 				}
 			}
 		}
-		
 		TaskMaster.syncTask(new SyncTaskDelayed(player.getName(), stack));		
 	}
-
 }

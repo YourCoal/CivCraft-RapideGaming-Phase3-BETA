@@ -6,15 +6,15 @@ import java.util.Calendar;
 import com.civcraft.exception.InvalidConfiguration;
 import com.civcraft.main.CivLog;
 import com.civcraft.threading.TaskMaster;
-import com.civcraft.threading.timers.CollectCultureEventTimer;
+import com.civcraft.threading.timers.CultureEventTimer;
 
 public class HourlyTickEventMinute6 implements EventInterface {
 	
 	@Override
 	public void process() {
-		CivLog.info("TimerEvent: Hourly -------------------------------------");
-		TaskMaster.asyncTask("CollectCultureEventTimer", new CollectCultureEventTimer(), 0);
-		CivLog.info("TimerEvent: Hourly Finished -----------------------------");
+		CivLog.info("TimerEvent: Hourly Culture -------------------------------------");
+		TaskMaster.asyncTask("CultureEventTimer", new CultureEventTimer(), 0);
+		CivLog.info("TimerEvent: Hourly Culture Finished -----------------------------");
 	}
 	
 	@Override
@@ -22,7 +22,7 @@ public class HourlyTickEventMinute6 implements EventInterface {
 		SimpleDateFormat sdf = new SimpleDateFormat("M/dd h:mm:ss a z");
 		Calendar cal = EventTimer.getCalendarInServerTimeZone();
 		cal.set(Calendar.SECOND, 0);
-		cal.set(Calendar.MINUTE, 4);
+		cal.set(Calendar.MINUTE, 5);
 		cal.add(Calendar.SECOND, 3600);
 		sdf.setTimeZone(cal.getTimeZone());
 		return cal;

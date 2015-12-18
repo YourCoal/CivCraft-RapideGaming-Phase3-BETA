@@ -6,15 +6,15 @@ import java.util.Calendar;
 import com.civcraft.exception.InvalidConfiguration;
 import com.civcraft.main.CivLog;
 import com.civcraft.threading.TaskMaster;
-import com.civcraft.threading.timers.CultureEventTimer;
+import com.civcraft.threading.timers.TradingEventTimer;
 
 public class HourlyTickEventMinute5 implements EventInterface {
 	
 	@Override
 	public void process() {
-		CivLog.info("TimerEvent: Hourly Culture -------------------------------------");
-		TaskMaster.asyncTask("CultureEventTimer", new CultureEventTimer(), 0);
-		CivLog.info("TimerEvent: Hourly Culture Finished -----------------------------");
+		CivLog.info("TimerEvent: Hourly Trade Ship -------------------------------------");
+		TaskMaster.asyncTask("TradingEventTimer", new TradingEventTimer(), 0);
+		CivLog.info("TimerEvent: Hourly Trade Ship Finished -----------------------------");
 	}
 	
 	@Override

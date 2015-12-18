@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.civcraft.config;
 
 import java.text.DecimalFormat;
@@ -33,9 +15,12 @@ import com.civcraft.object.LibraryEnchantment;
 import com.civcraft.object.StoreMaterial;
 import com.civcraft.object.Town;
 import com.civcraft.structure.Bank;
+import com.civcraft.structure.Fishery;
 import com.civcraft.structure.Grocer;
 import com.civcraft.structure.Library;
+import com.civcraft.structure.Pasture;
 import com.civcraft.structure.Quarry;
+import com.civcraft.structure.Shipyard;
 import com.civcraft.structure.Store;
 import com.civcraft.structure.Structure;
 import com.civcraft.structure.Trommel;
@@ -102,7 +87,7 @@ public class ConfigTownUpgrade {
 					bank.setLevel(Integer.valueOf(args[1].trim()));
 					bank.updateSignText();
 					town.saved_bank_level = bank.getLevel();
-					CivMessage.sendTown(town, "The bank is now level "+bank.getLevel());
+					CivMessage.sendTown(town, "The Bank is now level "+bank.getLevel());
 				}
 			}
 			break;
@@ -114,7 +99,7 @@ public class ConfigTownUpgrade {
 					bank.setInterestRate(Double.valueOf(args[1].trim()));
 					town.saved_bank_interest_amount = bank.getInterestRate();
 					DecimalFormat df = new DecimalFormat();
-					CivMessage.sendTown(town, "The bank is now provides a "+df.format(bank.getInterestRate()*100)+"% interest rate.");
+					CivMessage.sendTown(town, "The Bank is now provides a "+df.format(bank.getInterestRate()*100)+"% interest rate.");
 				}
 			}
 			break;
@@ -125,7 +110,7 @@ public class ConfigTownUpgrade {
 				if (store.getLevel() < Integer.valueOf(args[1].trim())) {
 					store.setLevel(Integer.valueOf(args[1].trim()));
 					store.updateSignText();
-					CivMessage.sendTown(town, "The store is now level "+store.getLevel());
+					CivMessage.sendTown(town, "The Store is now level "+store.getLevel());
 				}
 			}
 			break;
@@ -136,6 +121,7 @@ public class ConfigTownUpgrade {
 				StoreMaterial mat = new StoreMaterial(args[1].trim(), args[2].trim(), args[3].trim(), args[4].trim());
 				store.addStoreMaterial(mat);
 				store.updateSignText();
+				CivMessage.sendTown(town, "The Store now offers "+args[3].trim()+"!");
 			}
 			break;
 		case "set_library_level":
@@ -145,7 +131,7 @@ public class ConfigTownUpgrade {
 				if (library.getLevel() < Integer.valueOf(args[1].trim())) {
 					library.setLevel(Integer.valueOf(args[1].trim()));
 					library.updateSignText();
-					CivMessage.sendTown(town, "The library is now level "+library.getLevel());
+					CivMessage.sendTown(town, "The Library is now level "+library.getLevel());
 				}
 			}
 			break;
@@ -166,10 +152,11 @@ public class ConfigTownUpgrade {
 				if (grocer.getLevel() < Integer.valueOf(args[1].trim())) {
 					grocer.setLevel(Integer.valueOf(args[1].trim()));
 					grocer.updateSignText();
-					CivMessage.sendTown(town, "The grocer is now level "+grocer.getLevel());
+					CivMessage.sendTown(town, "The Grocer is now level "+grocer.getLevel());
 				}
 			}
 			break;
+			//Added in round 3
 		case "set_trommel_level":
 			boolean didUpgrade = false;
 			int trommelLevel = 1;
@@ -208,12 +195,65 @@ public class ConfigTownUpgrade {
 				}
 			}
 			if (didUpgradeQuarry) {
-				CivMessage.sendTown(town, "Our Quarries are now level "+quarryLevel);
+				CivMessage.sendTown(town, "Our Quarry is now level "+quarryLevel);
+			}
+			break;
+		case "set_fishery_level":
+			boolean didUpgradeFishery = false;
+			int fisheryLevel = 1;
+			for (Structure structure : town.getStructures()) {
+				if (structure.getConfigId().equalsIgnoreCase("ti_fishery")) {
+					if (structure != null && (structure instanceof Fishery)) {
+						Fishery fishery = (Fishery)structure;
+						if (fishery.getLevel() < Integer.valueOf(args[1].trim())) {
+							didUpgradeFishery = true;
+							fishery.setLevel(Integer.valueOf(args[1].trim()));
+							fishery.updateSignText();
+							town.saved_fishery_level = fishery.getLevel();
+							fisheryLevel = fishery.getLevel();
+						}
+					}
+				}
+			}
+			if (didUpgradeFishery) {
+				CivMessage.sendTown(town, "Our Fisheries are now level "+fisheryLevel);
+			}
+			break;
+		case "set_trade_shipyard_upgrade_level":
+			boolean didUpgradeTradeShip = false;
+			int tradeshipLevel = 1;
+			for (Structure structure : town.getStructures()) {
+				if (structure.getConfigId().equalsIgnoreCase("ti_trade_ship")) {
+					//if (structure != null && (structure instanceof FishHatchery)) {
+						Shipyard shipyard = (Shipyard)structure;
+						if (shipyard.getUpgradeLvl() < Integer.valueOf(args[1].trim())) {
+							didUpgradeTradeShip = true;
+							shipyard.setUpgradeLvl(Integer.valueOf(args[1].trim()));
+							shipyard.reprocessCommandSigns();
+							town.saved_trade_shipyard_upgrade_level = shipyard.getLevel();
+							tradeshipLevel = shipyard.getLevel();
+						}
+					}
+				}
+			//}
+			if (didUpgradeTradeShip) {
+				CivMessage.sendTown(town, "Our Shipyard Trading is now level "+tradeshipLevel);
+			}
+			break;
+		case "set_pasture_level":
+			struct = town.getStructureByType("ti_pasture");
+			if (struct != null && (struct instanceof Pasture)) {
+				Pasture pasture = (Pasture)struct;
+				if (pasture.getLevel() < Integer.valueOf(args[1].trim())) {
+					pasture.setLevel(Integer.valueOf(args[1].trim()));
+					pasture.updateSignText();
+					CivMessage.sendTown(town, "The Pasture is now level "+pasture.getLevel());
+				}
 			}
 			break;
 		}
 	}
-
+	
 	public boolean isAvailable(Town town) {
 		if (CivGlobal.testFileFlag("debug-norequire")) {
 			CivMessage.global("Ignoring requirements! debug-norequire found.");

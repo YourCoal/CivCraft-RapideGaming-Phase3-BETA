@@ -119,9 +119,7 @@ public class TownOutlawCommand extends CommandBase {
 			Resident res = CivGlobal.getResidentViaUUID(UUID.fromString(outlaw));
 			out += res.getName() + ", ";
 		}
-		
 		CivMessage.send(sender, out);
-		
 	}
 	
 	@Override

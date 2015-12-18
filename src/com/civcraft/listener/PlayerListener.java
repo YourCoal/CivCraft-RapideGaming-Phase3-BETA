@@ -21,7 +21,9 @@ package com.civcraft.listener;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Chest;
 import org.bukkit.entity.Arrow;
@@ -59,6 +61,7 @@ import org.bukkit.util.Vector;
 
 import com.civcraft.config.CivSettings;
 import com.civcraft.config.ConfigTechPotion;
+import com.civcraft.exception.CivException;
 import com.civcraft.items.units.UnitItemMaterial;
 import com.civcraft.items.units.UnitMaterial;
 import com.civcraft.lorestorage.LoreMaterial;
@@ -146,9 +149,7 @@ public class PlayerListener implements Listener {
 	
 	@EventHandler(priority = EventPriority.LOW)
 	public void onPlayerMove(PlayerMoveEvent event) {
-		/*
-		 * Abort if we havn't really moved
-		 */
+		/* Abort if we havn't really moved */
 		if (event.getFrom().getBlockX() == event.getTo().getBlockX() && 
 			event.getFrom().getBlockZ() == event.getTo().getBlockZ() && 
 			event.getFrom().getBlockY() == event.getTo().getBlockY()) {
@@ -172,27 +173,34 @@ public class PlayerListener implements Listener {
 
 	}
 	
+	UUID playerUUID;
+	public void PlayerLoginAsyncTask(UUID playerUUID) {
+		this.playerUUID = playerUUID;
+	}
+	public Player getPlayer() throws CivException {
+		Player player = Bukkit.getPlayer(playerUUID);
+		if (player == null) {
+			throw new CivException("Player offline now. May have been kicked.");
+		}
+		return player;
+	}
+	
 	@EventHandler(priority = EventPriority.HIGHEST)
-	public void onPlayerRespawn(PlayerRespawnEvent event) {
-		
+	public void onPlayerRespawn(PlayerRespawnEvent event) throws CivException {
 		Player player = event.getPlayer();
 		Resident resident = CivGlobal.getResident(player);
 		if (resident == null || !resident.hasTown()) {
 			return;
 		}
 		
-			if (resident.getTown().getCiv().getDiplomacyManager().isAtWar()) {
-				//TownHall townhall = resident.getTown().getTownHall();
-				Capitol capitol = resident.getCiv().getCapitolStructure();
-				if (capitol != null) {
-					BlockCoord respawn = capitol.getRandomRespawnPoint();
-					if (respawn != null) {
-						//PlayerReviveTask reviveTask = new PlayerReviveTask(player, townhall.getRespawnTime(), townhall, event.getRespawnLocation());
-						resident.setLastKilledTime(new Date());
-						event.setRespawnLocation(respawn.getCenteredLocation());
-						CivMessage.send(player, CivColor.LightGray+"You've respawned in the War Room since it's WarTime and you're at war.");
-						
-						//TaskMaster.asyncTask("", reviveTask, 0);
+		if (resident.getTown().getCiv().getDiplomacyManager().isAtWar() && War.isWarTime()) {
+			Capitol capitol = resident.getCiv().getCapitolStructure();
+			if (capitol != null) {
+				BlockCoord respawn = capitol.getRandomRespawnPoint();
+				if (respawn != null) {
+					resident.setLastKilledTime(new Date());
+					event.setRespawnLocation(respawn.getCenteredLocation());
+					CivMessage.send(player, CivColor.LightGray+"You've respawned in the War Room since it's WarTime and you're at war.");
 				}
 			}
 		}

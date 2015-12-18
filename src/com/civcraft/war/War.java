@@ -126,6 +126,7 @@ public class War {
 			War.repositionPlayers("You've been teleported back to your town hall. WarTime ended and you were in enemy territory.");
 			War.processDefeated();
 			
+			CivGlobal.fisheriesEnabled = true;
 			CivGlobal.quarriesEnabled = true;
 			CivGlobal.trommelsEnabled = true;
 			CivGlobal.growthEnabled = true;
@@ -166,6 +167,7 @@ public class War {
 				e1.printStackTrace();
 			}
 			
+			CivGlobal.fisheriesEnabled = false;
 			CivGlobal.quarriesEnabled = false;
 			CivGlobal.trommelsEnabled = false;
 			CivGlobal.growthEnabled = false;

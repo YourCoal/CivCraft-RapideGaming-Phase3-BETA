@@ -131,7 +131,7 @@ public abstract class Buildable extends SQLObject {
 	public ArrayList<Component> attachedComponents = new ArrayList<Component>();
 	
 	private boolean valid = true;
-	public static double validPercentRequirement = 0.8;
+	public static double validPercentRequirement = 0.75;
 	public static HashSet<Buildable> invalidBuildables = new HashSet<Buildable>();
 	public HashMap<Integer, BuildableLayer> layerValidPercentages = new HashMap<Integer, BuildableLayer>();
 	public boolean validated = false;
@@ -739,7 +739,7 @@ public abstract class Buildable extends SQLObject {
 			}
 		}
 		
-		if (this.getConfigId().equals("s_shipyard")) {
+		if (this.getConfigId().equals("s_shipyard") || this.getConfigId().equals("ti_trade_ship")) {
 			if (!centerBlock.getBiome().equals(Biome.OCEAN) && 
 				!centerBlock.getBiome().equals(Biome.BEACH) &&
 				!centerBlock.getBiome().equals(Biome.DEEP_OCEAN) &&

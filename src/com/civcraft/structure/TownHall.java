@@ -104,11 +104,9 @@ public class TownHall extends Structure implements RespawnLocationHolder {
 				if (goodie != null) {
 					goodie.replenish();
 				}
-				
 				CivGlobal.removeProtectedItemFrame(framestore.getFrameID());
 			}
 		}
-		
 		super.delete();		
 	}
 	
@@ -121,6 +119,11 @@ public class TownHall extends Structure implements RespawnLocationHolder {
 		out += "<br/>Flat Tax: "+this.getTown().getFlatTax()*100+"%";
 		out += "<br/>Property Tax: "+this.getTown().getTaxRate()*100+"%";
 		return out;
+	}
+	
+	@Override
+	public String getMarkerIconName() {
+		return "compass";
 	}
 	
 	public void addTechBarBlock(BlockCoord coord, int index) {

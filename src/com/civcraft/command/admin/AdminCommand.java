@@ -127,7 +127,8 @@ public class AdminCommand extends CommandBase {
 		Player player = getPlayer();
 		
 		if (spawnInventory == null) {
-			spawnInventory = Bukkit.createInventory(player, LoreGuiItem.MAX_INV_SIZE, "Admin Item Spawn");
+			//spawnInventory = Bukkit.createInventory(player, LoreGuiItem.MAX_INV_SIZE, "Admin Item Spawn");
+			spawnInventory = Bukkit.createInventory(player, 36, "Admin Item Spawn");
 			
 			/* Build the Category Inventory. */
 			for (ConfigMaterialCategory cat : ConfigMaterialCategory.getCategories()) {
@@ -144,6 +145,10 @@ public class AdminCommand extends CommandBase {
 					identifier = ItemManager.getId(Material.CHAINMAIL_LEGGINGS);
 				} else if (cat.name.contains("Gear Tier 4")) {
 					identifier = ItemManager.getId(Material.DIAMOND_BOOTS);
+				} else if (cat.name.contains("Fish")) {
+					identifier = ItemManager.getId(Material.RAW_FISH);
+				} else if (cat.name.contains("Dyes")) {
+					identifier = ItemManager.getId(Material.BOWL);
 				} else if (cat.name.contains("Special")) {
 					identifier = ItemManager.getId(Material.BEACON);
 				} else if (cat.name.contains("Tier 1 Material")) {

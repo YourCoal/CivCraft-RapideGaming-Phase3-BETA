@@ -17,11 +17,13 @@ import com.civcraft.exception.CivException;
 import com.civcraft.exception.InvalidConfiguration;
 import com.civcraft.lorestorage.LoreCraftableMaterial;
 import com.civcraft.main.CivData;
+import com.civcraft.main.CivGlobal;
 import com.civcraft.main.CivMessage;
+import com.civcraft.object.CultureChunk;
 import com.civcraft.object.Relation;
 import com.civcraft.object.Resident;
 import com.civcraft.object.Town;
-import com.civcraft.object.Relation.Status;
+import com.civcraft.util.ChunkCoord;
 import com.civcraft.util.CivColor;
 import com.civcraft.util.ItemManager;
 import com.civcraft.war.War;
@@ -45,7 +47,7 @@ public class ResidentCommand extends CommandBase {
 		commands.put("refresh", "Refreshes your perks.");
 		commands.put("timezone", "(timezone) Display your current timezone or change it to (timezone)");
 		commands.put("pvptimer", "Remove your PvP Timer. This is a permenant change and can not be undone.");
-		//commands.put("switchtown", "[town] - Allows you to instantly change your town to this town, if this town belongs to your civ.");
+		commands.put("switchtown", "[town] - Allows you to instantly change your town to this town, if this town belongs to your civ.");
 	}
 	
 	public void pvptimer_cmd() throws CivException {
@@ -127,7 +129,7 @@ public class ResidentCommand extends CommandBase {
 	
 	/* We need to figure out how to handle debt for the resident when he switches towns.
 	 * Should we even allow this? idk. Maybe war respawn points is enough? */
-	public void switchtown_cmd(Relation re) throws CivException {
+	public void switchtown_cmd() throws CivException { 
 		Town town = getNamedTown(1);
 		Resident resident = getResident();
 		if (War.isWarTime()) {
@@ -138,9 +140,10 @@ public class ResidentCommand extends CommandBase {
 			throw new CivException("You cannot switch to your own town.");
 		}
 		
-		
-		if (War.isWithinWarDeclareDays() && re.getStatus() == Status.WAR) {
-			throw new CivException("Cannot switch to other towns if you are at war.");
+		CultureChunk cc = CivGlobal.getCultureChunk(new ChunkCoord(getPlayer().getLocation()));
+		Relation.Status status = cc.getCiv().getDiplomacyManager().getRelationStatus(getPlayer());
+		if (War.isWithinWarDeclareDays() && status.equals(Relation.Status.WAR)) {
+			throw new CivException("Cannot switch to other towns if you are at war & it is too close to WarTime.");
 		}
 		
 		if (!resident.getCiv().getLeaderGroup().hasMember(resident)) {
@@ -155,13 +158,14 @@ public class ResidentCommand extends CommandBase {
 			throw new CivException("You cannot switch to a town not in your civ.");
 		}
 		
-		if (town.getMayorGroup().hasMember(resident) && town.getMayorGroup().getMemberCount() <= 1) {
+		if (town.getMayorGroup().hasMember(resident) && town.getMayorGroup().getMemberCount() < 2) {
 			throw new CivException("You are the last mayor of the town and cannot leave it.");
 		}
 		
 		resident.getTown().removeResident(resident);
 		try {
 			town.addResident(resident);
+			CivMessage.send(resident, CivColor.LightGreen+"You have switched to town "+town.getName());
 		} catch (AlreadyRegisteredException e) {
 			e.printStackTrace();
 			throw new CivException("You already belong to this town.");

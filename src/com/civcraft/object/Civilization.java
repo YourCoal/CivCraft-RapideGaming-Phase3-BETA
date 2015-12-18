@@ -1116,10 +1116,7 @@ public class Civilization extends SQLObject {
 			civ.setGovernment(gov.id);
 			CivMessage.global(civ.getName()+" has emerged from anarchy and has adopted "+CivSettings.governments.get(gov.id).displayName);
 		}
-		
-		
 		civ.save();
-		
 	}
 
 	public String getUpkeepPaid(Town town, String type) {

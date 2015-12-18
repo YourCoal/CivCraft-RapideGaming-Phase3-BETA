@@ -164,18 +164,30 @@ public abstract class LoreMaterial {
 		}
 		return null;
 	}
-
+	
 	public static ItemStack spawn(LoreMaterial material) {
-		ItemStack stack = ItemManager.createItemStack(material.getTypeID(), 1, material.getDamage());
+		return spawn(material, 1);
+	}
+	
+	public static ItemStack spawn(LoreMaterial material, int quantity) {
+		ItemStack stack = ItemManager.createItemStack(material.getTypeID(), quantity, material.getDamage());
 		AttributeUtil attrs = new AttributeUtil(stack);
 		setMIDAndName(attrs, material.getId(), material.getName());
-		
 		if (material instanceof LoreCraftableMaterial) {
 			LoreCraftableMaterial craftMat = (LoreCraftableMaterial)material;
-			//craftMat.getConfigMaterial().category
 			attrs.addLore(CivColor.ITALIC+craftMat.getConfigMaterial().category);
+			if (craftMat.getConfigMaterial().tradeableShipyard) {
+				attrs.setCivCraftProperty("tradeableShipyard", "true");
+			}
+			
+			if (craftMat.getConfigMaterial().tradeShipyardValue >= 0) {
+				attrs.setCivCraftProperty("tradeShipyardValue", ""+craftMat.getConfigMaterial().tradeShipyardValue);
+			}
+			
+			if (craftMat.getConfigMaterial().shiny) {
+				attrs.setShiny();
+			}
 		}
-		
 		material.applyAttributes(attrs);
 		return attrs.getStack();
 	}

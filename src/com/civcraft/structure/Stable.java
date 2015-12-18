@@ -35,9 +35,9 @@ import com.civcraft.util.ItemManager;
 import com.civcraft.util.SimpleBlock;
 
 public class Stable extends Structure {
-
+	
 	public static Integer FEE_MIN = 5;
-	public static Integer FEE_MAX = 100;
+	public static Integer FEE_MAX = 50;
 	private HashMap<Integer, SignSelectionComponent> signSelectors = new HashMap<Integer, SignSelectionComponent>();
 	private BlockCoord horseSpawnCoord;
 	private BlockCoord muleSpawnCoord;
@@ -48,7 +48,7 @@ public class Stable extends Structure {
 		nonMemberFeeComponent = new NonMemberFeeComponent(this);
 		nonMemberFeeComponent.onLoad();
 	}
-
+	
 	protected Stable(Location center, String id, Town town) throws CivException {
 		super(center, id, town);
 		nonMemberFeeComponent = new NonMemberFeeComponent(this);
@@ -57,15 +57,13 @@ public class Stable extends Structure {
 	
 	public void loadSettings() {
 		super.loadSettings();
-
 		SignSelectionComponent horseVender = new SignSelectionComponent();
 		SignSelectionComponent muleVender = new SignSelectionComponent();
 		SignSelectionComponent itemVender = new SignSelectionComponent();
-		
 		signSelectors.put(0, horseVender);
 		signSelectors.put(1, muleVender);
 		signSelectors.put(2, itemVender);
-
+		
 		class buyHorseAction implements SignSelectionActionInterface {
 			int horse_id;
 			double cost;
@@ -87,7 +85,7 @@ public class Stable extends Structure {
 				if (!horse.mule) {
 					boolean allow = false;
 					for (BonusGoodie goodie : getTown().getBonusGoodies()) {
-						if (goodie.getConfigTradeGood().id.equals("good_horses")) {
+						if (goodie.getConfigTradeGood().id.equals("good:horses")) {
 							allow = true;
 							break;
 						}
@@ -98,14 +96,13 @@ public class Stable extends Structure {
 						return;
 					}
 				}
-			
+				
 				double paid;
 				if (resident.getTown() != getTown()) {
 					if (!resident.getTreasury().hasEnough(getItemCost(cost))) {
 						CivMessage.sendError(player, "You do not have the required "+getItemCost(cost)+" Redbacks.");
 						return;
 					}
-					
 					
 					resident.getTreasury().withdraw(getItemCost(cost));
 					getTown().depositTaxed(getFeeToTown(cost));
@@ -116,11 +113,10 @@ public class Stable extends Structure {
 						CivMessage.sendError(player, "You do not have the required "+cost+" Redbacks.");
 						return;
 					}
-
 					resident.getTreasury().withdraw(cost);
 					paid = cost;
 				}	
-
+				
 				HorseModifier mod;	
 				if (!horse.mule) {			
 					mod = HorseModifier.spawn(horseSpawnCoord.getLocation());
@@ -129,20 +125,17 @@ public class Stable extends Structure {
 					mod = HorseModifier.spawn(muleSpawnCoord.getLocation());
 					mod.setType(HorseType.MULE);
 				}
-				
 				mod.setVariant(HorseVariant.valueOf(horse.variant));
 				HorseModifier.setHorseSpeed(mod.getHorse(), horse.speed);
 				((Horse)mod.getHorse()).setJumpStrength(horse.jump);
 				((Horse)mod.getHorse()).setHealth(horse.health);
 				((Horse)mod.getHorse()).setOwner(player);
 				((Horse)mod.getHorse()).setBaby();
-				
 				CivMessage.send(player, CivColor.LightGreen+"Paid "+paid+" Redbacks.");
 			}
 		}
 		
 		class buyItemAction implements SignSelectionActionInterface {
-
 			int item_id;
 			double cost;
 			
@@ -153,9 +146,7 @@ public class Stable extends Structure {
 			
 			@Override
 			public void process(Player player) {
-
 				Resident resident = CivGlobal.getResident(player);
-				
 				double paid;
 				if (resident.getTown() != getTown()) {
 					if (!resident.getTreasury().hasEnough(getItemCost(cost))) {
@@ -171,21 +162,18 @@ public class Stable extends Structure {
 						CivMessage.sendError(player, "You do not have the required "+cost+" Redbacks.");
 						return;
 					}
-					
 					resident.getTreasury().withdraw(cost);
 					paid = cost;
 				}
-
+				
 				HashMap<Integer, ItemStack> leftovers = player.getInventory().addItem(ItemManager.createItemStack(item_id, 1));
 				if (leftovers.size() > 0) {
 					for (ItemStack stack : leftovers.values()) {
 						player.getWorld().dropItem(player.getLocation(), stack);
 					}
 				}
-				
 				CivMessage.send(player, CivColor.LightGreen+"Paid "+paid+" Redbacks.");
 			}
-			
 		}
 		
 		for (ConfigStableItem item : CivSettings.stableItems) {
@@ -193,6 +181,7 @@ public class Stable extends Structure {
 			if (comp == null) {
 				continue;
 			}
+			
 			if (item.item_id == 0) {
 				comp.addItem(new String[] {CivColor.LightGreen+item.name, "Buy For", ""+item.cost, "Fee:"+this.nonMemberFeeComponent.getFeeString()}, new buyHorseAction(item.horse_id, item.cost));
 			} else {
@@ -216,7 +205,7 @@ public class Stable extends Structure {
 			CivLog.warning("No sign seletor component for with id:"+sign.getAction());
 			return;
 		}
-
+		
 		switch (sign.getType()) {
 		case "prev":
 			signSelection.processPrev();
@@ -242,7 +231,6 @@ public class Stable extends Structure {
 		StructureSign structSign;
 		int selectorIndex;
 		SignSelectionComponent signComp;
-		
 		switch (sb.command) {
 		case "/prev":
 			ItemManager.setTypeId(absCoord.getBlock(), sb.getType());
@@ -259,17 +247,14 @@ public class Stable extends Structure {
 		case "/item":
 			ItemManager.setTypeId(absCoord.getBlock(), sb.getType());
 			ItemManager.setData(absCoord.getBlock(), sb.getData());
-
 			structSign = new StructureSign(absCoord, this);
 			structSign.setText("");
 			structSign.setDirection(sb.getData());
 			structSign.setAction(sb.keyvalues.get("id"));
 			structSign.setType("item");
 			structSign.update();
-						
 			this.addStructureSign(structSign);
-			CivGlobal.addStructureSign(structSign);
-						
+			CivGlobal.addStructureSign(structSign);	
 			selectorIndex = Integer.valueOf(sb.keyvalues.get("id"));
 			signComp = signSelectors.get(selectorIndex);
 			if (signComp != null) {
@@ -278,12 +263,10 @@ public class Stable extends Structure {
 			} else {
 				CivLog.warning("No sign selector found for id:"+selectorIndex);
 			}
-			
 			break;
 		case "/next":
 			ItemManager.setTypeId(absCoord.getBlock(), sb.getType());
 			ItemManager.setData(absCoord.getBlock(), sb.getData());
-
 			structSign = new StructureSign(absCoord, this);
 			structSign.setText("\n"+ChatColor.BOLD+ChatColor.UNDERLINE+"Next");
 			structSign.setDirection(sb.getData());
@@ -292,7 +275,6 @@ public class Stable extends Structure {
 			structSign.update();
 			this.addStructureSign(structSign);
 			CivGlobal.addStructureSign(structSign);
-			
 			break;
 		case "/horsespawn":
 			this.horseSpawnCoord = absCoord;
@@ -302,9 +284,8 @@ public class Stable extends Structure {
 			break;
 		}
 	}
-
+	
 	public void setNonResidentFee(double d) {
 		this.nonMemberFeeComponent.setFeeRate(d);
-	}	
-
+	}
 }

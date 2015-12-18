@@ -1,0 +1,10 @@
+manuaddp default essentials.tpa
+manuaddp default essentials.tpahere
+manuaddp default essentials.tpaccept
+manuaddp default essentials.tpdeny
+manuaddp default essentials.home
+manuaddp default essentials.sethome
+manuaddp default essentials.delhome
+manuaddp default essentials.spawn
+manuaddp voting1 essentials.back
+manuaddp voting1 essentials.back.ondeath

@@ -87,7 +87,7 @@ public class Bank extends Structure {
 		rate += addtional;
 		try {
 			if (this.getTown().getGovernment().id.equals("gov_bankocracy")) {
-				rate *= CivSettings.getDouble(CivSettings.structureConfig, "bank.bankocracy_rate");
+				rate *= CivSettings.getDouble(CivSettings.structureConfig, "bank.bonus_rate");
 			} else if (this.getTown().getGovernment().id.equals("gov_monarchy")){
 				rate *= CivSettings.getDouble(CivSettings.structureConfig, "bank.penalty_rate");
 			}

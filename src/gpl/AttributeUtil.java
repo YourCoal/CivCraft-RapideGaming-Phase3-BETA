@@ -689,8 +689,45 @@ public class AttributeUtil {
 		if (nmsStack == null) {
 			return;
 		}
-		
 		nmsStack.getTag().setInt("HideFlags", flags);
+	}
+	
+	public void setShiny() {
+		if (nmsStack == null) {
+			return;
+		}
+		
+		if (nmsStack.getTag() == null) {
+			nmsStack.setTag(new NBTTagCompound());
+		}
+		NBTTagCompound enchCompound = nmsStack.getTag().getCompound("ench");
+		if (enchCompound == null) {
+			enchCompound = new NBTTagCompound();
+	  	}
+	   	enchCompound.setShort("id", (short) 62); //Enchant id 62 = Lure
+	   	enchCompound.setShort("lvl", (short)1);
+	   	nmsStack.getTag().set("ench", enchCompound);
+	   	this.setHideFlag(1);
+	}
+	
+	public boolean isShiny() {
+		if (nmsStack == null) {
+			return false;
+		}
+		
+		if (nmsStack.getTag() == null) {
+			return false;
+		}
+		
+		NBTTagCompound enchCompound = nmsStack.getTag().getCompound("ench");
+	   	if (enchCompound == null) {
+   		return false;
+    	}
+    	
+    	if (enchCompound.hasKey("id") && enchCompound.getShort("id") == (short)62) {
+    		return true;
+    	}
+		return false;
 	}
 	
 	public int getColor() {
@@ -752,5 +789,11 @@ public class AttributeUtil {
 		}
 		
         return nmsStack.getTag().hasKey("civ_enhancements");
+	}
+	
+	public void addLore(String[] lore) {
+		for (String str : lore) {
+			addLore(str);
+		}
 	}
 }

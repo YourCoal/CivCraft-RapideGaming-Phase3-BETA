@@ -175,7 +175,6 @@ public class Capitol extends TownHall {
 			structSign.update();
 			this.addStructureSign(structSign);
 			CivGlobal.addStructureSign(structSign);
-			
 		} else if (commandBlock.command.equals("/prev")) {
 			ItemManager.setTypeId(absCoord.getBlock(), commandBlock.getType());
 			ItemManager.setData(absCoord.getBlock(), commandBlock.getData());
@@ -186,7 +185,6 @@ public class Capitol extends TownHall {
 			structSign.update();
 			this.addStructureSign(structSign);
 			CivGlobal.addStructureSign(structSign);
-			
 		} else if (commandBlock.command.equals("/respawndata")) {
 			ItemManager.setTypeId(absCoord.getBlock(), commandBlock.getType());
 			ItemManager.setData(absCoord.getBlock(), commandBlock.getData());
@@ -197,16 +195,13 @@ public class Capitol extends TownHall {
 			structSign.update();
 			this.addStructureSign(structSign);
 			CivGlobal.addStructureSign(structSign);
-			
 			this.respawnSign = structSign;
 			changeIndex(index);
 		}
-		
 	}
 	
 	@Override
 	public void createControlPoint(BlockCoord absCoord) {
-		
 		Location centerLoc = absCoord.getLocation();
 		
 		/* Build the bedrock tower. */
@@ -256,17 +251,14 @@ public class Capitol extends TownHall {
 			return true;
 		}
 		
-		/* 
-		 * Validate that all of the towns in our civ have town halls. If not, then 
-		 * we need to punish by increasing respawn times.
-		 */
+		/* Validate that all of the towns in our civ have town halls. If not, then 
+		 * we need to punish by increasing respawn times. */
 		for (Town town : this.getCiv().getTowns()) {
 			TownHall townhall = town.getTownHall();
 			if (townhall == null) {
 				return false;
 			}
 		}
-		
 		return super.isValid();
 	}
 	

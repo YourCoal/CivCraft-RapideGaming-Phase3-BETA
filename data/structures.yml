@@ -2,8 +2,21 @@
 #===================> Bank Settings <===================#
 #=======================================================#
 bank:
-    bankocracy_rate: 1.5
+    bonus_rate: 1.5
     penalty_rate: 0.85
+#=======================================================#
+#==================> Fishery Settings <=================#
+#=======================================================#
+fishery:
+    bonus_rate: 1.75
+    penalty_rate: 0.85
+
+    tierMax: 10000
+    t0_rate: 1.0
+    t1_rate: 0.5
+    t2_rate: 0.05
+    t3_rate: 0.01
+    t4_rate: 0.001
 #=======================================================#
 #==================> Quarry Settings <==================#
 #=======================================================#
@@ -11,19 +24,19 @@ quarry:
     max: 100000
     cobblestone_rate: 0.85
     coal_rate: 0.1
-    iron_rate: 0.06
-    gold_rate: 0.03
+    iron_rate: 0.05
+    gold_rate: 0.025
     redstone_rate: 0.015
-    diamond_rate: 0.009
-    technocracy_rate: 1.85
-    penalty_rate: 0.9
+    diamond_rate: 0.0085
+    technocracy_rate: 1.75
+    penalty_rate: 0.85
 #=======================================================#
 #==================> Trommel Settings <=================#
 #=======================================================#
 #Basic Information
 trommel:
-    technocracy_rate: 1.85
-    penalty_rate: 0.9
+    technocracy_rate: 1.75
+    penalty_rate: 0.85
 #Every Output (All Levels)
 trommel_global:
     bronze: 0.01
@@ -31,44 +44,44 @@ trommel_global:
     titanium: 0.001
 #Cobblestone Input (Level 1)
 trommel_gravel:
-    max: 10000
-    iron: 0.05
-    gold: 0.025
-    diamond: 0.0075
-    emerald: 0.0025
-    redstone: 0.01
+    max: 25000
+    iron: 0.04
+    gold: 0.02
+    diamond: 0.005
+    emerald: 0.0005
+    redstone: 0.015
 #Stone Input (Level 1)
 trommel_dirt:
     max: 100000
-    iron: 0.1
-    gold: 0.05
-    diamond: 0.015
-    emerald: 0.01
-    redstone: 0.02
+    iron: 0.08
+    gold: 0.04
+    diamond: 0.01
+    emerald: 0.001
+    redstone: 0.03
 #Granite Input (Level 2)
 trommel_granite:
-    max: 25000
-    iron: 0.075
-    gold: 0.05
-    diamond: 0.01
-    emerald: 0.005
-    redstone: 0.015
+    max: 50000
+    iron: 0.05
+    gold: 0.025
+    diamond: 0.0075
+    emerald: 0.00075
+    redstone: 0.02
 #Granite Input (Level 3)
 trommel_diorite:
-    max: 25000
-    iron: 0.075
-    gold: 0.05
-    diamond: 0.01
-    emerald: 0.005
-    redstone: 0.015
+    max: 50000
+    iron: 0.05
+    gold: 0.025
+    diamond: 0.0075
+    emerald: 0.00075
+    redstone: 0.02
 #Granite Input (Level 4)
 trommel_andesite:
-    max: 25000
-    iron: 0.075
-    gold: 0.05
-    diamond: 0.01
-    emerald: 0.005
-    redstone: 0.015
+    max: 50000
+    iron: 0.05
+    gold: 0.025
+    diamond: 0.0075
+    emerald: 0.00075
+    redstone: 0.02
 #=======================================================#
 #==================> Temple Settings <==================#
 #=======================================================#
@@ -87,7 +100,7 @@ temple:
               - 'sheep'
               - 'rabbit'
               - 'chicken'
-          reward: 1
+          reward: 0
 #=======================================================#
 #================> Blacksmith Settings <================#
 #=======================================================#
@@ -124,6 +137,65 @@ grocer_levels:
       itemData: 0
       amount: 1
       price: 1000.0
+#=======================================================#
+#===================> Pasture Levels <==================#
+#=======================================================#
+pasture_levels:
+    - level: 1
+      itemName: 'Pig Egg'
+      itemId: 383
+      itemData: 90
+      amount: 2
+      price: 150.0 
+#
+    - level: 2
+      itemName: 'Chicken Egg'
+      itemId: 383
+      itemData: 93
+      amount: 2
+      price: 150.0 
+#
+    - level: 3
+      itemName: 'Sheep Egg'
+      itemId: 383
+      itemData: 91
+      amount: 2
+      price: 175.0 
+#
+    - level: 4
+      itemName: 'Cow Egg'
+      itemId: 383
+      itemData: 92
+      amount: 2
+      price: 200.0 
+#
+    - level: 5
+      itemName: 'Rabbit Egg'
+      itemId: 383
+      itemData: 101
+      amount: 2
+      price: 250.0 
+#
+    - level: 6
+      itemName: 'Mooshroom Egg'
+      itemId: 383
+      itemData: 96
+      amount: 2
+      price: 325.0 
+#
+    - level: 7
+      itemName: 'Wolf Egg'
+      itemId: 383
+      itemData: 95
+      amount: 1
+      price: 10000.0 
+#
+    - level: 8
+      itemName: 'Villager Egg'
+      itemId: 383
+      itemData: 120
+      amount: 1
+      price: 75000.0 
 #=======================================================#
 #===================> Cottage Levels <==================#
 #=======================================================#
@@ -224,113 +296,189 @@ cottage_levels:
 #=======================================================#
 mine_levels:
     - level: 1
-      hammers: 40.0
-      amount: 2
+      hammers: 30.0
+      amount: 3
       count: 24
 #
     - level: 2
-      hammers: 80.0
-      amount: 4
+      hammers: 50.0
+      amount: 5
       count: 48
 #
     - level: 3
-      hammers: 120.0
-      amount: 6
+      hammers: 80.0
+      amount: 7
       count: 72
 #
     - level: 4
-      hammers: 160.0
+      hammers: 100.0
       amount: 9
       count: 96
 #
     - level: 5
-      hammers: 200.0
-      amount: 11
+      hammers: 230.0
+      amount: 12
       count: 120
 #
     - level: 6
-      hammers: 240.0
-      amount: 13
+      hammers: 250.0
+      amount: 15
       count: 144
 #
     - level: 7
       hammers: 280.0
-      amount: 16
+      amount: 17
       count: 168
 #
     - level: 8
-      hammers: 320.0
-      amount: 18
+      hammers: 300.0
+      amount: 20
       count: 192
 #
     - level: 9
-      hammers: 360.0
-      amount: 20
+      hammers: 330.0
+      amount: 22
       count: 216
 #
     - level: 10
-      hammers: 400.0
-      amount: 24
+      hammers: 350.0
+      amount: 25
       count: 240
 #=======================================================#
 #=====================> Lab Levels <====================#
 #=======================================================#
 lab_levels:
     - level: 1
-      beakers: 40.0
-      amount: 2
+      beakers: 30.0
+      amount: 3
       count: 24
 #
     - level: 2
-      beakers: 80.0
-      amount: 4
+      beakers: 50.0
+      amount: 5
       count: 48
 #
     - level: 3
-      beakers: 120.0
-      amount: 6
+      beakers: 80.0
+      amount: 7
       count: 72
 #
     - level: 4
-      beakers: 160.0
+      beakers: 100.0
       amount: 9
       count: 96
 #
     - level: 5
-      beakers: 200.0
-      amount: 11
+      beakers: 230.0
+      amount: 12
       count: 120
 #
     - level: 6
-      beakers: 240.0
-      amount: 13
+      beakers: 250.0
+      amount: 15
       count: 144
 #
     - level: 7
       beakers: 280.0
-      amount: 16
+      amount: 17
       count: 168
 #
     - level: 8
-      beakers: 320.0
-      amount: 18
+      beakers: 300.0
+      amount: 20
       count: 192
 #
     - level: 9
-      beakers: 360.0
-      amount: 20
+      beakers: 330.0
+      amount: 22
       count: 216
 #
     - level: 10
-      beakers: 400.0
-      amount: 24
+      beakers: 350.0
+      amount: 25
       count: 240
+#=======================================================#
+#===============> Trade Shipyard Levels <===============#
+#=======================================================#
+trade_shipyard_levels:
+    - level: 1
+      culture: 0
+      maxTrade: 2
+      upgradeTrade: 1024
+      # 8 hours
+#
+    - level: 2
+      culture: 0
+      maxTrade: 2
+      upgradeTrade: 2048
+      # 16 hours
+#
+    - level: 3
+      culture: 0
+      maxTrade: 4
+      upgradeTrade: 4096
+      # 2 Chests Active
+      # 16 Hours
+#
+    - level: 4
+      culture: 0
+      maxTrade: 4
+      upgradeTrade: 8192
+      # 2 Chests Active
+      # 32 Hours
+#
+    - level: 5
+      culture: 1
+      maxTrade: 6
+      upgradeTrade: 12288
+      # 3 Chests Active
+      # 32 Hours
+#
+    - level: 6
+      culture: 1
+      maxTrade: 6
+      upgradeTrade: 24576
+      # 3 Chests Active
+      # 64 Hours
+#
+    - level: 7
+      culture: 1
+      maxTrade: 8
+      upgradeTrade: 32768
+      # 4 Chests Active
+      # 64 Hours
+#
+    - level: 8
+      culture: 2
+      maxTrade: 8
+      upgradeTrade: 65536
+      # 4 Chests Active
+      # 128 Hours
+#
+    - level: 9
+      culture: 2
+      maxTrade: 10
+      upgradeTrade: 81920
+      # 5 Chests Active
+      # 128 Hours
+#
+    - level: 10
+      culture: 2
+      maxTrade: 10
+      upgradeTrade: 163840
+      # 5 Chests Active
+      # 256 Hours
+tradeShipyard:
+    pack_chance: 0.05
+    mediumpack_chance: 0.01
+    bigpack_chance: 0.005
+    hugepack_chance: 0.001
 #=======================================================#
 #===============> Farm/Windmill Settings <==============#
 #=======================================================#
 farm:
     # Number of crops that will grow per 100% of growth rate.
-    grows_per_tick: 2
+    grows_per_tick: 3
     # Number of seconds it takes for a growth tick to fire, cannot be less than 1.
     grow_tick_rate: 30
 
@@ -612,8 +760,8 @@ structures:
     ignore_floating: true
     destroyable: true
     limit: 0
-    cost: 2500.0
-    upkeep: 50.0
+    cost: 3500.0
+    upkeep: 100.0
     hammer_cost: 375.0
     max_hitpoints: 50
     points: 3000
@@ -623,6 +771,19 @@ structures:
           attribute: 'GROWTH'
           biomes: 'PLAINS'
           value: '15'
+#
+  - id: ti_fishery
+    template: quarry
+    template_y_shift: -10
+    displayName: Fishery
+    require_tech: 'tech_advanced_fortification'
+    update_event: fishery_process
+    limit: 1
+    cost: 25000.0
+    upkeep: 1000.0
+    hammer_cost: 4500.0
+    points: 10000
+    max_hitpoints: 375
 #
   - id: ti_fishing_boat
     template: fishingboats
@@ -671,7 +832,7 @@ structures:
     require_tech: 'tech_fermentation'
     effect_event: process_lab
     tile_improvement: true
-    limit: 0
+    limit: 3
     cost: 25000.0
     upkeep: 1000.0
     hammer_cost: 1000.0
@@ -686,7 +847,7 @@ structures:
         - name: 'AttributeStatic'
           type: 'direct'
           attribute: 'CULTURE'
-          value: '2.0'
+          value: '1.0'
 #
   - id: s_library
     template: library
@@ -756,7 +917,7 @@ structures:
     require_tech: 'tech_religion'
     limit: 1
     cost: 25000.0
-    upkeep: 1000.0
+    upkeep: 750.0
     hammer_cost: 1000.0
     points: 1500
     max_hitpoints: 200
@@ -791,8 +952,8 @@ structures:
     update_event: quarry_process
     limit: 1
     cost: 25000.0
-    upkeep: 1250.0
-    hammer_cost: 4000.0
+    upkeep: 1000.0
+    hammer_cost: 4500.0
     points: 10000
     max_hitpoints: 375
 #
@@ -909,6 +1070,31 @@ structures:
     hammer_cost: 2000.0
     points: 3500
     max_hitpoints: 500
+#
+  - id: ti_trade_ship
+    template: trade_ship
+    template_y_shift: -5
+    displayName: Trade Ship
+    require_tech: 'tech_cargo'
+    require_structure: 's_shipyard'
+    effect_event: process_trade_ship
+    ignore_floating: true
+    limit: 1
+    cost: 50000.0
+    upkeep: 1500.0
+    hammer_cost: 7500.0
+    points: 7500
+    max_hitpoints: 500
+    components:
+        - name: 'AttributeStatic'
+          type: 'direct'
+          attribute: 'HAPPINESS'
+          value: '3.0'
+        - name: 'AttributeStatic'
+          type: 'direct'
+          attribute: 'CULTURE'
+          value: '5.0'
+        - name: 'TradeLevelComponent'
 #
   - id: s_trommel
     template: trommel

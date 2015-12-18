@@ -53,7 +53,6 @@ public class ChangeGovernmentTimer implements Runnable {
 				}
 			
 				if (CivGlobal.hasTimeElapsed(se, (Integer)CivSettings.getIntegerGovernment("anarchy_duration")*duration)) {
-
 					civ.setGovernment(se.value);
 					CivMessage.global(civ.getName()+" has emerged from anarchy and has adopted "+CivSettings.governments.get(se.value).displayName);
 					
@@ -63,5 +62,4 @@ public class ChangeGovernmentTimer implements Runnable {
 			}
 		}		
 	}
-
 }

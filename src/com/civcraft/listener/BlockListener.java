@@ -1334,11 +1334,11 @@ public class BlockListener implements Listener {
 		if (event.getEntity().getType().equals(EntityType.ZOMBIE) ||
 			event.getEntity().getType().equals(EntityType.SKELETON) ||
 			event.getEntity().getType().equals(EntityType.BAT) ||
-			event.getEntity().getType().equals(EntityType.CAVE_SPIDER) ||
+//			event.getEntity().getType().equals(EntityType.CAVE_SPIDER) ||
 			event.getEntity().getType().equals(EntityType.SPIDER) ||
 			event.getEntity().getType().equals(EntityType.CREEPER) ||
 			event.getEntity().getType().equals(EntityType.WOLF) ||
-			event.getEntity().getType().equals(EntityType.SILVERFISH) ||
+//			event.getEntity().getType().equals(EntityType.SILVERFISH) ||
 			event.getEntity().getType().equals(EntityType.OCELOT) ||
 			event.getEntity().getType().equals(EntityType.WITCH) ||
 			event.getEntity().getType().equals(EntityType.ENDERMAN)) {

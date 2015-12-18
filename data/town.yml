@@ -437,7 +437,132 @@ upgrades:
       require_structure: 's_library'
       category: 'Library'
     #Library Level 1 Enchantments
-    # COMING SOON
+    - id: 'research_looting_1'
+      name: 'Research Looting I'
+      action: 'enable_library_enchantment, Looting, 1, 25'
+      cost: 50.0
+      require_structure: 's_library'
+      category: 'Library'
+#
+    - id: 'research_efficiency_1'
+      name: 'Research Efficiency I'
+      action: 'enable_library_enchantment, Efficiency, 1, 25'
+      cost: 50.0
+      require_structure: 's_library'
+      category: 'Library'
+#
+    - id: 'research_lure_1'
+      name: 'Research Lure I'
+      action: 'enable_library_enchantment, Lure, 1, 250'
+      cost: 500.0
+      require_structure: 's_library'
+      category: 'Library'
+    #Library Level 2 Enchantments
+    - id: 'research_efficiency_2'
+      name: 'Research Efficiency II'
+      action: 'enable_library_enchantment, Efficiency, 2, 75'
+      cost: 150.0
+      require_upgrade: 'upgrade_library_level_2'
+      require_structure: 's_library'
+      category: 'Library'
+#
+    - id: 'research_feather_falling_1'
+      name: 'Research Feather Falling I'
+      action: 'enable_library_enchantment, Feather_Falling, 1, 1250'
+      cost: 2500.0
+      require_upgrade: 'upgrade_library_level_2'
+      require_structure: 's_library'
+      category: 'Library'
+#
+    - id: 'research_silk_touch'
+      name: 'Research Silk Touch'
+      action: 'enable_library_enchantment, Silk_Touch, 1, 750'
+      cost: 1500.0
+      require_upgrade: 'upgrade_library_level_2'
+      require_structure: 's_library'
+      category: 'Library'
+#
+    - id: 'research_fortune_1'
+      name: 'Research Fortune I'
+      action: 'enable_library_enchantment, Fortune, 1, 5000'
+      cost: 10000.0
+      require_upgrade: 'upgrade_library_level_2'
+      require_structure: 's_library'
+      category: 'Library'
+    #Library Level 3 Enchantments
+    - id: 'research_efficiency_3'
+      name: 'Research Efficiency III'
+      action: 'enable_library_enchantment, Efficiency, 3, 250'
+      cost: 500.0
+      require_upgrade: 'upgrade_library_level_3'
+      require_structure: 's_library'
+      category: 'Library'
+#
+    - id: 'research_lure_2'
+      name: 'Research Lure II'
+      action: 'enable_library_enchantment, Lure, 2, 1000'
+      cost: 2000.0
+      require_upgrade: 'upgrade_library_level_3'
+      require_structure: 's_library'
+      category: 'Library'
+#
+    - id: 'research_soulbound'
+      name: 'Research SoulBound'
+      action: 'enable_library_enchantment, LoreEnhancementSoulBound, 1, 25000'
+      cost: 50000.0
+      require_upgrade: 'upgrade_library_level_3'
+      require_tech:
+      require_structure: 's_library'
+      category: 'Library'
+#
+    - id: 'research_punchout_1'
+      name: 'Research Punchout I'
+      action: 'enable_library_enchantment, LoreEnhancementPunchoutI, 1, 40000'
+      cost: 80000.0
+      require_upgrade: 'upgrade_library_level_3'
+      require_tech:
+      require_structure: 's_library'
+      category: 'Library'
+    #Library Level 4 Enchantments
+    - id: 'research_looting_2'
+      name: 'Research Looting II'
+      action: 'enable_library_enchantment, Looting, 2, 250'
+      cost: 500.0
+      require_upgrade: 'upgrade_library_level_4'
+      require_structure: 's_library'
+      category: 'Library'
+#
+    - id: 'research_efficiency_4'
+      name: 'Research Efficiency IV'
+      action: 'enable_library_enchantment, Efficiency, 4, 750'
+      cost: 1500.0
+      require_upgrade: 'upgrade_library_level_4'
+      require_structure: 's_library'
+      category: 'Library'
+#
+    - id: 'research_efficiency_5'
+      name: 'Research Efficiency V'
+      action: 'enable_library_enchantment, Efficiency, 5, 2500'
+      cost: 5000.0
+      require_upgrade: 'research_efficiency_4'
+      require_structure: 's_library'
+      category: 'Library'
+#
+    - id: 'research_feather_falling_2'
+      name: 'Research Feather Falling II'
+      action: 'enable_library_enchantment, Feather_Falling, 2, 2500'
+      cost: 5000.0
+      require_upgrade: 'upgrade_library_level_4'
+      require_structure: 's_library'
+      category: 'Library'
+#
+    - id: 'research_fortune_2'
+      name: 'Research Fortune II'
+      action: 'enable_library_enchantment, Fortune, 1, 15000'
+      cost: 30000.0
+      require_upgrade: 'upgrade_library_level_4'
+      require_structure: 's_library'
+      category: 'Library'
 # Grocer upgrades
     - id: 'upgrade_grocer_level_2'
       name: 'Upgrade Grocer Level 2'
@@ -464,6 +589,68 @@ upgrades:
       require_tech: 'tech_commerce'
       require_structure: 's_grocer'
       category: 'Grocer'
+# Pasture upgrades
+    - id: 'upgrade_pasture_level_2'
+      name: 'Upgrade Pasture Level 2'
+      action: 'set_pasture_level, 2'
+      cost: 10000.0
+      require_tech: 'tech_animal_husbandry'
+      require_structure: 'ti_pasture'
+      category: 'Pasture'
+#
+    - id: 'upgrade_pasture_level_3'
+      name: 'Upgrade Pasture Level 3'
+      action: 'set_pasture_level, 3'
+      cost: 25000.0
+      require_upgrade: 'upgrade_pasture_level_2'
+      require_tech: 'tech_breeding'
+      require_structure: 'ti_pasture'
+      category: 'Pasture'
+#
+    - id: 'upgrade_pasture_level_4'
+      name: 'Upgrade Pasture Level 4'
+      action: 'set_pasture_level, 4'
+      cost: 40000.0
+      require_upgrade: 'upgrade_pasture_level_3'
+      require_tech: 'tech_breeding'
+      require_structure: 'ti_pasture'
+      category: 'Pasture'
+#
+    - id: 'upgrade_pasture_level_5'
+      name: 'Upgrade Pasture Level 5'
+      action: 'set_pasture_level, 5'
+      cost: 55000.0
+      require_upgrade: 'upgrade_pasture_level_4'
+      require_tech: 'tech_nurturing'
+      require_structure: 'ti_pasture'
+      category: 'Pasture'
+#
+    - id: 'upgrade_pasture_level_6'
+      name: 'Upgrade Pasture Level 6'
+      action: 'set_pasture_level, 6'
+      cost: 70000.0
+      require_upgrade: 'upgrade_pasture_level_5'
+      require_tech: 'tech_nurturing'
+      require_structure: 'ti_pasture'
+      category: 'Pasture'
+#
+    - id: 'upgrade_pasture_level_7'
+      name: 'Upgrade Pasture Level 7'
+      action: 'set_pasture_level, 7'
+      cost: 150000.0
+      require_upgrade: 'upgrade_pasture_level_6'
+      require_tech: 'tech_genetics'
+      require_structure: 'ti_pasture'
+      category: 'Pasture'
+#
+    - id: 'upgrade_pasture_level_8'
+      name: 'Upgrade Pasture Level 8'
+      action: 'set_pasture_level, 8'
+      cost: 500000.0
+      require_upgrade: 'upgrade_pasture_level_7'
+      require_tech: 'tech_genetics'
+      require_structure: 'ti_pasture'
+      category: 'Pasture'
 # Trommel Upgrades
     - id: 'upgrade_trommel_level_2'
       name: 'Upgrade Trommel Level 2'
@@ -516,4 +703,30 @@ upgrades:
       require_tech: 'tech_specialization'
       require_structure: 's_quarry'
       category: 'Quarry'
+# Fishery Upgrades
+    - id: 'upgrade_fishery_level_2'
+      name: 'Upgrade Fishery Level 2'
+      action: 'set_quarry_level, 2'
+      cost: 5000.0
+      require_tech: 'tech_advanced_fortification'
+      require_structure: 'ti_fishery'
+      category: 'Fishery'
+#
+    - id: 'upgrade_fishery_level_3'
+      name: 'Upgrade Fishery Level 3'
+      action: 'set_fishery_level, 3'
+      cost: 17500.0
+      require_upgrade: 'upgrade_fishery_level_2'
+      require_tech: 'tech_advanced_fortification'
+      require_structure: 'ti_fishery'
+      category: 'Fishery'
+#
+    - id: 'upgrade_fishery_level_4'
+      name: 'Upgrade Fishery Level 4'
+      action: 'set_fishery_level, 4'
+      cost: 25000.0
+      require_upgrade: 'upgrade_fishery_level_3'
+      require_tech: 'tech_advanced_fortification'
+      require_structure: 'ti_fishery'
+      category: 'Fishery'
 #

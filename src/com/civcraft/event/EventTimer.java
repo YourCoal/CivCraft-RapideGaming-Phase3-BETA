@@ -107,10 +107,18 @@ public class EventTimer {
 			e.printStackTrace();
 		}
 		
-		/* Setup Hourly tick event 5 (Runs culture). */
+		/* Setup Hourly tick event 5 (Runs trade ships). */
 		try {
 			HourlyTickEventMinute5 hourlyTickEvent5 = new HourlyTickEventMinute5();
 			new EventTimer("hourly5", hourlyTickEvent5, hourlyTickEvent5.getNextDate());
+		} catch (InvalidConfiguration e) {
+			e.printStackTrace();
+		}
+		
+		/* Setup Hourly tick event 6 (Runs culture). */
+		try {
+			HourlyTickEventMinute6 hourlyTickEvent6 = new HourlyTickEventMinute6();
+			new EventTimer("hourly6", hourlyTickEvent6, hourlyTickEvent6.getNextDate());
 		} catch (InvalidConfiguration e) {
 			e.printStackTrace();
 		}
@@ -119,6 +127,14 @@ public class EventTimer {
 		try {
 			SpawnRegenEvent spawnRegenEvent = new SpawnRegenEvent();
 			new EventTimer("spawn-regen", spawnRegenEvent, spawnRegenEvent.getNextDate());
+		} catch (InvalidConfiguration e) {
+			e.printStackTrace();
+		}
+		
+		/* Disable commands before war event. */
+		try {
+			ToggleCommandsEvent discom = new ToggleCommandsEvent();
+			new EventTimer("toggle-cmds", discom, discom.getNextDate());
 		} catch (InvalidConfiguration e) {
 			e.printStackTrace();
 		}

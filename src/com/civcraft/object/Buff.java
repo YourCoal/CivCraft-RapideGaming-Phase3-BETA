@@ -1,21 +1,3 @@
-/*************************************************************************
- * 
- * AVRGAMING LLC
- * __________________
- * 
- *  [2013] AVRGAMING LLC
- *  All Rights Reserved.
- * 
- * NOTICE:  All information contained herein is, and remains
- * the property of AVRGAMING LLC and its suppliers,
- * if any.  The intellectual and technical concepts contained
- * herein are proprietary to AVRGAMING LLC
- * and its suppliers and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material
- * is strictly forbidden unless prior written permission is obtained
- * from AVRGAMING LLC.
- */
 package com.civcraft.object;
 
 import java.text.DecimalFormat;
@@ -26,6 +8,11 @@ import com.civcraft.config.ConfigBuff;
 public class Buff {
 	
 	/* Quick redefines for id/name from yml. */
+	public static final String ADVANCED_MINING = "buff_advanced_mining";
+	public static final String ADVANCED_TESTING = "buff_advanced_testing";
+	public static final String ADVANCED_WATER_TRADING = "buff_advanced_water_trading";
+	public static final String FEEDING = "buff_feeding";
+	
 	public static final String FINE_ART = "buff_fine_art";
 	public static final String CONSTRUCTION = "buff_construction";
 	public static final String GROWTH_RATE = "buff_year_of_plenty";
@@ -34,8 +21,6 @@ public class Buff {
 	public static final String SCIENCE_RATE = "buff_innovation";
 	public static final String EXTRA_CULTURE = "buff_doesnotexist";
 	public static final String COTTAGE_RATE = "buff_doesnotexist";
-	public static final String ADVANCED_MINING = "buff_advanced_mining";
-	public static final String ADVANCED_TESTING = "buff_advanced_testing";
 	public static final String BARRICADE = "buff_barricade";
 	public static final String BARTER = "buff_barter";
 	public static final String EXTRACTION = "buff_extraction";

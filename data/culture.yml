@@ -4,11 +4,11 @@ culture_levels:
    chunks: 5
 #
  - level: 1
-   amount: 175
+   amount: 225
    chunks: 7
 #  
  - level: 2
-   amount: 400
+   amount: 500
    chunks: 9
 #
  - level: 3

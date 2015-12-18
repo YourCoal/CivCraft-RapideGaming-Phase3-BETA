@@ -8,6 +8,7 @@ import com.civcraft.main.CivGlobal;
 import com.civcraft.structure.Structure;
 import com.civcraft.threading.CivAsyncTask;
 import com.civcraft.threading.TaskMaster;
+import com.civcraft.threading.tasks.FisheryAsyncTask;
 import com.civcraft.threading.tasks.QuarryAsyncTask;
 import com.civcraft.util.BlockCoord;
 
@@ -37,11 +38,11 @@ public class RandomStructureTimer extends CivAsyncTask {
 								continue;
 							}
 							TaskMaster.asyncTask("quarry-"+struct.getCorner().toString(), new QuarryAsyncTask(struct), 0);
-//						} else if (struct.getUpdateEvent().equals("fish_hatchery_process")) {
-//							if (!CivGlobal.fisheryEnabled) {
-//								continue;
-//							}
-//							TaskMaster.asyncTask("fishHatchery-"+struct.getCorner().toString(), new FisheryAsyncTask(struct), 0);
+						} else if (struct.getUpdateEvent().equals("fishery_process")) {
+							if (!CivGlobal.fisheriesEnabled) {
+								continue;
+							}
+							TaskMaster.asyncTask("fishery-"+struct.getCorner().toString(), new FisheryAsyncTask(struct), 0);
 						}
 					}
 					struct.onUpdate();

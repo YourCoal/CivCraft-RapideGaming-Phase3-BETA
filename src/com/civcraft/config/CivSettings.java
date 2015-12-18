@@ -92,11 +92,14 @@ public class CivSettings {
 	public static FileConfiguration structureConfig; /* structures.yml */
 	public static Map<String, ConfigBuildableInfo> structures = new HashMap<String, ConfigBuildableInfo>();
 	public static Map<Integer, ConfigGrocerLevel> grocerLevels = new HashMap<Integer, ConfigGrocerLevel>();
+	public static Map<Integer, ConfigPastureLevel> pastureLevels = new HashMap<Integer, ConfigPastureLevel>();
 	public static Map<Integer, ConfigCottageLevel> cottageLevels = new HashMap<Integer, ConfigCottageLevel>();
 	public static ArrayList<ConfigTempleSacrifice> templeSacrifices = new ArrayList<ConfigTempleSacrifice>();
 	public static Map<Integer, ConfigTempleLevel> templeLevels = new HashMap<Integer, ConfigTempleLevel>();
 	public static Map<Integer, ConfigMineLevel> mineLevels = new HashMap<Integer, ConfigMineLevel>();
 	public static Map<Integer, ConfigLabLevel> labLevels = new HashMap<Integer, ConfigLabLevel>();
+	public static Map<Integer, ConfigTradeShipLevel> tradeShipLevels = new HashMap<Integer, ConfigTradeShipLevel>();
+	public static Map<Integer, ConfigTradeShipyardLevel> tradeShipyardLevels = new HashMap<Integer, ConfigTradeShipyardLevel>();
 	
 	public static FileConfiguration wonderConfig; /* wonders.yml */
 	public static Map<String, ConfigBuildableInfo> wonders = new HashMap<String, ConfigBuildableInfo>();
@@ -216,7 +219,6 @@ public class CivSettings {
 		Perk.init();
 		Unit.init();
 		
-		
 		CivSettings.normal_speed = 0.2f;	
 		
 		for (Object obj : civConfig.getList("global.start_kit")) {
@@ -224,7 +226,6 @@ public class CivSettings {
 				kitItems.add((String)obj);
 			}
 		}
-		
 		
 		CivGlobal.banWords.add("fuck");
 		CivGlobal.banWords.add("shit");
@@ -344,6 +345,11 @@ public class CivSettings {
 	}
 
 	private static void loadConfigObjects() throws InvalidConfiguration {
+		//Added in round 3
+		ConfigPastureLevel.loadConfig(structureConfig, pastureLevels);
+		ConfigTradeShipLevel.loadConfig(structureConfig, tradeShipLevels);
+		ConfigTradeShipyardLevel.loadConfig(structureConfig, tradeShipyardLevels);
+		//Vanilla
 		ConfigTownLevel.loadConfig(townConfig, townLevels);
 		ConfigTownUpgrade.loadConfig(townConfig, townUpgrades);
 		ConfigCultureLevel.loadConfig(cultureConfig, cultureLevels);
@@ -381,7 +387,6 @@ public class CivSettings {
 		ConfigPlatinumReward.loadConfig(civConfig, platinumRewards);
 		ConfigValidMod.loadConfig(nocheatConfig, validMods);
 		ConfigFishing.loadConfig(fishingConfig, fishingDrops);
-	
 		ConfigRemovedRecipes.removeRecipes(materialsConfig, removedRecipies);
 		CivGlobal.preGenerator.preGenerate();
 		Wall.init_settings();

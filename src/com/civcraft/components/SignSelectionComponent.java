@@ -130,7 +130,4 @@ public class SignSelectionComponent extends Component {
 		}
 		updateActionSign();
 	}
-	
-	
-	
 }

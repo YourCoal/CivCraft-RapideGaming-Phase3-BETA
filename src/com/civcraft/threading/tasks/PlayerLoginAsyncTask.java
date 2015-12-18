@@ -57,7 +57,6 @@ public class PlayerLoginAsyncTask implements Runnable {
 		if (player == null) {
 			throw new CivException("Player offline now. May have been kicked.");
 		}
-		
 		return player;
 	}
 	
@@ -165,18 +164,19 @@ public class PlayerLoginAsyncTask implements Runnable {
 					String relationName = status.name();
 					
 					if (War.isWarTime() && status.equals(Relation.Status.WAR)) {
-						/* 
-						 * Test for players who were not logged in when war time started.
+						/* Test for players who were not logged in when war time started.
 						 * If they were not logged in, they are enemies, and are inside our borders
-						 * they need to be teleported back to their own town hall.
-						 */
+						 * they need to be teleported back to their own town hall. */
 						
 						if (resident.getLastOnline() < War.getStart().getTime()) {
 							resident.teleportHome();
 							CivMessage.send(resident, CivColor.LightGray+"You've been teleported back to your home since you've logged into enemy during WarTime.");
 						}
 					}
-					
+					else if (!status.equals(Relation.Status.ALLY) && !status.equals(Relation.Status.PEACE) && !status.equals(Relation.Status.NEUTRAL)) {
+						resident.teleportHome();
+						CivMessage.send(resident, CivColor.LightGray+"You were teleported to your town hall because you logged into enemy borders.");
+					}
 					CivMessage.sendCiv(cc.getCiv(), color+getPlayer().getDisplayName()+"("+relationName+") has logged-in to our borders.");
 				}
 			}

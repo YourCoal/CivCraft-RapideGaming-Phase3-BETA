@@ -103,6 +103,9 @@ public class Town extends SQLObject {
 	private Civilization motherCiv;
 	private int daysInDebt;
 	
+	/* Beakers */
+	private double baseBeakers = 1.0;
+	
 	/* Hammers */
 	private double baseHammers = 1.0;
 	private double extraHammers;
@@ -148,6 +151,8 @@ public class Town extends SQLObject {
 	
 	/* XXX kind of a hacky way to save the bank's level information between build undo calls */
 	public int saved_nuclear_plant_level = 1;
+	public int saved_trade_shipyard_upgrade_level = 1;
+	public int saved_fishery_level = 1;
 	public int saved_quarry_level = 1;
 	public int saved_trommel_level = 1;
 	public int saved_bank_level = 1;
@@ -174,7 +179,7 @@ public class Town extends SQLObject {
 	}
 	public HashMap<String, AttrCache> attributeCache = new HashMap<String, AttrCache>();
 	
-	private double baseGrowth = 0.0;
+	private double baseGrowth = 1.0;
 	
 	public static final String TABLE_NAME = "TOWNS";
 	public static void init() throws SQLException {
@@ -484,8 +489,7 @@ public class Town extends SQLObject {
 			throw new AlreadyRegisteredException(res.getName()+" already a member of town "+this.getName());
 		}
 		
-		res.setTown(this);				
-		
+		res.setTown(this);
 		residents.put(key, res);
 		if (this.defaultGroup != null && !this.defaultGroup.hasMember(res)) {
 			this.defaultGroup.addMember(res);
@@ -775,6 +779,14 @@ public class Town extends SQLObject {
 
 	public void setHammerRate(double hammerRate) {
 		this.baseHammers = hammerRate;
+	}
+	
+	public void setBeakerRate(double beakerRate) {
+		this.baseBeakers = beakerRate;
+	}
+	
+	public void setGrowthRate(double growthRate) {
+		this.baseGrowth = growthRate;
 	}
 	
 	public static Town newTown(Resident resident, String name, Civilization civ, boolean free, boolean capitol, 
@@ -2658,6 +2670,9 @@ public class Town extends SQLObject {
 		beakers += fromStructures;
 		sources.put("Structures", fromStructures);
 		
+		sources.put("Base Beakers", baseBeakers);
+		beakers += baseBeakers;
+		
 		/* Grab any extra beakers from buffs. */
 		double wondersTrade = 0;
 		
@@ -3185,7 +3200,4 @@ public class Town extends SQLObject {
 	public Collection<Buildable> getDisabledBuildables() {
 		return this.disabledBuildables.values();
 	}
-
-
-
 }

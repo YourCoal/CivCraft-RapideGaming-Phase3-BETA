@@ -163,9 +163,9 @@ governments:
    require_tech:
    trade_rate: 0.5
    cottage_rate: 0.5
-   upkeep_rate: 1.25
-   hammer_rate: 1.75
-   beaker_rate: 1.75
+   upkeep_rate: 1.75
+   hammer_rate: 1.5
+   beaker_rate: 1.5
    growth_rate: 1.15
    culture_rate: 1.15
    maximum_tax_rate: 0.5

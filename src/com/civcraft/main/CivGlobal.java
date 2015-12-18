@@ -176,7 +176,9 @@ public class CivGlobal {
 	private static SessionDatabase sdb;
 	
 	public static boolean quarriesEnabled = true;
+	public static boolean fisheriesEnabled = true;
 	public static boolean trommelsEnabled = true;
+	
 	public static boolean towersEnabled = true;
 	public static boolean growthEnabled = true;
 	public static Boolean banWordsAlways = false;
@@ -1164,7 +1166,7 @@ public class CivGlobal {
 	}
 	
 	public static Date getNextLastHourlyTickDate() {
-		EventTimer hourly = EventTimer.timers.get("hourly5");
+		EventTimer hourly = EventTimer.timers.get("hourly6");
 		return hourly.getNext().getTime();
 	}
 

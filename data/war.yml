@@ -6,9 +6,12 @@ war:
     # Number of hours between wars. [time_length + (hours of rest)]
     # 166 + 2 is 168 (exactly 1 week since start of last war)
     time_war_repeat: 166
-    # Days of the week that war-time will occur
+    # When TP is disabled
+    disable_tp_time_day: 7
+    disable_tp_time_hour: 10
+    disable_tp_time_halfhour: 30
+    # When war begins
     time_day: 7
-    # Hour of the day that war-time will start
     time_hour: 12
     # Days before war time that towns are no longer allowed to declare war
     time_declare_days: 3
@@ -69,11 +72,11 @@ arrow_tower:
     # Min-range watch tower will target players at
     min_range: 8.0
     # power of watch tower (basically arrow speed)
-    power: 2.5
+    power: 2.0
     # how fast each arrow is fired in seconds.
-    fire_rate: 1.2
+    fire_rate: 0.8
     # Distance before homing stops.
-    homing_stop_distance: 8.0
+    homing_stop_distance: 5.0
 
 cannon_tower:
     # Damage done by cannon blast

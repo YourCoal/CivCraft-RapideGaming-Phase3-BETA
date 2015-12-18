@@ -23,15 +23,32 @@ import com.civcraft.util.ItemManager;
 
 public class CivTutorial {
 	
+	public static Inventory elementInfoInventory = null;
 	public static Inventory serverInfoInventory = null;
 	public static Inventory tutorialInventory = null;
 	public static Inventory craftingHelpInventory = null;
 	public static Inventory guiInventory = null;
 	public static final int MAX_CHEST_SIZE = 6;
 	
+	public static void showElementInventory(Player player) {	
+		if (elementInfoInventory == null) {
+			elementInfoInventory = Bukkit.getServer().createInventory(player, 9*2, "Element Information");
+			
+			elementInfoInventory.setItem(0, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"What Are Elements?", ItemManager.getId(Material.PAPER), 0, 
+				ChatColor.RESET+"Coming soon"
+			));
+			
+			LoreGuiItemListener.guiInventories.put(elementInfoInventory.getName(), elementInfoInventory);
+		}
+		
+		if (player != null && player.isOnline() && player.isValid()) {
+			player.openInventory(elementInfoInventory);	
+		}
+	}
+	
 	public static void showServerInfoInventory(Player player) {	
 		if (serverInfoInventory == null) {
-			serverInfoInventory = Bukkit.getServer().createInventory(player, 9*2, "Server Links");
+			serverInfoInventory = Bukkit.getServer().createInventory(player, 9*1, "Server Links");
 			
 			serverInfoInventory.setItem(0, LoreGuiItem.build(CivColor.LightBlue+ChatColor.BOLD+"Website", ItemManager.getId(Material.PAPER), 0, 
 				ChatColor.RESET+"http://rapidegaming.enjin.com/"
@@ -164,7 +181,8 @@ public class CivTutorial {
 	
 	public static void showCraftingHelp(Player player) {
 		if (craftingHelpInventory == null) {
-			craftingHelpInventory = Bukkit.getServer().createInventory(player, MAX_CHEST_SIZE*9, "CivCraft Custom Item Recipes");
+			//craftingHelpInventory = Bukkit.getServer().createInventory(player, MAX_CHEST_SIZE*9, "CivCraft Custom Item Recipes");
+			craftingHelpInventory = Bukkit.getServer().createInventory(player, 4*9, "CivCraft Custom Item Recipes");
 			
 			/* Build the Category Inventory. */
 			for (ConfigMaterialCategory cat : ConfigMaterialCategory.getCategories()) {
@@ -185,6 +203,10 @@ public class CivTutorial {
 					identifier = ItemManager.getId(Material.CHAINMAIL_LEGGINGS);
 				} else if (cat.name.contains("Gear Tier 4")) {
 					identifier = ItemManager.getId(Material.DIAMOND_BOOTS);
+				} else if (cat.name.contains("Fish")) {
+					identifier = ItemManager.getId(Material.RAW_FISH);
+				} else if (cat.name.contains("Dyes")) {
+					identifier = ItemManager.getId(Material.BOWL);
 				} else if (cat.name.contains("Special")) {
 					identifier = ItemManager.getId(Material.BEACON);
 				} else if (cat.name.contains("Tier 1 Material")) {
@@ -247,7 +269,7 @@ public class CivTutorial {
 			guiInventory.addItem(serverLinks);
 			
 			//XXX Filler
-			ItemStack filler = LoreGuiItem.build("", ItemManager.getId(Material.WOOD_BUTTON), 
+			ItemStack filler = LoreGuiItem.build("", ItemManager.getId(Material.STONE_BUTTON), 
 					0, CivColor.Gold+"");
 			guiInventory.addItem(filler);
 			LoreGuiItemListener.guiInventories.put(guiInventory.getName(), guiInventory);
@@ -260,31 +282,32 @@ public class CivTutorial {
 			LoreGuiItemListener.guiInventories.put(guiInventory.getName(), guiInventory);
 			
 			//XXX Filler
-			ItemStack filler1 = LoreGuiItem.build("", ItemManager.getId(Material.WOOD_BUTTON),
+			ItemStack filler1 = LoreGuiItem.build("", ItemManager.getId(Material.STONE_BUTTON),
 					0, CivColor.Gold+" ");
 			guiInventory.addItem(filler1);
 			LoreGuiItemListener.guiInventories.put(guiInventory.getName(), guiInventory);
 			//XXX Filler
-			ItemStack filler2 = LoreGuiItem.build("", ItemManager.getId(Material.WOOD_BUTTON), 
+			ItemStack filler2 = LoreGuiItem.build("", ItemManager.getId(Material.STONE_BUTTON), 
 					0, CivColor.Gold+"  ");
 			guiInventory.addItem(filler2);
 			LoreGuiItemListener.guiInventories.put(guiInventory.getName(), guiInventory);
 			//XXX Filler
-			ItemStack filler3 = LoreGuiItem.build("", ItemManager.getId(Material.WOOD_BUTTON),
+			ItemStack filler3 = LoreGuiItem.build("", ItemManager.getId(Material.STONE_BUTTON),
 					0, CivColor.Gold+"   ");
 			guiInventory.addItem(filler3);
 			LoreGuiItemListener.guiInventories.put(guiInventory.getName(), guiInventory);
-			//XXX Filler
-			ItemStack filler4 = LoreGuiItem.build("", ItemManager.getId(Material.WOOD_BUTTON),
-					0, CivColor.Gold+"    ");
-			guiInventory.addItem(filler4);
-			LoreGuiItemListener.guiInventories.put(guiInventory.getName(), guiInventory);
 			
 			ItemStack dynmapRec = LoreGuiItem.build("Collecting Elements", ItemManager.getId(Material.EXP_BOTTLE), 
-					0, CivColor.Gold+"<Click To View>");
+					0, CivColor.Gold+"<Click To Learn>");
 			dynmapRec = LoreGuiItem.setAction(dynmapRec, "OpenInventory");
 			dynmapRec = LoreGuiItem.setActionData(dynmapRec, "invType", "showElementInfo");
 			guiInventory.addItem(dynmapRec);
+			LoreGuiItemListener.guiInventories.put(guiInventory.getName(), guiInventory);
+			
+			//XXX Filler
+			ItemStack filler4 = LoreGuiItem.build("", ItemManager.getId(Material.STONE_BUTTON),
+					0, CivColor.Gold+"    ");
+			guiInventory.addItem(filler4);
 			LoreGuiItemListener.guiInventories.put(guiInventory.getName(), guiInventory);
 		}
 		player.openInventory(guiInventory);

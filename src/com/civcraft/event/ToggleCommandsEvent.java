@@ -45,9 +45,9 @@ public class ToggleCommandsEvent implements EventInterface {
 	}
 	
 	public static void disableTeleport() {
-		File file = new File("TPDisable.yml");
+		File file = new File(CivSettings.plugin.getDataFolder().getPath()+"/data/TPDisable.yml");
 		if (!file.exists()) {
-			CivLog.warning("No TPDisable.yml to run commands from");
+			CivLog.warning("No TPDisable.yml to run commands from.");
 			return;
 		}
 		
@@ -72,9 +72,9 @@ public class ToggleCommandsEvent implements EventInterface {
 	}
 	
 	public static void enableTeleport() {
-		File file = new File("TPEnable.yml");
+		File file = new File(CivSettings.plugin.getDataFolder().getPath()+"/data/TPEnable.yml");
 		if (!file.exists()) {
-			CivLog.warning("No TPEnable.yml to run commands from");
+			CivLog.warning("No TPEnable.yml to run commands from.");
 			return;
 		}
 		

@@ -81,7 +81,8 @@ public class TownCommand extends CommandBase {
 		commands.put("leave", "leaves the town you are currently in.");
 		commands.put("show", "[name] show info for town of this name.");
 		commands.put("evict", "[name] - evicts the resident named from town");
-		commands.put("list", "shows a list of all towns in the world.");
+		commands.put("list", "shows a list of all towns in the world, with their civ names.");
+		commands.put("listraw", "shows a list of all towns in the world, without their civ names.");
 		commands.put("reset", "Resets certain structures, action depends on structure.");
 		commands.put("top5", "Shows the top 5 towns in the world.");
 		commands.put("disbandtown", "Disbands this town, requres leader to type disbandtown as well.");
@@ -468,17 +469,23 @@ public class TownCommand extends CommandBase {
 				}
 			}
 		}
-		
 	}
 	
 	public void list_cmd() {
 		String out = "";
-		
 		CivMessage.sendHeading(sender, "Towns in the World");
 		for (Town town : CivGlobal.getTowns()) {
 			out += town.getName()+"("+town.getCiv().getName()+")"+", ";
 		}
-		
+		CivMessage.send(sender, out);
+	}
+	
+	public void listraw_cmd() {
+		String out = "";
+		CivMessage.sendHeading(sender, "Towns in the World");
+		for (Town town : CivGlobal.getTowns()) {
+			out += town.getName()+", ";
+		}
 		CivMessage.send(sender, out);
 	}
 	
@@ -486,13 +493,11 @@ public class TownCommand extends CommandBase {
 		Civilization civ = getSenderCiv();
 		Town town = getSelectedTown();
 		Resident resident = getResident();
-		
 		if (args.length < 2) {
 			throw new CivException("Enter the name of who you want to evict.");
 		}
 		
 		Resident residentToKick = getNamedResident(1);
-		
 		if (residentToKick.getTown() != town) {
 			throw new CivException(args[1]+" is not a member of this town.");
 		}
@@ -508,7 +513,6 @@ public class TownCommand extends CommandBase {
 		
 		if (!residentToKick.isLandOwner()) {
 			town.removeResident(residentToKick);
-
 			try {
 				CivMessage.send(CivGlobal.getPlayer(residentToKick), CivColor.Yellow+"You have been evicted from town!");
 			} catch (CivException e) {

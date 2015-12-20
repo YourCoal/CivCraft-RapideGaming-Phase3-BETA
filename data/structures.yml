@@ -992,6 +992,7 @@ structures:
     displayName: Shipyard
     require_tech: 'tech_sailing'
     ignore_floating: true
+    update_event: process_shipyard_trade
     limit: 1
     cost: 25000.0
     upkeep: 1000.0
@@ -1070,31 +1071,6 @@ structures:
     hammer_cost: 2000.0
     points: 3500
     max_hitpoints: 500
-#
-  - id: ti_trade_ship
-    template: trade_ship
-    template_y_shift: -5
-    displayName: Trade Ship
-    require_tech: 'tech_cargo'
-    require_structure: 's_shipyard'
-    effect_event: process_trade_ship
-    ignore_floating: true
-    limit: 1
-    cost: 50000.0
-    upkeep: 1500.0
-    hammer_cost: 7500.0
-    points: 7500
-    max_hitpoints: 500
-    components:
-        - name: 'AttributeStatic'
-          type: 'direct'
-          attribute: 'HAPPINESS'
-          value: '3.0'
-        - name: 'AttributeStatic'
-          type: 'direct'
-          attribute: 'CULTURE'
-          value: '5.0'
-        - name: 'TradeLevelComponent'
 #
   - id: s_trommel
     template: trommel

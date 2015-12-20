@@ -306,12 +306,12 @@ techs:
      points: 6250
      require_techs: 'tech_inspection:tech_engineering'
 #
-   - id: 'tech_cargo'
-     name: 'Cargo'
-     beaker_cost: 62500.0
-     cost: 400000.0
-     points: 6250
-     require_techs: 'tech_trading'
+#   - id: 'tech_cargo'
+#     name: 'Cargo'
+#     beaker_cost: 62500.0
+#     cost: 400000.0
+#     points: 6250
+#     require_techs: 'tech_trading'
 #
    - id: 'tech_malting'
      name: 'Malting'

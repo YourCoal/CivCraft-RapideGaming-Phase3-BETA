@@ -331,7 +331,7 @@ public class QuarryAsyncTask extends CivAsyncTask {
 					continue;
 				}
 				
-				if (ItemManager.getId(stack) == CivData.WOOD_PICKAXE) {
+				if (this.quarry.getLevel() >= 2 && ItemManager.getId(stack) == CivData.WOOD_PICKAXE) {
 					try {
 						short damage = ItemManager.getData(stack);
 						this.updateInventory(Action.REMOVE, source_inv1, ItemManager.createItemStack(CivData.WOOD_PICKAXE, 1, damage));
@@ -452,7 +452,7 @@ public class QuarryAsyncTask extends CivAsyncTask {
 					continue;
 				}
 				
-				if (ItemManager.getId(stack) == CivData.GOLD_PICKAXE) {
+				if (this.quarry.getLevel() >= 2 && ItemManager.getId(stack) == CivData.GOLD_PICKAXE) {
 					try {
 						short damage = ItemManager.getData(stack);
 						this.updateInventory(Action.REMOVE, source_inv1, ItemManager.createItemStack(CivData.GOLD_PICKAXE, 1, damage));
@@ -534,7 +534,7 @@ public class QuarryAsyncTask extends CivAsyncTask {
 					continue;
 				}
 				
-				if (ItemManager.getId(stack) == CivData.WOOD_PICKAXE) {
+				if (this.quarry.getLevel() >= 3 && ItemManager.getId(stack) == CivData.WOOD_PICKAXE) {
 					try {
 						short damage = ItemManager.getData(stack);
 						this.updateInventory(Action.REMOVE, source_inv2, ItemManager.createItemStack(CivData.WOOD_PICKAXE, 1, damage));
@@ -573,7 +573,7 @@ public class QuarryAsyncTask extends CivAsyncTask {
 					continue;
 				}
 				
-				if (this.quarry.getLevel() >= 2 && ItemManager.getId(stack) == CivData.STONE_PICKAXE) {
+				if (this.quarry.getLevel() >= 3 && ItemManager.getId(stack) == CivData.STONE_PICKAXE) {
 					try {
 						short damage = ItemManager.getData(stack);
 						this.updateInventory(Action.REMOVE, source_inv2, ItemManager.createItemStack(CivData.STONE_PICKAXE, 1, damage));
@@ -655,7 +655,7 @@ public class QuarryAsyncTask extends CivAsyncTask {
 					continue;
 				}
 				
-				if (ItemManager.getId(stack) == CivData.GOLD_PICKAXE) {
+				if (this.quarry.getLevel() >= 3 && ItemManager.getId(stack) == CivData.GOLD_PICKAXE) {
 					try {
 						short damage = ItemManager.getData(stack);
 						this.updateInventory(Action.REMOVE, source_inv2, ItemManager.createItemStack(CivData.GOLD_PICKAXE, 1, damage));
@@ -737,7 +737,7 @@ public class QuarryAsyncTask extends CivAsyncTask {
 					continue;
 				}
 				
-				if (ItemManager.getId(stack) == CivData.WOOD_PICKAXE) {
+				if (this.quarry.getLevel() >= 4 && ItemManager.getId(stack) == CivData.WOOD_PICKAXE) {
 					try {
 						short damage = ItemManager.getData(stack);
 						this.updateInventory(Action.REMOVE, source_inv3, ItemManager.createItemStack(CivData.WOOD_PICKAXE, 1, damage));
@@ -776,7 +776,7 @@ public class QuarryAsyncTask extends CivAsyncTask {
 					continue;
 				}
 				
-				if (this.quarry.getLevel() >= 2 && ItemManager.getId(stack) == CivData.STONE_PICKAXE) {
+				if (this.quarry.getLevel() >= 4 && ItemManager.getId(stack) == CivData.STONE_PICKAXE) {
 					try {
 						short damage = ItemManager.getData(stack);
 						this.updateInventory(Action.REMOVE, source_inv3, ItemManager.createItemStack(CivData.STONE_PICKAXE, 1, damage));
@@ -817,7 +817,7 @@ public class QuarryAsyncTask extends CivAsyncTask {
 					continue;
 				}
 				
-				if (this.quarry.getLevel() >= 3 && ItemManager.getId(stack) == CivData.IRON_PICKAXE) {
+				if (this.quarry.getLevel() >= 4 && ItemManager.getId(stack) == CivData.IRON_PICKAXE) {
 					try {
 						short damage = ItemManager.getData(stack);
 						this.updateInventory(Action.REMOVE, source_inv3, ItemManager.createItemStack(CivData.IRON_PICKAXE, 1, damage));
@@ -858,7 +858,7 @@ public class QuarryAsyncTask extends CivAsyncTask {
 					continue;
 				}
 				
-				if (ItemManager.getId(stack) == CivData.GOLD_PICKAXE) {
+				if (this.quarry.getLevel() >= 4 && ItemManager.getId(stack) == CivData.GOLD_PICKAXE) {
 					try {
 						short damage = ItemManager.getData(stack);
 						this.updateInventory(Action.REMOVE, source_inv3, ItemManager.createItemStack(CivData.GOLD_PICKAXE, 1, damage));

@@ -55,10 +55,8 @@ public class CivMessage {
 			if (hashcode != null && hashcode == line.hashCode()) {
 				return;
 			}
-			
 			lastMessageHashCode.put(player.getName(), line.hashCode());
 		}
-		
 		send(sender, CivColor.Rose+line);
 	}
 	
@@ -66,9 +64,7 @@ public class CivMessage {
 		send(sender, CivColor.Rose+line);
 	}
 	
-	/*
-	 * Sends message to playerName(if online) AND console. 
-	 */
+	/* Sends message to playerName(if online) AND console. */
 	public static void console(String playerName, String line) {
 		try {
 			Player player = CivGlobal.getPlayer(playerName);

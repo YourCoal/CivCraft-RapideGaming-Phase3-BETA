@@ -14,13 +14,14 @@ import com.civcraft.exception.InvalidConfiguration;
 import com.civcraft.main.CivLog;
 import com.civcraft.main.CivMessage;
 import com.civcraft.util.CivColor;
+import com.civcraft.war.War;
 
 public class ToggleCommandsEvent implements EventInterface {
 
 	@Override
 	public void process() {
 		CivLog.info("TimerEvent: DisableTeleportEvent -------------------------------------");
-		disableTeleport();
+		disableCommands();
 	}
 
 	@Override
@@ -44,34 +45,39 @@ public class ToggleCommandsEvent implements EventInterface {
 		return cal;
 	}
 	
-	public static void disableTeleport() {
-		File file = new File(CivSettings.plugin.getDataFolder().getPath()+"/data/TPDisable.yml");
-		if (!file.exists()) {
-			CivLog.warning("No TPDisable.yml to run commands from.");
-			return;
-		}
-		
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(file));
-			String line;
+	public static void disableCommands() {
+		if (War.hasCurrentWars()) {
+			File file = new File(CivSettings.plugin.getDataFolder().getPath()+"/data/TPDisable.yml");
+			if (!file.exists()) {
+				CivLog.warning("No TPDisable.yml to run commands from.");
+				return;
+			}
+			
 			try {
-				CivMessage.globalHeading(CivColor.BOLD+"Some Commands have just been disabled");
-				CivMessage.globalHeading(CivColor.BOLD+"until after WarTime.");
-				while ((line = br.readLine()) != null) {
-					Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), line);
+				BufferedReader br = new BufferedReader(new FileReader(file));
+				String line;
+				try {
+					CivMessage.globalHeading(CivColor.BOLD+"Some Commands have just been disabled");
+					CivMessage.globalHeading(CivColor.BOLD+"until after WarTime.");
+					while ((line = br.readLine()) != null) {
+						Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), line);
+					}
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+					return;
 				}
-				br.close();
-			} catch (IOException e) {
+			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 				return;
 			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return;
+		} else {
+			CivMessage.globalHeading(CivColor.BOLD+"No commands have just been disabled");
+			CivMessage.globalHeading(CivColor.BOLD+"because no one is at war for WarTime.");
 		}
 	}
 	
-	public static void enableTeleport() {
+	public static void enableCommands() {
 		File file = new File(CivSettings.plugin.getDataFolder().getPath()+"/data/TPEnable.yml");
 		if (!file.exists()) {
 			CivLog.warning("No TPEnable.yml to run commands from.");
@@ -82,7 +88,7 @@ public class ToggleCommandsEvent implements EventInterface {
 			BufferedReader br = new BufferedReader(new FileReader(file));
 			String line;
 			try {
-				CivMessage.globalHeading(CivColor.BOLD+"Teleportation is now enabled.");
+				CivMessage.globalHeading(CivColor.BOLD+"All commands are now enabled.");
 				while ((line = br.readLine()) != null) {
 					Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), line);
 				}

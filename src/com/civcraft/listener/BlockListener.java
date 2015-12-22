@@ -70,6 +70,7 @@ import com.civcraft.camp.CampBlock;
 import com.civcraft.config.CivSettings;
 import com.civcraft.config.ConfigTempleSacrifice;
 import com.civcraft.exception.CivException;
+import com.civcraft.items.BonusGoodie;
 import com.civcraft.main.CivData;
 import com.civcraft.main.CivGlobal;
 import com.civcraft.main.CivLog;
@@ -93,6 +94,7 @@ import com.civcraft.structure.Wall;
 import com.civcraft.structure.farm.FarmChunk;
 import com.civcraft.threading.CivAsyncTask;
 import com.civcraft.threading.TaskMaster;
+import com.civcraft.threading.tasks.DelayItemDrop;
 import com.civcraft.threading.tasks.FireWorkTask;
 import com.civcraft.threading.tasks.StructureBlockHitEvent;
 import com.civcraft.util.BlockCoord;
@@ -119,8 +121,7 @@ public class BlockListener implements Listener {
 					if (sb != null) {
 						if (b.getType().isBurnable()) {
 							event.setCancelled(true);
-						}
-						return;
+						} return;
 					}
 					
 					RoadBlock rb = CivGlobal.getRoadBlock(bcoord);
@@ -276,7 +277,7 @@ public class BlockListener implements Listener {
 		if (tc == null) {
 			/* In the wilderness, anything goes. */
 			allowPVP = true;
-		} else {	
+		} else {
 			Player attacker = null;
 			if (event.getDamager() instanceof Player) {
 				attacker = (Player)event.getDamager();
@@ -314,7 +315,6 @@ public class BlockListener implements Listener {
 				CivMessage.sendError(attacker, denyMessage);
 				event.setCancelled(true);
 			} else {
-
 			}
 		}
 		return;
@@ -356,6 +356,7 @@ public class BlockListener implements Listener {
 			CivLog.warning("Canceling horse spawn reason:"+event.getSpawnReason().name());
 			event.setCancelled(true);
 		}
+		
 		coord.setFromLocation(event.getLocation());
 		TownChunk tc = CivGlobal.getTownChunk(coord);
 		if (tc == null) {
@@ -371,7 +372,7 @@ public class BlockListener implements Listener {
 				event.setCancelled(true);
 				return;
 			}
-		}		
+		}
 	}
 	
 	@EventHandler(priority = EventPriority.NORMAL)
@@ -484,8 +485,8 @@ public class BlockListener implements Listener {
 		StructureBlock sb = CivGlobal.getStructureBlock(bcoord);
 		if (sb != null) {
 			event.setCancelled(true);
-			CivMessage.sendError(event.getPlayer(), 
-					"This block belongs to a "+sb.getOwner().getDisplayName()+" and cannot be destroyed.");
+			CivMessage.sendError(event.getPlayer(), "This block belongs to a "+sb.getOwner().getDisplayName()
+					+" and cannot be destroyed.");
 			return;
 		}
 		
@@ -494,11 +495,10 @@ public class BlockListener implements Listener {
 			if (rb.isAboveRoadBlock()) {
 				if (resident.getCiv() != rb.getRoad().getCiv()) {
 					event.setCancelled(true);
-					CivMessage.sendError(event.getPlayer(), 
-							"Cannot place blocks "+(Road.HEIGHT-1)+" blocks above a road that does not belong to your civ.");
+					CivMessage.sendError(event.getPlayer(), "Cannot place blocks "+(Road.HEIGHT-1)
+							+" blocks above a road that does not belong to your civ.");
 				}
-			}
-			return;
+			} return;
 		}
 		
 		CampBlock cb = CivGlobal.getCampBlock(bcoord);
@@ -652,7 +652,6 @@ public class BlockListener implements Listener {
 		if (tc != null) {
 			if(!tc.perms.hasPermission(PlotPermissions.Type.DESTROY, resident)) {
 				event.setCancelled(true);
-
 				if (War.isWarTime() && resident.hasTown() && 
 						resident.getTown().getCiv().getDiplomacyManager().atWarWith(tc.getTown().getCiv())) {
 					WarRegen.destroyThisBlock(event.getBlock(), tc.getTown());
@@ -751,39 +750,34 @@ public class BlockListener implements Listener {
 					return;
 				}
 			}
-
+			
 			if (event.getItem().getType().equals(Material.INK_SACK)) {
-				//if (event.getItem().getDurability() == 15) { 
-					event.setCancelled(true);
-					return;
-				//}
+				event.setCancelled(true);
+				return;
 			}
 		}
 	}
-
+	
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void OnPlayerInteractEvent(PlayerInteractEvent event) {
 		Resident resident = CivGlobal.getResident(event.getPlayer());
-
 		if (resident == null) {
 			event.setCancelled(true);
 			return;
 		}
 		
 		if (event.isCancelled()) {
-			// Fix for bucket bug.
+			//Fix for bucket bug.
 			if (event.getAction() == Action.RIGHT_CLICK_AIR) {
 				Integer item = ItemManager.getId(event.getPlayer().getItemInHand());
-				// block cheats for placing water/lava/fire/lighter use.
+				//block cheats for placing water/lava/fire/lighter use.
 				if (item == 326 || item == 327 || item == 259 || (item >= 8 && item <= 11) || item == 51) { 
 					event.setCancelled(true);
 				}
-			}
-			return;
-		}		
+			} return;
+		}
 		
 		if (event.hasItem()) {
-
 			if (event.getItem().getType().equals(Material.POTION)) {
 				int effect = event.getItem().getDurability() & 0x000F;			
 				if (effect == 0xE) {
@@ -792,7 +786,7 @@ public class BlockListener implements Listener {
 					return;
 				}
 			}
-
+			
 			if (event.getItem().getType().equals(Material.INK_SACK) && event.getItem().getDurability() == 15) {
 				Block clickedBlock = event.getClickedBlock();
 				if (ItemManager.getId(clickedBlock) == CivData.WHEAT || 
@@ -804,9 +798,8 @@ public class BlockListener implements Listener {
 				}
 			}
 		}
-
+		
 		Block soilBlock = event.getPlayer().getLocation().getBlock().getRelative(BlockFace.DOWN);
-
 		// prevent players trampling crops
 		if ((event.getAction() == Action.PHYSICAL)) {
 			if ((soilBlock.getType() == Material.SOIL) || (soilBlock.getType() == Material.CROPS)) {
@@ -815,15 +808,11 @@ public class BlockListener implements Listener {
 				return;	
 			}
 		}
-
-		/* 
-		 * Right clicking causes some dupe bugs for some reason with items that have "actions" such as swords.
-		 * It also causes block place events on top of signs. So we'll just only allow signs to work with left click.
-		 */
+		
+		/* Right clicking causes some dupe bugs for some reason with items that have "actions" such as swords.
+		 * It also causes block place events on top of signs. So we'll just only allow signs to work with left click. */
 		boolean leftClick = event.getAction().equals(Action.LEFT_CLICK_AIR) || event.getAction().equals(Action.LEFT_CLICK_BLOCK);
-
 		if (event.getClickedBlock() != null) {		
-
 			if (MarkerPlacementManager.isPlayerInPlacementMode(event.getPlayer())) {
 				Block block;
 				if (event.getBlockFace().equals(BlockFace.UP)) {
@@ -831,18 +820,17 @@ public class BlockListener implements Listener {
 				} else {
 					block = event.getClickedBlock();
 				}
-
+				
 				try {
 					MarkerPlacementManager.setMarker(event.getPlayer(), block.getLocation());
 					CivMessage.send(event.getPlayer(), CivColor.LightGreen+"Marked Location.");
 				} catch (CivException e) {
 					CivMessage.send(event.getPlayer(), CivColor.Rose+e.getMessage());
 				}
-
 				event.setCancelled(true);
 				return;
 			}
-
+			
 			// Check for clicked structure signs.
 			bcoord.setFromLocation(event.getClickedBlock().getLocation());
 			StructureSign sign = CivGlobal.getStructureSign(bcoord);
@@ -858,10 +846,9 @@ public class BlockListener implements Listener {
 							return;
 						}
 					}
-				}
-				return;
+				} return;
 			}
-
+			
 			if (CivSettings.switchItems.contains(event.getClickedBlock().getType())) {
 				OnPlayerSwitchEvent(event);
 				if (event.isCancelled()) {
@@ -869,9 +856,8 @@ public class BlockListener implements Listener {
 				}
 			}
 		}
-
+		
 		if (event.hasItem()) {
-
 			if (event.getItem() == null) {
 			} else {
 				if (CivSettings.restrictedItems.containsKey(event.getItem().getType())) {
@@ -882,12 +868,10 @@ public class BlockListener implements Listener {
 				}
 			}
 		}
-
 	}
 	
 	public void OnPlayerBedEnterEvent(PlayerBedEnterEvent event) {
 		Resident resident = CivGlobal.getResident(event.getPlayer().getName());
-
 		if (resident == null) {
 			event.setCancelled(true);
 			return;
@@ -908,14 +892,13 @@ public class BlockListener implements Listener {
 		if (event.getClickedBlock() == null) {
 			return;
 		}
-
+		
 		Resident resident = CivGlobal.getResident(event.getPlayer().getName());
-
 		if (resident == null) {
 			event.setCancelled(true);
 			return;
 		}
-
+		
 		bcoord.setFromLocation(event.getClickedBlock().getLocation());
 		CampBlock cb = CivGlobal.getCampBlock(bcoord);
 		if (cb != null && !resident.isPermOverride()) {
@@ -925,20 +908,23 @@ public class BlockListener implements Listener {
 				return;
 			}
 		}
-
+		
 		coord.setFromLocation(event.getClickedBlock().getLocation());
 		TownChunk tc = CivGlobal.getTownChunk(coord);
-
 		if (tc == null) {
 			return;
 		}
-
+		
 		if (resident.hasTown()) {
 			if (War.isWarTime()) {
 				if(tc.getTown().getCiv().getDiplomacyManager().atWarWith(resident.getTown().getCiv())) {
-
 					switch (event.getClickedBlock().getType()) {
 					case WOODEN_DOOR:
+					case BIRCH_DOOR:
+					case SPRUCE_DOOR:
+					case JUNGLE_DOOR:
+					case DARK_OAK_DOOR:
+					case ACACIA_DOOR:
 					case IRON_DOOR:
 						return;
 					default:
@@ -947,30 +933,25 @@ public class BlockListener implements Listener {
 				}
 			}
 		}
-
+		
 		event.getClickedBlock().getType();
-
 		if(!tc.perms.hasPermission(PlotPermissions.Type.INTERACT, resident)) {
 			event.setCancelled(true);
-
 			if (War.isWarTime() && resident.hasTown() && 
 					resident.getTown().getCiv().getDiplomacyManager().atWarWith(tc.getTown().getCiv())) {
 				WarRegen.destroyThisBlock(event.getClickedBlock(), tc.getTown());
 			} else {
 				CivMessage.sendErrorNoRepeat(event.getPlayer(), "You do not have permission to interact with "+event.getClickedBlock().getType().toString()+" here.");
 			}
-		}
-
-		return;
+		} return;
 	}
-
+	
 	private void OnPlayerUseItem(PlayerInteractEvent event) {
 		Location loc = (event.getClickedBlock() == null) ? 
 				event.getPlayer().getLocation() : 
 				event.getClickedBlock().getLocation();
-
+				
 		ItemStack stack = event.getItem();
-
 		coord.setFromLocation(event.getPlayer().getLocation());
 		Camp camp = CivGlobal.getCampFromChunk(coord);
 		if (camp != null) {
@@ -980,32 +961,26 @@ public class BlockListener implements Listener {
 				return;
 			}
 		}
-
+		
 		TownChunk tc = CivGlobal.getTownChunk(loc);
 		if (tc == null) {
 			return;
 		}
-
+		
 		Resident resident = CivGlobal.getResident(event.getPlayer().getName());
-
 		if (resident == null) {
 			event.setCancelled(true);
 		}
-
+		
 		if(!tc.perms.hasPermission(PlotPermissions.Type.ITEMUSE, resident)) {
 			event.setCancelled(true);
 			CivMessage.sendErrorNoRepeat(event.getPlayer(), "You do not have permission to use "+stack.getType().toString()+" here.");
-		}
-
-		return;
+		} return;
 	}
-
-	/*
-	 * Handles rotating of itemframes
-	 */
+	
+	/* Handles rotating of itemframes */
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void OnPlayerInteractEntityEvent(PlayerInteractEntityEvent event) {
-
 		if (event.getRightClicked().getType().equals(EntityType.HORSE)) {
 			if (!HorseModifier.isCivCraftHorse((LivingEntity)event.getRightClicked())) {
 				CivMessage.sendError(event.getPlayer(), "Invalid horse! You can only get horses from stable structures.");
@@ -1093,106 +1068,98 @@ public class BlockListener implements Listener {
 						CivMessage.sendError(event.getPlayer(), "You cannot breed mobs in the wild, take them to a pasture.");
 						event.setCancelled(true);
 					} else {
-							int loveTicks;
-							NBTTagCompound tag = new NBTTagCompound();
-							((CraftEntity)event.getRightClicked()).getHandle().c(tag);
-							loveTicks = tag.getInt("InLove");
-
-							if (loveTicks == 0) {	
-								if(!pasture.processMobBreed(event.getPlayer(), event.getRightClicked().getType())) {
-									event.setCancelled(true);
-								}
-							} else {
+						int loveTicks;
+						NBTTagCompound tag = new NBTTagCompound();
+						((CraftEntity)event.getRightClicked()).getHandle().c(tag);
+						loveTicks = tag.getInt("InLove");
+						if (loveTicks == 0) {	
+							if(!pasture.processMobBreed(event.getPlayer(), event.getRightClicked().getType())) {
 								event.setCancelled(true);
 							}
-					}
-					return;			
+						} else {
+							event.setCancelled(true);
+						}
+					} return;			
 				}
-			}
-		if (!(event.getRightClicked() instanceof ItemFrame) && !(event.getRightClicked() instanceof Painting)) {
+			} if (!(event.getRightClicked() instanceof ItemFrame) && !(event.getRightClicked() instanceof Painting)) {
 			return;
 		}
-
+		
 		coord.setFromLocation(event.getPlayer().getLocation());
 		TownChunk tc = CivGlobal.getTownChunk(coord);
 		if (tc == null) {
 			return;
 		}
-
+		
 		Resident resident = CivGlobal.getResident(event.getPlayer().getName());
 		if (resident == null) {
 			return;
 		}
-
+		
 		if(!tc.perms.hasPermission(PlotPermissions.Type.INTERACT, resident)) {
 			event.setCancelled(true);
 			CivMessage.sendErrorNoRepeat(event.getPlayer(), "You do not have permission to interact with this painting/itemframe.");
 		}
-
 	}
-
-
-	/*
-	 * Handles breaking of paintings and itemframes.
-	 */
+	
+	/* Handles breaking of paintings and itemframes. */
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void OnHangingBreakByEntityEvent(HangingBreakByEntityEvent event) {	
 	//	CivLog.debug("hanging painting break event");
-
 		ItemFrameStorage frameStore = CivGlobal.getProtectedItemFrame(event.getEntity().getUniqueId());
-		if (frameStore != null) {		
-//			if (!(event.getRemover() instanceof Player)) {
-//				event.setCancelled(true);
-//				return;
-//			}
-//			
-//			if (frameStore.getTown() != null) {
-//				Resident resident = CivGlobal.getResident((Player)event.getRemover());
-//				if (resident == null) {
-//					event.setCancelled(true);
-//					return;
-//				}
-//				
-//				if (resident.hasTown() == false || resident.getTown() != frameStore.getTown()) {
-//					event.setCancelled(true);
-//					CivMessage.sendError((Player)event.getRemover(), "Cannot remove item from protected item frame. Belongs to another town.");
-//					return;
-//				}
-//			}
-//			
-//			CivGlobal.checkForEmptyDuplicateFrames(frameStore);
-//			
-//			ItemStack stack = ((ItemFrame)event.getEntity()).getItem();
-//			if (stack != null && !stack.getType().equals(Material.AIR)) {
-//				BonusGoodie goodie = CivGlobal.getBonusGoodie(stack);
-//				if (goodie != null) {
-//					frameStore.getTown().onGoodieRemoveFromFrame(frameStore, goodie);
-//				}
-//				frameStore.clearItem();
-//				TaskMaster.syncTask(new DelayItemDrop(stack, event.getEntity().getLocation()));
-//			}
+		if (frameStore != null) {
+			//XXX Enabled Below \/\/\/
+			if (!(event.getRemover() instanceof Player)) {
+				event.setCancelled(true);
+				return;
+			}
+			
+			if (frameStore.getTown() != null) {
+				Resident resident = CivGlobal.getResident((Player)event.getRemover());
+				if (resident == null) {
+					event.setCancelled(true);
+					return;
+				}
+				
+				if (resident.hasTown() == false || resident.getTown() != frameStore.getTown()) {
+					event.setCancelled(true);
+					CivMessage.sendError((Player)event.getRemover(), "Cannot remove item from protected item frame. Belongs to another town.");
+					return;
+				}
+			}
+			
+			CivGlobal.checkForEmptyDuplicateFrames(frameStore);
+			ItemStack stack = ((ItemFrame)event.getEntity()).getItem();
+			if (stack != null && !stack.getType().equals(Material.AIR)) {
+				BonusGoodie goodie = CivGlobal.getBonusGoodie(stack);
+				if (goodie != null) {
+					frameStore.getTown().onGoodieRemoveFromFrame(frameStore, goodie);
+				}
+				frameStore.clearItem();
+				TaskMaster.syncTask(new DelayItemDrop(stack, event.getEntity().getLocation()));
+			}
+			//XXX Enabled Above ^^^^^
 			if (event.getRemover() instanceof Player) {
 				CivMessage.sendError((Player)event.getRemover(), "Cannot break protected item frames. Right click to interact instead.");
 			}
 			event.setCancelled(true);	
 			return;
 		}
-
+		
 		if (event.getRemover() instanceof Player) {
 			Player player = (Player)event.getRemover();
-
 			coord.setFromLocation(player.getLocation());
 			TownChunk tc = CivGlobal.getTownChunk(coord);
-
+			
 			if (tc == null) {
 				return;
 			}
-
+			
 			Resident resident = CivGlobal.getResident(player.getName());
 			if (resident == null) {
 				event.setCancelled(true);
 			}
-
+			
 			if (!tc.perms.hasPermission(PlotPermissions.Type.DESTROY, resident)) {
 				event.setCancelled(true);
 				CivMessage.sendErrorNoRepeat(player, "You do not have permission to destroy here.");

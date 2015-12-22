@@ -12,6 +12,7 @@ import com.civcraft.camp.WarCamp;
 import com.civcraft.config.CivSettings;
 import com.civcraft.endgame.EndGameCondition;
 import com.civcraft.event.EventTimer;
+import com.civcraft.event.ToggleCommandsEvent;
 import com.civcraft.exception.InvalidConfiguration;
 import com.civcraft.main.CivGlobal;
 import com.civcraft.main.CivLog;
@@ -117,7 +118,25 @@ public class War {
 		return warTime;
 	}
 	
+	public static boolean hasCurrentWars() {		
+		for (Civilization civ : CivGlobal.getCivs()) {
+			for (Relation relation : civ.getDiplomacyManager().getRelations()) {
+				if (relation.getStatus().equals(Status.WAR)) {
+					return true;
+				}
+			}
+		} return false;
+	}
+	
 	public static void setWarTime(boolean warTime) {
+		if (warTime == true && !War.hasCurrentWars()) {
+			CivMessage.globalHeading(CivColor.BOLD+"WarTime Has Been Skipped Today");
+			CivMessage.globalHeading(CivColor.ITALIC+"No one's at war");
+			ToggleCommandsEvent.enableCommands();
+			return;
+		} else if (warTime == false && !War.isWarTime()) {	
+		}
+		
 		if (warTime == false) {
 			/* War time has ended. */
 			War.setStart(null);
@@ -135,8 +154,9 @@ public class War {
 			/* Delete any wartime file used to prevent reboots. */
 			File file = new File("wartime");
 			file.delete();
-		
+			
 			CivMessage.globalHeading(CivColor.BOLD+"WarTime Has Ended");
+			ToggleCommandsEvent.enableCommands();
 			/* display some stats. */
 			CivMessage.global("Most Lethal: "+WarStats.getTopKiller());
 			List<String> civs = WarStats.getCapturedCivs();
@@ -145,8 +165,8 @@ public class War {
 					CivMessage.global(str);
 				}
 			}
-			WarStats.clearStats();
 			
+			WarStats.clearStats();
 			for (Civilization civ : CivGlobal.getCivs()) {
 				civ.onWarEnd();
 			}

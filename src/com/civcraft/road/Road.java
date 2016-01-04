@@ -523,16 +523,6 @@ public class Road extends Structure {
 	public boolean showOnDynmap() {
 		return false;
 	}
-
-	@Override
-	public String getDynmapDescription() {
-		return "";
-	}
-
-	@Override
-	public String getMarkerIconName() {
-		return "";
-	}
 	
 	@Override
 	public void bindStructureBlocks() {
